@@ -372,7 +372,9 @@ class FlowService {
 		$flow_type = Data::current_flow();
 		if ( 'ecommerce' === $flow_type ) {
 			// update default data with ecommerce data
-			$data['data']['topPriority']['priority1'] = 'selling';
+			if ( empty( $data['data']['topPriority']['priority1'] ) ) {
+				$data['data']['topPriority']['priority1'] = 'selling';
+			}
 			if ( empty( $data['data']['siteType']['primary']['value'] ) ) {
 				$data['data']['siteType']['primary']['refers'] = 'slug';
 				$data['data']['siteType']['primary']['value']  = 'business';

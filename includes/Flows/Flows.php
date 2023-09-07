@@ -56,7 +56,7 @@ final class Flows {
 			// Any manual fixes or modification made to topPriority shall also be made in FlowServices::update_default_data_for_ecommerce()
 			// Enums: `publishing`, `designing`, `selling`, 'migrating', 'regenerate' and 'skip'
 			'topPriority'     => array(
-				'priority1' => 'publishing',
+				'priority1' => '',
 			),
 
 			// This data will map to WordPress default 'blogname'
@@ -276,9 +276,14 @@ final class Flows {
 	 */
 	public static function get_flow_from_top_priority() {
 		$flow_data = FlowService::read_data_from_wp_option();
-		if ( $flow_data && isset( $flow_data['data']['topPriority']['priority1'] ) && 'selling' === $flow_data['data']['topPriority']['priority1'] ) {
+		if ( ! ( $flow_data && isset( $flow_data['data']['topPriority']['priority1'] ) ) ) {
+			return false;
+		}
+
+		if ( 'selling' === $flow_data['data']['topPriority']['priority1'] ) {
 			return true === self::get_flows()['ecommerce'] ? 'ecommerce' : false;
 		}
-		return false;
+
+		return self::get_default_flow();
 	}
 }

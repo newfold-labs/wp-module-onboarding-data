@@ -69,6 +69,21 @@ final class Data {
 			);
 		}
 
+		$current_flow = Flows::get_flow_from_top_priority();
+		if ( 'ecommerce' === $current_flow ) {
+			return array(
+				'flow'    => 'ecommerce',
+				'subtype' => 'wc_priority',
+				'type'    => null,
+			);
+		} elseif ( Flows::get_default_flow() === $current_flow ) {
+			return array(
+				'flow'    => $current_flow,
+				'subtype' => null,
+				'type'    => null,
+			);
+		}
+
 		$current_flow = Flows::get_flow_from_plugins();
 		if ( false !== $current_flow ) {
 			switch ( $current_flow ) {
@@ -79,15 +94,6 @@ final class Data {
 						'type'    => null,
 					);
 			}
-		}
-
-		$current_flow = Flows::get_flow_from_top_priority();
-		if ( false !== $current_flow ) {
-			return array(
-				'flow'    => 'ecommerce',
-				'subtype' => 'wc_priority',
-				'type'    => null,
-			);
 		}
 
 		return array(
