@@ -256,7 +256,7 @@ final class Patterns {
 	 * Fetches a pattern from the WP_Block_Patterns_Registry.
 	 *
 	 * @param string $pattern_slug The full slug of the pattern.
-	 * @return array
+	 * @return array|boolean
 	 */
 	public static function get_pattern_from_block_patterns_registry( $pattern_slug ) {
 		$block_patterns_registry = \WP_Block_Patterns_Registry::get_instance();

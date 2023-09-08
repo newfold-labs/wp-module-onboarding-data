@@ -19,7 +19,7 @@ class FlowService {
 	/**
 	 * Initialize Flow Data on refresh.
 	 *
-	 * @return boolean
+	 * @return boolean|array
 	 */
 	public static function initialize_data() {
 		$default_data = self::get_default_data();
@@ -98,7 +98,7 @@ class FlowService {
 	 * Update the Onboarding flow data.
 	 *
 	 * @param array $params The params to update in flow data.
-	 * @return array
+	 * @return array|WP_Error
 	 */
 	public static function update_data( $params ) {
 		if ( empty( $params ) ) {

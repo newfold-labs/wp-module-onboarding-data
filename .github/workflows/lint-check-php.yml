@@ -3,7 +3,6 @@ on:
   push:
     paths:
       - '**.php'
-      - '!build/**/*.php'
   pull_request:
     types: [opened, edited, reopened, ready_for_review]
     paths:
@@ -35,7 +34,6 @@ jobs:
         with:
           PATTERNS: |
             **/*.php
-            !build/**/*.php
 
       - name: Get Composer cache directory
         id: composer-cache
