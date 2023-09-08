@@ -1,0 +1,38 @@
+{
+    "name": "newfold-labs/wp-module-onboarding-data",
+    "description": "A non-toggleable module containing a standardized interface for interacting with Onboarding data.",
+    "authors": [
+        {
+            "name": "arunshenoy99",
+            "email": "devarunshenoy99@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NewfoldLabs\\WP\\Module\\Onboarding\\Data\\": "includes/"
+        }
+    },
+    "repositories": {
+        "newfold": {
+            "type": "composer",
+            "url": "https://newfold-labs.github.io/satis/",
+            "only": [
+                "newfold-labs/*"
+            ]
+        }
+    },
+    "require": {
+        "newfold-labs/wp-module-installer": "^1.1",
+        "newfold-labs/wp-module-data": "^2.4.3",
+        "wp-forge/wp-upgrade-handler": "^1.0",
+        "newfold-labs/wp-module-customer-bluehost": "^1.6.0"
+    },
+    "require-dev": {
+        "newfold-labs/wp-php-standards": "^1.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
