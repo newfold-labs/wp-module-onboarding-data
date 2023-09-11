@@ -64,7 +64,7 @@ final class Data {
 		if ( false !== $current_flow ) {
 			return array(
 				'flow'    => $current_flow,
-				'subtype' => Flows::is_commerce_priority() ? 'wc_priority' : null,
+				'subtype' => 'wc_priority',
 				'type'    => null,
 			);
 		}
