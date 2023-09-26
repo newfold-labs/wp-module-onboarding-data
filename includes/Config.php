@@ -1,6 +1,8 @@
 <?php
 namespace NewfoldLabs\WP\Module\Onboarding\Data;
 
+use NewfoldLabs\WP\Module\Data\SiteCapabilities;
+
 /**
  * WordPress and Onboarding configuration data.
  */
@@ -25,5 +27,25 @@ final class Config {
 	 */
 	public static function get_wp_config_initialization_constants() {
 		return self::$wp_config_initialization_constants;
+	}
+
+	/**
+	 * Get a specific site capability.
+	 *
+	 * @param string $capability Name/slug of the capability.
+	 * @return boolean
+	 */
+	public static function get_site_capability( $capability ) {
+		$site_capabilities = new SiteCapabilities();
+		return $site_capabilities->get( $capability );
+	}
+
+	/**
+	 * Checks if the site is on Jarvis hosting.
+	 *
+	 * @return boolean
+	 */
+	public static function is_jarvis() {
+		return self::get_site_capability( 'isJarvis' );
 	}
 }
