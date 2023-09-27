@@ -12,8 +12,8 @@ if ( $flow_data ) {
 	if ( ! empty( $flow_data['data']['palette']['slug'] ) ) {
 		$flow_data['data']['colorStyle'] = $flow_data['data']['palette']['slug'];
 	}
-	if ( ! empty( $flow_data['data']['typography']['slug'] ) ) {
-		$flow_data['data']['fontStyle'] = $flow_data['data']['typography']['slug'];
+	if ( ! empty( $flow_data['data']['fonts']['slug'] ) ) {
+		$flow_data['data']['fontStyle'] = $flow_data['data']['fonts']['slug'];
 	}
 	\update_option( Options::get_option_name( 'flow' ), $flow_data );
 }
