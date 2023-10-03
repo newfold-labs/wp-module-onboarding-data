@@ -104,6 +104,8 @@ final class Flows {
 			'siteFeatures'    => array(),
 
 			'chapters'        => array(),
+
+			'comingSoon'      => false,
 		),
 
 		// we will store active flows (abandoned wp-setup, abandoned wp-commerce) with their identifier and use as a reference to access currentStep and data
