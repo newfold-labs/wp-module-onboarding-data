@@ -299,10 +299,11 @@ final class SiteFeatures {
 	/**
 	 * Filters out selected site features from a plugin list.
 	 *
-	 * @param array $plugins List of plugins.
+	 * @param array   $plugins List of plugins.
+	 * @param boolean $selected Selected/Unselected list of plugins
 	 * @return array
 	 */
-	public static function filter_selected( $plugins ) {
+	public static function filter_selected( $plugins, $selected ) {
 		$selected_plugins = array();
 
 		$flow_data = FlowService::read_data_from_wp_option( false );
@@ -312,7 +313,7 @@ final class SiteFeatures {
 
 		$flow_data_site_features = $flow_data['data']['siteFeatures'];
 		foreach ( $plugins as $plugin ) {
-			if ( ! isset( $flow_data_site_features[ $plugin['slug'] ] ) || true === $flow_data_site_features[ $plugin['slug'] ] ) {
+			if ( ! isset( $flow_data_site_features[ $plugin['slug'] ] ) || $selected === $flow_data_site_features[ $plugin['slug'] ] ) {
 				$selected_plugins[] = $plugin;
 			}
 		}
@@ -326,7 +327,16 @@ final class SiteFeatures {
 	 * @return array
 	 */
 	public static function get_selected() {
-		return self::filter_selected( self::get_init() );
+		return self::filter_selected( self::get_init(), true );
+	}
+
+	/**
+	 * Get only the unselected plugins from site features init list.
+	 *
+	 * @return array
+	 */
+	public static function get_unselected() {
+		return self::filter_selected( self::get_init(), false );
 	}
 
 }
