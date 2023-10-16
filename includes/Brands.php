@@ -100,11 +100,11 @@ final class Brands {
 					: 'https://my.bluehost.com/cgi/services/migration',
 				),
 				'config'                      => array(
-					'enabled_flows' => array(
+					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 					),
-					'wonder_blocks' => true,
+					'wonder_blocks'  => true,
 					'prioritization' => false,
 				),
 			),
@@ -162,11 +162,11 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows' => array(
+					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => false,
 					),
-					'wonder_blocks' => true,
+					'wonder_blocks'  => true,
 					'prioritization' => false,
 				),
 			),
@@ -222,11 +222,11 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows' => array(
+					'enabled_flows'  => array(
 						'ecommerce' => false,
 						'wp-setup'  => false,
 					),
-					'wonder_blocks' => true,
+					'wonder_blocks'  => true,
 					'prioritization' => false,
 				),
 			),
@@ -282,13 +282,13 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows' => array(
+					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 					),
-					'wonder_blocks' => true,
+					'wonder_blocks'  => true,
 					'prioritization' => false,
-					'views'         => array(
+					'views'          => array(
 						'sidebar' => array(
 							'illustration' => array(
 								'shown' => false,
@@ -349,16 +349,27 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows' => array(
+					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 					),
-					'wonder_blocks' => true,
+					'wonder_blocks'  => true,
 					'prioritization' => false,
-					'views'         => array(
+					'views'          => array(
 						'sidebar' => array(
 							'illustration' => array(
 								'shown' => false,
+							),
+							'experts'      => array(
+								'shown' => false,
+							),
+							'fullService'  => array(
+								'shown' => false,
+							),
+							'infoPanel'    => array(
+								'headingWithDescriptions' => array(
+									'shown' => array( 0 ),
+								),
 							),
 						),
 					),
@@ -377,7 +388,7 @@ final class Brands {
 		if ( ! defined( 'NFD_ONBOARDING_PLUGIN_BRAND' ) ) {
 			$brand = $container->plugin()->brand;
 			if ( empty( $brand ) ) {
-				$brand = 'wordpress';
+				$brand = 'WordPress';
 			}
 
 			if ( false !== strpos( $brand, 'hostgator' ) ) {
