@@ -17,6 +17,38 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Patterns;
 class WonderBlocksService {
 
 	/**
+	 * Determines whether a slug is a pattern.
+	 *
+	 * @param string $slug The slug to evaluate.
+	 * @return boolean
+	 */
+	public static function is_pattern( $slug ) {
+		$patterns = array(
+			'testimonials-1' => true,
+		);
+
+		return isset( $patterns[ $slug ] );
+	}
+
+		/**
+		 * Determines whether a slug is a template.
+		 *
+		 * @param string $slug The slug to evaluate.
+		 * @return boolean
+		 */
+	public static function is_template( $slug ) {
+		$templates = array(
+			'home-1'    => true,
+			'home-2'    => true,
+			'home-3'    => true,
+			'about-4'   => true,
+			'contact-4' => true,
+		);
+
+		return isset( $templates[ $slug ] );
+	}
+
+	/**
 	 * Get the slug for a given pattern name.
 	 *
 	 * Valid slugs have `wonder-blocks/` prefixed to the actual name.
@@ -69,6 +101,21 @@ class WonderBlocksService {
 	}
 
 	/**
+	 * Get wonder blocks data from a given template/pattern slug.
+	 *
+	 * @param string $slug The wonder blocks slug.
+	 * @return array|false
+	 */
+	public static function get_data_from_slug( $slug ) {
+		$wonder_blocks_slug = self::strip_prefix_from_slug( $slug );
+		if ( self::is_pattern( $wonder_blocks_slug ) ) {
+			return self::get_pattern_from_slug( $slug );
+		}
+
+		return self::get_template_from_slug( $slug );
+	}
+
+	/**
 	 * Fetches the template from WonderBlocks given the template slug.
 	 *
 	 * @param string $template_slug The template slug.
@@ -105,6 +152,49 @@ class WonderBlocksService {
 				'name'       => $template['name'],
 				'meta'       => Patterns::get_meta_from_slug( $template_slug ),
 				'categories' => $template['categories'],
+			);
+		}
+
+		return false;
+	}
+
+	/**
+	 * Fetches the pattern from WonderBlocks given the pattern slug.
+	 *
+	 * @param string $pattern_slug The pattern slug.
+	 * @return array|false
+	 */
+	public static function get_pattern_from_slug( $pattern_slug ) {
+		$primary_type = PrimaryType::instantiate_from_option();
+		if ( ! $primary_type ) {
+			return false;
+		}
+		$secondary_type = SecondaryType::instantiate_from_option();
+		if ( ! $secondary_type ) {
+			return false;
+		}
+
+		$wonder_blocks_slug = self::strip_prefix_from_slug( $pattern_slug );
+		$request            = new WonderBlocksFetchRequest(
+			array(
+				'endpoint'       => 'patterns',
+				'slug'           => $wonder_blocks_slug,
+				'primary_type'   => $primary_type->value,
+				'secondary_type' => $secondary_type->value,
+			)
+		);
+		$patterns           = WonderBlocks::fetch( $request );
+
+		if ( ! empty( $patterns ) ) {
+			$patterns['categories'] = array( $patterns['categories'], 'yith-wonder-pages' );
+			$patterns['name']       = $patterns['slug'];
+			return array(
+				'slug'       => $pattern_slug,
+				'title'      => $patterns['title'],
+				'content'    => $patterns['content'],
+				'name'       => $patterns['name'],
+				'meta'       => Patterns::get_meta_from_slug( $pattern_slug ),
+				'categories' => $patterns['categories'],
 			);
 		}
 

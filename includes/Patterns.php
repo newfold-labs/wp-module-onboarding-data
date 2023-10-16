@@ -73,25 +73,28 @@ final class Patterns {
 				),
 				'site-pages'      => array(
 					'company-page'      => array(
-						'active'      => true,
-						'title'       => __( 'About', 'wp-module-onboarding' ),
-						'selected'    => true,
-						'shown'       => true,
-						'description' => __( 'Explain your company values or the history behind your brand.', 'wp-module-onboarding' ),
+						'active'        => true,
+						'title'         => __( 'About', 'wp-module-onboarding' ),
+						'selected'      => true,
+						'shown'         => true,
+						'description'   => __( 'Explain your company values or the history behind your brand.', 'wp-module-onboarding' ),
+						'wonder_blocks' => 'about-4',
 					),
 					'contact-us'        => array(
-						'active'      => true,
-						'selected'    => true,
-						'title'       => __( 'Contact', 'wp-module-onboarding' ),
-						'shown'       => true,
-						'description' => __( 'Offer visitors a single page with a contact form, your street address and social media.', 'wp-module-onboarding' ),
+						'active'        => true,
+						'selected'      => true,
+						'title'         => __( 'Contact', 'wp-module-onboarding' ),
+						'shown'         => true,
+						'description'   => __( 'Offer visitors a single page with a contact form, your street address and social media.', 'wp-module-onboarding' ),
+						'wonder_blocks' => 'contact-4',
 					),
 					'testimonials-page' => array(
-						'active'      => true,
-						'title'       => __( 'Testimonials', 'wp-module-onboarding' ),
-						'selected'    => false,
-						'shown'       => true,
-						'description' => __( 'Highlight your success with testimonials from your fans.', 'wp-module-onboarding' ),
+						'active'        => true,
+						'title'         => __( 'Testimonials', 'wp-module-onboarding' ),
+						'selected'      => false,
+						'shown'         => true,
+						'description'   => __( 'Highlight your success with testimonials from your fans.', 'wp-module-onboarding' ),
+						'wonder_blocks' => 'testimonials-1',
 					),
 					'blog-page'         => array(
 						'active'      => true,
@@ -138,9 +141,12 @@ final class Patterns {
 	public static function get_fallbacks() {
 		return array(
 			'wonder-blocks' => array(
-				'home-1' => 'yith-wonder/homepage-1',
-				'home-2' => 'yith-wonder/homepage-2',
-				'home-3' => 'yith-wonder/homepage-3',
+				'home-1'         => 'yith-wonder/homepage-1',
+				'home-2'         => 'yith-wonder/homepage-2',
+				'home-3'         => 'yith-wonder/homepage-3',
+				'about-4'        => 'yith-wonder/company-page',
+				'contact-4'      => 'yith-wonder/contact-us',
+				'testimonials-1' => 'yith-wonder/testimonials-page',
 			),
 		);
 	}
@@ -283,7 +289,7 @@ final class Patterns {
 	 */
 	public static function get_pattern_from_slug( $pattern_slug ) {
 		if ( WonderBlocksService::is_valid_slug( $pattern_slug ) ) {
-			$pattern = WonderBlocksService::get_template_from_slug( $pattern_slug );
+			$pattern = WonderBlocksService::get_data_from_slug( $pattern_slug );
 			if ( ! $pattern ) {
 				$fallback_pattern_slug = self::get_fallback_from_slug( $pattern_slug );
 				if ( ! $fallback_pattern_slug ) {
@@ -357,7 +363,7 @@ final class Patterns {
 			return false;
 		}
 
-		$pattern_slugs = self::get_theme_step_patterns()[ $active_theme ][ $step ];
+		$pattern_slugs  = self::get_theme_step_patterns()[ $active_theme ][ $step ];
 		$block_patterns = $squash ? '' : array();
 
 		foreach ( array_keys( $pattern_slugs ) as $pattern_slug ) {
