@@ -303,7 +303,7 @@ final class SiteFeatures {
 	 * @param boolean $selected Selected/Unselected list of plugins
 	 * @return array
 	 */
-	public static function filter_selected( $plugins, $selected ) {
+	public static function filter( $plugins, $selected ) {
 		$selected_plugins = array();
 
 		$flow_data = FlowService::read_data_from_wp_option( false );
@@ -327,7 +327,7 @@ final class SiteFeatures {
 	 * @return array
 	 */
 	public static function get_selected() {
-		return self::filter_selected( self::get_init(), true );
+		return self::filter( self::get_init(), true );
 	}
 
 	/**
@@ -336,7 +336,7 @@ final class SiteFeatures {
 	 * @return array
 	 */
 	public static function get_unselected() {
-		return self::filter_selected( self::get_init(), false );
+		return self::filter( self::get_init(), false );
 	}
 
 }
