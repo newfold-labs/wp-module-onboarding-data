@@ -25,7 +25,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'wpforms-lite'                      => array(
 						'slug'     => 'wpforms-lite',
@@ -35,7 +35,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Five million people build smarter forms and surveys with WPForms from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'google-analytics-for-wordpress'    => array(
 						'slug'     => 'google-analytics-for-wordpress',
@@ -45,7 +45,7 @@ final class SiteFeatures {
 						'desc'     => __( 'See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'wordpress-seo'                     => array(
 						'slug'     => 'wordpress-seo',
@@ -55,7 +55,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'creative-mail-by-constant-contact' => array(
 						'slug'     => 'creative-mail-by-constant-contact',
@@ -65,7 +65,7 @@ final class SiteFeatures {
 						'desc'     => __( 'A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'optinmonster'                      => array(
 						'slug'     => 'optinmonster',
@@ -75,7 +75,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 				),
 			),
@@ -89,7 +89,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'wpforms-lite'                      => array(
 						'slug'     => 'wpforms-lite',
@@ -99,7 +99,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Five million people build smarter forms and surveys with WPForms from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'google-analytics-for-wordpress'    => array(
 						'slug'     => 'google-analytics-for-wordpress',
@@ -109,7 +109,7 @@ final class SiteFeatures {
 						'desc'     => __( 'See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'wordpress-seo'                     => array(
 						'slug'     => 'wordpress-seo',
@@ -119,7 +119,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'creative-mail-by-constant-contact' => array(
 						'slug'     => 'creative-mail-by-constant-contact',
@@ -129,7 +129,7 @@ final class SiteFeatures {
 						'desc'     => __( 'A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'optinmonster'                      => array(
 						'slug'     => 'optinmonster',
@@ -139,7 +139,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 				),
 				'wc_standard' => array(
@@ -151,7 +151,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Give your visitors great search experiences with this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_ajax_product_filter' => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
@@ -161,7 +161,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_booking'  => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_booking',
@@ -171,7 +171,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_wishlist' => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
@@ -181,7 +181,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 				),
 				'wc_premium'  => array(
@@ -193,7 +193,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Give your visitors great search experiences with this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_ajax_product_filter' => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
@@ -203,7 +203,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_booking'  => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_booking',
@@ -213,7 +213,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 					'nfd_slug_yith_woocommerce_wishlist' => array(
 						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
@@ -223,7 +223,7 @@ final class SiteFeatures {
 						'desc'     => __( 'Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH.', 'wp-module-onboarding' ),
 						'selected' => false,
 						'shown'    => true,
-						'activate' => false,
+						'activate' => true,
 					),
 				),
 				'wc_priority' => array(),
@@ -299,10 +299,11 @@ final class SiteFeatures {
 	/**
 	 * Filters out selected site features from a plugin list.
 	 *
-	 * @param array $plugins List of plugins.
+	 * @param array   $plugins List of plugins.
+	 * @param boolean $selected Selected/Unselected list of plugins
 	 * @return array
 	 */
-	public static function filter_selected( $plugins ) {
+	public static function filter( $plugins, $selected ) {
 		$selected_plugins = array();
 
 		$flow_data = FlowService::read_data_from_wp_option( false );
@@ -312,7 +313,7 @@ final class SiteFeatures {
 
 		$flow_data_site_features = $flow_data['data']['siteFeatures'];
 		foreach ( $plugins as $plugin ) {
-			if ( ! isset( $flow_data_site_features[ $plugin['slug'] ] ) || true === $flow_data_site_features[ $plugin['slug'] ] ) {
+			if ( ! isset( $flow_data_site_features[ $plugin['slug'] ] ) || $selected === $flow_data_site_features[ $plugin['slug'] ] ) {
 				$selected_plugins[] = $plugin;
 			}
 		}
@@ -326,7 +327,16 @@ final class SiteFeatures {
 	 * @return array
 	 */
 	public static function get_selected() {
-		return self::filter_selected( self::get_init() );
+		return self::filter( self::get_init(), true );
+	}
+
+	/**
+	 * Get only the unselected plugins from site features init list.
+	 *
+	 * @return array
+	 */
+	public static function get_unselected() {
+		return self::filter( self::get_init(), false );
 	}
 
 }
