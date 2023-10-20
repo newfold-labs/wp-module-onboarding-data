@@ -23,9 +23,7 @@ class WonderBlocksService {
 	 * @return boolean
 	 */
 	public static function is_pattern( $slug ) {
-		$patterns = array(
-			'testimonials-1' => true,
-		);
+		$patterns = array();
 
 		return isset( $patterns[ $slug ] );
 	}
@@ -38,11 +36,12 @@ class WonderBlocksService {
 		 */
 	public static function is_template( $slug ) {
 		$templates = array(
-			'home-1'    => true,
-			'home-2'    => true,
-			'home-3'    => true,
-			'about-4'   => true,
-			'contact-4' => true,
+			'home-1'                  => true,
+			'home-2'                  => true,
+			'home-3'                  => true,
+			'about-4'                 => true,
+			'contact-4'               => true,
+			'testimonials-template-2' => true,
 		);
 
 		return isset( $templates[ $slug ] );

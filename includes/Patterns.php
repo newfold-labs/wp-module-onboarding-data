@@ -94,7 +94,7 @@ final class Patterns {
 						'selected'      => false,
 						'shown'         => true,
 						'description'   => __( 'Highlight your success with testimonials from your fans.', 'wp-module-onboarding' ),
-						'wonder_blocks' => 'testimonials-1',
+						'wonder_blocks' => 'testimonials-template-2',
 					),
 					'blog-page'         => array(
 						'active'      => true,
@@ -141,12 +141,12 @@ final class Patterns {
 	public static function get_fallbacks() {
 		return array(
 			'wonder-blocks' => array(
-				'home-1'         => 'yith-wonder/homepage-1',
-				'home-2'         => 'yith-wonder/homepage-2',
-				'home-3'         => 'yith-wonder/homepage-3',
-				'about-4'        => 'yith-wonder/company-page',
-				'contact-4'      => 'yith-wonder/contact-us',
-				'testimonials-1' => 'yith-wonder/testimonials-page',
+				'home-1'                  => 'yith-wonder/homepage-1',
+				'home-2'                  => 'yith-wonder/homepage-2',
+				'home-3'                  => 'yith-wonder/homepage-3',
+				'about-4'                 => 'yith-wonder/company-page',
+				'contact-4'               => 'yith-wonder/contact-us',
+				'testimonials-template-2' => 'yith-wonder/testimonials-page',
 			),
 		);
 	}
