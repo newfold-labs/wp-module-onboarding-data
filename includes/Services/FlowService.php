@@ -410,7 +410,7 @@ class FlowService {
 	 * @return false|string
 	 */
 	public static function get_top_priority() {
-		$data = self::get_data();
+		$data = self::read_data_from_wp_option( false );
 		return isset( $data['data']['topPriority']['priority1'] ) ? $data['data']['topPriority']['priority1'] : false;
 	}
 
@@ -420,7 +420,7 @@ class FlowService {
 	 * @return false|string
 	 */
 	public static function get_experience_level() {
-		$data = self::get_data();
+		$data = self::read_data_from_wp_option( false );
 		return isset( $data['data']['wpComfortLevel'] ) ? $data['data']['wpComfortLevel'] : false;
 	}
 }
