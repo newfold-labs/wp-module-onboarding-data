@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '1.0.3',
+		'version'              => '1.0.2',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -93,8 +93,6 @@ final class Flows {
 
 			// This string will identify the Header Pattern
 			'partHeader'      => '',
-
-			'partFooter'      => '',
 
 			// for eg. Home, About, Contact, Blog|News, Resume, Portfolio, Staff and Link in Bio
 			'sitePages'       => array(

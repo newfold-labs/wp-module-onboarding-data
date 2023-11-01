@@ -34,9 +34,8 @@ final class Patterns {
 			'yith-wonder' => array(
 				'theme-styles'    => array(
 					'site-header-left-logo-navigation-inline' => array(
-						'active'        => true,
-						'replace'       => true,
-						'wonder_blocks' => 'header-1',
+						'active'  => true,
+						'replace' => true,
 					),
 					'homepage-1'  => array(
 						'active'        => true,
@@ -45,15 +44,13 @@ final class Patterns {
 						'wonder_blocks' => 'home-1',
 					),
 					'site-footer' => array(
-						'active'        => true,
-						'wonder_blocks' => 'footer-15',
+						'active' => true,
 					),
 				),
 				'homepage-styles' => array(
 					'site-header-left-logo-navigation-inline' => array(
-						'active'        => true,
-						'replace'       => true,
-						'wonder_blocks' => 'header-1',
+						'active'  => true,
+						'replace' => true,
 					),
 					'homepage-1'  => array(
 						'active'        => true,
@@ -71,8 +68,7 @@ final class Patterns {
 						'wonder_blocks' => 'home-3',
 					),
 					'site-footer' => array(
-						'active'        => true,
-						'wonder_blocks' => 'footer-15',
+						'active' => true,
 					),
 				),
 				'site-pages'      => array(
@@ -110,32 +106,27 @@ final class Patterns {
 				),
 				'header-menu'     => array(
 					'site-header-left-logo-navigation-inline' => array(
-						'active'        => true,
-						'shown'         => true,
-						'wonder_blocks' => 'header-1',
+						'active' => true,
+						'shown'  => true,
 					),
 					'homepage-1'                => array(
 						'active'        => true,
 						'wonder_blocks' => 'home-1',
 					),
 					'site-footer'               => array(
-						'active'        => true,
-						'wonder_blocks' => 'footer-15',
+						'active' => true,
 					),
 					'site-header-left-logo-navigation-below' => array(
-						'active'        => true,
-						'shown'         => true,
-						'wonder_blocks' => 'header-10',
+						'active' => true,
+						'shown'  => true,
 					),
 					'site-header-centered'      => array(
-						'active'        => true,
-						'shown'         => true,
-						'wonder_blocks' => 'header-8',
+						'active' => true,
+						'shown'  => true,
 					),
 					'site-header-splitted-menu' => array(
-						'active'        => true,
-						'shown'         => true,
-						'wonder_blocks' => 'header-3',
+						'active' => true,
+						'shown'  => true,
 					),
 				),
 			),
@@ -326,24 +317,11 @@ final class Patterns {
 			return false;
 		}
 
-		if ( empty( $flow_data['data']['partHeader'] ) ) {
-			return false;
+		if ( ! empty( $flow_data['data']['partHeader'] ) ) {
+			return explode( '/', $flow_data['data']['partHeader'] )[1];
 		}
 
-		$part_header = $flow_data['data']['partHeader'];
-		$slug        = explode( '/', $flow_data['data']['partHeader'] )[1];
-
-		if ( WonderBlocksService::is_valid_slug( $part_header ) ) {
-			return array(
-				'slug' => $slug,
-				'type' => 'wonder_blocks',
-			);
-		}
-
-		return array(
-			'slug' => $slug,
-			'type' => 'wonder',
-		);
+		return false;
 
 	}
 
@@ -393,16 +371,9 @@ final class Patterns {
 				continue;
 			}
 			if ( isset( $pattern_slugs[ $pattern_slug ]['replace'] ) && true === $pattern_slugs[ $pattern_slug ]['replace'] ) {
-				$pattern_slug_data = $pattern_slugs[ $pattern_slug ];
-				$header_menu_data  = self::get_selected_header_from_flow_data();
-				if ( ! empty( $header_menu_data ) ) {
-					$slug = $header_menu_data['slug'];
-					if ( 'wonder_blocks' === $header_menu_data['type'] ) {
-						$pattern_slug_data['wonder_blocks'] = $slug;
-					} else {
-						$pattern_slug = $slug;
-					}
-				}
+				$pattern_slug_data              = $pattern_slugs[ $pattern_slug ];
+				$header_menu_slug               = self::get_selected_header_from_flow_data();
+				$pattern_slug                   = ( ! empty( $header_menu_slug ) ) ? $header_menu_slug : $pattern_slug;
 				$pattern_slugs[ $pattern_slug ] = $pattern_slug_data;
 			}
 
@@ -454,16 +425,16 @@ final class Patterns {
 		$footer_content       = '';
 
 		foreach ( $patterns as $index_key => $slug ) {
-			if ( ( WonderBlocksService::is_valid_slug( $slug['slug'] ) && in_array( 'header', $slug['categories'], true ) ) || in_array( 'yith-wonder-site-header', $slug['categories'], true ) ) {
+			if ( in_array( 'yith-wonder-site-header', $slug['categories'], true ) ) {
 				$header_content = $slug['content'];
-				continue;
-			}
-			if ( ( WonderBlocksService::is_valid_slug( $slug['slug'] ) && in_array( 'footer', $slug['categories'], true ) ) || in_array( 'yith-wonder-site-footer', $slug['categories'], true ) ) {
-				$footer_content = $slug['content'];
 				continue;
 			}
 			if ( in_array( 'yith-wonder-pages', $slug['categories'], true ) ) {
 				array_push( $homepage_style_slugs, $slug );
+			}
+			if ( in_array( 'yith-wonder-site-footer', $slug['categories'], true ) ) {
+				$footer_content = $slug['content'];
+				continue;
 			}
 		}
 
@@ -484,19 +455,13 @@ final class Patterns {
 		$body_content      = '';
 		$header_menu_slugs = array();
 		foreach ( $patterns as $pattern_details ) {
-			if ( ( WonderBlocksService::is_valid_slug( $pattern_details['slug'] ) && in_array( 'header', $pattern_details['categories'], true ) ) || in_array( 'yith-wonder-site-header', $pattern_details['categories'], true ) ) {
+			if ( in_array( 'yith-wonder-site-header', $pattern_details['categories'], true ) ) {
 				$header_menu_slugs['pageHeaders'][] = $pattern_details;
-				continue;
+			} else {
+				$body_content                 .= $pattern_details['content'];
+				$header_menu_slugs['pageBody'] = $body_content;
 			}
-
-			if ( ( WonderBlocksService::is_valid_slug( $pattern_details['slug'] ) && in_array( 'footer', $pattern_details['categories'], true ) ) || in_array( 'yith-wonder-site-footer', $pattern_details['categories'], true ) ) {
-				$header_menu_slugs['pageFooter'] = $pattern_details;
-			}
-
-			$body_content                 .= $pattern_details['content'];
-			$header_menu_slugs['pageBody'] = $body_content;
 		}
-
 		return $header_menu_slugs;
 	}
 
