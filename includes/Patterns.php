@@ -336,13 +336,13 @@ final class Patterns {
 		if ( WonderBlocksService::is_valid_slug( $part_header ) ) {
 			return array(
 				'slug' => $slug,
-				'type' => 'wonder_blocks',
+				'type' => 'wonder-blocks',
 			);
 		}
 
 		return array(
 			'slug' => $slug,
-			'type' => 'wonder',
+			'type' => 'yith-wonder',
 		);
 
 	}
@@ -397,7 +397,7 @@ final class Patterns {
 				$header_menu_data  = self::get_selected_header_from_flow_data();
 				if ( ! empty( $header_menu_data ) ) {
 					$slug = $header_menu_data['slug'];
-					if ( 'wonder_blocks' === $header_menu_data['type'] ) {
+					if ( 'wonder-blocks' === $header_menu_data['type'] ) {
 						$pattern_slug_data['wonder_blocks'] = $slug;
 					} else {
 						$pattern_slug = $slug;
