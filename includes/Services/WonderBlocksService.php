@@ -23,7 +23,13 @@ class WonderBlocksService {
 	 * @return boolean
 	 */
 	public static function is_pattern( $slug ) {
-		$patterns = array();
+		$patterns = array(
+			'header-1'  => true,
+			'header-10' => true,
+			'header-8'  => true,
+			'header-3'  => true,
+			'footer-15' => true,
+		);
 
 		return isset( $patterns[ $slug ] );
 	}
