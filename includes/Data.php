@@ -26,6 +26,7 @@ final class Data {
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
+			'currentUserDetails'        => self::wp_current_user_details(),
 		);
 	}
 
@@ -147,4 +148,24 @@ final class Data {
 		return false;
 	}
 
+	/**
+	* Get the current WordPress admin user details.
+	*
+	* @return array
+	*/
+	public static function wp_current_user_details() {
+		$user = wp_get_current_user();
+		if ( $user->exists() ) {
+			return array(
+				'displayName' => $user->display_name,
+				'avatarUrl'   => get_avatar_url( $user->ID ),
+			);
+		}
+
+		// If no user is found, return an empty array or default values as appropriate
+		return array(
+			'displayName' => '',
+			'avatarUrl'   => '',
+		);
+	}
 }
