@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '1.0.3',
+		'version'              => '1.0.4',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -132,6 +132,8 @@ final class Flows {
 				'product_types' => array(),
 			),
 		),
+
+		'siteGen'              => array(),
 	);
 
 	/**

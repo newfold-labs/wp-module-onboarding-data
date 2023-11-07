@@ -103,6 +103,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
+						'sitegen'   => true,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -165,6 +166,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => false,
+						'sitegen'   => false,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -225,6 +227,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => false,
 						'wp-setup'  => false,
+						'sitegen'   => false,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -285,6 +288,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
+						'sitegen'   => false,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -352,6 +356,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
+						'sitegen'   => false,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
