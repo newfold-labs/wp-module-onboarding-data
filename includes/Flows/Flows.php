@@ -275,6 +275,22 @@ final class Flows {
 		}
 		return false;
 	}
+
+	/**
+	 * Determines whether SiteGen flow was ever visited.
+	 *
+	 * @return boolean
+	 */
+	public static function is_sitegen() {
+		$flow_data = FlowService::read_data_from_wp_option();
+		if ( ! ( $flow_data && empty( $flow_data['sitegen'] ) ) ) {
+			return false;
+		}
+
+		return true === self::get_flows()['sitegen'];
+
+	}
+
 	/**
 	 * Get the corresponding flow from the top priority in flow data.
 	 *
