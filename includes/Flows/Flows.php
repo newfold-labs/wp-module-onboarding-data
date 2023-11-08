@@ -133,7 +133,7 @@ final class Flows {
 			),
 		),
 
-		'siteGen'              => array(),
+		'sitegen'              => array(),
 	);
 
 	/**
@@ -283,7 +283,7 @@ final class Flows {
 	 */
 	public static function is_sitegen() {
 		$flow_data = FlowService::read_data_from_wp_option();
-		if ( ! ( $flow_data && empty( $flow_data['sitegen'] ) ) ) {
+		if ( ! $flow_data || empty( $flow_data['sitegen'] ) ) {
 			return false;
 		}
 
