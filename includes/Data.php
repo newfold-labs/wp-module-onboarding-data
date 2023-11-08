@@ -49,6 +49,15 @@ final class Data {
 	 * @return array
 	 */
 	public static function current_plan() {
+		$is_sitegen = Flows::is_sitegen();
+		if ( $is_sitegen ) {
+			return array(
+				'flow'    => 'sitegen',
+				'subtype' => null,
+				'type'    => null,
+			);
+		}
+
 		$customer_data = self::customer_data();
 
 		$current_flow = Flows::get_flow_from_customer_data( $customer_data );
