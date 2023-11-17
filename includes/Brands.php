@@ -375,6 +375,91 @@ final class Brands {
 					),
 				),
 			),
+			'hostgator-us'   => array(
+				'brand'                       => 'hostgator-us',
+				'name'                        => 'HostGator',
+				'url'                         => 'https://www.hostgator.com',
+				'knowledgeBaseUrl'            => 'https://www.hostgator.com/help',
+				'helpUrl'                     => 'https://www.hostgator.com/help',
+				'blogUrl'                     => 'https://www.hostgator.com/blog/',
+				'facebookUrl'                 => 'https://www.facebook.com/HostGator/',
+				'twitterName'                 => '@HostGator',
+				'twitterUrl'                  => 'https://twitter.com/hostgator',
+				'youtubeUrl'                  => 'https://www.youtube.com/user/hostgator',
+				'linkedinUrl'                 => 'https://www.linkedin.com/company/hostgator-com/',
+				'accountUrl'                  => Config::is_jarvis() ? 
+				'https://www.hostgator.com/my-account/login'
+				: 'https://portal.hostgator.com/',
+				'domainsUrl'                  => Config::is_jarvis() ? 
+				'https://www.hostgator.com/my-account/domain-center/domain-list'
+				: 'https://portal.hostgator.com/domain/manage',
+				'emailUrl'                    => Config::is_jarvis() ? 
+				'https://www.hostgator.com/my-account/hosting/details/email'
+				: 'https://portal.hostgator.com/email',
+				'pluginDashboardPage'         => \admin_url( 'admin.php?page=hostgator' ),
+				'phoneNumbers'                => array(
+					'support' => '866-964-2867',
+					'intl'    => '+1-713-574-5287',
+				),
+				'hireExpertsInfo'             => array(
+					'defaultLink'     => 'https://www.hostgator.com/services/web-design',
+					'fragment'        => '',
+					'queryParameters' => array(
+						'utm_source'   => 'wp-onboarding',
+						'utm_medium'   => 'brand-plugin',
+						'utm_campaign' => 'wp-setup',
+					),
+				),
+				'expertsInfo'                 => array(
+					'defaultLink' => 'https://www.hostgator.com/services/web-design',
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'fullServiceCreativeTeamInfo' => array(
+					'defaultLink' => 'https://www.hostgator.com/services/web-design',
+					'fragment'    => '',
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'techSupportInfo'             => array(
+					'defaultLink' => 'https://www.hostgator.com/help',
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'migrationInfo'               => array(),
+				'config'                      => array(
+					'enabled_flows'  => array(
+						'ecommerce' => true,
+						'wp-setup'  => true,
+					),
+					'wonder_blocks'  => true,
+					'prioritization' => false,
+					'views'          => array(
+						'sidebar' => array(
+							'illustration' => array(
+								'shown' => false,
+							),
+							'experts'      => array(
+								'shown' => false,
+							),
+							'fullService'  => array(
+								'shown' => false,
+							),
+							'infoPanel'    => array(
+								'headingWithDescriptions' => array(
+									'shown' => array( 0 ),
+								),
+							),
+						),
+					),
+				),
+			),
 		);
 	}
 
@@ -391,13 +476,12 @@ final class Brands {
 				$brand = 'wordpress';
 			}
 
-			if ( false !== strpos( $brand, 'hostgator' ) ) {
+			if ( false !== stripos( $brand, 'hostgator' ) ) {
 				$region = strtolower( $container->plugin()->region );
 				$brand  = "hostgator-{$region}";
 			}
 
 			$brand = sanitize_title_with_dashes( str_replace( '_', '-', $brand ) );
-
 			define( 'NFD_ONBOARDING_PLUGIN_BRAND', $brand );
 
 			return $brand;
