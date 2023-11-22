@@ -56,10 +56,16 @@ class SiteGenService {
 	 * @param boolean       $skip_cache To override the cache and fetch the data.
 	 * @return array
 	 */
-	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache ) {
+	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
 
-        // SiteGen::generate_sitegen_meta( $site_info, $identifier, $skip_cache );
-		return array();
+		if ( self::is_identifier( $identifier ) ) {
+			return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		}
+
+		// Imitates the error pattern returned by SiteGen Class
+		return array(
+			'error' => __( 'The given identifier is not valid' ),
+		);
 	}
 
 }
