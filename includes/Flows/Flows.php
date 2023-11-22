@@ -134,9 +134,18 @@ final class Flows {
 		),
 
 		'sitegen'              => array(
-			'siteLogo' => array(
+			'siteDetails' => array(
+				'name'   => '',
+				'type'   => '',
+				'style'  => '',
+				'prompt' => '',
+			),
+			'siteLogo'    => array(
 				'id'  => 0,
 				'url' => '',
+			),
+			'experience'  => array(
+				'level' => 0,
 			),
 		),
 	);
