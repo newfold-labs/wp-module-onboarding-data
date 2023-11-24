@@ -8,18 +8,18 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Data;
 /**
  * Class SiteGenService
  *
- * Class for handling SiteGen interactions.
+ * Class for handling SiteGen Interactions.
  */
 class SiteGenService {
 
 	/**
-	 * Determines whether the given identifier is valid.
+	 * Gets Valid Identifiers.
 	 *
 	 * @param string $key The identifier to be evaluated.
 	 * @return boolean
 	 */
-	public static function is_identifier( $key ) {
-		$identifiers = array(
+	public static function get_identifiers() {
+		return array(
 			'siteclassification'   => true,
 			'targetaudience'       => true,
 			'contenttones'         => true,
@@ -29,8 +29,16 @@ class SiteGenService {
 			'pluginrecommendation' => true,
 			'fontpair'             => true,
 		);
+	}
 
-		return isset( $identifiers[ $key ] );
+	/**
+	 * Determines whether the given identifier is valid.
+	 *
+	 * @param string $key The identifier to be evaluated.
+	 * @return boolean
+	 */
+	public static function is_identifier( $key ) {
+		return isset( self::get_identifiers()[ $key ] );
 	}
 
 	/**
