@@ -66,8 +66,7 @@ class SiteGenService {
 	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
 
 		if ( self::is_identifier( $identifier ) ) {
-			sleep( 8 );
-			return 'Imitate Call';
+			// sleep( 8 );
 			return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
 		}
 
