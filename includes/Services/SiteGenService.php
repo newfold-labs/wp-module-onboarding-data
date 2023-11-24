@@ -28,7 +28,6 @@ class SiteGenService {
 			'sitemap'              => true,
 			'pluginrecommendation' => true,
 			'fontpair'             => true,
-			'keywords'             => true,
 		);
 
 		return isset( $identifiers[ $key ] );
@@ -59,6 +58,8 @@ class SiteGenService {
 	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
 
 		if ( self::is_identifier( $identifier ) ) {
+			sleep( 8 );
+			return 'Imitate Call';
 			return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
 		}
 
