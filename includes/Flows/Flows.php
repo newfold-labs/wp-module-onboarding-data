@@ -134,18 +134,22 @@ final class Flows {
 		),
 
 		'sitegen'              => array(
-			'siteDetails' => array(
+			'siteDetails'       => array(
 				'name'   => '',
 				'type'   => '',
 				'style'  => '',
 				'prompt' => '',
 			),
-			'siteLogo'    => array(
+			'siteLogo'          => array(
 				'id'  => 0,
 				'url' => '',
 			),
-			'experience'  => array(
+			'experience'        => array(
 				'level' => 0,
+			),
+			'siteGenMetaStatus' => array(
+				'currentStatus' => 0,
+				'totalCount'    => 8,
 			),
 		),
 	);
