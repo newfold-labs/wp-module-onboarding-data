@@ -141,8 +141,10 @@ final class Flows {
 				'prompt' => '',
 			),
 			'siteLogo'          => array(
-				'id'  => 0,
-				'url' => '',
+				'id'       => 0,
+				'url'      => '',
+				'fileName' => '',
+				'fileSize' => 0,
 			),
 			'experience'        => array(
 				'level' => 0,
