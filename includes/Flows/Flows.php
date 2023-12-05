@@ -139,6 +139,7 @@ final class Flows {
 				'type'   => '',
 				'style'  => '',
 				'prompt' => '',
+				'uniqueAboutBusiness' => '',
 			),
 			'siteLogo'          => array(
 				'id'       => 0,
