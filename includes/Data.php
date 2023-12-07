@@ -120,7 +120,7 @@ final class Data {
 	 */
 	public static function current_flow() {
 		$current_plan = self::current_plan();
-		return $current_plan['flow'];
+		return 'sitegen';
 	}
 
 	/**
