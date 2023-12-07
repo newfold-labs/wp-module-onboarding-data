@@ -26,6 +26,10 @@ final class Data {
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
+			'aiPreviewSettings'   => array(
+				'settings'        => Preview::get_settings(),
+				'stepPreviewData' => Themes::step_preview_data(),
+			),
 			'currentUserDetails'        => self::wp_current_user_details(),
 		);
 	}
