@@ -18,7 +18,7 @@ final class Options {
 	 * @var array
 	 */
 	protected static $options = array(
-		'redirect'                      => 'redirect',
+		'redirect'                      => 'should_redirect',
 		'activate'                      => 'activate',
 		'activate_param'                => 'activate_param',
 		'new_coming_soon'               => 'nfd_coming_soon',
