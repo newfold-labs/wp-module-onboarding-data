@@ -32,6 +32,6 @@ class Mustache {
 	 * @return string
 	 */
 	public function render_template( $template_name, $data ) {
-		 return $this->mustache_engine->loadTemplate( $template_name )->render( $data );
+		return $this->mustache_engine->loadTemplate( $template_name )->render( $data );
 	}
 }

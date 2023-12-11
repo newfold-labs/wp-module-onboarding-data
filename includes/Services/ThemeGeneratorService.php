@@ -2,12 +2,15 @@
 
 namespace NewfoldLabs\WP\Module\Onboarding\Data\Services;
 
+/**
+ * Contains functionalities related to generating child themes and theme variations.
+ */
 class ThemeGeneratorService {
-     	/**
-	 * Connect to the WordPress filesystem.
-	 *
-	 * @return boolean
-	 */
+		/**
+		 * Connect to the WordPress filesystem.
+		 *
+		 * @return boolean
+		 */
 	public static function connect_to_filesystem() {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 
@@ -38,7 +41,7 @@ class ThemeGeneratorService {
 		\switch_theme( $theme_slug );
 	}
 
-     /**
+	/**
 	 * Write the child theme to the themes directory.
 	 *
 	 * @param array $child_theme_data Child Theme Data
@@ -94,13 +97,13 @@ class ThemeGeneratorService {
 		return true;
 	}
 
-     	/**
-	 * Creates a directory if necessary.
-	 *
-	 * @param string $dir Directory
-	 *
-	 * @return boolean
-	 */
+		/**
+		 * Creates a directory if necessary.
+		 *
+		 * @param string $dir Directory
+		 *
+		 * @return boolean
+		 */
 	public static function create_directory( $dir ) {
 		global $wp_filesystem;
 
@@ -123,14 +126,14 @@ class ThemeGeneratorService {
 		return self::write_to_filesystem( $theme_dir . '/theme.json', $theme_json );
 	}
 
-     	/**
-	 * Writes HTML template parts to the theme's parts directory.
-	 *
-	 * @param string $theme_dir Theme Directory
-	 * @param array  $part_patterns HTML Template Part
-	 *
-	 * @return boolean
-	 */
+		/**
+		 * Writes HTML template parts to the theme's parts directory.
+		 *
+		 * @param string $theme_dir Theme Directory
+		 * @param array  $part_patterns HTML Template Part
+		 *
+		 * @return boolean
+		 */
 	public static function write_template_parts( $theme_dir, $part_patterns ) {
 		global $wp_filesystem;
 
@@ -181,16 +184,16 @@ class ThemeGeneratorService {
 		);
 	}
 
-     	/**
-	 * Copy parent's screenshot.png to the child theme directory.
-	 *
-	 * [TODO] Generate the actual child theme screenshot.
-	 *
-	 * @param string $parent_theme_dir Parent Theme Directory
-	 * @param string $child_theme_dir Child Theme Directory
-	 *
-	 * @return boolean
-	 */
+		/**
+		 * Copy parent's screenshot.png to the child theme directory.
+		 *
+		 * [TODO] Generate the actual child theme screenshot.
+		 *
+		 * @param string $parent_theme_dir Parent Theme Directory
+		 * @param string $child_theme_dir Child Theme Directory
+		 *
+		 * @return boolean
+		 */
 	public static function generate_screenshot( $parent_theme_dir, $child_theme_dir ) {
 		global $wp_filesystem;
 
@@ -214,12 +217,12 @@ class ThemeGeneratorService {
 	}
 
 		/**
-	 * Retrieve Site Url Hash Value
-	 *
-	 * @param integer $length hash length
-	 *
-	 * @return string
-	 */
+		 * Retrieve Site Url Hash Value
+		 *
+		 * @param integer $length hash length
+		 *
+		 * @return string
+		 */
 	public static function get_site_url_hash( $length = 8 ) {
 		return substr( hash( 'sha256', site_url() ), 0, $length );
 	}

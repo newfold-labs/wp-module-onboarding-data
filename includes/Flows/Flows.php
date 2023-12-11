@@ -155,11 +155,11 @@ final class Flows {
 				'currentStatus' => 0,
 				'totalCount'    => 8,
 			),
-			'homepages' => array(
+			'homepages'         => array(
 				'active' => array(),
-				'data' => array(),
+				'data'   => array(),
 			),
-			'customDesign' => false,
+			'customDesign'      => false,
 		),
 	);
 

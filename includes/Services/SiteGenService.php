@@ -18,8 +18,7 @@ class SiteGenService {
 	/**
 	 * Gets Valid Identifiers.
 	 *
-	 * @param string $key The identifier to be evaluated.
-	 * @return boolean
+	 * @return array
 	 */
 	public static function get_identifiers() {
 		return array(
@@ -79,6 +78,13 @@ class SiteGenService {
 		);
 	}
 
+	/**
+	 * Handle completion of the sitegen flow.
+	 *
+	 * @param array $active_homepage The active homepage that was customized.
+	 * @param array $homepage_data All the other generated homepage options.
+	 * @return boolean
+	 */
 	public static function complete( $active_homepage, $homepage_data ) {
 		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
@@ -87,15 +93,20 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		foreach( $homepage_data as $slug => $data ) {
-			if ( false === $data['favorite'] ) {
+		foreach ( $homepage_data as $slug => $data ) {
+			if ( ! $data['favorite'] && $slug !== $active_homepage['slug'] ) {
 				continue;
 			}
-			$title = $data['title'];
+			$title   = $data['title'];
 			$content = $data['content'];
-			$post_id = SitePagesService::publish_page( $title, $content, true, array(
-				'nf_dc_page' => 'home',
-			) );
+			$post_id = SitePagesService::publish_page(
+				$title,
+				$content,
+				true,
+				array(
+					'nf_dc_page' => 'home',
+				)
+			);
 			if ( is_wp_error( $post_id ) ) {
 				return $post_id;
 			}
@@ -104,13 +115,18 @@ class SiteGenService {
 			}
 
 			self::generate_child_theme( $data );
-			
-		}
 
+		}
 
 		return true;
 	}
 
+	/**
+	 * Generates a child theme for the sitegen flow.
+	 *
+	 * @param array $data Data on each homepage and it's corresponding styles.
+	 * @return true|\WP_Error
+	 */
 	public static function generate_child_theme( $data ) {
 		global $wp_filesystem;
 		ThemeGeneratorService::connect_to_filesystem();
@@ -178,7 +194,7 @@ class SiteGenService {
 			'child_theme_slug'  => $child_theme_slug,
 		);
 
-		$mustache = new Mustache();
+		$mustache                       = new Mustache();
 		$child_theme_stylesheet_comment = $mustache->render_template( 'themeStylesheet', $theme_style_data );
 
 		// Write the child theme to the filesystem under themes.
@@ -206,7 +222,7 @@ class SiteGenService {
 		}
 
 		return true;
-		
+
 	}
 
 }
