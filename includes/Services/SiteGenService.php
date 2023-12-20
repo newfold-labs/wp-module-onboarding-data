@@ -225,4 +225,59 @@ class SiteGenService {
 
 	}
 
+	/**
+	 * Get Plugin recommendations from the sitegen meta.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function get_plugin_recommendations() {
+		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
+		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				array( 'status' => 404 )
+			);
+		}
+
+		$prompt                 = $flow_data['sitegen']['siteDetails']['prompt'];
+		$plugin_recommendations = self::instantiate_site_meta(
+			array(
+				'site_description' => $prompt,
+			),
+			'pluginrecommendation'
+		);
+
+		if ( isset( $plugin_recommendations['error'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Cannot retrieve plugin recommendations.', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		$priority               = 0;
+		$required_plugins       = isset( $plugin_recommendations['requiredPlugins'] ) ? $plugin_recommendations['requiredPlugins'] : array();
+		$final_required_plugins = array();
+		foreach ( $required_plugins as $required_plugin ) {
+			$required_plugin['slug']     = explode( '/', $required_plugin['slug'] )[0];
+			$required_plugin['priority'] = $priority;
+			$priority                   += 20;
+			$required_plugin['activate'] = true;
+			array_push( $new_required_plugins, $required_plugin );
+		}
+
+		$recommended_plugins       = isset( $plugin_recommendations['recommendedPlugins'] ) ? $plugin_recommendations['recommendedPlugins'] : array();
+		$final_recommended_plugins = array();
+		foreach ( $recommended_plugins as $recommended_plugin ) {
+			$recommended_plugin['slug']     = explode( '/', $recommended_plugin['slug'] )[0];
+			$recommended_plugin['priority'] = $priority;
+			$priority                      += 20;
+			$recommended_plugin['activate'] = false;
+			array_push( $new_recommended_plugins, $recommended_plugin );
+		}
+
+		return array_merge( $final_required_plugins, $final_recommended_plugins );
+	}
+
 }
