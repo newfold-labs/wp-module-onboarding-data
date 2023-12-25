@@ -11,7 +11,7 @@ final class SiteGenData {
 	 *
 	 * @var array
 	 */
-	protected static function get_site_details_questionnaire() {
+	public static function get_site_details_questionnaire() {
 		return array(
 			'businessName'  => array(
 				'question'		=>__(  "1. Do you have a business name or website title?", 'wp-module-onboarding' ),
