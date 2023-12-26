@@ -26,11 +26,11 @@ final class Data {
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
-			'aiPreviewSettings'   => array(
+			'aiPreviewSettings'  => array(
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
-			'currentUserDetails'        => self::wp_current_user_details(),
+			'currentUserDetails' => self::wp_current_user_details(),
 		);
 	}
 
@@ -124,7 +124,7 @@ final class Data {
 	 */
 	public static function current_flow() {
 		$current_plan = self::current_plan();
-		return 'sitegen';
+		return $current_plan['flow'];
 	}
 
 	/**

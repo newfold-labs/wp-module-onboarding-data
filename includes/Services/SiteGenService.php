@@ -16,20 +16,46 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 class SiteGenService {
 
 	/**
+	 * Onboarding to SiteGen identifier map.
+	 *
+	 * @var array
+	 */
+	private static $identifiers = array(
+		'site_classification'   => 'siteclassification',
+		'target_audience'       => 'targetaudience',
+		'content_tones'         => 'contenttones',
+		'content_structure'     => 'contentstructure',
+		'color_palette'         => 'colorpalette',
+		'sitemap'               => 'sitemap',
+		'plugin_recommendation' => 'pluginrecommendation',
+		'font_pair'             => 'fontpair',
+	);
+
+	/**
+	 * Get SiteGen identifier from an Onboarding identifier key.
+	 *
+	 * @param string $identifier_key Onboarding identifier key.
+	 * @return string|false
+	 */
+	public static function get_identifier_name( $identifier_key ) {
+		return isset( self::$identifiers[ $identifier_key ] ) ? self::$identifiers[ $identifier_key ] : false;
+	}
+
+	/**
 	 * Gets Valid Identifiers.
 	 *
 	 * @return array
 	 */
-	public static function get_identifiers() {
+	public static function enabled_identifiers() {
 		return array(
-			'siteclassification'   => true,
-			'targetaudience'       => true,
-			'contenttones'         => true,
-			'contentstructure'     => true,
-			'colorpalette'         => true,
-			'sitemap'              => true,
-			'pluginrecommendation' => true,
-			'fontpair'             => true,
+			'site_classification'   => true,
+			'target_audience'       => true,
+			'content_tones'         => true,
+			'content_structure'     => true,
+			'color_palette'         => true,
+			'sitemap'               => true,
+			'plugin_recommendation' => true,
+			'font_pair'             => true,
 		);
 	}
 
@@ -40,7 +66,7 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function is_identifier( $key ) {
-		return isset( self::get_identifiers()[ $key ] );
+		return isset( self::enabled_identifiers()[ $key ] );
 	}
 
 	/**
@@ -66,16 +92,18 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
-
-		if ( self::is_identifier( $identifier ) ) {
-			// sleep( 8 );
-			return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		if ( ! self::is_identifier( $identifier ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Not a valid identifier', 'wp-module-onboarding' ),
+				array(
+					'status' => '400',
+				)
+			);
 		}
 
-		// Imitates the error pattern returned by SiteGen Class
-		return array(
-			'error' => __( 'The given identifier is not valid' ),
-		);
+		$identifier = self::get_identifier_name( $identifier );
+		return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
 	}
 
 	/**
@@ -223,6 +251,61 @@ class SiteGenService {
 
 		return true;
 
+	}
+
+	/**
+	 * Get Plugin recommendations from the SiteGen meta.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function get_plugin_recommendations() {
+		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
+		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				array( 'status' => 404 )
+			);
+		}
+
+		$prompt                 = $flow_data['sitegen']['siteDetails']['prompt'];
+		$plugin_recommendations = self::instantiate_site_meta(
+			array(
+				'site_description' => $prompt,
+			),
+			'plugin_recommendation'
+		);
+
+		if ( isset( $plugin_recommendations['error'] ) || is_wp_error( $plugin_recommendations ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Cannot retrieve plugin recommendations.', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		$priority                  = 0;
+		$recommended_plugins       = isset( $plugin_recommendations['recommendedPlugins'] ) ? $plugin_recommendations['recommendedPlugins'] : array();
+		$final_recommended_plugins = array();
+		foreach ( $recommended_plugins as $recommended_plugin ) {
+			$recommended_plugin['slug']     = explode( '/', $recommended_plugin['slug'] )[0];
+			$recommended_plugin['priority'] = $priority;
+			$priority                      += 20;
+			$recommended_plugin['activate'] = false;
+			array_push( $final_recommended_plugins, $recommended_plugin );
+		}
+
+		$required_plugins       = isset( $plugin_recommendations['requiredPlugins'] ) ? $plugin_recommendations['requiredPlugins'] : array();
+		$final_required_plugins = array();
+		foreach ( $required_plugins as $required_plugin ) {
+			$required_plugin['slug']     = explode( '/', $required_plugin['slug'] )[0];
+			$required_plugin['priority'] = $priority;
+			$priority                   += 20;
+			$required_plugin['activate'] = true;
+			array_push( $final_required_plugins, $required_plugin );
+		}
+
+		return array_merge( $final_required_plugins, $final_recommended_plugins );
 	}
 
 }
