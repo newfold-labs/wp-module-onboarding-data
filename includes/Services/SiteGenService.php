@@ -49,6 +49,7 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function is_enabled() {
+		return true;
 		if ( ! ( class_exists( 'NewfoldLabs\WP\Module\AI\SiteGen\SiteGen' ) ) ) {
 			return false;
 		}
@@ -223,6 +224,219 @@ class SiteGenService {
 
 		return true;
 
+	}
+
+	public function generate_homepages($site_description, $content_style, $target_audience, $regenerate = false) {
+        // Fetch homepages using the SiteGen::get_home_pages method
+        $home_pages = SiteGen::get_home_pages(
+            $site_description,
+            $content_style,
+            $target_audience,
+            $regenerate
+        );
+
+        // Process the homepages
+        $processed_home_pages = self::process_homepages_response($home_pages);
+
+        // Update the option with processed homepages
+        update_option('nfd-sitegen-homepages', $processed_home_pages);
+
+        return $processed_home_pages;
+    }
+
+	public static function toggle_favorite_homepage($slug) {
+        $favorites = get_option('nfd-sitegen-favorites', []);
+        $homepages = get_option('nfd-sitegen-homepages', []);
+
+        if (in_array($slug, $favorites)) {
+            $favorites = array_diff($favorites, [$slug]);
+        } else {
+            $favorites[] = $slug;
+        }
+
+        update_option('nfd-sitegen-favorites', $favorites);
+
+        foreach ($homepages as &$homepage) {
+            if ($homepage['slug'] === $slug) {
+                $homepage['isFavourited'] = in_array($slug, $favorites);
+                break;
+            }
+        }
+
+        update_option('nfd-sitegen-homepages', $homepages);
+
+        return ['message' => 'Favorite status updated', 'favorites' => $favorites];
+    }
+
+	public static function handle_favorite_regeneration($regenerateSlug, $regenerateColorPalattes) {
+        $existing_homepages = get_option('nfd-sitegen-homepages', []);
+        $favorite_regenerate_homepage = array_filter($existing_homepages, function ($homepage) use ($regenerateSlug) {
+            return $homepage['slug'] === $regenerateSlug;
+        });
+
+        if (!empty($favorite_regenerate_homepage)) {
+            $processed_homepage = self::process_favorited_regenerate($favorite_regenerate_homepage, $regenerateColorPalattes);
+            $existing_homepages[] = $processed_homepage[0];
+            update_option('nfd-sitegen-homepages', $existing_homepages);
+
+            return $existing_homepages;
+        }
+
+        return null;
+    }
+
+	public static function handle_regular_regeneration($site_description, $content_style, $target_audience) {
+        $existing_homepages = get_option('nfd-sitegen-homepages', []);
+        $regenerated_homepages = get_option('nfd-sitegen-regenerated-homepages', []);
+
+        if (!empty($regenerated_homepages)) {
+            $regenerated_item = array_shift($regenerated_homepages);
+            $existing_homepages[] = $regenerated_item;
+            update_option('nfd-sitegen-regenerated-homepages', $regenerated_homepages);
+        } else {
+            $home_pages = SiteGen::get_home_pages($site_description, $content_style, $target_audience, true);
+            $regenerated_homepages = self::process_homepages_response($home_pages);
+            update_option('nfd-sitegen-regenerated-homepages', $regenerated_homepages);
+            $regenerated_item = array_shift($regenerated_homepages);
+            $existing_homepages[] = $regenerated_item;
+        }
+
+        update_option('nfd-sitegen-homepages', $existing_homepages);
+        return $existing_homepages;
+    }
+
+	public static function process_favorited_regenerate(
+		$home_pages,
+		$regenerateColorPalattes
+	){
+		$versions = [];
+		// Fetch the color palette data from the options table.
+		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
+
+		// Decode the color palettes if it's not an array (assuming it's a JSON string).
+		if (!is_array($color_palettes)) {
+			$color_palettes = json_decode($color_palettes, true);
+		}
+
+		// Retrieve the existing homepages to find the last version number.
+		$existing_homepages = get_option('nfd-sitegen-homepages', []);
+
+		// Select a random palette and check against the parent's palette.
+		$palette_index = array_rand($color_palettes['colorpalette']);
+		$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+
+		// If regeneration is true and the selected palette matches the parent's palette, reselect.
+		if ($regenerateColorPalattes) {
+			while ($selected_palette == $regenerateColorPalattes && count($color_palettes['colorpalette']) > 1) {
+				$palette_index = array_rand($color_palettes['colorpalette']);
+				$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+			}
+		}
+
+		$parent_favorited_homepage = current($home_pages);
+		$version_info = [
+			"slug" => $parent_favorited_homepage['slug'].'-copy',
+			"title" => $parent_favorited_homepage['title'].' (Copy)',
+			"isFavourited" => false,
+			"content" => $parent_favorited_homepage['content'],
+			"color" => $selected_palette
+		];
+
+		$versions[] = $version_info;
+
+		return $versions;
+	}
+
+	public static function process_homepages_response(
+		$home_pages,
+		$regenerate = false,
+		$regenerateSlug = '',
+		$regenerateColorPalettes = null,
+	){
+		$versions = [];
+		// Fetch the color palette data from the options table.
+		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
+
+		// Decode the color palettes if it's not an array (assuming it's a JSON string).
+		if (!is_array($color_palettes)) {
+			$color_palettes = json_decode($color_palettes, true);
+		}
+
+		// Retrieve the existing homepages to find the last version number.
+		$existing_homepages = get_option('nfd-sitegen-homepages', []);
+		$last_version_number = self::get_last_version_number($existing_homepages);
+		$version_number = $last_version_number + 1;
+
+		foreach ($home_pages as $key => $blocks) {
+			if (!is_array($blocks)) {
+				continue;
+			}
+
+			$filtered_blocks = array_filter($blocks, function($value) {
+				return !is_null($value);
+			});
+
+			$content = implode('', $filtered_blocks);
+
+			// Select a random palette and check against the parent's palette.
+			$palette_index = array_rand($color_palettes['colorpalette']);
+			$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+
+			// If regeneration is true and the selected palette matches the parent's palette, reselect.
+			if ($regenerate && $regenerateColorPalettes) {
+				while ($selected_palette == $regenerateColorPalettes && count($color_palettes['colorpalette']) > 1) {
+					$palette_index = array_rand($color_palettes['colorpalette']);
+					$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+				}
+			}
+
+			$version_info = [
+				"slug" => "version" . $version_number,
+				"title" => "Version " . $version_number,
+				"isFavourited" => false,
+				"content" => $content,
+				"color" => $selected_palette
+			];
+
+			$versions[] = $version_info;
+			$version_number++;
+		}
+
+		return $versions;
+	}
+
+	public static function get_last_version_number($homepages) {
+		// Initialize to zero, assuming there are no versions yet.
+		$last_version_number = 0;
+
+		// Loop through the homepages to find the highest version number.
+		foreach ($homepages as $homepage) {
+			// Extract the number from the slug (assuming slug is like "version3").
+			if (preg_match('/version(\d+)/', $homepage['slug'], $matches)) {
+				$version_num = intval($matches[1]);
+				if ($version_num > $last_version_number) {
+					$last_version_number = $version_num;
+				}
+			}
+		}
+
+		return $last_version_number;
+	}
+
+	public static function transform_palette($palette, $palette_index) {
+		$palette_name = "palette" . ($palette_index + 1);
+		$transformed_palette = [
+			"slug" => $palette_name,
+			"palette" => array_map(function($key, $value) {
+				return [
+					"slug" => $key,
+					"title" => ucfirst(str_replace('_', ' ', $key)),
+					"color" => $value
+				];
+			}, array_keys($palette), $palette)
+		];
+
+		return $transformed_palette;
 	}
 
 }
