@@ -226,7 +226,13 @@ class SiteGenService {
 
 	}
 
-	public function generate_homepages($site_description, $content_style, $target_audience, $regenerate = false) {
+	/**
+	 * Gets the preview homepages
+	 *
+	 * @return array
+	 */
+
+	public static function generate_homepages($site_description, $content_style, $target_audience, $regenerate = false) {
         // Fetch homepages using the SiteGen::get_home_pages method
         $home_pages = SiteGen::get_home_pages(
             $site_description,
@@ -244,6 +250,11 @@ class SiteGenService {
         return $processed_home_pages;
     }
 
+	/**
+	 * Updates the list of favourited slugs
+	 *
+	 * @return array
+	 */
 	public static function toggle_favorite_homepage($slug) {
         $favorites = get_option('nfd-sitegen-favorites', []);
         $homepages = get_option('nfd-sitegen-homepages', []);
@@ -268,6 +279,11 @@ class SiteGenService {
         return ['message' => 'Favorite status updated', 'favorites' => $favorites];
     }
 
+	/**
+	 * Regenerate previews for favourited homepages
+	 *
+	 * @return array
+	 */
 	public static function handle_favorite_regeneration($regenerateSlug, $regenerateColorPalattes) {
         $existing_homepages = get_option('nfd-sitegen-homepages', []);
         $favorite_regenerate_homepage = array_filter($existing_homepages, function ($homepage) use ($regenerateSlug) {
@@ -285,6 +301,11 @@ class SiteGenService {
         return null;
     }
 
+	/**
+	 * Regenerate previews homepages
+	 *
+	 * @return array
+	 */
 	public static function handle_regular_regeneration($site_description, $content_style, $target_audience) {
         $existing_homepages = get_option('nfd-sitegen-homepages', []);
         $regenerated_homepages = get_option('nfd-sitegen-regenerated-homepages', []);
@@ -305,48 +326,11 @@ class SiteGenService {
         return $existing_homepages;
     }
 
-	public static function process_favorited_regenerate(
-		$home_pages,
-		$regenerateColorPalattes
-	){
-		$versions = [];
-		// Fetch the color palette data from the options table.
-		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
-
-		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if (!is_array($color_palettes)) {
-			$color_palettes = json_decode($color_palettes, true);
-		}
-
-		// Retrieve the existing homepages to find the last version number.
-		$existing_homepages = get_option('nfd-sitegen-homepages', []);
-
-		// Select a random palette and check against the parent's palette.
-		$palette_index = array_rand($color_palettes['colorpalette']);
-		$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
-
-		// If regeneration is true and the selected palette matches the parent's palette, reselect.
-		if ($regenerateColorPalattes) {
-			while ($selected_palette == $regenerateColorPalattes && count($color_palettes['colorpalette']) > 1) {
-				$palette_index = array_rand($color_palettes['colorpalette']);
-				$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
-			}
-		}
-
-		$parent_favorited_homepage = current($home_pages);
-		$version_info = [
-			"slug" => $parent_favorited_homepage['slug'].'-copy',
-			"title" => $parent_favorited_homepage['title'].' (Copy)',
-			"isFavourited" => false,
-			"content" => $parent_favorited_homepage['content'],
-			"color" => $selected_palette
-		];
-
-		$versions[] = $version_info;
-
-		return $versions;
-	}
-
+	/**
+	 * processes the Homepages response structure for homepages
+	 *
+	 * @return array
+	 */
 	public static function process_homepages_response(
 		$home_pages,
 		$regenerate = false,
@@ -405,6 +389,58 @@ class SiteGenService {
 		return $versions;
 	}
 
+	/**
+	 * processes the Homepages response structure for favourited prviews
+	 *
+	 * @return array
+	 */
+	public static function process_favorited_regenerate(
+		$home_pages,
+		$regenerateColorPalattes
+	){
+		$versions = [];
+		// Fetch the color palette data from the options table.
+		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
+
+		// Decode the color palettes if it's not an array (assuming it's a JSON string).
+		if (!is_array($color_palettes)) {
+			$color_palettes = json_decode($color_palettes, true);
+		}
+
+		// Retrieve the existing homepages to find the last version number.
+		$existing_homepages = get_option('nfd-sitegen-homepages', []);
+
+		// Select a random palette and check against the parent's palette.
+		$palette_index = array_rand($color_palettes['colorpalette']);
+		$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+
+		// If regeneration is true and the selected palette matches the parent's palette, reselect.
+		if ($regenerateColorPalattes) {
+			while ($selected_palette == $regenerateColorPalattes && count($color_palettes['colorpalette']) > 1) {
+				$palette_index = array_rand($color_palettes['colorpalette']);
+				$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+			}
+		}
+
+		$parent_favorited_homepage = current($home_pages);
+		$version_info = [
+			"slug" => $parent_favorited_homepage['slug'].'-copy',
+			"title" => $parent_favorited_homepage['title'].' (Copy)',
+			"isFavourited" => false,
+			"content" => $parent_favorited_homepage['content'],
+			"color" => $selected_palette
+		];
+
+		$versions[] = $version_info;
+
+		return $versions;
+	}
+
+	/**
+	 * Get the last version number to increment excluiding the (copy) versions
+	 *
+	 * @return array
+	 */
 	public static function get_last_version_number($homepages) {
 		// Initialize to zero, assuming there are no versions yet.
 		$last_version_number = 0;
@@ -423,6 +459,11 @@ class SiteGenService {
 		return $last_version_number;
 	}
 
+	/**
+	 * transform the color palatte structure for response
+	 *
+	 * @return array
+	 */
 	public static function transform_palette($palette, $palette_index) {
 		$palette_name = "palette" . ($palette_index + 1);
 		$transformed_palette = [
