@@ -58,6 +58,9 @@ final class Options {
 		'wc_calc_taxes'                 => 'woocommerce_calc_taxes',
 		'wc_no_sales_tax'               => 'woocommerce_no_sales_tax',
 		'filter_active_plugins'         => 'filter_active_plugins',
+		'sitegen_homepages'             => 'sitegen_homepages',
+		'sitegen_regenerated_homepages' => 'sitegen_regenerated_homepages',
+		'sitegen_favorites'             => 'sitegen_favorites'
 	);
 
 	/**

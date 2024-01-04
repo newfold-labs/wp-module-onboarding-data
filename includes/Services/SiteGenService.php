@@ -273,7 +273,7 @@ class SiteGenService {
         $processed_home_pages = self::process_homepages_response($home_pages);
 
         // Update the option with processed homepages
-        update_option('nfd-sitegen-homepages', $processed_home_pages);
+        update_option(Options::get_option_name( Options::get_option_name( 'sitegen_homepages' ) ), $processed_home_pages);
 
         return $processed_home_pages;
     }
@@ -284,8 +284,8 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function toggle_favorite_homepage($slug) {
-        $favorites = get_option('nfd-sitegen-favorites', []);
-        $homepages = get_option('nfd-sitegen-homepages', []);
+        $favorites = get_option(Options::get_option_name( 'sitegen_favorites' ), []);
+        $homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 
         if (in_array($slug, $favorites)) {
             $favorites = array_diff($favorites, [$slug]);
@@ -293,7 +293,7 @@ class SiteGenService {
             $favorites[] = $slug;
         }
 
-        update_option('nfd-sitegen-favorites', $favorites);
+        update_option(Options::get_option_name( 'sitegen_favorites' ), $favorites);
 
         foreach ($homepages as &$homepage) {
             if ($homepage['slug'] === $slug) {
@@ -302,7 +302,7 @@ class SiteGenService {
             }
         }
 
-        update_option('nfd-sitegen-homepages', $homepages);
+        update_option(Options::get_option_name( 'sitegen_homepages' ), $homepages);
 
         return ['message' => 'Favorite status updated', 'favorites' => $favorites];
     }
@@ -313,7 +313,7 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function handle_favorite_regeneration($regenerateSlug, $regenerateColorPalattes) {
-        $existing_homepages = get_option('nfd-sitegen-homepages', []);
+        $existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
         $favorite_regenerate_homepage = array_filter($existing_homepages, function ($homepage) use ($regenerateSlug) {
             return $homepage['slug'] === $regenerateSlug;
         });
@@ -321,12 +321,18 @@ class SiteGenService {
         if (!empty($favorite_regenerate_homepage)) {
             $processed_homepage = self::process_favorited_regenerate($favorite_regenerate_homepage, $regenerateColorPalattes);
             $existing_homepages[] = $processed_homepage[0];
-            update_option('nfd-sitegen-homepages', $existing_homepages);
+            update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
 
             return $existing_homepages;
         }
 
-        return null;
+		return new \WP_Error(
+			'nfd_onboarding_error',
+			__( 'The favorited homepage could not be found for regeneration.', 'wp-module-onboarding' ),
+			array(
+				'status' => 404,
+			)
+		);
     }
 
 	/**
@@ -335,22 +341,22 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function handle_regular_regeneration($site_description, $content_style, $target_audience) {
-        $existing_homepages = get_option('nfd-sitegen-homepages', []);
-        $regenerated_homepages = get_option('nfd-sitegen-regenerated-homepages', []);
+        $existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+        $regenerated_homepages = get_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), []);
 
         if (!empty($regenerated_homepages)) {
             $regenerated_item = array_shift($regenerated_homepages);
             $existing_homepages[] = $regenerated_item;
-            update_option('nfd-sitegen-regenerated-homepages', $regenerated_homepages);
+            update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
         } else {
             $home_pages = SiteGen::get_home_pages($site_description, $content_style, $target_audience, true);
             $regenerated_homepages = self::process_homepages_response($home_pages);
-            update_option('nfd-sitegen-regenerated-homepages', $regenerated_homepages);
+            update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
             $regenerated_item = array_shift($regenerated_homepages);
             $existing_homepages[] = $regenerated_item;
         }
 
-        update_option('nfd-sitegen-homepages', $existing_homepages);
+        update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
         return $existing_homepages;
     }
 
@@ -375,7 +381,7 @@ class SiteGenService {
 		}
 
 		// Retrieve the existing homepages to find the last version number.
-		$existing_homepages = get_option('nfd-sitegen-homepages', []);
+		$existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 		$last_version_number = self::get_last_version_number($existing_homepages);
 		$version_number = $last_version_number + 1;
 
@@ -436,7 +442,7 @@ class SiteGenService {
 		}
 
 		// Retrieve the existing homepages to find the last version number.
-		$existing_homepages = get_option('nfd-sitegen-homepages', []);
+		$existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 
 		// Select a random palette and check against the parent's palette.
 		$palette_index = array_rand($color_palettes['colorpalette']);
@@ -507,7 +513,7 @@ class SiteGenService {
 
 		return $transformed_palette;
 	}
-	
+
 	/**
 	 * Get Plugin recommendations from the SiteGen meta.
 	 *
