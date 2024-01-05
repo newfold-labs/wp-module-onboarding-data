@@ -60,7 +60,6 @@ final class Options {
 		'filter_active_plugins'         => 'filter_active_plugins',
 		'sitegen_homepages'             => 'sitegen_homepages',
 		'sitegen_regenerated_homepages' => 'sitegen_regenerated_homepages',
-		'sitegen_favorites'             => 'sitegen_favorites'
 	);
 
 	/**

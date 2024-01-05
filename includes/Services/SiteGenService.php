@@ -279,32 +279,30 @@ class SiteGenService {
     }
 
 	/**
-	 * Updates the list of favourited slugs
+	 * Toggles the favourite status of a homepage
 	 *
-	 * @return array
+	 * @param string $slug The slug of the homepage to toggle
+	 * @return array Response message
 	 */
-	public static function toggle_favorite_homepage($slug) {
-        $favorites = get_option(Options::get_option_name( 'sitegen_favorites' ), []);
+
+	public static function toggle_favourite_homepage($slug) {
         $homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+		$homepageFound = false;
+       
+		foreach ($homepages as &$homepage) {
+			if ($homepage['slug'] === $slug) {
+				$homepage['isFavourited'] = !$homepage['isFavourited'];
+				$homepageFound = true;
+				break;
+			}
+		}
 
-        if (in_array($slug, $favorites)) {
-            $favorites = array_diff($favorites, [$slug]);
-        } else {
-            $favorites[] = $slug;
-        }
-
-        update_option(Options::get_option_name( 'sitegen_favorites' ), $favorites);
-
-        foreach ($homepages as &$homepage) {
-            if ($homepage['slug'] === $slug) {
-                $homepage['isFavourited'] = in_array($slug, $favorites);
-                break;
-            }
-        }
-
-        update_option(Options::get_option_name( 'sitegen_homepages' ), $homepages);
-
-        return ['message' => 'Favorite status updated', 'favorites' => $favorites];
+		if ($homepageFound) {
+			update_option(Options::get_option_name('sitegen_homepages'), $homepages);
+		}
+		
+		$message = $homepageFound ? 'Favorite status updated' : 'Homepage for this slug not found';
+    	return ['message' => $message];
     }
 
 	/**
