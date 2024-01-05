@@ -273,7 +273,7 @@ class SiteGenService {
         $processed_home_pages = self::process_homepages_response($home_pages);
 
         // Update the option with processed homepages
-        update_option(Options::get_option_name( Options::get_option_name( 'sitegen_homepages' ) ), $processed_home_pages);
+        \update_option( Options::get_option_name( 'sitegen_homepages' ), $processed_home_pages );
 
         return $processed_home_pages;
     }
@@ -286,7 +286,7 @@ class SiteGenService {
 	 */
 
 	public static function toggle_favourite_homepage($slug) {
-        $homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+        $homepages = \get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 		$homepageFound = false;
        
 		foreach ($homepages as &$homepage) {
@@ -298,11 +298,15 @@ class SiteGenService {
 		}
 
 		if ($homepageFound) {
-			update_option(Options::get_option_name('sitegen_homepages'), $homepages);
+			\update_option(Options::get_option_name('sitegen_homepages'), $homepages);
+			return ['message' => 'Favorite status updated'];
+		} else {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				'Homepage for this slug not found',
+				array( 'status' => 404 )
+			);
 		}
-		
-		$message = $homepageFound ? 'Favorite status updated' : 'Homepage for this slug not found';
-    	return ['message' => $message];
     }
 
 	/**
@@ -311,7 +315,7 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function handle_favorite_regeneration($regenerateSlug, $regenerateColorPalattes) {
-        $existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+        $existing_homepages = \get_option(Options::get_option_name( 'sitegen_homepages' ), []);
         $favorite_regenerate_homepage = array_filter($existing_homepages, function ($homepage) use ($regenerateSlug) {
             return $homepage['slug'] === $regenerateSlug;
         });
@@ -319,7 +323,7 @@ class SiteGenService {
         if (!empty($favorite_regenerate_homepage)) {
             $processed_homepage = self::process_favorited_regenerate($favorite_regenerate_homepage, $regenerateColorPalattes);
             $existing_homepages[] = $processed_homepage[0];
-            update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
+            \update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
 
             return $existing_homepages;
         }
@@ -339,22 +343,22 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function handle_regular_regeneration($site_description, $content_style, $target_audience) {
-        $existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
-        $regenerated_homepages = get_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), []);
+        $existing_homepages = \get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+        $regenerated_homepages = \get_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), []);
 
         if (!empty($regenerated_homepages)) {
             $regenerated_item = array_shift($regenerated_homepages);
             $existing_homepages[] = $regenerated_item;
-            update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
+            \update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
         } else {
             $home_pages = SiteGen::get_home_pages($site_description, $content_style, $target_audience, true);
             $regenerated_homepages = self::process_homepages_response($home_pages);
-            update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
+            \update_option(Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages);
             $regenerated_item = array_shift($regenerated_homepages);
             $existing_homepages[] = $regenerated_item;
         }
 
-        update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
+        \update_option(Options::get_option_name( 'sitegen_homepages' ), $existing_homepages);
         return $existing_homepages;
     }
 
@@ -371,15 +375,14 @@ class SiteGenService {
 	){
 		$versions = [];
 		// Fetch the color palette data from the options table.
-		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
-
+		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
 		if (!is_array($color_palettes)) {
 			$color_palettes = json_decode($color_palettes, true);
 		}
 
 		// Retrieve the existing homepages to find the last version number.
-		$existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+		$existing_homepages = \get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 		$last_version_number = self::get_last_version_number($existing_homepages);
 		$version_number = $last_version_number + 1;
 
@@ -395,14 +398,14 @@ class SiteGenService {
 			$content = implode('', $filtered_blocks);
 
 			// Select a random palette and check against the parent's palette.
-			$palette_index = array_rand($color_palettes['colorpalette']);
-			$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+			$palette_index = array_rand($color_palettes);
+			$selected_palette = self::transform_palette($color_palettes[$palette_index], $palette_index);
 
 			// If regeneration is true and the selected palette matches the parent's palette, reselect.
 			if ($regenerate && $regenerateColorPalettes) {
-				while ($selected_palette == $regenerateColorPalettes && count($color_palettes['colorpalette']) > 1) {
-					$palette_index = array_rand($color_palettes['colorpalette']);
-					$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+				while ($selected_palette == $regenerateColorPalettes && count($color_palettes) > 1) {
+					$palette_index = array_rand($color_palettes);
+					$selected_palette = self::transform_palette($color_palettes[$palette_index], $palette_index);
 				}
 			}
 
@@ -421,6 +424,41 @@ class SiteGenService {
 		return $versions;
 	}
 
+
+	/**
+	 * Get color palattes from the SiteGen meta.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function get_color_palattes() {
+		$flow_data = \get_option( Options::get_option_name( 'flow' ), false );
+		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				array( 'status' => 404 )
+			);
+		}
+
+		$prompt	= $flow_data['sitegen']['siteDetails']['prompt'];
+		$color_palette = self::instantiate_site_meta(
+			array(
+				'site_description' => $prompt,
+			),
+			'color_palette'
+		);
+
+		if ( isset( $color_palette['error'] ) || is_wp_error( $color_palette ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		return $color_palette;
+	}
+
 	/**
 	 * processes the Homepages response structure for favourited prviews
 	 *
@@ -432,25 +470,24 @@ class SiteGenService {
 	){
 		$versions = [];
 		// Fetch the color palette data from the options table.
-		$color_palettes = get_option('nfd-ai-site-gen-colorpalette');
-
+		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
 		if (!is_array($color_palettes)) {
 			$color_palettes = json_decode($color_palettes, true);
 		}
 
 		// Retrieve the existing homepages to find the last version number.
-		$existing_homepages = get_option(Options::get_option_name( 'sitegen_homepages' ), []);
+		$existing_homepages = \get_option(Options::get_option_name( 'sitegen_homepages' ), []);
 
 		// Select a random palette and check against the parent's palette.
-		$palette_index = array_rand($color_palettes['colorpalette']);
-		$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+		$palette_index = array_rand($color_palettes);
+		$selected_palette = self::transform_palette($color_palettes[$palette_index], $palette_index);
 
 		// If regeneration is true and the selected palette matches the parent's palette, reselect.
 		if ($regenerateColorPalattes) {
-			while ($selected_palette == $regenerateColorPalattes && count($color_palettes['colorpalette']) > 1) {
-				$palette_index = array_rand($color_palettes['colorpalette']);
-				$selected_palette = self::transform_palette($color_palettes['colorpalette'][$palette_index], $palette_index);
+			while ($selected_palette == $regenerateColorPalattes && count($color_palettes) > 1) {
+				$palette_index = array_rand($color_palettes);
+				$selected_palette = self::transform_palette($color_palettes[$palette_index], $palette_index);
 			}
 		}
 
@@ -518,7 +555,7 @@ class SiteGenService {
 	 * @return array|\WP_Error
 	 */
 	public static function get_plugin_recommendations() {
-		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
+		$flow_data = \get_option( Options::get_option_name( 'flow' ), false );
 		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
