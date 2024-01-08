@@ -308,4 +308,173 @@ class SiteGenService {
 		return array_merge( $final_required_plugins, $final_recommended_plugins );
 	}
 
+	/**
+	 * Get SiteGen customize sidebar data.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public static function get_customize_sidebar_data() {
+		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
+		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				array( 'status' => 404 )
+			);
+		}
+
+		$prompt        = $flow_data['sitegen']['siteDetails']['prompt'];
+		$color_palette = self::instantiate_site_meta(
+			array(
+				'site_description' => $prompt,
+			),
+			'color_palette'
+		);
+		$font_pair = self::instantiate_site_meta(
+			array(
+				'site_description' => $prompt,
+			),
+			'font_pair'
+		);
+
+		if ( isset( $color_palette['error'] ) || is_wp_error( $color_palette ) ) {
+			$color_palette = array(
+				array(
+					'name'                 => 'Tropical Dawn',
+					'base'                 => '#F0F0F0',
+					'contrast'             => '#333333',
+					'primary'              => '#09728C',
+					'secondary'            => '#C79E10',
+					'tertiary'             => '#F5EBB8',
+					'header_background'    => '#09728C',
+					'header_foreground'    => '#F5EBB8',
+					'header_titles'        => '#F5EBB8',
+					'secondary_background' => '#09728C',
+					'secondary_foreground' => '#F5EBB8',
+				),
+				array(
+					'name'                 => 'Earthy Delight',
+					'base'                 => '#EAE2D6',
+					'contrast'             => '#2E2E2E',
+					'primary'              => '#D19858',
+					'secondary'            => '#A1623B',
+					'tertiary'             => '#704238',
+					'header_background'    => '#D19858',
+					'header_foreground'    => '#EAE2D6',
+					'header_titles'        => '#EAE2D6',
+					'secondary_background' => '#A1623B',
+					'secondary_foreground' => '#EAE2D6',
+				),
+				array(
+					'name'                 => 'Cool Breeze',
+					'base'                 => '#D9E4E7',
+					'contrast'             => '#1B1B1B',
+					'primary'              => '#3C7A89',
+					'secondary'            => '#5E9EA4',
+					'tertiary'             => '#81BFC5',
+					'header_background'    => '#3C7A89',
+					'header_foreground'    => '#D9E4E7',
+					'header_titles'        => '#D9E4E7',
+					'secondary_background' => '#5E9EA4',
+					'secondary_foreground' => '#D9E4E7',
+				),
+				array(
+					'name'                 => 'Warm Comfort',
+					'base'                 => '#F4E1D2',
+					'contrast'             => '#272727',
+					'primary'              => '#D83367',
+					'secondary'            => '#F364A2',
+					'tertiary'             => '#FEA5E2',
+					'header_background'    => '#D83367',
+					'header_foreground'    => '#F4E1D2',
+					'header_titles'        => '#F4E1D2',
+					'secondary_background' => '#F364A2',
+					'secondary_foreground' => '#F4E1D2',
+				),
+				array(
+					'name'                 => 'Classic Elegance',
+					'base'                 => '#EDEDED',
+					'contrast'             => '#1C1C1C',
+					'primary'              => '#A239CA',
+					'secondary'            => '#4717F6',
+					'tertiary'             => '#E7DFDD',
+					'header_background'    => '#A239CA',
+					'header_foreground'    => '#EDEDED',
+					'header_titles'        => '#EDEDED',
+					'secondary_background' => '#4717F6',
+					'secondary_foreground' => '#EDEDED',
+				),
+			);
+		}
+
+		if ( isset( $font_pair['error'] ) || is_wp_error( $font_pair ) ) {
+			$font_pair = array(
+				array(
+					'aesthetics'    => 'modern',
+					'fonts_heading' => 'Arial',
+					'fonts_content' => 'Times New Roman',
+					'spacing'       => 6,
+					'radius'        => 4,
+				),
+				array(
+					'aesthetics'    => 'vintage',
+					'fonts_heading' => 'Courier New',
+					'fonts_content' => 'Georgia',
+					'spacing'       => 5,
+					'radius'        => 3,
+				),
+				array(
+					'aesthetics'    => 'minimalist',
+					'fonts_heading' => 'Verdana',
+					'fonts_content' => 'Tahoma',
+					'spacing'       => 7,
+					'radius'        => 2,
+				),
+				array(
+					'aesthetics'    => 'retro',
+					'fonts_heading' => 'Lucida Console',
+					'fonts_content' => 'Palatino Linotype',
+					'spacing'       => 6,
+					'radius'        => 5,
+				),
+				array(
+					'aesthetics'    => 'typographic',
+					'fonts_heading' => 'Impact',
+					'fonts_content' => 'Comic Sans MS',
+					'spacing'       => 5,
+					'radius'        => 3,
+				),
+			); // set default value
+		}
+
+		$default_design = array(
+				'name'          => 'Modern Foodie',
+				'style'         => array(
+					'aesthetics'    => 'modern',
+					'fonts_heading' => 'Arial',
+					'fonts_content' => 'Times New Roman',
+					'spacing'       => 6,
+					'radius'        => 4,
+				),
+				'color_palette' => array(
+					'base'                 => '#F0F0F0',
+					'contrast'             => '#333333',
+					'primary'              => '#09728C',
+					'secondary'            => '#C79E10',
+					'tertiary'             => '#F5EBB8',
+					'header_background'    => '#09728C',
+					'header_foreground'    => '#F5EBB8',
+					'header_titles'        => '#F5EBB8',
+					'secondary_background' => '#09728C',
+					'secondary_foreground' => '#F5EBB8',
+				),
+			);
+
+		return array(
+			'design' => $default_design,
+			'colorPalettes' => $color_palette,
+			'designStyles' => $font_pair,
+		);
+	}
+
 }
