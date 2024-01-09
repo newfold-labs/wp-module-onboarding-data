@@ -146,5 +146,4 @@ final class Data {
 		// Assume site has been launched if both options do not exist.
 		return false;
 	}
-
 }
