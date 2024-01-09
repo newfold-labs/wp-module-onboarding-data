@@ -344,7 +344,6 @@ final class Patterns {
 			'slug' => $slug,
 			'type' => 'yith-wonder',
 		);
-
 	}
 
 	/**
@@ -529,5 +528,4 @@ final class Patterns {
 		}
 		return $theme_pattern_count;
 	}
-
 }

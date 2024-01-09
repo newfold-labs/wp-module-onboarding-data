@@ -338,5 +338,4 @@ final class SiteFeatures {
 	public static function get_unselected() {
 		return self::filter( self::get_init(), false );
 	}
-
 }

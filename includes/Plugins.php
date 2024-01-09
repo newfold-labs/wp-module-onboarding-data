@@ -232,5 +232,4 @@ final class Plugins {
 	public static function wc_prevent_redirect_on_activation() {
 		\delete_transient( '_wc_activation_redirect' );
 	}
-
 }
