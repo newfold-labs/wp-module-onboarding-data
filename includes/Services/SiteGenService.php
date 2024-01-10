@@ -387,7 +387,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if ( ! is_array( $color_palettes ) ) {
+		if ( ! is_array( $color_palettes ) || ( is_string( $color_palettes ) && is_json( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
@@ -488,7 +488,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if ( ! is_array( $color_palettes ) ) {
+		if ( ! is_array( $color_palettes ) || ( is_string( $color_palettes ) && is_json( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
@@ -509,9 +509,22 @@ class SiteGenService {
 		}
 
 		$parent_favorited_homepage = current( $home_pages );
-		$version_info              = array(
-			'slug'         => $parent_favorited_homepage['slug'] . '-copy',
-			'title'        => $parent_favorited_homepage['title'] . ' (Copy)',
+		$existing_titles           = array_column( $existing_homepages, 'title' );
+		$existing_slugs            = array_column( $existing_homepages, 'slug' );
+		$suffixed_title            = $parent_favorited_homepage['title'] . ' (Copy)';
+		$suffixed_slug             = $parent_favorited_homepage['slug'] . '-copy';
+		$copy_counter              = 1;
+
+		// Check for existing titles and modify new title accordingly.
+		while ( in_array( $suffixed_title, $existing_titles ) || in_array( $suffixed_slug, $existing_slugs ) ) {
+			++$copy_counter;
+			$suffixed_title = $parent_favorited_homepage['title'] . str_repeat( ' (Copy)', $copy_counter );
+			$suffixed_slug  = $parent_favorited_homepage['slug'] . str_repeat( '-copy', $copy_counter );
+		}
+
+		$version_info = array(
+			'slug'         => $suffixed_slug,
+			'title'        => $suffixed_title,
 			'isFavourited' => false,
 			'content'      => $parent_favorited_homepage['content'],
 			'color'        => $selected_palette,
