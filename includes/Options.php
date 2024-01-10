@@ -21,8 +21,6 @@ final class Options {
 		'redirect'                      => 'should_redirect',
 		'activate'                      => 'activate',
 		'activate_param'                => 'activate_param',
-		'new_coming_soon'               => 'nfd_coming_soon',
-		'old_coming_soon'               => 'mm_coming_soon',
 		'brand'                         => 'mm_brand',
 		'close_comments_for_old_posts'  => 'close_comments_for_old_posts',
 		'close_comments_days_old'       => 'close_comments_days_old',
