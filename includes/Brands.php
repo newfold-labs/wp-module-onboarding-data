@@ -387,13 +387,13 @@ final class Brands {
 				'twitterUrl'                  => 'https://twitter.com/hostgator',
 				'youtubeUrl'                  => 'https://www.youtube.com/user/hostgator',
 				'linkedinUrl'                 => 'https://www.linkedin.com/company/hostgator-com/',
-				'accountUrl'                  => Config::is_jarvis() ? 
+				'accountUrl'                  => Config::is_jarvis() ?
 				'https://www.hostgator.com/my-account/login'
 				: 'https://portal.hostgator.com/',
-				'domainsUrl'                  => Config::is_jarvis() ? 
+				'domainsUrl'                  => Config::is_jarvis() ?
 				'https://www.hostgator.com/my-account/domain-center/domain-list'
 				: 'https://portal.hostgator.com/domain/manage',
-				'emailUrl'                    => Config::is_jarvis() ? 
+				'emailUrl'                    => Config::is_jarvis() ?
 				'https://www.hostgator.com/my-account/hosting/details/email'
 				: 'https://portal.hostgator.com/email',
 				'pluginDashboardPage'         => \admin_url( 'admin.php?page=hostgator' ),
