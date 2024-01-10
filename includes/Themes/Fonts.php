@@ -214,6 +214,81 @@ final class Fonts {
 	}
 
 	/**
+	 * This returns the default font data for Sitegen customize sidebar.
+	 *
+	 * @var string
+	 */
+	public static function get_sitegen_font_data() {
+		return array(
+			array(
+				'aesthetics'    => 'modern',
+				'fonts_heading' => 'Arial',
+				'fonts_content' => 'Times New Roman',
+				'spacing'       => 6,
+				'radius'        => 4,
+			),
+			array(
+				'aesthetics'    => 'vintage',
+				'fonts_heading' => 'Courier New',
+				'fonts_content' => 'Georgia',
+				'spacing'       => 5,
+				'radius'        => 3,
+			),
+			array(
+				'aesthetics'    => 'minimalist',
+				'fonts_heading' => 'Verdana',
+				'fonts_content' => 'Tahoma',
+				'spacing'       => 7,
+				'radius'        => 2,
+			),
+			array(
+				'aesthetics'    => 'retro',
+				'fonts_heading' => 'Lucida Console',
+				'fonts_content' => 'Palatino Linotype',
+				'spacing'       => 6,
+				'radius'        => 5,
+			),
+			array(
+				'aesthetics'    => 'typographic',
+				'fonts_heading' => 'Impact',
+				'fonts_content' => 'Comic Sans MS',
+				'spacing'       => 5,
+				'radius'        => 3,
+			),
+		);
+	}
+
+	/**
+	 * This returns the default design data for Sitegen customize sidebar.
+	 *
+	 * @var string
+	 */
+	public static function get_sitegen_default_design_data() {
+		return array(
+			'name'          => 'Modern Foodie',
+			'style'         => array(
+				'aesthetics'    => 'modern',
+				'fonts_heading' => 'Arial',
+				'fonts_content' => 'Times New Roman',
+				'spacing'       => 6,
+				'radius'        => 4,
+			),
+			'color_palette' => array(
+				'base'                 => '#F0F0F0',
+				'contrast'             => '#333333',
+				'primary'              => '#09728C',
+				'secondary'            => '#C79E10',
+				'tertiary'             => '#F5EBB8',
+				'header_background'    => '#09728C',
+				'header_foreground'    => '#F5EBB8',
+				'header_titles'        => '#F5EBB8',
+				'secondary_background' => '#09728C',
+				'secondary_foreground' => '#F5EBB8',
+			),
+		);
+	}
+
+	/**
 	 * Retrieves the active theme font variations.
 	 *
 	 * @return array|\WP_Error
