@@ -103,7 +103,17 @@ class SiteGenService {
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
-		return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		$response = SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		if ( isset( $response['error'] ) ) {
+			// Handle the error case by returning a WP_Error.
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Error generating site meta: ', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		return $response;
 	}
 
 	/**
@@ -255,7 +265,7 @@ class SiteGenService {
 	/**
 	 * Gets the preview homepages
 	 *
-	 * @param array $site_description Description of the site.
+	 * @param string $site_description Description of the site.
 	 * @param array $content_style Description of the content style.
 	 * @param array $target_audience Description of the target audience.
 	 * @param bool  $regenerate Whether to regenerate the homepages. Defaults to false.
@@ -269,6 +279,14 @@ class SiteGenService {
 			$target_audience,
 			$regenerate
 		);
+
+		if ( isset( $home_pages['error'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Error generating homepages: ', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
 
 		$processed_home_pages = self::process_homepages_response( $home_pages );
 
@@ -297,7 +315,7 @@ class SiteGenService {
 
 		if ( $homepage_found ) {
 			\update_option( Options::get_option_name( 'sitegen_homepages' ), $homepages );
-			return array( 'message' => 'Favorite status updated' );
+			return new \WP_REST_Response( array( 'message' => 'Favorite status updated' ), 200 );
 		} else {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -343,7 +361,7 @@ class SiteGenService {
 	/**
 	 * Regenerate previews homepages
 	 *
-	 * @param array $site_description Description of the site.
+	 * @param string $site_description Description of the site.
 	 * @param array $content_style Description of the content style.
 	 * @param array $target_audience Description of the target audience.
 	 * @return array
@@ -358,6 +376,13 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages );
 		} else {
 			$home_pages            = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, true );
+			if ( isset( $home_pages['error'] ) ) {
+				return new \WP_Error(
+					'nfd_onboarding_error',
+					__( 'Error re-generating homepages: ', 'wp-module-onboarding' ),
+					array( 'status' => 400 )
+				);
+			}
 			$regenerated_homepages = self::process_homepages_response( $home_pages );
 			\update_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages );
 			$regenerated_item     = array_shift( $regenerated_homepages );
@@ -387,7 +412,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if ( ! is_array( $color_palettes ) || ( is_string( $color_palettes ) && is_json( $color_palettes ) ) ) {
+		if (( is_string( $color_palettes )) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
@@ -488,7 +513,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if ( ! is_array( $color_palettes ) || ( is_string( $color_palettes ) && is_json( $color_palettes ) ) ) {
+		if (( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
