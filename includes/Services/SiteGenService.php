@@ -103,7 +103,7 @@ class SiteGenService {
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
-		$response = SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
 		if ( isset( $response['error'] ) ) {
 			// Handle the error case by returning a WP_Error.
 			return new \WP_Error(
@@ -266,9 +266,9 @@ class SiteGenService {
 	 * Gets the preview homepages
 	 *
 	 * @param string $site_description Description of the site.
-	 * @param array $content_style Description of the content style.
-	 * @param array $target_audience Description of the target audience.
-	 * @param bool  $regenerate Whether to regenerate the homepages. Defaults to false.
+	 * @param array  $content_style Description of the content style.
+	 * @param array  $target_audience Description of the target audience.
+	 * @param bool   $regenerate Whether to regenerate the homepages. Defaults to false.
 	 * @return array
 	 */
 	public static function generate_homepages( $site_description, $content_style, $target_audience, $regenerate = false ) {
@@ -362,8 +362,8 @@ class SiteGenService {
 	 * Regenerate previews homepages
 	 *
 	 * @param string $site_description Description of the site.
-	 * @param array $content_style Description of the content style.
-	 * @param array $target_audience Description of the target audience.
+	 * @param array  $content_style Description of the content style.
+	 * @param array  $target_audience Description of the target audience.
 	 * @return array
 	 */
 	public static function handle_regular_regeneration( $site_description, $content_style, $target_audience ) {
@@ -375,7 +375,7 @@ class SiteGenService {
 			$existing_homepages[] = $regenerated_item;
 			\update_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages );
 		} else {
-			$home_pages            = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, true );
+			$home_pages = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, true );
 			if ( isset( $home_pages['error'] ) ) {
 				return new \WP_Error(
 					'nfd_onboarding_error',
@@ -412,7 +412,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if (( is_string( $color_palettes )) ) {
+		if ( ( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
@@ -513,7 +513,7 @@ class SiteGenService {
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if (( is_string( $color_palettes ) ) ) {
+		if ( ( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
 		}
 
