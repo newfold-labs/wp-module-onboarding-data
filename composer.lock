@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93c255879b2fb769890a9a2bc12d7a6f",
+    "content-hash": "69018fa72a38a7c24cd1445d6c6610c0",
     "packages": [
         {
             "name": "newfold-labs/wp-module-coming-soon",
