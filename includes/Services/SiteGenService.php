@@ -411,6 +411,15 @@ class SiteGenService {
 		$versions = array();
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
+
+		if ( is_wp_error( $color_palettes ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
 		if ( ( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
@@ -487,7 +496,7 @@ class SiteGenService {
 			'color_palette'
 		);
 
-		if ( isset( $color_palette['error'] ) || is_wp_error( $color_palette ) ) {
+		if ( is_wp_error( $color_palette ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
 				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
@@ -512,6 +521,14 @@ class SiteGenService {
 		$versions = array();
 		// Fetch the color palette data from the options table.
 		$color_palettes = self::get_color_palattes();
+
+		if ( is_wp_error( $color_palettes ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
 		if ( ( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
