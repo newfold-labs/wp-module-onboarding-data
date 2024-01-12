@@ -402,9 +402,6 @@ class SiteGenService {
 	 * Processes the Homepages response structure for homepages
 	 *
 	 * @param array  $home_pages array.
-	 * @param bool   $regenerate boolean.
-	 * @param string $regenerate_slug slug to regenerated.
-	 * @param array  $regenerate_color_palettes the list of color plattes to randomly select from.
 	 * @return array
 	 */
 	public static function process_homepages_response(
