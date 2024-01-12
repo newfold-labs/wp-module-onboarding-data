@@ -394,6 +394,7 @@ class SiteGenService {
 		}
 
 		\update_option( Options::get_option_name( 'sitegen_homepages' ), $existing_homepages );
+		\update_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), $regenerated_homepages );
 		return $existing_homepages;
 	}
 
