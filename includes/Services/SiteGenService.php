@@ -290,6 +290,9 @@ class SiteGenService {
 
 		$processed_home_pages = self::process_homepages_response( $home_pages );
 
+		if ( is_wp_error( $processed_home_pages ) ) {
+			return $processed_home_pages;
+		}
 		\update_option( Options::get_option_name( 'sitegen_homepages' ), $processed_home_pages );
 
 		return $processed_home_pages;
@@ -368,12 +371,12 @@ class SiteGenService {
 	 */
 	public static function handle_regular_regeneration( $site_description, $content_style, $target_audience ) {
 		$existing_homepages    = \get_option( Options::get_option_name( 'sitegen_homepages' ), array() );
-		$regenerated_homepages = \get_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), array() );
+		$regenerated_homepages = \get_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), array() );
 
 		if ( ! empty( $regenerated_homepages ) ) {
 			$regenerated_item     = array_shift( $regenerated_homepages );
 			$existing_homepages[] = $regenerated_item;
-			\update_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages );
+			\update_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), $regenerated_homepages );
 		} else {
 			$home_pages = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, true );
 			if ( isset( $home_pages['error'] ) ) {
@@ -384,7 +387,8 @@ class SiteGenService {
 				);
 			}
 			$regenerated_homepages = self::process_homepages_response( $home_pages );
-			\update_option( Options::get_option_name( 'sitegen_regenerate_homepages' ), $regenerated_homepages );
+
+			\update_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), $regenerated_homepages );
 			$regenerated_item     = array_shift( $regenerated_homepages );
 			$existing_homepages[] = $regenerated_item;
 		}
@@ -403,34 +407,22 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function process_homepages_response(
-		$home_pages,
-		$regenerate = false,
-		$regenerate_slug = '',
-		$regenerate_color_palettes = null,
+		$home_pages
 	) {
 		$versions = array();
 		// Fetch the color palette data from the options table.
-		$color_palettes = self::get_color_palattes();
+		$color_palettes = self::get_color_palettes();
 
 		if ( is_wp_error( $color_palettes ) ) {
-			return new \WP_Error(
-				'nfd_onboarding_error',
-				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
-				array( 'status' => 400 )
-			);
+			return $color_palettes;
 		}
-
-		// Decode the color palettes if it's not an array (assuming it's a JSON string).
-		if ( ( is_string( $color_palettes ) ) ) {
-			$color_palettes = json_decode( $color_palettes, true );
-		}
-
 		// Retrieve the existing homepages to find the last version number.
 		$existing_homepages  = \get_option( Options::get_option_name( 'sitegen_homepages' ), array() );
 		$last_version_number = self::get_last_version_number( $existing_homepages );
 		$version_number      = $last_version_number + 1;
 
 		foreach ( $home_pages as $key => $blocks ) {
+
 			if ( ! is_array( $blocks ) ) {
 				continue;
 			}
@@ -443,19 +435,9 @@ class SiteGenService {
 			);
 
 			$content = implode( '', $filtered_blocks );
-
 			// Select a random palette and check against the parent's palette.
 			$palette_index    = array_rand( $color_palettes );
 			$selected_palette = self::transform_palette( $color_palettes[ $palette_index ], $palette_index );
-
-			// If regeneration is true and the selected palette matches the parent's palette, reselect.
-			if ( $regenerate && $regenerate_color_palettes ) {
-				$palette_count = count( $color_palettes );
-				while ( $selected_palette === $regenerate_color_palettes && $palette_count > 1 ) {
-					$palette_index    = array_rand( $color_palettes );
-					$selected_palette = self::transform_palette( $color_palettes[ $palette_index ], $palette_index );
-				}
-			}
 
 			$version_info = array(
 				'slug'         => 'version' . $version_number,
@@ -464,8 +446,7 @@ class SiteGenService {
 				'content'      => $content,
 				'color'        => $selected_palette,
 			);
-
-			$versions[] = $version_info;
+			$versions[]   = $version_info;
 			++$version_number;
 		}
 
@@ -478,7 +459,7 @@ class SiteGenService {
 	 *
 	 * @return array|\WP_Error
 	 */
-	public static function get_color_palattes() {
+	public static function get_color_palettes() {
 		$flow_data = \get_option( Options::get_option_name( 'flow' ), false );
 		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
 			return new \WP_Error(
@@ -504,7 +485,13 @@ class SiteGenService {
 			);
 		}
 
-		return $color_palette;
+		$color_palettes = array();
+		if ( is_int( array_rand( $color_palette ) ) ) {
+			$color_palettes = $color_palette;
+		} else {
+			$color_palettes[] = $color_palette;
+		}
+		return $color_palettes;
 	}
 
 	/**
@@ -520,15 +507,12 @@ class SiteGenService {
 	) {
 		$versions = array();
 		// Fetch the color palette data from the options table.
-		$color_palettes = self::get_color_palattes();
+		$color_palettes = self::get_color_palettes();
 
 		if ( is_wp_error( $color_palettes ) ) {
-			return new \WP_Error(
-				'nfd_onboarding_error',
-				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
-				array( 'status' => 400 )
-			);
+			return $color_palettes;
 		}
+
 		// Decode the color palettes if it's not an array (assuming it's a JSON string).
 		if ( ( is_string( $color_palettes ) ) ) {
 			$color_palettes = json_decode( $color_palettes, true );
