@@ -540,7 +540,7 @@ class SiteGenService {
 		$copy_counter              = 1;
 
 		// Check for existing titles and modify new title accordingly.
-		while ( in_array( $suffixed_title, $existing_titles ) || in_array( $suffixed_slug, $existing_slugs ) ) {
+		while ( in_array( $suffixed_title, $existing_titles, true ) || in_array( $suffixed_slug, $existing_slugs, true ) ) {
 			++$copy_counter;
 			$suffixed_title = $parent_favorited_homepage['title'] . str_repeat( ' (Copy)', $copy_counter );
 			$suffixed_slug  = $parent_favorited_homepage['slug'] . str_repeat( '-copy', $copy_counter );
