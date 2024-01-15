@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '1.0.5',
+		'version'              => '1.0.7',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -67,8 +67,10 @@ final class Flows {
 
 			// This integer will map to the attachment ID for an uploaded image to the WordPress media library
 			'siteLogo'        => array(
-				'id'  => 0,
-				'url' => '',
+				'id'       => 0,
+				'url'      => '',
+				'fileName' => '',
+				'fileSize' => 0,
 			),
 
 			// key-value store for social media accounts
@@ -109,6 +111,8 @@ final class Flows {
 
 			'comingSoon'      => false,
 		),
+
+		'activeFlow'           => '',
 
 		// we will store active flows (abandoned wp-setup, abandoned wp-commerce) with their identifier and use as a reference to access currentStep and data
 		'currentFlows'         => array(),
@@ -155,6 +159,11 @@ final class Flows {
 				'currentStatus' => 0,
 				'totalCount'    => 8,
 			),
+			'homepages'         => array(
+				'active' => array(),
+				'data'   => array(),
+			),
+			'customDesign'      => false,
 		),
 	);
 
@@ -208,6 +217,7 @@ final class Flows {
 		? $current_brand['config']['enabled_flows'] : array(
 			'wp-setup'  => false,
 			'ecommerce' => false,
+			'sitegen'   => false,
 		);
 	}
 
@@ -304,12 +314,17 @@ final class Flows {
 	 * @return boolean
 	 */
 	public static function is_sitegen() {
-		$flow_data = FlowService::read_data_from_wp_option();
-		if ( ! $flow_data || empty( $flow_data['sitegen'] ) ) {
+		if ( ! self::get_flows()['sitegen'] ) {
 			return false;
 		}
 
-		return true === self::get_flows()['sitegen'];
+		$flow_data = FlowService::read_data_from_wp_option();
+		if ( ! $flow_data || empty( $flow_data['activeFlow'] ) ) {
+			return false;
+		}
+    
+		return 'sitegen' === $flow_data['activeFlow'];
+
 	}
 
 	/**

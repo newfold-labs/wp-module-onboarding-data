@@ -14,6 +14,7 @@ final class Themes {
 	protected static $flow_default_theme_slugs = array(
 		'wp-setup'  => 'yith-wonder',
 		'ecommerce' => 'yith-wonder',
+		'sitegen'   => 'yith-wonder',
 	);
 
 	/**
@@ -40,6 +41,15 @@ final class Themes {
 			),
 		),
 		'ecommerce' => array(
+			'default' => array(
+				array(
+					'slug'     => 'nfd_slug_yith_wonder',
+					'activate' => true,
+					'priority' => 20,
+				),
+			),
+		),
+		'sitegen'   => array(
 			'default' => array(
 				array(
 					'slug'     => 'nfd_slug_yith_wonder',

@@ -14,19 +14,23 @@ final class Data {
 	 */
 	public static function runtime() {
 		return array(
-			'buildUrl'          => \NFD_ONBOARDING_BUILD_URL,
-			'siteUrl'           => \get_site_url(),
-			'restUrl'           => \get_home_url() . '/index.php?rest_route=',
-			'adminUrl'          => \admin_url(),
-			'currentBrand'      => self::current_brand(),
-			'currentPlan'       => self::current_plan(),
-			'currentFlow'       => self::current_flow(),
-			'pluginInstallHash' => PluginInstaller::rest_get_plugin_install_hash(),
-			'previewSettings'   => array(
+			'buildUrl'           => \NFD_ONBOARDING_BUILD_URL,
+			'siteUrl'            => \get_site_url(),
+			'restUrl'            => \get_home_url() . '/index.php?rest_route=',
+			'adminUrl'           => \admin_url(),
+			'currentBrand'       => self::current_brand(),
+			'currentPlan'        => self::current_plan(),
+			'currentFlow'        => self::current_flow(),
+			'pluginInstallHash'  => PluginInstaller::rest_get_plugin_install_hash(),
+			'previewSettings'    => array(
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
-			'currentUserDetails'        => self::wp_current_user_details(),
+			'aiPreviewSettings'  => array(
+				'settings'        => Preview::get_settings(),
+				'stepPreviewData' => Themes::step_preview_data(),
+			),
+			'currentUserDetails' => self::wp_current_user_details(),
 		);
 	}
 
@@ -158,10 +162,10 @@ final class Data {
 	}
 
 	/**
-	* Get the current WordPress admin user details.
-	*
-	* @return array
-	*/
+	 * Get the current WordPress admin user details.
+	 *
+	 * @return array
+	 */
 	public static function wp_current_user_details() {
 		$user = wp_get_current_user();
 		if ( $user->exists() ) {
