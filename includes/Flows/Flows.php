@@ -135,12 +135,12 @@ final class Flows {
 
 		'sitegen'              => array(
 			'siteDetails'       => array(
-				'name'   => '',
-				'type'   => '',
-				'style'  => '',
-				'prompt' => '',
+				'name'                => '',
+				'type'                => '',
+				'style'               => '',
+				'prompt'              => '',
 				'uniqueAboutBusiness' => '',
-				'mode' => 'simple',
+				'mode'                => 'simple',
 			),
 			'siteLogo'          => array(
 				'id'       => 0,
@@ -310,7 +310,6 @@ final class Flows {
 		}
 
 		return true === self::get_flows()['sitegen'];
-
 	}
 
 	/**
