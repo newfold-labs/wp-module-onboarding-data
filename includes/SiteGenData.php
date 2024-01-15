@@ -7,7 +7,7 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data;
  */
 final class SiteGenData {
 	/**
-	 * Contains the map of site features for a particular flow and plan.
+	 * Contains the map of the questionnaire for sitegen prompt.
 	 *
 	 * @var array
 	 */
