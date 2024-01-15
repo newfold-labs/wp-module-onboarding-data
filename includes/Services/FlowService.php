@@ -423,4 +423,14 @@ class FlowService {
 		$data = self::read_data_from_wp_option( false );
 		return isset( $data['data']['wpComfortLevel'] ) ? $data['data']['wpComfortLevel'] : false;
 	}
+
+	/**
+	 * Fetches the homepages generated in the Sitegen flow.
+	 *
+	 * @return false|array
+	 */
+	public static function get_sitegen_homepages() {
+		$data = self::read_data_from_wp_option( false );
+		return ! empty( $data['sitegen']['homepages']['data'] ) ? $data['sitegen']['homepages']['data'] : false;
+	}
 }
