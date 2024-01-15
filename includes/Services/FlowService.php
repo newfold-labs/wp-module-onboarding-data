@@ -433,4 +433,14 @@ class FlowService {
 		$data = self::read_data_from_wp_option( false );
 		return ! empty( $data['sitegen']['homepages']['data'] ) ? $data['sitegen']['homepages']['data'] : false;
 	}
+
+	/*
+	 * Retrieve the coming soon value that was selected during onboarding.
+	 *
+	 * @return boolean|null
+	 */
+	public static function get_onboarding_coming_soon() {
+		$data = self::read_data_from_wp_option( false );
+		return isset( $data['data']['comingSoon'] ) ? $data['data']['comingSoon'] : null;
+	}
 }

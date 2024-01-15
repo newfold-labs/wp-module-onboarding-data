@@ -106,7 +106,17 @@ class SiteGenService {
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
-		return SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		if ( isset( $response['error'] ) ) {
+			// Handle the error case by returning a WP_Error.
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Error generating site meta: ', 'wp-module-onboarding' ),
+				array( 'status' => 400 )
+			);
+		}
+
+		return $response;
 	}
 
 	/**
@@ -119,7 +129,7 @@ class SiteGenService {
 	public static function complete( $active_homepage, $homepage_data ) {
 		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
-		// Check if default homepage is posts
+		// Check if default homepage is posts.
 		if ( 'posts' === $show_pages_on_front ) {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
@@ -261,7 +271,7 @@ class SiteGenService {
 	 * @return array|\WP_Error
 	 */
 	public static function get_plugin_recommendations() {
-		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
+		$flow_data = \get_option( Options::get_option_name( 'flow' ), false );
 		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
