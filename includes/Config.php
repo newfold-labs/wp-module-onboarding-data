@@ -48,4 +48,13 @@ final class Config {
 	public static function is_jarvis() {
 		return self::get_site_capability( 'isJarvis' );
 	}
+
+	/**
+	 * Gets the current customer capability if he has access to AI Sitegen.
+	 *
+	 * @return boolean
+	 */
+	public static function has_ai_sitegen() {
+		return self::get_site_capability( 'hasAISiteGen' );
+	}
 }
