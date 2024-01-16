@@ -696,11 +696,11 @@ class SiteGenService {
 			'font_pair'
 		);
 
-		if ( isset( $color_palette['error'] ) || is_wp_error( $color_palette ) ) {
+		if ( is_wp_error( $color_palette ) ) {
 			$color_palette = Colors::get_sitegen_color_palette_data();
 		}
 
-		if ( isset( $font_pair['error'] ) || is_wp_error( $font_pair ) ) {
+		if ( is_wp_error( $font_pair ) ) {
 			$font_pair = Fonts::get_sitegen_font_data();
 		}
 
