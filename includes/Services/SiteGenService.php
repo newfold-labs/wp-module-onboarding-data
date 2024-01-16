@@ -743,18 +743,18 @@ class SiteGenService {
 			return $value;
 		}
 
-		$homepages = FlowService::get_sitegen_homepages();
+		$homepages = self::get_sitegen_homepages();
 		if ( ! $homepages ) {
 			return $value;
 		}
 
-		foreach ( $homepages as $slug => $data ) {
+		foreach ( $homepages as $index => $data ) {
 			array_push(
 				$value,
 				array(
-					'id'          => $slug,
-					'slug'        => $slug,
-					'description' => $slug,
+					'id'          => $data['slug'],
+					'slug'        => $data['slug'],
+					'description' => $data['slug'],
 					'content'     => $data['content'],
 					'categories'  => array( 'home', 'featured' ),
 				)
@@ -775,7 +775,7 @@ class SiteGenService {
 			return $value;
 		}
 
-		$homepages = FlowService::get_sitegen_homepages();
+		$homepages = self::get_sitegen_homepages();
 		if ( ! $homepages ) {
 			return $value;
 		}
@@ -788,5 +788,14 @@ class SiteGenService {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Fetches the homepages generated in the Sitegen flow.
+	 *
+	 * @return false|array
+	 */
+	public static function get_sitegen_homepages() {
+		return get_option( Options::get_option_name( 'sitegen_homepages' ), false );
 	}
 }

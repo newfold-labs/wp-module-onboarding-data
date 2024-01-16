@@ -425,16 +425,6 @@ class FlowService {
 	}
 
 	/**
-	 * Fetches the homepages generated in the Sitegen flow.
-	 *
-	 * @return false|array
-	 */
-	public static function get_sitegen_homepages() {
-		$data = self::read_data_from_wp_option( false );
-		return ! empty( $data['sitegen']['homepages']['data'] ) ? $data['sitegen']['homepages']['data'] : false;
-	}
-
-	/*
 	 * Retrieve the coming soon value that was selected during onboarding.
 	 *
 	 * @return boolean|null
