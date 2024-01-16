@@ -18,12 +18,9 @@ final class Options {
 	 * @var array
 	 */
 	protected static $options = array(
-		'redirect'                      => 'redirect',
-		'redirect_param'                => 'redirect_param',
+		'redirect'                      => 'should_redirect',
 		'activate'                      => 'activate',
 		'activate_param'                => 'activate_param',
-		'new_coming_soon'               => 'nfd_coming_soon',
-		'old_coming_soon'               => 'mm_coming_soon',
 		'brand'                         => 'mm_brand',
 		'close_comments_for_old_posts'  => 'close_comments_for_old_posts',
 		'close_comments_days_old'       => 'close_comments_days_old',
@@ -60,6 +57,7 @@ final class Options {
 		'filter_active_plugins'         => 'filter_active_plugins',
 		'sitegen_homepages'             => 'sitegen_homepages',
 		'sitegen_regenerated_homepages' => 'sitegen_regenerated_homepages',
+		'status'                        => 'status',
 	);
 
 	/**
@@ -71,7 +69,6 @@ final class Options {
 		'close_comments_for_old_posts'  => 1,
 		'close_comments_days_old'       => 28,
 		'comments_per_page'             => 20,
-		'new_coming_soon'               => 'true',
 		'allow_major_auto_core_updates' => 'true',
 		'allow_minor_auto_core_updates' => 'true',
 		'auto_update_plugin'            => 'true',

@@ -1,8 +1,9 @@
 <?php
 namespace NewfoldLabs\WP\Module\Onboarding\Data;
 
-use function NewfoldLabs\WP\ModuleLoader\container;
 use NewfoldLabs\WP\Module\Installer\Data\Plugins as PluginsInstaller;
+
+use function NewfoldLabs\WP\ModuleLoader\container;
 
 /**
  * List of Plugin Slugs/URLs/Domains

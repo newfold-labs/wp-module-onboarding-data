@@ -139,10 +139,12 @@ final class Flows {
 
 		'sitegen'              => array(
 			'siteDetails'       => array(
-				'name'   => '',
-				'type'   => '',
-				'style'  => '',
-				'prompt' => '',
+				'name'                => '',
+				'type'                => '',
+				'style'               => '',
+				'prompt'              => '',
+				'uniqueAboutBusiness' => '',
+				'mode'                => 'simple',
 			),
 			'siteLogo'          => array(
 				'id'       => 0,
@@ -320,7 +322,7 @@ final class Flows {
 		if ( ! $flow_data || empty( $flow_data['activeFlow'] ) ) {
 			return false;
 		}
-
+    
 		return 'sitegen' === $flow_data['activeFlow'];
 
 	}
