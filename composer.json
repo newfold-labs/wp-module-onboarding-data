@@ -23,6 +23,7 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.1",
+        "newfold-labs/wp-module-patterns": "^0.1.12",
         "newfold-labs/wp-module-ai": "^1.0.4",
         "wp-forge/wp-upgrade-handler": "^1.0",
         "mustache/mustache": "^2.14",

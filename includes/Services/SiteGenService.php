@@ -9,6 +9,7 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Mustache\Mustache;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
+use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
 
 /**
  * Class SiteGenService
@@ -403,7 +404,7 @@ class SiteGenService {
 	/**
 	 * Processes the Homepages response structure for homepages
 	 *
-	 * @param array  $home_pages array.
+	 * @param array $home_pages array.
 	 * @return array
 	 */
 	public static function process_homepages_response(
@@ -711,5 +712,90 @@ class SiteGenService {
 			'colorPalettes' => $color_palette,
 			'designStyles'  => $font_pair,
 		);
+	}
+
+	/**
+	 * Filters Wonder Blocks transients before they are set.
+	 *
+	 * @return void
+	 */
+	public static function pre_set_filter_wonder_blocks_transients() {
+		$args = wp_parse_args(
+			array(
+				'primary_type'   => PatternsSiteClassification::get_primary_type(),
+				'secondary_type' => PatternsSiteClassification::get_secondary_type(),
+			)
+		);
+		$id   = md5( serialize( $args ) );
+
+		\add_action( "pre_set_transient_wba_templates_{$id}", array( __CLASS__, 'filter_wonder_blocks_templates_transient' ), 10, 1 );
+		\add_action( 'pre_set_transient_wba_templates_categories', array( __CLASS__, 'filter_wonder_blocks_categories_transient' ), 10, 1 );
+	}
+
+	/**
+	 * Filters the Wonder Blocks templates transient.
+	 *
+	 * @param array $value The original value of the transient.
+	 * @return array
+	 */
+	public static function filter_wonder_blocks_templates_transient( $value ) {
+		if ( empty( $value ) || ! is_array( $value ) ) {
+			return $value;
+		}
+
+		$homepages = self::get_sitegen_homepages();
+		if ( ! $homepages ) {
+			return $value;
+		}
+
+		foreach ( $homepages as $index => $data ) {
+			array_push(
+				$value,
+				array(
+					'id'          => $data['slug'],
+					'slug'        => $data['slug'],
+					'description' => $data['slug'],
+					'content'     => $data['content'],
+					'categories'  => array( 'home', 'featured' ),
+				)
+			);
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Filters the Wonder Blocks categories transient.
+	 *
+	 * @param array $value The original value of the transient.
+	 * @return array
+	 */
+	public static function filter_wonder_blocks_categories_transient( $value ) {
+		if ( empty( $value ) || ! is_array( $value ) ) {
+			return $value;
+		}
+
+		$homepages = self::get_sitegen_homepages();
+		if ( ! $homepages ) {
+			return $value;
+		}
+
+		foreach ( $value as $index => $category ) {
+			if ( 'home' === $category['title'] ) {
+				$category['count'] = $category['count'] + count( $homepages );
+				$value[ $index ]   = $category;
+			}
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Fetches the homepages generated in the Sitegen flow.
+	 *
+	 * @return false|array
+	 */
+	public static function get_sitegen_homepages() {
+		return get_option( Options::get_option_name( 'sitegen_homepages' ), false );
 	}
 }
