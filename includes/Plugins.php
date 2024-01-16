@@ -1,6 +1,10 @@
 <?php
 namespace NewfoldLabs\WP\Module\Onboarding\Data;
 
+use NewfoldLabs\WP\Module\Installer\Data\Plugins as PluginsInstaller;
+
+use function NewfoldLabs\WP\ModuleLoader\container;
+
 /**
  * List of Plugin Slugs/URLs/Domains
  */
@@ -231,5 +235,17 @@ final class Plugins {
 	 */
 	public static function wc_prevent_redirect_on_activation() {
 		\delete_transient( '_wc_activation_redirect' );
+	}
+
+	/**
+	 * List of plugins that should stay active even with the filter option
+	 *
+	 * @return array
+	 */
+	public static function get_active_plugins_list() {
+		return array(
+			container()->plugin()->basename,
+			isset( PluginsInstaller::get_wp_slugs()['woocommerce']['path'] ) ? PluginsInstaller::get_wp_slugs()['woocommerce']['path'] : false,
+		);
 	}
 }
