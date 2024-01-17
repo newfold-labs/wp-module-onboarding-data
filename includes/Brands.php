@@ -37,6 +37,9 @@ final class Brands {
 	 */
 	public static function get_brands() {
 
+		// Checks if customer has acess to AI Sitegen
+		$has_ai_sitegen = Config::has_ai_sitegen();
+
 		return array(
 			'bluehost'       => array(
 				'brand'                       => 'bluehost',
@@ -103,7 +106,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -166,7 +169,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => false,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -227,7 +230,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => false,
 						'wp-setup'  => false,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -288,7 +291,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -356,7 +359,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
@@ -442,7 +445,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
-						'sitegen'   => Config::has_ai_sitegen(),
+						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
