@@ -648,7 +648,6 @@ class SiteGenService {
 		$recommended_plugins       = isset( $plugin_recommendations['recommendedPlugins'] ) ? $plugin_recommendations['recommendedPlugins'] : array();
 		$final_recommended_plugins = array();
 		foreach ( $recommended_plugins as $recommended_plugin ) {
-			$recommended_plugin['slug']     = explode( '/', $recommended_plugin['slug'] )[0];
 			$recommended_plugin['priority'] = $priority;
 			$priority                      += 20;
 			$recommended_plugin['activate'] = false;
@@ -658,7 +657,6 @@ class SiteGenService {
 		$required_plugins       = isset( $plugin_recommendations['requiredPlugins'] ) ? $plugin_recommendations['requiredPlugins'] : array();
 		$final_required_plugins = array();
 		foreach ( $required_plugins as $required_plugin ) {
-			$required_plugin['slug']     = explode( '/', $required_plugin['slug'] )[0];
 			$required_plugin['priority'] = $priority;
 			$priority                   += 20;
 			$required_plugin['activate'] = true;
