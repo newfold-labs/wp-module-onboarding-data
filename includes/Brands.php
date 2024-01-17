@@ -442,6 +442,7 @@ final class Brands {
 					'enabled_flows'  => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
+						'sitegen'   => Config::has_ai_sitegen(),
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
