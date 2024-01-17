@@ -23,10 +23,12 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.1",
-        "newfold-labs/wp-module-data": "^2.4.3",
+        "newfold-labs/wp-module-patterns": "^0.1.12",
         "newfold-labs/wp-module-ai": "^1.0.4",
         "wp-forge/wp-upgrade-handler": "^1.0",
-        "mustache/mustache": "^2.14"
+        "mustache/mustache": "^2.14",
+        "newfold-labs/wp-module-data": "^2.4.16",
+        "newfold-labs/wp-module-coming-soon": "^1.1.13"
     },
     "require-dev": {
         "newfold-labs/wp-php-standards": "^1.2"
