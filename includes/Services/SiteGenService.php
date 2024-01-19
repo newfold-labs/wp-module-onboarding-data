@@ -134,8 +134,8 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		foreach ( $homepage_data as $slug => $data ) {
-			if ( ! $data['favorite'] && $slug !== $active_homepage['slug'] ) {
+		foreach ( $homepage_data as $index => $data ) {
+			if ( ! $data['isFavourited'] && $data['slug'] !== $active_homepage['slug'] ) {
 				continue;
 			}
 			$title   = $data['title'];
@@ -151,11 +151,13 @@ class SiteGenService {
 			if ( is_wp_error( $post_id ) ) {
 				return $post_id;
 			}
-			if ( $active_homepage['slug'] === $slug ) {
+			if ( $active_homepage['slug'] === $data['slug'] ) {
 				\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
 			}
 
 			self::generate_child_theme( $data );
+
+			ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
 		}
 
@@ -257,11 +259,6 @@ class SiteGenService {
 			);
 		}
 
-		// Activate the child theme.
-		if ( true === $data['favorite'] ) {
-			ThemeGeneratorService::activate_theme( $child_theme_slug );
-		}
-
 		return true;
 	}
 
@@ -321,7 +318,7 @@ class SiteGenService {
 
 		if ( $homepage_found ) {
 			\update_option( Options::get_option_name( 'sitegen_homepages' ), $homepages );
-			return new \WP_REST_Response( array( 'message' => 'Favorite status updated' ), 200 );
+			return new \WP_REST_Response( array( 'message' => 'isFavourited status updated' ), 200 );
 		} else {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -601,7 +598,7 @@ class SiteGenService {
 				function ( $key, $value ) {
 					return array(
 						'slug'  => $key,
-						'title' => ucfirst( str_replace( '_', ' ', $key ) ),
+						'name'  => ucfirst( str_replace( '_', ' ', $key ) ),
 						'color' => $value,
 					);
 				},
