@@ -345,6 +345,11 @@ class SiteGenService {
 		$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding' );
 		$homepage['color']  = $selected_palette;
 
+		while ( isset( $existing_homepages[ $homepage['slug'] ] ) ) {
+			$homepage['slug']  .= '-copy';
+			$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding' );
+		}
+
 		$existing_homepages[ $homepage['slug'] ] = $homepage;
 		self::update_homepages( $existing_homepages );
 
