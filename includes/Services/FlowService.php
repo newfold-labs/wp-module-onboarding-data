@@ -390,7 +390,7 @@ class FlowService {
 	 *
 	 * @return array
 	 */
-	private static function update_data_in_wp_option( $data ) {
+	public static function update_data_in_wp_option( $data ) {
 		return \update_option( Options::get_option_name( 'flow' ), $data );
 	}
 
