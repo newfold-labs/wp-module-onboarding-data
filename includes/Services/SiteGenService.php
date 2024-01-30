@@ -709,6 +709,26 @@ class SiteGenService {
 	}
 
 	/**
+	 * Gets the Extra Site Pages
+	 *
+	 * @param string $site_description Description of the site.
+	 * @param array  $content_style Sitegen content style.
+	 * @param array  $target_audience Sitegen target audience.
+	 * @param array  $sitemap Sitegen sitemap.
+	 * @return array
+	 */
+	public static function generate_site_pages( $site_description, $content_style, $target_audience, $sitemap ) {
+
+		$site_pages = SiteGen::get_pages(
+			$site_description,
+			$content_style,
+			$target_audience,
+		);
+
+		return $site_pages;
+	}
+
+	/**
 	 * Fetches the homepages generated in the Sitegen flow.
 	 *
 	 * @return false|array
