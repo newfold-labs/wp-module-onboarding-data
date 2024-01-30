@@ -226,6 +226,4 @@ class ThemeGeneratorService {
 	public static function get_site_url_hash( $length = 8 ) {
 		return substr( hash( 'sha256', site_url() ), 0, $length );
 	}
-
-
 }
