@@ -723,6 +723,7 @@ class SiteGenService {
 			$site_description,
 			$content_style,
 			$target_audience,
+			$sitemap
 		);
 
 		return $site_pages;
