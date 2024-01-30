@@ -764,4 +764,57 @@ class SiteGenService {
 		\update_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), $regenerated_homepages );
 		return true;
 	}
+
+	/**
+	 * Sets the sitemapPagesGenerated data in the flow.
+	 *
+	 * @param boolean $status The status of the generated sitemap pages.
+	 * @return true
+	 */
+	public static function set_sitemap_pages_generated( $status ) {
+		$data                                     = FlowService::read_data_from_wp_option( false );
+		$data['sitegen']['sitemapPagesGenerated'] = $status;
+		FlowService::update_data_in_wp_option( $data );
+		return true;
+	}
+
+	/**
+	 * Generate and publish the sitemap pages.
+	 *
+	 * @param string $site_description The description of the site (prompt).
+	 * @param array  $content_style The type of content style.
+	 * @param array  $target_audience The target audience meta.
+	 * @param array  $sitemap The list of site pages and their keywords.
+	 * @return true
+	 */
+	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap ) {
+		$other_pages = SiteGen::get_pages(
+			$site_description,
+			$content_style,
+			$target_audience,
+			$sitemap,
+			false
+		);
+
+		// TODO: Improve error handling to reliably determine if a page has been published or not instead of trying and returning true.
+		foreach ( $sitemap as $index => $page ) {
+			if ( ! isset( $other_pages[ $page['slug'] ] ) || isset( $other_pages[ $page['slug']['error'] ] ) ) {
+				continue;
+			}
+
+			$page_content = $other_pages[ $page['slug'] ];
+			SitePagesService::publish_page(
+				$page['title'],
+				$page_content,
+				true,
+				array(
+					'nf_dc_page' => $page['slug'],
+				)
+			);
+		}
+
+		self::set_sitemap_pages_generated( true );
+
+		return true;
+	}
 }
