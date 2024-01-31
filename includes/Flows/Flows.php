@@ -322,9 +322,8 @@ final class Flows {
 		if ( ! $flow_data || empty( $flow_data['activeFlow'] ) ) {
 			return false;
 		}
-    
-		return 'sitegen' === $flow_data['activeFlow'];
 
+		return 'sitegen' === $flow_data['activeFlow'];
 	}
 
 	/**

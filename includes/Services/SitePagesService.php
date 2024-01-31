@@ -33,7 +33,4 @@ class SitePagesService {
 
 		return \wp_insert_post( $post );
 	}
-
-
 }
-

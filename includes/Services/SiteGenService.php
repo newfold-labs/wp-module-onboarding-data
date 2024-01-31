@@ -134,32 +134,32 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		foreach ( $homepage_data as $index => $data ) {
-			if ( ! $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
-				continue;
-			}
-			$title   = $data['title'];
-			$content = $data['content'];
-			$post_id = SitePagesService::publish_page(
-				$title,
-				$content,
-				true,
-				array(
-					'nf_dc_page' => 'home',
-				)
-			);
-			if ( is_wp_error( $post_id ) ) {
-				return $post_id;
-			}
-			if ( $active_homepage['slug'] === $data['slug'] ) {
-				\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
-			}
+		$title   = $active_homepage['title'];
+		$content = $active_homepage['content'];
+		$post_id = SitePagesService::publish_page(
+			$title,
+			$content,
+			true,
+			array(
+				'nf_dc_page' => 'home',
+			)
+		);
 
-			self::generate_child_theme( $data );
-
-			ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
-
+		if ( is_wp_error( $post_id ) ) {
+			return $post_id;
 		}
+
+		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
+
+		self::generate_child_theme( $active_homepage );
+
+		foreach ( $homepage_data as $index => $data ) {
+			if ( $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
+				self::generate_child_theme( $data );
+			}
+		}
+
+		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
 		return true;
 	}
@@ -225,6 +225,15 @@ class SiteGenService {
 			$site_title = $current_brand['brand'] . '-' . ThemeGeneratorService::get_site_url_hash();
 		}
 
+		$part_patterns = array();
+		if ( ! empty( $data['header'] ) ) {
+			$part_patterns['header'] = $data['header'];
+		}
+
+		if ( ! empty( $data['footer'] ) ) {
+			$part_patterns['footer'] = $data['footer'];
+		}
+
 		$theme_style_data = array(
 			'current_brand'     => Data::current_brand(),
 			'brand'             => $current_brand['brand'],
@@ -248,6 +257,7 @@ class SiteGenService {
 			'child_theme_dir'                => $child_theme_dir,
 			'child_theme_json'               => \wp_json_encode( $theme_json_data ),
 			'child_theme_stylesheet_comment' => $child_theme_stylesheet_comment,
+			'part_patterns'                  => $part_patterns,
 		);
 
 		$child_theme_written = ThemeGeneratorService::write_child_theme( $child_theme_data );
@@ -413,20 +423,8 @@ class SiteGenService {
 		$last_version_number = self::get_last_version_number( $existing_homepages );
 		$version_number      = $last_version_number + 1;
 
-		foreach ( $homepages as $key => $blocks ) {
+		foreach ( $homepages as $slug => $data ) {
 
-			if ( ! is_array( $blocks ) ) {
-				continue;
-			}
-
-			$filtered_blocks = array_filter(
-				$blocks,
-				function ( $value ) {
-					return ! is_null( $value );
-				}
-			);
-
-			$content = implode( '', $filtered_blocks );
 			// Select a random palette and check against the parent's palette.
 			$palette_index    = array_rand( $color_palettes );
 			$selected_palette = self::transform_palette( $color_palettes[ $palette_index ], $palette_index );
@@ -436,7 +434,9 @@ class SiteGenService {
 				'slug'       => $homepage_slug,
 				'title'      => __( 'Version ', 'wp-module-onboarding' ) . $version_number,
 				'isFavorite' => false,
-				'content'    => $content,
+				'content'    => $data['content'],
+				'header'     => $data['header'],
+				'footer'     => $data['footer'],
 				'color'      => $selected_palette,
 			);
 			++$version_number;
