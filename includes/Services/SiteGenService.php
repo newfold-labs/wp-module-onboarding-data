@@ -425,7 +425,9 @@ class SiteGenService {
 		$version_number      = $last_version_number + 1;
 
 		foreach ( $homepages as $slug => $data ) {
-
+			if ( ! preg_match( '/homepage(\d+)$/', $slug ) ) {
+				continue;
+			}
 			// Select a random palette and check against the parent's palette.
 			$palette_index    = array_rand( $color_palettes );
 			$selected_palette = self::transform_palette( $color_palettes[ $palette_index ], $palette_index );
