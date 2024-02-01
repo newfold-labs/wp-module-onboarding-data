@@ -87,7 +87,7 @@ class ThemeGeneratorService {
 		}
 
 		$generate_screenshot = self::generate_screenshot(
-			$child_theme_data['parent_theme_dir'],
+			$child_theme_data['theme_screenshot_dir'],
 			$child_theme_data['child_theme_dir']
 		);
 		if ( ! $generate_screenshot ) {
@@ -189,19 +189,19 @@ class ThemeGeneratorService {
 		 *
 		 * [TODO] Generate the actual child theme screenshot.
 		 *
-		 * @param string $parent_theme_dir Parent Theme Directory
+		 * @param string $src_dir The Source Directory
 		 * @param string $child_theme_dir Child Theme Directory
 		 *
 		 * @return boolean
 		 */
-	public static function generate_screenshot( $parent_theme_dir, $child_theme_dir ) {
+	public static function generate_screenshot( $src_dir, $child_theme_dir ) {
 		global $wp_filesystem;
 
 		$screenshot_files = array( '/screenshot.png', '/screenshot.jpg' );
 		foreach ( $screenshot_files as $key => $screenshot_file ) {
-			$child_theme_screenshot_file  = $child_theme_dir . $screenshot_file;
-			$parent_theme_screenshot_file = $parent_theme_dir . $screenshot_file;
-			if ( $wp_filesystem->exists( $parent_theme_screenshot_file ) ) {
+			$child_theme_screenshot_file = $child_theme_dir . $screenshot_file;
+			$screenshot_file             = $src_dir . $screenshot_file;
+			if ( $wp_filesystem->exists( $screenshot_file ) ) {
 				break;
 			}
 		}
@@ -211,7 +211,7 @@ class ThemeGeneratorService {
 		}
 
 		return $wp_filesystem->copy(
-			$parent_theme_screenshot_file,
+			$screenshot_file,
 			$child_theme_screenshot_file
 		);
 	}
