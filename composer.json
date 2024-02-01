@@ -23,12 +23,12 @@
     },
     "require": {
         "newfold-labs/wp-module-installer": "^1.1",
-        "newfold-labs/wp-module-patterns": "^0.1.12",
-        "newfold-labs/wp-module-ai": "^1.0.4",
+        "newfold-labs/wp-module-patterns": "^0.1.13",
+        "newfold-labs/wp-module-ai": "^1.1.0",
         "wp-forge/wp-upgrade-handler": "^1.0",
         "mustache/mustache": "^2.14",
-        "newfold-labs/wp-module-data": "^2.4.16",
-        "newfold-labs/wp-module-coming-soon": "^1.1.13"
+        "newfold-labs/wp-module-data": "^2.4.18",
+        "newfold-labs/wp-module-coming-soon": "^1.2.0"
     },
     "require-dev": {
         "newfold-labs/wp-php-standards": "^1.2"
