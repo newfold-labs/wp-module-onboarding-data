@@ -189,7 +189,7 @@ class ThemeGeneratorService {
 		 *
 		 * [TODO] Generate the actual child theme screenshot.
 		 *
-		 * @param string $parent_theme_dir Parent Theme Directory
+		 * @param string $src_dir The Source Directory
 		 * @param string $child_theme_dir Child Theme Directory
 		 *
 		 * @return boolean
