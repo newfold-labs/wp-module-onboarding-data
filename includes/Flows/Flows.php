@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '1.0.3',
+		'version'              => '2.0.0',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -67,8 +67,10 @@ final class Flows {
 
 			// This integer will map to the attachment ID for an uploaded image to the WordPress media library
 			'siteLogo'        => array(
-				'id'  => 0,
-				'url' => '',
+				'id'       => 0,
+				'url'      => '',
+				'fileName' => '',
+				'fileSize' => 0,
 			),
 
 			// key-value store for social media accounts
@@ -110,6 +112,8 @@ final class Flows {
 			'comingSoon'      => false,
 		),
 
+		'activeFlow'           => '',
+
 		// we will store active flows (abandoned wp-setup, abandoned wp-commerce) with their identifier and use as a reference to access currentStep and data
 		'currentFlows'         => array(),
 
@@ -131,6 +135,37 @@ final class Flows {
 				'product_count' => '',
 				'product_types' => array(),
 			),
+		),
+
+		'sitegen'              => array(
+			'siteDetails'           => array(
+				'name'                => '',
+				'type'                => '',
+				'style'               => '',
+				'prompt'              => '',
+				'uniqueAboutBusiness' => '',
+				'mode'                => 'simple',
+			),
+			'siteLogo'              => array(
+				'id'       => 0,
+				'url'      => '',
+				'fileName' => '',
+				'fileSize' => 0,
+			),
+			'experience'            => array(
+				'level' => 0,
+			),
+			'siteGenMetaStatus'     => array(
+				'currentStatus' => 0,
+				'totalCount'    => 8,
+			),
+			'homepages'             => array(
+				'active' => array(),
+				'data'   => array(),
+			),
+			'skipCache'             => true,
+			'sitemapPagesGenerated' => false,
+			'customDesign'          => false,
 		),
 	);
 
@@ -184,6 +219,7 @@ final class Flows {
 		? $current_brand['config']['enabled_flows'] : array(
 			'wp-setup'  => false,
 			'ecommerce' => false,
+			'sitegen'   => false,
 		);
 	}
 
@@ -273,6 +309,25 @@ final class Flows {
 		}
 		return false;
 	}
+
+	/**
+	 * Determines whether SiteGen flow was ever visited.
+	 *
+	 * @return boolean
+	 */
+	public static function is_sitegen() {
+		if ( ! self::get_flows()['sitegen'] ) {
+			return false;
+		}
+
+		$flow_data = FlowService::read_data_from_wp_option();
+		if ( ! $flow_data || empty( $flow_data['activeFlow'] ) ) {
+			return false;
+		}
+
+		return 'sitegen' === $flow_data['activeFlow'];
+	}
+
 	/**
 	 * Get the corresponding flow from the top priority in flow data.
 	 *
