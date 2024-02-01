@@ -799,7 +799,7 @@ class SiteGenService {
 
 		// TODO: Improve error handling to reliably determine if a page has been published or not instead of trying and returning true.
 		foreach ( $sitemap as $index => $page ) {
-			if ( ! isset( $other_pages[ $page['slug'] ] ) || isset( $other_pages[ $page['slug']['error'] ] ) ) {
+			if ( ! isset( $other_pages[ $page['slug'] ] ) || isset( $other_pages[ $page['slug'] ]['error'] ) ) {
 				continue;
 			}
 
