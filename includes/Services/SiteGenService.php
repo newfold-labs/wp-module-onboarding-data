@@ -829,8 +829,24 @@ class SiteGenService {
 	 */
 	public static function generate_theme_screenshots( $screenshots_payload ) {
 
+		global $wp_filesystem;
+		ThemeGeneratorService::connect_to_filesystem();
+
 		foreach ( $screenshots_payload as $key => $image_load ) {
-			// code...
+			if ( ! ( isset( $image_load['key'] ) && isset( $image_load['image'] ) ) ) {
+				continue;
+			}
+
+			// Convert the payload into a image format
+			$imgData = str_replace( ' ', '+', $image_load['image'] );
+			$imgData = substr( $imgData, strpos( $imgData, ',' ) + 1 );
+			$imgData = base64_decode( $imgData );
+
+			// Path where the screenshot is going to be saved
+			$filePath = realpath( __DIR__ . '/../assets/images' ) . '/' . $image_load['key'] . '-screenshot.png';
+
+			// Write the screenshot into the file system
+			ThemeGeneratorService::write_to_filesystem( $filePath, $imgData );
 		}
 
 		return true;
