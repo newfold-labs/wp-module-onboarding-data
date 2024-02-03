@@ -820,4 +820,19 @@ class SiteGenService {
 
 		return true;
 	}
+
+	/**
+	 * Generate and save screenshots into the file system.
+	 *
+	 * @param string $screenshots_payload The palyoad containing images for screenshots.
+	 * @return true
+	 */
+	public static function generate_theme_screenshots( $screenshots_payload ) {
+
+		foreach ( $screenshots_payload as $key => $image_load ) {
+			// code...
+		}
+
+		return true;
+	}
 }
