@@ -198,7 +198,7 @@ class ThemeGeneratorService {
 	public static function generate_screenshot( $src_dir, $child_theme_dir, $child_theme_slug = '' ) {
 		global $wp_filesystem;
 
-		$screenshot_files = array( '/' . $child_theme_slug . '-screenshott', '/screenshot.png', '/screenshot.jpg' );
+		$screenshot_files = array( '/' . $child_theme_slug . '-screenshot.png', '/screenshot.png', '/screenshot.jpg' );
 		foreach ( $screenshot_files as $key => $screenshot_file ) {
 			$extension                   = isset( explode( '.', $screenshot_file )[1] ) ? explode( '.', $screenshot_file )[1] : 'jpg';
 			$child_theme_screenshot_file = $child_theme_dir . '/screenshot.' . $extension;
