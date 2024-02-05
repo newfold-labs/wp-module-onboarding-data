@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '2.0.0',
+		'version'              => '2.0.1',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -166,6 +166,7 @@ final class Flows {
 			'skipCache'             => true,
 			'sitemapPagesGenerated' => false,
 			'customDesign'          => false,
+			'siteGenErrorStatus'    => false,
 		),
 	);
 
