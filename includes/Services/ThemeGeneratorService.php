@@ -188,8 +188,7 @@ class ThemeGeneratorService {
 		/**
 		 * Copy parent's screenshot.png to the child theme directory.
 		 *
-		 * [TODO] Generate the actual child theme screenshot.
-		 *
+		 * @param string $screenshot The screenshot data - base64 encoded.
 		 * @param string $src_dir The Source Directory
 		 * @param string $child_theme_dir Child Theme Directory
 		 *
