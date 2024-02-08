@@ -259,6 +259,7 @@ class SiteGenService {
 			'child_theme_stylesheet_comment' => $child_theme_stylesheet_comment,
 			'part_patterns'                  => $part_patterns,
 			'theme_screenshot_dir'           => realpath( __DIR__ . '/../assets/images' ),
+			'theme_screenshot'               => isset( $data['screenshot'] ) ? $data['screenshot'] : false,
 		);
 
 		$child_theme_written = ThemeGeneratorService::write_child_theme( $child_theme_data );
