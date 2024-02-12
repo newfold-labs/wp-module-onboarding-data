@@ -820,4 +820,152 @@ class SiteGenService {
 
 		return true;
 	}
+
+	/**
+	 * Uploads images to the WordPress media library from a given array of Unsplash image URLs.
+	 * 
+	 * @param array $image_urls An array of Unsplash image URLs to upload.
+	 * @return array An array containing the URLs of the uploaded images in the WordPress media library.
+	 */
+	
+	 public static function upload_images_to_wp_media_library($image_urls) {
+		require_once(ABSPATH . 'wp-admin/includes/file.php');
+		require_once(ABSPATH . 'wp-admin/includes/media.php');
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+	
+		$uploaded_image_urls = array();
+		foreach ($image_urls as $image_url) {
+			if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
+				continue;
+			}
+	
+			// Check for extensions in the image url
+			if (!preg_match('/[^\?]+\.(jpg|jpeg|jpe|png|gif|webp)\b/i', $image_url)) {
+				// If not, append customExtension=true and force .jpg extension
+				$image_url = add_query_arg('customExtension', 'true', $image_url) . '.jpg';
+			}
+	
+			// Download file to temp location
+			$tmp = download_url($image_url);
+			if (is_wp_error($tmp)) {
+				// Handle error, skip to next URL
+				error_log("Error downloading image: " . $tmp->get_error_message());
+				continue;
+			}
+	
+			$file_array = array(
+				'name' => wp_basename($image_url),
+				'tmp_name' => $tmp,
+			);
+	
+			$id = media_handle_sideload($file_array, 0);
+			if (is_wp_error($id)) {
+				//deleting the file not sure how to check this ?
+				@unlink($file_array['tmp_name']);
+				error_log("Error sideloading image: " . $id->get_error_message());
+				continue;
+			}
+	
+			// Get the URL of the uploaded image
+			$url = wp_get_attachment_url($id);
+			if ($url) {
+				$uploaded_image_urls[] = $url;
+			} else {
+				error_log("Error retrieving uploaded image URL for image ID: $id");
+			}
+		}
+	
+		error_log("Uploaded attachment URLs: " . print_r($uploaded_image_urls, true));
+		return $uploaded_image_urls;
+	}
+
+/* 
+	public static function upload_images_to_wp_media_library($image_urls) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+    
+        $uploaded_image_urls = array();
+    
+        foreach ($image_urls as $image_url) {
+            // Check if the URL is valid
+            if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
+                continue;
+            }
+    
+            // Fetch the image via  remote get
+            $response = wp_remote_get($image_url);
+            error_log("Uploaded attachment urls".print_r($response, true));
+            if (is_wp_error($response) || 200 != wp_remote_retrieve_response_code($response)) {
+                continue; // Skip if request failed
+            }
+    
+            $headers = wp_remote_retrieve_headers($response);
+            $contentType = $headers['content-type'] ?? '';
+            $image_data = wp_remote_retrieve_body($response);
+            if (empty($contentType) || empty($image_data)) {
+                continue; // Skip if no content type or image data is present
+            }
+    
+            // Determine the file extension based on MIME type
+            $file_extension = '';
+            switch ($contentType) {
+                case 'image/jpeg':
+                    $file_extension = '.jpg';
+                    break;
+                case 'image/png':
+                    $file_extension = '.png';
+                    break;
+                case 'image/gif':
+                    $file_extension = '.gif';
+                    break;
+                case 'image/webp':
+                    $file_extension = '.webp';
+                    break;
+                default:
+                    // Log or handle unsupported MIME types as needed
+                    error_log('Unsupported MIME type: ' . $contentType);
+                    continue; // Skip files with unsupported MIME types
+            }
+            // create upload directory
+            $upload_dir = wp_upload_dir();
+            
+            // xtract a filename from the URL
+            $parsed_url = parse_url($image_url);
+            $path_parts = pathinfo($parsed_url['path']);
+            //filename to be added in directory
+            $original_filename = $path_parts['filename'] . $file_extension;
+            
+            // Ensure the filename is unique within the upload directory
+            $filename = wp_unique_filename($upload_dir['path'], $original_filename);
+            $filepath = $upload_dir['path'] . '/' . $filename;
+    
+            // Save the image to the uploads directory
+            file_put_contents($filepath, $image_data);
+    
+            // Create an attachment post for the image
+            $attachment = array(
+                'guid'           => $upload_dir['url'] . '/' . $filename, 
+                'post_mime_type' => $contentType,
+                'post_title'     => preg_replace('/\.[^.]+$/', '', basename($filename)),
+                'post_content'   => '',
+                'post_status'    => 'inherit'
+            );
+    
+            $attach_id = wp_insert_attachment($attachment, $filepath);
+    
+            // Generate and assign metadata for the attachment
+            $attach_data = wp_generate_attachment_metadata($attach_id, $filepath);
+            wp_update_attachment_metadata($attach_id, $attach_data);
+    
+            // Add the WordPress attachment URL to the list
+            if ($attach_id) {
+                $uploaded_image_urls[] = wp_get_attachment_url($attach_id);
+            }
+        }
+        error_log("Uploaded attachment urls".print_r($uploaded_image_urls, true));
+        return $uploaded_image_urls;
+    }
+ */
+	
 }
