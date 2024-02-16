@@ -280,9 +280,10 @@ class SiteGenService {
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
+	 * @param array  $site_map Site Map of the page for the homepage title.
 	 * @return array
 	 */
-	public static function generate_homepages( $site_description, $content_style, $target_audience ) {
+	public static function generate_homepages( $site_description, $content_style, $target_audience, $site_map ) {
 
 		$homepages = SiteGen::get_home_pages(
 			$site_description,
@@ -299,7 +300,15 @@ class SiteGenService {
 			);
 		}
 
-		$processed_homepages = self::process_homepages_response( $homepages );
+		$homepage_title = __( 'Version ', 'wp-module-onboarding' );
+		foreach ( $site_map as $data ) {
+			if ( isset( $data['slug'] ) && 'home' === $data['slug'] && isset( $data['title'] ) ) {
+				$homepage_title = $data['title'] . ' ';
+				break;
+			}
+		}
+
+		$processed_homepages = self::process_homepages_response( $homepages, $homepage_title );
 
 		if ( is_wp_error( $processed_homepages ) ) {
 			return $processed_homepages;
@@ -407,11 +416,13 @@ class SiteGenService {
 	/**
 	 * Processes the Homepages response structure for homepages
 	 *
-	 * @param array $homepages array.
+	 * @param array  $homepages array.
+	 * @param string $homepage_title string.
 	 * @return array
 	 */
 	public static function process_homepages_response(
-		$homepages
+		$homepages,
+		$homepage_title
 	) {
 		$processed_homepages = array();
 		// Fetch the color palette data from the options table.
@@ -434,7 +445,7 @@ class SiteGenService {
 			$homepage_slug                         = 'version-' . $version_number;
 			$processed_homepages[ $homepage_slug ] = array(
 				'slug'       => $homepage_slug,
-				'title'      => __( 'Version ', 'wp-module-onboarding' ) . $version_number,
+				'title'      => $homepage_title . $version_number,
 				'isFavorite' => false,
 				'content'    => $data['content'],
 				'header'     => $data['header'],
