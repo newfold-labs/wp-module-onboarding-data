@@ -134,7 +134,18 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
+		// Setting page title from sitemap option
 		$title   = $active_homepage['title'];
+		$sitemap = \get_option( Options::get_option_name( 'nfd-ai-site-gen-sitemap', false ) );
+		if(!empty($sitemap )){
+			foreach ($sitemap as $page) {
+				if ($page['slug'] === 'home') {
+					$title = $page['title'];
+					break;
+				}
+			}
+		}
+
 		$content = $active_homepage['content'];
 		$post_id = SitePagesService::publish_page(
 			$title,

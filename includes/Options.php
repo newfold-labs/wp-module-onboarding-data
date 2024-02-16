@@ -57,6 +57,7 @@ final class Options {
 		'filter_active_plugins'         => 'filter_active_plugins',
 		'sitegen_regenerated_homepages' => 'sitegen_regenerated_homepages',
 		'status'                        => 'status',
+		'nfd-ai-site-gen-sitemap'	=> 'nfd-ai-site-gen-sitemap'
 	);
 
 	/**
