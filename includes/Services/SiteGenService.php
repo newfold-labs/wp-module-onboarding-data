@@ -11,6 +11,8 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
 use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
+use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
+use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
 
 /**
  * Class SiteGenService
@@ -831,6 +833,7 @@ class SiteGenService {
 	 */
 	public static function instantiate_sitegen_hooks() {
 		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
+		\add_action( 'newfold/ai/sitemeta-siteclassification:generated', array( __CLASS__, 'set_site_classification' ), 10, 1 );
 	}
 
 	/**
@@ -851,5 +854,23 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'blog_description', false ), $site_details['tagline'] );
 		}
 		return true;
+	}
+
+	/**
+	 * Sets the site classification options that classify the site.
+	 *
+	 * @param array $site_classification The site classification site meta.
+	 * @return void
+	 */
+	public static function set_site_classification( $site_classification ) {
+		if ( isset( $site_classification['primaryType'] ) ) {
+			$primary_type = new PrimaryType( 'slug', $site_classification['primaryType'] );
+			$primary_type->save();
+		}
+
+		if ( isset( $site_classification['slug'] ) ) {
+			$secondary_type = new SecondaryType( 'slug', $site_classification['slug'] );
+			$secondary_type->save();
+		}
 	}
 }
