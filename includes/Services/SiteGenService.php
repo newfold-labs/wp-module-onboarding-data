@@ -61,6 +61,7 @@ class SiteGenService {
 			'sitemap'               => true,
 			'plugin_recommendation' => true,
 			'font_pair'             => true,
+			'site_config'           => true,
 		);
 	}
 
@@ -839,10 +840,6 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function set_site_title_and_tagline( $site_details ) {
-		// Exit if not Sitegen Flow
-		if ( ! Flows::is_sitegen() ) {
-			return false;
-		}
 
 		// Updates the Site Title
 		if ( ( ! empty( $site_details['site_title'] ) ) ) {
