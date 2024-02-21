@@ -830,7 +830,7 @@ class SiteGenService {
 		$site_info = array( 'site_description' => $prompt );
 		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
 		if ( is_wp_error( $sitemap ) ) {
-			return $sitemap;
+			return array();
 		}
 
 		$dummy_items = array();

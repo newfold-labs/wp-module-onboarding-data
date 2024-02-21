@@ -31,7 +31,7 @@ final class Patterns {
 		);
 
 		$current_flow = Data::current_flow();
-		return isset( $flow_to_dummy_items[ $current_flow ] ) ? $flow_to_dummy_items[ $current_flow ] : $default_items;
+		return ! empty( $flow_to_dummy_items[ $current_flow ] ) ? $flow_to_dummy_items[ $current_flow ] : $default_items;
 	}
 
 	/**
