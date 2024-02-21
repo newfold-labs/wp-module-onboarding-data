@@ -833,4 +833,29 @@ class SiteGenService {
 	public static function trash_sample_page() {
 		return SitePagesService::delete_page_by_name( 'sample-page' );
 	}
+
+	 /* Get the dummy navigation menu items for the Sitegen previews.
+	 *
+	 * @return array
+	 */
+	public static function get_dummy_navigation_menu_items() {
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+		if ( is_wp_error( $sitemap ) ) {
+			return array();
+		}
+
+		$dummy_items = array();
+		foreach ( $sitemap as $page ) {
+			if ( ! isset( $page['title'] ) ) {
+				continue;
+			}
+
+			array_push( $dummy_items, $page['title'] );
+
+		}
+
+		return $dummy_items;
+	}
 }
