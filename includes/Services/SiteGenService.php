@@ -875,9 +875,9 @@ class SiteGenService {
 	}
 
 	 /** Get the dummy navigation menu items for the Sitegen previews.
-	 *
-	 * @return array
-	 */
+	  *
+	  * @return array
+	  */
 	public static function get_dummy_navigation_menu_items() {
 		$prompt    = self::get_prompt();
 		$site_info = array( 'site_description' => $prompt );
