@@ -33,4 +33,32 @@ class SitePagesService {
 
 		return \wp_insert_post( $post );
 	}
+
+	/**
+	 * Deletes a page by its name.
+	 *
+	 * @param string  $page_name The kebab-cased name for the page.
+	 * @param boolean $trash Defines whether to trash or delete a page.
+	 * @return boolean
+	 */
+	public static function delete_page_by_name( $page_name, $trash = true ) {
+		$items = new \WP_Query(
+			array(
+				'pagename'    => $page_name,
+				'post_status' => 'publish',
+			)
+		);
+
+		$pages = $items->posts;
+
+		if ( ! $pages || empty( $pages ) ) {
+			return false;
+		}
+
+		foreach ( $pages as $page ) {
+			wp_delete_post( $page->ID, ! $trash );
+		}
+
+		return true;
+	}
 }

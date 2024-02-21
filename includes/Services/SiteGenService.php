@@ -14,6 +14,8 @@ use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassificat
 use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
 use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
 
+use function NewfoldLabs\WP\ModuleLoader\container;
+
 /**
  * Class SiteGenService
  *
@@ -165,6 +167,9 @@ class SiteGenService {
 		}
 
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
+
+		self::trash_sample_page();
+		container()->get( 'cachePurger' )->purgeAll();
 
 		return true;
 	}
@@ -826,11 +831,21 @@ class SiteGenService {
 	}
 
 	/**
-	 * Adding action hooks that trigger the AI Module generates site meta.
-	 * This needs to be added before the do_action is triggered from AI Module
+	 * Trash the "Sample Page" generated for all new sites.
 	 *
-	 * @return void
+	 * @return boolean
 	 */
+	public static function trash_sample_page() {
+		return SitePagesService::delete_page_by_name( 'sample-page' );
+	}
+
+	 /**
+	  * Get the dummy navigation menu items for the Sitegen previews.
+	  * Adding action hooks that trigger the AI Module generates site meta.
+	  * This needs to be added before the do_action is triggered from AI Module
+	  *
+	  * @return void
+	  */
 	public static function instantiate_sitegen_hooks() {
 		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
 		\add_action( 'newfold/ai/sitemeta-siteclassification:generated', array( __CLASS__, 'set_site_classification' ), 10, 1 );
