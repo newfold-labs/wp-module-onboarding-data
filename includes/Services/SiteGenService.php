@@ -11,6 +11,8 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
 use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
 
+use function NewfoldLabs\WP\ModuleLoader\container;
+
 /**
  * Class SiteGenService
  *
@@ -160,6 +162,9 @@ class SiteGenService {
 		}
 
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
+
+		self::trash_sample_page();
+		container()->get( 'cachePurger' )->purgeAll();
 
 		return true;
 	}
@@ -818,5 +823,14 @@ class SiteGenService {
 		self::set_sitemap_pages_generated( true );
 
 		return true;
+	}
+
+	/**
+	 * Trash the "Sample Page" generated for all new sites.
+	 *
+	 * @return boolean
+	 */
+	public static function trash_sample_page() {
+		return SitePagesService::delete_page_by_name( 'sample-page' );
 	}
 }
