@@ -140,13 +140,12 @@ class SiteGenService {
 		$site_info = array( 'site_description' => $prompt );
 		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
 
-		if ( is_wp_error( $sitemap ) ) {
-			return false;
-		}
-		foreach ( $sitemap as $page ) {
-			if ( 'home' === $page['slug'] ) {
-				$title = $page['title'];
-				break;
+		if ( ! is_wp_error( $sitemap ) ) {
+			foreach ( $sitemap as $page ) {
+				if ( 'home' === $page['slug'] ) {
+					$title = $page['title'];
+					break;
+				}
 			}
 		}
 
