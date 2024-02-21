@@ -669,11 +669,12 @@ class SiteGenService {
 		}
 
 		foreach ( $homepages as $index => $data ) {
-			array_push(
+			array_unshift(
 				$value,
 				array(
 					'id'          => $data['slug'],
 					'slug'        => $data['slug'],
+					'title'       => $data['slug'],
 					'description' => $data['slug'],
 					'content'     => $data['content'],
 					'categories'  => array( 'home', 'featured' ),
