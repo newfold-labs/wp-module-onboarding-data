@@ -823,6 +823,16 @@ class SiteGenService {
 	}
 
 	/**
+	 * Adding action hooks that trigger the AI Module generates site meta.
+	 * This needs to be added before the do_action is triggered from AI Module
+	 *
+	 * @return void
+	 */
+	public static function instantiate_sitegen_hooks() {
+		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
+	}
+
+	/**
 	 * Sets the Title and Tagline for the site.
 	 *
 	 * @param array $site_details The Site title and site tagline.
