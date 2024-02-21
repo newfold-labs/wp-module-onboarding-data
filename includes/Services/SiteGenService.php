@@ -33,6 +33,7 @@ class SiteGenService {
 		'sitemap'               => 'sitemap',
 		'plugin_recommendation' => 'pluginrecommendation',
 		'font_pair'             => 'fontpair',
+		'site_config'           => 'siteconfig',
 	);
 
 	/**
@@ -834,8 +835,8 @@ class SiteGenService {
 		}
 
 		// Updates the Site Title
-		if ( ( ! empty( $site_details['title'] ) ) ) {
-			\update_option( Options::get_option_name( 'blog_name', false ), $site_details['title'] );
+		if ( ( ! empty( $site_details['site_title'] ) ) ) {
+			\update_option( Options::get_option_name( 'blog_name', false ), $site_details['site_title'] );
 		}
 
 		// Updates the Site Desc (Tagline)
