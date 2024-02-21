@@ -834,7 +834,8 @@ class SiteGenService {
 		return SitePagesService::delete_page_by_name( 'sample-page' );
 	}
 
-	 /* Get the dummy navigation menu items for the Sitegen previews.
+	 /*
+	  Get the dummy navigation menu items for the Sitegen previews.
 	 *
 	 * @return array
 	 */
