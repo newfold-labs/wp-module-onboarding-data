@@ -841,11 +841,11 @@ class SiteGenService {
 
 	 /**
 	  * Get the dummy navigation menu items for the Sitegen previews.
-	 * Adding action hooks that trigger the AI Module generates site meta.
-	 * This needs to be added before the do_action is triggered from AI Module
-	 *
-	 * @return void
-	 */
+	  * Adding action hooks that trigger the AI Module generates site meta.
+	  * This needs to be added before the do_action is triggered from AI Module
+	  *
+	  * @return void
+	  */
 	public static function instantiate_sitegen_hooks() {
 		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
 		\add_action( 'newfold/ai/sitemeta-siteclassification:generated', array( __CLASS__, 'set_site_classification' ), 10, 1 );
