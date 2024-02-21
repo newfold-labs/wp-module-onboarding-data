@@ -136,13 +136,15 @@ class SiteGenService {
 
 		// Setting page title from sitemap option
 		$title   = $active_homepage['title'];
-		$sitemap = \get_option( Options::get_option_name( 'nfd-ai-site-gen-sitemap', false ) );
-		if(!empty($sitemap )){
-			foreach ($sitemap as $page) {
-				if ($page['slug'] === 'home') {
-					$title = $page['title'];
-					break;
-				}
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+		if ( is_wp_error( $sitemap ) ) {
+			return false;
+		}
+		
+		foreach ($sitemap as $page) {
+			if ($page['slug'] === 'home') {
+				$title = $page['title'];
+				break;
 			}
 		}
 
