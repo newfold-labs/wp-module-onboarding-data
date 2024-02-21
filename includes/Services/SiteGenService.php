@@ -27,6 +27,7 @@ class SiteGenService {
 	 * @var array
 	 */
 	private static $identifiers = array(
+		'site_config'           => 'siteconfig',
 		'site_classification'   => 'siteclassification',
 		'target_audience'       => 'targetaudience',
 		'content_tones'         => 'contenttones',
@@ -35,7 +36,6 @@ class SiteGenService {
 		'sitemap'               => 'sitemap',
 		'plugin_recommendation' => 'pluginrecommendation',
 		'font_pair'             => 'fontpair',
-		'site_config'           => 'siteconfig',
 	);
 
 	/**
@@ -55,6 +55,7 @@ class SiteGenService {
 	 */
 	public static function enabled_identifiers() {
 		return array(
+			'site_config'           => true,
 			'site_classification'   => true,
 			'target_audience'       => true,
 			'content_tones'         => true,
@@ -63,7 +64,6 @@ class SiteGenService {
 			'sitemap'               => true,
 			'plugin_recommendation' => true,
 			'font_pair'             => true,
-			'site_config'           => true,
 		);
 	}
 
@@ -97,7 +97,7 @@ class SiteGenService {
 	 * @param string|Object $site_info The prompt that configures the Site gen object.
 	 * @param string        $identifier The identifier for Generating Site Meta.
 	 * @param boolean       $skip_cache To override the cache and fetch the data.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
 		if ( ! self::is_identifier( $identifier ) ) {
