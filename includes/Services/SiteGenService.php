@@ -5,6 +5,7 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data\Services;
 use NewfoldLabs\WP\Module\AI\SiteGen\SiteGen;
 use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
+use NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows;
 use NewfoldLabs\WP\Module\Onboarding\Data\Mustache\Mustache;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
@@ -817,6 +818,30 @@ class SiteGenService {
 
 		self::set_sitemap_pages_generated( true );
 
+		return true;
+	}
+
+	/**
+	 * Sets the Title and Tagline for the site.
+	 *
+	 * @param array $site_details The Site title and site tagline.
+	 * @return boolean
+	 */
+	public static function set_site_title_and_tagline( $site_details ) {
+		// Exit if not Sitegen Flow
+		if ( ! Flows::is_sitegen() ) {
+			return false;
+		}
+
+		// Updates the Site Title
+		if ( ( ! empty( $site_details['title'] ) ) ) {
+			\update_option( Options::get_option_name( 'blog_name', false ), $site_details['title'] );
+		}
+
+		// Updates the Site Desc (Tagline)
+		if ( ( ! empty( $site_details['tagline'] ) ) ) {
+			\update_option( Options::get_option_name( 'blog_description', false ), $site_details['tagline'] );
+		}
 		return true;
 	}
 }
