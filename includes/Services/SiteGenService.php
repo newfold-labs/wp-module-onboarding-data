@@ -141,7 +141,21 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		$title   = $active_homepage['title'];
+		// Setting page title from sitemap option
+		$title     = $active_homepage['title'];
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+
+		if ( ! is_wp_error( $sitemap ) ) {
+			foreach ( $sitemap as $page ) {
+				if ( 'home' === $page['slug'] ) {
+					$title = $page['title'];
+					break;
+				}
+			}
+		}
+
 		$content = $active_homepage['content'];
 		$post_id = SitePagesService::publish_page(
 			$title,
