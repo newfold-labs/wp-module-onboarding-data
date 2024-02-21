@@ -1,6 +1,7 @@
 <?php
 namespace NewfoldLabs\WP\Module\Onboarding\Data;
 
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\SiteGenService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\WonderBlocksService;
 
 /**
@@ -13,8 +14,8 @@ final class Patterns {
 	 *
 	 * @return array
 	 */
-	public static function get_dummy_menu_items() {
-		return array(
+	public static function get_dummy_navigation_menu_items() {
+		$default_items = array(
 			__( 'Home', 'wp-module-onboarding' ),
 			__( 'About', 'wp-module-onboarding' ),
 			__( 'Contact', 'wp-module-onboarding' ),
@@ -22,6 +23,15 @@ final class Patterns {
 			__( 'Privacy', 'wp-module-onboarding' ),
 			__( 'Careers', 'wp-module-onboarding' ),
 		);
+
+		$flow_to_dummy_items = array(
+			'sitegen'   => SiteGenService::get_dummy_navigation_menu_items(),
+			'wp-setup'  => $default_items,
+			'ecommerce' => $default_items,
+		);
+
+		$current_flow = Data::current_flow();
+		return ! empty( $flow_to_dummy_items[ $current_flow ] ) ? $flow_to_dummy_items[ $current_flow ] : $default_items;
 	}
 
 	/**
@@ -357,7 +367,7 @@ final class Patterns {
 		$dummy_menu_grammar      = '';
 		$menu_navigation_grammar = '<!-- wp:navigation-link {"isTopLevelLink":true} /-->';
 
-		foreach ( self::get_dummy_menu_items() as $item ) {
+		foreach ( self::get_dummy_navigation_menu_items() as $item ) {
 			$dummy_menu_grammar = '<!-- wp:navigation-link {
 				"isTopLevelLink":true, 
 				"label":"' . strtolower( $item ) . '", 
