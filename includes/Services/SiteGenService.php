@@ -135,14 +135,16 @@ class SiteGenService {
 		}
 
 		// Setting page title from sitemap option
-		$title   = $active_homepage['title'];
+		$title     = $active_homepage['title'];
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
 		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+
 		if ( is_wp_error( $sitemap ) ) {
 			return false;
 		}
-		
-		foreach ($sitemap as $page) {
-			if ($page['slug'] === 'home') {
+		foreach ( $sitemap as $page ) {
+			if ( 'home' === $page['slug'] ) {
 				$title = $page['title'];
 				break;
 			}
