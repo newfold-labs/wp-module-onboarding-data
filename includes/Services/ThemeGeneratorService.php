@@ -87,6 +87,7 @@ class ThemeGeneratorService {
 		}
 
 		$generate_screenshot = self::generate_screenshot(
+			$child_theme_data['theme_screenshot'],
 			$child_theme_data['theme_screenshot_dir'],
 			$child_theme_data['child_theme_dir']
 		);
@@ -187,17 +188,21 @@ class ThemeGeneratorService {
 		/**
 		 * Copy parent's screenshot.png to the child theme directory.
 		 *
-		 * [TODO] Generate the actual child theme screenshot.
-		 *
+		 * @param string $screenshot The screenshot data - base64 encoded.
 		 * @param string $src_dir The Source Directory
 		 * @param string $child_theme_dir Child Theme Directory
 		 *
 		 * @return boolean
 		 */
-	public static function generate_screenshot( $src_dir, $child_theme_dir ) {
+	public static function generate_screenshot( $screenshot, $src_dir, $child_theme_dir ) {
 		global $wp_filesystem;
 
 		$screenshot_files = array( '/screenshot.png', '/screenshot.jpg' );
+		if ( $screenshot ) {
+			$screenshot                  = base64_decode( $screenshot );
+			$child_theme_screenshot_file = $child_theme_dir . '/screenshot.png';
+			return self::write_to_filesystem( $child_theme_screenshot_file, $screenshot );
+		}
 		foreach ( $screenshot_files as $key => $screenshot_file ) {
 			$child_theme_screenshot_file = $child_theme_dir . $screenshot_file;
 			$screenshot_file             = $src_dir . $screenshot_file;
