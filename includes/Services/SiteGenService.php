@@ -5,7 +5,6 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data\Services;
 use NewfoldLabs\WP\Module\AI\SiteGen\SiteGen;
 use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
-use NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows;
 use NewfoldLabs\WP\Module\Onboarding\Data\Mustache\Mustache;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
@@ -165,6 +164,23 @@ class SiteGenService {
 				'nf_dc_page' => 'home',
 			)
 		);
+
+		$nav_link_grammar = self::get_nav_link_grammar_from_post_data( $post_id, $title, get_permalink( $post_id ) );
+		$navigation       = new \WP_Query(
+			array(
+				'name'      => 'navigation',
+				'post_type' => 'wp_navigation',
+			)
+		);
+
+		if ( ! empty( $navigation->posts ) ) {
+			wp_update_post(
+				array(
+					'ID'           => $navigation->posts[0]->ID,
+					'post_content' => $nav_link_grammar . $navigation->posts[0]->post_content,
+				)
+			);
+		}
 
 		if ( is_wp_error( $post_id ) ) {
 			return $post_id;
@@ -808,13 +824,14 @@ class SiteGenService {
 	/**
 	 * Generate and publish the sitemap pages.
 	 *
-	 * @param string $site_description The description of the site (prompt).
-	 * @param array  $content_style The type of content style.
-	 * @param array  $target_audience The target audience meta.
-	 * @param array  $sitemap The list of site pages and their keywords.
-	 * @return true
+	 * @param string  $site_description The description of the site (prompt).
+	 * @param array   $content_style The type of content style.
+	 * @param array   $target_audience The target audience meta.
+	 * @param array   $sitemap The list of site pages and their keywords.
+	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
+	 * @return array
 	 */
-	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap ) {
+	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $update_nav_menu = true ) {
 		$other_pages = SiteGen::get_pages(
 			$site_description,
 			$content_style,
@@ -823,6 +840,8 @@ class SiteGenService {
 			false
 		);
 
+		$navigation_links_grammar = '';
+
 		// TODO: Improve error handling to reliably determine if a page has been published or not instead of trying and returning true.
 		foreach ( $sitemap as $index => $page ) {
 			if ( ! isset( $other_pages[ $page['slug'] ] ) || isset( $other_pages[ $page['slug'] ]['error'] ) ) {
@@ -830,7 +849,7 @@ class SiteGenService {
 			}
 
 			$page_content = $other_pages[ $page['slug'] ];
-			SitePagesService::publish_page(
+			$post_id      = SitePagesService::publish_page(
 				$page['title'],
 				$page_content,
 				true,
@@ -838,6 +857,28 @@ class SiteGenService {
 					'nf_dc_page' => $page['slug'],
 				)
 			);
+
+			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
+				$navigation_links_grammar .= self::get_nav_link_grammar_from_post_data( $post_id, $page['title'], get_permalink( $post_id ) );
+			}
+		}
+
+		if ( $update_nav_menu ) {
+			$navigation = new \WP_Query(
+				array(
+					'name'      => 'navigation',
+					'post_type' => 'wp_navigation',
+				)
+			);
+
+			if ( ! empty( $navigation->posts ) ) {
+				wp_update_post(
+					array(
+						'ID'           => $navigation->posts[0]->ID,
+						'post_content' => $navigation_links_grammar,
+					)
+				);
+			}
 		}
 
 		self::set_sitemap_pages_generated( true );
@@ -854,13 +895,13 @@ class SiteGenService {
 		return SitePagesService::delete_page_by_name( 'sample-page' );
 	}
 
-	 /**
-	  * Get the dummy navigation menu items for the Sitegen previews.
-	  * Adding action hooks that trigger the AI Module generates site meta.
-	  * This needs to be added before the do_action is triggered from AI Module
-	  *
-	  * @return void
-	  */
+	/**
+	 * Get the dummy navigation menu items for the Sitegen previews.
+	 * Adding action hooks that trigger the AI Module generates site meta.
+	 * This needs to be added before the do_action is triggered from AI Module
+	 *
+	 * @return void
+	 */
 	public static function instantiate_sitegen_hooks() {
 		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
 		\add_action( 'newfold/ai/sitemeta-siteclassification:generated', array( __CLASS__, 'set_site_classification' ), 10, 1 );
@@ -904,10 +945,11 @@ class SiteGenService {
 		}
 	}
 
-	 /** Get the dummy navigation menu items for the Sitegen previews.
-	  *
-	  * @return array
-	  */
+	/**
+	 * Get the dummy navigation menu items for the Sitegen previews.
+	 *
+	 * @return array
+	 */
 	public static function get_dummy_navigation_menu_items() {
 		$prompt    = self::get_prompt();
 		$site_info = array( 'site_description' => $prompt );
@@ -927,5 +969,24 @@ class SiteGenService {
 		}
 
 		return $dummy_items;
+	}
+
+	/**
+	 * Returns the wp:navigation-link grammar for a given post.
+	 *
+	 * @param integer $id The Post ID.
+	 * @param string  $name The name of the post to display on the menu.
+	 * @param string  $url The permalink of the post.
+	 * @return string|false
+	 */
+	public static function get_nav_link_grammar_from_post_data( $id, $name, $url ) {
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', true );
+		if ( is_wp_error( $sitemap ) ) {
+			return false;
+		}
+
+		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
 	}
 }
