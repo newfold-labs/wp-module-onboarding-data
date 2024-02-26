@@ -5,11 +5,16 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data\Services;
 use NewfoldLabs\WP\Module\AI\SiteGen\SiteGen;
 use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
+use NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows;
 use NewfoldLabs\WP\Module\Onboarding\Data\Mustache\Mustache;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Colors;
 use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
 use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
+use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
+use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
+
+use function NewfoldLabs\WP\ModuleLoader\container;
 
 /**
  * Class SiteGenService
@@ -24,6 +29,7 @@ class SiteGenService {
 	 * @var array
 	 */
 	private static $identifiers = array(
+		'site_config'           => 'siteconfig',
 		'site_classification'   => 'siteclassification',
 		'target_audience'       => 'targetaudience',
 		'content_tones'         => 'contenttones',
@@ -51,6 +57,7 @@ class SiteGenService {
 	 */
 	public static function enabled_identifiers() {
 		return array(
+			'site_config'           => true,
 			'site_classification'   => true,
 			'target_audience'       => true,
 			'content_tones'         => true,
@@ -92,7 +99,7 @@ class SiteGenService {
 	 * @param string|Object $site_info The prompt that configures the Site gen object.
 	 * @param string        $identifier The identifier for Generating Site Meta.
 	 * @param boolean       $skip_cache To override the cache and fetch the data.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
 		if ( ! self::is_identifier( $identifier ) ) {
@@ -134,7 +141,21 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		$title   = $active_homepage['title'];
+		// Setting page title from sitemap option
+		$title     = $active_homepage['title'];
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+
+		if ( ! is_wp_error( $sitemap ) ) {
+			foreach ( $sitemap as $page ) {
+				if ( 'home' === $page['slug'] ) {
+					$title = $page['title'];
+					break;
+				}
+			}
+		}
+
 		$content = $active_homepage['content'];
 		$post_id = SitePagesService::publish_page(
 			$title,
@@ -160,6 +181,9 @@ class SiteGenService {
 		}
 
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
+
+		self::trash_sample_page();
+		container()->get( 'cachePurger' )->purgeAll();
 
 		return true;
 	}
@@ -669,11 +693,12 @@ class SiteGenService {
 		}
 
 		foreach ( $homepages as $index => $data ) {
-			array_push(
+			array_unshift(
 				$value,
 				array(
 					'id'          => $data['slug'],
 					'slug'        => $data['slug'],
+					'title'       => $data['slug'],
 					'description' => $data['slug'],
 					'content'     => $data['content'],
 					'categories'  => array( 'home', 'featured' ),
@@ -818,5 +843,89 @@ class SiteGenService {
 		self::set_sitemap_pages_generated( true );
 
 		return true;
+	}
+
+	/**
+	 * Trash the "Sample Page" generated for all new sites.
+	 *
+	 * @return boolean
+	 */
+	public static function trash_sample_page() {
+		return SitePagesService::delete_page_by_name( 'sample-page' );
+	}
+
+	 /**
+	  * Get the dummy navigation menu items for the Sitegen previews.
+	  * Adding action hooks that trigger the AI Module generates site meta.
+	  * This needs to be added before the do_action is triggered from AI Module
+	  *
+	  * @return void
+	  */
+	public static function instantiate_sitegen_hooks() {
+		\add_action( 'newfold/ai/sitemeta-siteconfig:generated', array( __CLASS__, 'set_site_title_and_tagline' ), 10, 1 );
+		\add_action( 'newfold/ai/sitemeta-siteclassification:generated', array( __CLASS__, 'set_site_classification' ), 10, 1 );
+	}
+
+	/**
+	 * Sets the Title and Tagline for the site.
+	 *
+	 * @param array $site_details The Site title and site tagline.
+	 * @return boolean
+	 */
+	public static function set_site_title_and_tagline( $site_details ) {
+
+		// Updates the Site Title
+		if ( ( ! empty( $site_details['site_title'] ) ) ) {
+			\update_option( Options::get_option_name( 'blog_name', false ), $site_details['site_title'] );
+		}
+
+		// Updates the Site Desc (Tagline)
+		if ( ( ! empty( $site_details['tagline'] ) ) ) {
+			\update_option( Options::get_option_name( 'blog_description', false ), $site_details['tagline'] );
+		}
+		return true;
+	}
+
+	/**
+	 * Sets the site classification options that classify the site.
+	 *
+	 * @param array $site_classification The site classification site meta.
+	 * @return void
+	 */
+	public static function set_site_classification( $site_classification ) {
+		if ( isset( $site_classification['primaryType'] ) ) {
+			$primary_type = new PrimaryType( 'slug', $site_classification['primaryType'] );
+			$primary_type->save();
+		}
+
+		if ( isset( $site_classification['slug'] ) ) {
+			$secondary_type = new SecondaryType( 'slug', $site_classification['slug'] );
+			$secondary_type->save();
+		}
+	}
+
+	 /** Get the dummy navigation menu items for the Sitegen previews.
+	  *
+	  * @return array
+	  */
+	public static function get_dummy_navigation_menu_items() {
+		$prompt    = self::get_prompt();
+		$site_info = array( 'site_description' => $prompt );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+		if ( is_wp_error( $sitemap ) ) {
+			return array();
+		}
+
+		$dummy_items = array();
+		foreach ( $sitemap as $page ) {
+			if ( ! isset( $page['title'] ) ) {
+				continue;
+			}
+
+			array_push( $dummy_items, $page['title'] );
+
+		}
+
+		return $dummy_items;
 	}
 }
