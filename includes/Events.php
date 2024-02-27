@@ -42,6 +42,17 @@ final class Events {
 		'tagline_set'                 => true,
 		'site_title_set'              => true,
 		'social_added'                => true,
+		'fork_option_selected'        => true,
+		'site_details_prompt_set'     => true,
+		'social_connected'            => true,
+		'homepage_selected'           => true,
+		'homepage_regenerated'        => true,
+		'homepage_favorited'          => true,
+		'homepage_renamed'            => true,
+		'sidebar_opened'              => true,
+		'social_connect_skipped'      => true,
+		'logo_skipped'                => true,
+		'site_generation_time'        => true,
 	);
 
 	/**
