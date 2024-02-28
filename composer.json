@@ -24,7 +24,7 @@
     "require": {
         "newfold-labs/wp-module-installer": "^1.1",
         "newfold-labs/wp-module-patterns": "^0.1.14",
-        "newfold-labs/wp-module-ai": "^1.1.4",
+        "newfold-labs/wp-module-ai": "^1.1.5",
         "wp-forge/wp-upgrade-handler": "^1.0",
         "mustache/mustache": "^2.14",
         "newfold-labs/wp-module-data": "^2.4.18",
