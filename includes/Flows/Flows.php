@@ -69,8 +69,6 @@ final class Flows {
 			'siteLogo'        => array(
 				'id'       => 0,
 				'url'      => '',
-				'fileName' => '',
-				'fileSize' => 0,
 			),
 
 			// key-value store for social media accounts
