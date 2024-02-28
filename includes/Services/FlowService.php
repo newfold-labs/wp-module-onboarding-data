@@ -163,12 +163,15 @@ class FlowService {
 			\update_option( Options::get_option_name( 'blog_description', false ), $data['data']['blogDescription'] );
 		}
 
-		if ( ( ! empty( $data['data']['siteLogo'] ) ) && ! empty( $data['data']['siteLogo']['id'] ) ) {
-				\update_option( Options::get_option_name( 'site_icon', false ), $data['data']['siteLogo']['id'] );
-				\update_option( Options::get_option_name( 'site_logo', false ), $data['data']['siteLogo']['id'] );
+		if ( ( 'sitegen' === Data::current_flow() && ! empty( $data['sitegen']['siteLogo'] ) ) && ! empty( $data['sitegen']['siteLogo']['id'] ) ) {
+			update_option( Options::get_option_name( 'site_icon', false ), $data['sitegen']['siteLogo']['id'] );
+			update_option( Options::get_option_name( 'site_logo', false ), $data['sitegen']['siteLogo']['id'] );
+		} elseif ( ( ! empty( $data['data']['siteLogo'] ) ) && ! empty( $data['data']['siteLogo']['id'] ) ) {
+			update_option( Options::get_option_name( 'site_icon', false ), $data['data']['siteLogo']['id'] );
+			update_option( Options::get_option_name( 'site_logo', false ), $data['data']['siteLogo']['id'] );
 		} else {
-			\update_option( Options::get_option_name( 'site_icon', false ), 0 );
-			\delete_option( Options::get_option_name( 'site_logo', false ) );
+			update_option( Options::get_option_name( 'site_icon', false ), 0 );
+			delete_option( Options::get_option_name( 'site_logo', false ) );
 		}
 
 		// Add the version key to the $data before updating to options data.

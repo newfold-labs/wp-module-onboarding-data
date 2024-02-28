@@ -16,7 +16,7 @@ final class Flows {
 	 * @var array
 	 */
 	protected static $data = array(
-		'version'              => '2.0.1',
+		'version'              => '2.0.2',
 
 		// Each time step is viewed, insert GMT timestamp to array.
 		'isViewed'             => array(),
@@ -69,8 +69,6 @@ final class Flows {
 			'siteLogo'        => array(
 				'id'       => 0,
 				'url'      => '',
-				'fileName' => '',
-				'fileSize' => 0,
 			),
 
 			// key-value store for social media accounts
@@ -157,7 +155,7 @@ final class Flows {
 			),
 			'siteGenMetaStatus'     => array(
 				'currentStatus' => 0,
-				'totalCount'    => 8,
+				'totalCount'    => 9,
 			),
 			'homepages'             => array(
 				'active' => array(),
@@ -168,6 +166,8 @@ final class Flows {
 			'customDesign'          => false,
 			'siteGenErrorStatus'    => false,
 		),
+
+		'continueWithoutAi'      => false,
 	);
 
 	/**
