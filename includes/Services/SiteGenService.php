@@ -134,7 +134,7 @@ class SiteGenService {
 	 */
 	public static function complete( $active_homepage, $homepage_data ) {
 		self::sideload_and_replace( $active_homepage );
-		/* $show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
+		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
 		// Check if default homepage is posts.
 		if ( 'posts' === $show_pages_on_front ) {
@@ -200,7 +200,7 @@ class SiteGenService {
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
 		self::trash_sample_page();
-		container()->get( 'cachePurger' )->purgeAll(); */
+		container()->get( 'cachePurger' )->purgeAll();
 
 		return true;
 	}
