@@ -155,7 +155,7 @@ final class Flows {
 			),
 			'siteGenMetaStatus'     => array(
 				'currentStatus' => 0,
-				'totalCount'    => 8,
+				'totalCount'    => 9,
 			),
 			'homepages'             => array(
 				'active' => array(),
