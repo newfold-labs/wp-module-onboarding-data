@@ -480,6 +480,7 @@ class SiteGenService {
 				'header'     => $data['header'],
 				'footer'     => $data['footer'],
 				'color'      => $selected_palette,
+				'generatedImages' => $data['generatedImages'],
 			);
 			++$version_number;
 		}
@@ -971,64 +972,6 @@ class SiteGenService {
 		return $dummy_items;
 	}
 
-	/**	 
-	* Uploads images to the WordPress media library from a given array of Unsplash image URLs.
-	 * 
-	 * @param array $image_urls An array of Unsplash image URLs to upload.
-	 * @return array An array containing the URLs of the uploaded images in the WordPress media library.
-	 */
-	
-	 public static function upload_images_to_wp_media_library($image_urls) {
-		require_once(ABSPATH . 'wp-admin/includes/file.php');
-		require_once(ABSPATH . 'wp-admin/includes/media.php');
-		require_once(ABSPATH . 'wp-admin/includes/image.php');
-	
-		$uploaded_image_urls = array();
-		foreach ($image_urls as $image_url) {
-			if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
-				continue;
-			}
-	
-			// Check for extensions in the image url
-			if (!preg_match('/[^\?]+\.(jpg|jpeg|jpe|png|gif|webp)\b/i', $image_url)) {
-				// If not, append customExtension=true and force .jpg extension
-				$image_url = add_query_arg('customExtension', 'true', $image_url) . '.jpg';
-			}
-	
-			// Download file to temp location
-			$tmp = download_url($image_url);
-			if (is_wp_error($tmp)) {
-				// Handle error, skip to next URL
-				error_log("Error downloading image: " . $tmp->get_error_message());
-				continue;
-			}
-	
-			$file_array = array(
-				'name' => wp_basename($image_url),
-				'tmp_name' => $tmp,
-			);
-	
-			$id = media_handle_sideload($file_array, 0);
-			if (is_wp_error($id)) {
-				//deleting the file not sure how to check this ?
-				@unlink($file_array['tmp_name']);
-				error_log("Error sideloading image: " . $id->get_error_message());
-				continue;
-			}
-	
-			// Get the URL of the uploaded image
-			$url = wp_get_attachment_url($id);
-			if ($url) {
-				$uploaded_image_urls[] = $url;
-			} else {
-				error_log("Error retrieving uploaded image URL for image ID: $id");
-			}
-		}
-	
-		error_log("Uploaded attachment URLs: " . print_r($uploaded_image_urls, true));
-		return $uploaded_image_urls;
-	}
-
 	/**
 	 * Returns the wp:navigation-link grammar for a given post.
 	 *
@@ -1048,92 +991,89 @@ class SiteGenService {
 		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
 	}
 
-/* 
 	public static function upload_images_to_wp_media_library($image_urls) {
-        require_once(ABSPATH . 'wp-admin/includes/file.php');
-        require_once(ABSPATH . 'wp-admin/includes/media.php');
-        require_once(ABSPATH . 'wp-admin/includes/image.php');
-    
-        $uploaded_image_urls = array();
-    
-        foreach ($image_urls as $image_url) {
-            // Check if the URL is valid
-            if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
-                continue;
-            }
-    
-            // Fetch the image via  remote get
-            $response = wp_remote_get($image_url);
-            error_log("Uploaded attachment urls".print_r($response, true));
-            if (is_wp_error($response) || 200 != wp_remote_retrieve_response_code($response)) {
-                continue; // Skip if request failed
-            }
-    
-            $headers = wp_remote_retrieve_headers($response);
-            $contentType = $headers['content-type'] ?? '';
-            $image_data = wp_remote_retrieve_body($response);
-            if (empty($contentType) || empty($image_data)) {
-                continue; // Skip if no content type or image data is present
-            }
-    
-            // Determine the file extension based on MIME type
-            $file_extension = '';
-            switch ($contentType) {
-                case 'image/jpeg':
-                    $file_extension = '.jpg';
-                    break;
-                case 'image/png':
-                    $file_extension = '.png';
-                    break;
-                case 'image/gif':
-                    $file_extension = '.gif';
-                    break;
-                case 'image/webp':
-                    $file_extension = '.webp';
-                    break;
-                default:
-                    // Log or handle unsupported MIME types as needed
-                    error_log('Unsupported MIME type: ' . $contentType);
-                    continue; // Skip files with unsupported MIME types
-            }
-            // create upload directory
-            $upload_dir = wp_upload_dir();
-            
-            // xtract a filename from the URL
-            $parsed_url = parse_url($image_url);
-            $path_parts = pathinfo($parsed_url['path']);
-            //filename to be added in directory
-            $original_filename = $path_parts['filename'] . $file_extension;
-            
-            // Ensure the filename is unique within the upload directory
-            $filename = wp_unique_filename($upload_dir['path'], $original_filename);
-            $filepath = $upload_dir['path'] . '/' . $filename;
-    
-            // Save the image to the uploads directory
-            file_put_contents($filepath, $image_data);
-    
-            // Create an attachment post for the image
-            $attachment = array(
-                'guid'           => $upload_dir['url'] . '/' . $filename, 
-                'post_mime_type' => $contentType,
-                'post_title'     => preg_replace('/\.[^.]+$/', '', basename($filename)),
-                'post_content'   => '',
-                'post_status'    => 'inherit'
-            );
-    
-            $attach_id = wp_insert_attachment($attachment, $filepath);
-    
-            // Generate and assign metadata for the attachment
-            $attach_data = wp_generate_attachment_metadata($attach_id, $filepath);
-            wp_update_attachment_metadata($attach_id, $attach_data);
-    
-            // Add the WordPress attachment URL to the list
-            if ($attach_id) {
-                $uploaded_image_urls[] = wp_get_attachment_url($attach_id);
-            }
-        }
-        error_log("Uploaded attachment urls".print_r($uploaded_image_urls, true));
-        return $uploaded_image_urls;
-    }
- */
+		require_once(ABSPATH . 'wp-admin/includes/media.php');
+		require_once(ABSPATH . 'wp-admin/includes/file.php');
+		require_once(ABSPATH . 'wp-admin/includes/image.php');
+	
+		$uploaded_image_urls = array();
+	
+		foreach ($image_urls as $image_url) {
+			// Check if the URL is valid
+			if (!filter_var($image_url, FILTER_VALIDATE_URL)) {
+				continue;
+			}
+	
+			// Sideload image without attaching it to any post
+			// The $post_id parameter is set to 0, indicating no post attachment
+			$sideloaded_image_id = media_sideload_image($image_url, 0, null, 'id');
+	
+			// Check for errors
+			if (is_wp_error($sideloaded_image_id)) {
+				error_log("Error sideloading image: " . $sideloaded_image_id->get_error_message());
+				continue;
+			}
+	
+			// Get the URL of the uploaded image
+			$image_url = wp_get_attachment_url($sideloaded_image_id);
+			if ($image_url) {
+				$uploaded_image_urls[] = $image_url;
+			} else {
+				error_log("Error retrieving uploaded image URL for image ID: $sideloaded_image_id");
+			}
+		}
+	
+		error_log("Uploaded attachment URLs: " . print_r($uploaded_image_urls, true));
+		return $uploaded_image_urls;
+	}
+	
+
+	public static function sideload_and_replace($active_homepage){
+		$generatedDalleImage = "https://dalleprodsec.blob.core.windows.net/private/images/2673265f-0883-4a17-a64a-13b93f2cda7f/generated_00.png?se=2024-02-29T03%3A58%3A38Z&sig=5HqW9fGGNf5w49XxK6BUM9AdHckJqY%2Bl5mcipFDQVPM%3D&ske=2024-03-06T00%3A37%3A15Z&skoid=e52d5ed7-0657-4f62-bc12-7e5dbb260a96&sks=b&skt=2024-02-28T00%3A37%3A15Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02&w=800&h=800&crop=";	
+	
+		// Append the new image URL to the 'generatedImages' array
+		if (isset($active_homepage['generatedImages']) && is_array($active_homepage['generatedImages'])) {
+			$active_homepage['generatedImages'][] = $generatedDalleImage;
+		} else {
+			$active_homepage['generatedImages'] = array($generatedDalleImage); // In case 'generatedImages' is not set or not an array
+		}
+		/* 
+		steps : 1) upload the images in wordpress media library
+			2) make a mapping of generatedImages to the images in wordpress media library
+			3) find the generatedImages urls in the block grammar
+			4) replace them with the uploaded iamge urls
+			5) update the contents in blockgrammar
+			5) update the homepages in flow
+		*/
+		error_log("Sideload images called:".print_r($active_homepage,true));
+
+		$generatedImages = $active_homepage['generatedImages']; 
+		// Now upload the images in the 'generatedImages' array to WordPress media library
+		$uploaded_image_urls = SiteGenService::upload_images_to_wp_media_library($generatedImages);
+
+		$urlMapping = array_combine($generatedImages, $uploaded_image_urls);
+
+		 $content = $active_homepage['content'];
+		 foreach ($urlMapping as $oldUrl => $newUrl) {
+			 // escaping any special characters in the old URL to avoid breaking the regex
+			 $escapedOldUrl = preg_quote($oldUrl, '/');
+			 $content = preg_replace("/src=\"$escapedOldUrl\"/", "src=\"$newUrl\"", $content);
+		 }
+	 
+		 // Update the content with new image URLs
+		 $active_homepage['content'] = $content;
+	 
+		 error_log("Content after image sideload:".print_r($active_homepage['content'], true));
+		 
+		$data = FlowService::read_data_from_wp_option( false );
+		if ( ! isset( $data['sitegen']['homepages']['active'] ) ) {
+			return false;
+		}
+
+		$data['sitegen']['homepages']['active'] = $active_homepage;
+		FlowService::update_data_in_wp_option( $data );
+
+		
+		// return $active_homepage;
+	}
 }
