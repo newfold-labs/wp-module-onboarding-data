@@ -1044,16 +1044,15 @@ class SiteGenService {
     
             // Fetch the image via  remote get
             $response = wp_remote_get($image_url);
-            error_log("Uploaded response urls".print_r($response, true));
             if (is_wp_error($response) || 200 != wp_remote_retrieve_response_code($response)) {
-                continue; // Skip if request failed
+                continue; 
             }
     
             $headers = wp_remote_retrieve_headers($response);
             $contentType = $headers['content-type'] ?? '';
             $image_data = wp_remote_retrieve_body($response);
             if (empty($contentType) || empty($image_data)) {
-                continue; // Skip if no content type or image data is present
+                continue; 
             }
     
             // Determine the file extension based on MIME type
@@ -1072,9 +1071,8 @@ class SiteGenService {
                     $file_extension = '.webp';
                     break;
                 default:
-                    // Log or handle unsupported MIME types as needed
                     error_log('Unsupported MIME type: ' . $contentType);
-                    continue; // Skip files with unsupported MIME types
+                    continue; 
             }
             // create upload directory
             $upload_dir = wp_upload_dir();
@@ -1113,20 +1111,34 @@ class SiteGenService {
             }
         }
         error_log("Uploaded attachment urls".print_r($uploaded_image_urls, true));
-        return $uploaded_image_urls;
+		return $uploaded_image_urls;
+
+		/* $home_url = home_url();
+
+		$relative_image_urls = array();
+
+		foreach ($uploaded_image_urls as $full_url) {
+			// Remove the domain part from the full URL
+			$relative_url = str_replace($home_url, '', $full_url);
+			$relative_image_urls[] = $relative_url;
+		}
+
+		error_log("Uploaded relative attachment urls".print_r($relative_image_urls, true));
+		return $relative_image_urls; */
     }
 
 	
 
 	public static function sideload_and_replace($active_homepage){
-		$generatedDalleImage = ["https://dalleprodsec.blob.core.windows.net/private/images/9837a6ea-ec66-470e-b527-762ee62bef2e/generated_00.png?se=2024-02-29T13%3A18%3A38Z&sig=pwmLmfLDGlcyPa9EGaCB%2FaMZGH1JFC2W59BKybaG3LQ%3D&ske=2024-03-06T05%3A49%3A17Z&skoid=e52d5ed7-0657-4f62-bc12-7e5dbb260a96&sks=b&skt=2024-02-28T05%3A49%3A17Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02&w=1000&h=&crop=",];	
+		/* // $generatedDalleImage = ["https://dalleprodsec.blob.core.windows.net/private/images/9837a6ea-ec66-470e-b527-762ee62bef2e/generated_00.png?se=2024-02-29T13%3A18%3A38Z&sig=pwmLmfLDGlcyPa9EGaCB%2FaMZGH1JFC2W59BKybaG3LQ%3D&ske=2024-03-06T05%3A49%3A17Z&skoid=e52d5ed7-0657-4f62-bc12-7e5dbb260a96&sks=b&skt=2024-02-28T05%3A49%3A17Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02&w=1000&h=&crop=",];	
+		$generatedDalleImage = ["https://dalleprodsec.blob.core.windows.net/private/images/0ace3576-cf7e-48f4-b069-33437e2874d2/generated_00.png?se=2024-03-01T08%3A57%3A08Z&sig=LHvXV%2Fp1QGzn0lxtUks0Q%2BcwAovZrOSOIA2rJZrfUjA%3D&ske=2024-03-07T07%3A58%3A28Z&skoid=e52d5ed7-0657-4f62-bc12-7e5dbb260a96&sks=b&skt=2024-02-29T07%3A58%3A28Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02&w=300&h=300&crop="];
 	
 		// Append the new image URL to the 'generatedImages' array
 		if (isset($active_homepage['generatedImages']) && is_array($active_homepage['generatedImages'])) {
 			$active_homepage['generatedImages'] = $generatedDalleImage;
 		} else {
 			$active_homepage['generatedImages'] = array($generatedDalleImage); // In case 'generatedImages' is not set or not an array
-		}
+		} */
 		/* 
 		steps : 1) upload the images in wordpress media library
 			2) make a mapping of generatedImages to the images in wordpress media library
@@ -1136,8 +1148,14 @@ class SiteGenService {
 			5) update the homepages in flow
 		*/
 
+		if (isset($active_homepage['generatedImages']) && is_array($active_homepage['generatedImages'])) {
+			$generatedImages = $active_homepage['generatedImages'];
+		} else {
+			return;
+		}
+
 		$generatedImages = $active_homepage['generatedImages']; 
-		error_log("Sideload images called:".print_r($generatedImages,true));
+		error_log("IMAGE FROM ACTIVE HOMEPAGE:".print_r($generatedImages,true));
 		// Now upload the images in the 'generatedImages' array to WordPress media library
 		$uploaded_image_urls = SiteGenService::upload_images_to_wp_media_library($generatedImages);
 		error_log("uploaded image urls:".print_r($uploaded_image_urls, true));
@@ -1148,13 +1166,22 @@ class SiteGenService {
 		 foreach ($urlMapping as $oldUrl => $newUrl) {
 			 // escaping any special characters in the old URL to avoid breaking the regex
 			 $escapedOldUrl = preg_quote($oldUrl, '/');
-			 $content = preg_replace("/src=\"$escapedOldUrl\"/", "src=\"$newUrl\"", $content);
+			 error_log("escaped old url:".print_r($escapedOldUrl, true));
+/* 			 $escapedOldUrlregex = '/'.$escapedOldUrl.'.*?"/m';
+			 $content = preg_replace($escapedOldUrlregex, $newUrl.'"',  $content); */
+			
+			 $escapedOldUrlRegexDoubleQuote = '/"' . $escapedOldUrl . '.*?"/m';
+			 $content = preg_replace($escapedOldUrlRegexDoubleQuote, '"'. $newUrl . '"', $content);
+		 
+			 $escapedOldUrlRegexParenthesis = '/\(' . $escapedOldUrl . '.*?\)/m';
+			 $content = preg_replace($escapedOldUrlRegexParenthesis, '('. $newUrl . ')', $content);
+
+			// $content = preg_replace("/src=\"$escapedOldUrl\"/", "src=\"$newUrl\"", $content);
+			//  $content = str_replace($oldUrl, $newUrl, $content);
 		 }
 	 
 		 // Update the content with new image URLs
 		 $active_homepage['content'] = $content;
-	 
-		 error_log("Content after image sideload:".print_r($active_homepage['content'], true));
 		 
 		$data = FlowService::read_data_from_wp_option( false );
 		if ( ! isset( $data['sitegen']['homepages']['active'] ) ) {
@@ -1164,8 +1191,6 @@ class SiteGenService {
 		$data['sitegen']['homepages']['active'] = $active_homepage;
 		
 		foreach ($data['sitegen']['homepages']['data'] as $homepagesData => &$homepageData) {
-			error_log("homepageData['slug'] slug:".print_r($homepageData['slug'], true));
-			error_log("active_homepage['slug']:".print_r($active_homepage['slug'], true));
 			if ($homepageData['slug'] === $active_homepage['slug']) {
 				$homepageData = $active_homepage; // Update the version with the changes
 				break; // Stop the loop after updating the matching version
