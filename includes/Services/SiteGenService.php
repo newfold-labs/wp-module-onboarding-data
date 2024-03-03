@@ -1111,14 +1111,12 @@ class SiteGenService {
 	 */
 	public static function sideload_and_replace( $active_homepage ) {
 
-		if ( isset( $active_homepage['generatedImages'] ) && is_array( $active_homepage['generatedImages'] ) ) {
-			$generated_images = $active_homepage['generatedImages'];
-		} else {
+		if ( !isset( $active_homepage['generatedImages'] ) || !is_array( $active_homepage['generatedImages'] ) ) {
 			return;
-		}
+		} 
 
 		// Upload the images in the 'generatedImages' array to WordPress media library.
-		$uploaded_image_urls = self::upload_images_to_wp_media_library( $generated_images );
+		$uploaded_image_urls = self::upload_images_to_wp_media_library( $active_homepage['generatedImages'] );
 
 		$url_mapping = array_combine( $generated_images, $uploaded_image_urls );
 
