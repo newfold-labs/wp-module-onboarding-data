@@ -134,7 +134,7 @@ class SiteGenService {
 	 */
 	public static function complete( $active_homepage, $homepage_data ) {
 		/* Replace dalle images */
-		self::sideload_and_replace( $active_homepage );
+		self::sideload_images_and_replace_grammar( $active_homepage );
 
 		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
@@ -1010,7 +1010,7 @@ class SiteGenService {
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
-		$uploaded_image_urls = array();
+		$uploaded_image_urls = array_fill_keys( $image_urls, null );
 		try {
 			foreach ( $image_urls as $image_url ) {
 				// Check if the URL is valid.
@@ -1109,11 +1109,11 @@ class SiteGenService {
 	 *
 	 * @param array $active_homepage The active homepage data, including block grammar and image URLs.
 	 */
-	public static function sideload_and_replace( $active_homepage ) {
+	public static function sideload_images_and_replace_grammar( $active_homepage ) {
 
-		if ( !isset( $active_homepage['generatedImages'] ) || !is_array( $active_homepage['generatedImages'] ) ) {
+		if ( ! isset( $active_homepage['generatedImages'] ) || ! is_array( $active_homepage['generatedImages'] ) ) {
 			return;
-		} 
+		}
 
 		// Upload the images in the 'generatedImages' array to WordPress media library.
 		$uploaded_image_urls = self::upload_images_to_wp_media_library( $active_homepage['generatedImages'] );
@@ -1122,6 +1122,9 @@ class SiteGenService {
 
 		$content = $active_homepage['content'];
 		foreach ( $url_mapping as $old_url => $new_url ) {
+			if ( null === $new_url ) {
+				continue;
+			}
 			// escaping any special characters in the old URL to avoid breaking the regex.
 			$escaped_old_url = preg_quote( $old_url, '/' );
 
