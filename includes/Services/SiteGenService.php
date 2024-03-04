@@ -133,6 +133,10 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function complete( $active_homepage, $homepage_data ) {
+		/* Replace dalle images */
+
+		$active_homepage['content'] = self::sideload_images_and_replace_grammar( $active_homepage['content'], $active_homepage['generatedImages'] );
+
 		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
 		// Check if default homepage is posts.
@@ -140,7 +144,7 @@ class SiteGenService {
 			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
 		}
 
-		// Setting page title from sitemap option
+		// Setting page title from sitemap option.
 		$title     = $active_homepage['title'];
 		$prompt    = self::get_prompt();
 		$site_info = array( 'site_description' => $prompt );
@@ -194,7 +198,11 @@ class SiteGenService {
 			if ( $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
 				self::generate_child_theme( $data );
 			}
+			if ( $data['slug'] === $active_homepage['slug'] ) {
+				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
+			}
 		}
+		self::sync_flow_data( $homepage_data );
 
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
@@ -473,13 +481,14 @@ class SiteGenService {
 
 			$homepage_slug                         = 'version-' . $version_number;
 			$processed_homepages[ $homepage_slug ] = array(
-				'slug'       => $homepage_slug,
-				'title'      => __( 'Version ', 'wp-module-onboarding' ) . $version_number,
-				'isFavorite' => false,
-				'content'    => $data['content'],
-				'header'     => $data['header'],
-				'footer'     => $data['footer'],
-				'color'      => $selected_palette,
+				'slug'            => $homepage_slug,
+				'title'           => __( 'Version ', 'wp-module-onboarding' ) . $version_number,
+				'isFavorite'      => false,
+				'content'         => $data['content'],
+				'header'          => $data['header'],
+				'footer'          => $data['footer'],
+				'color'           => $selected_palette,
+				'generatedImages' => $data['generatedImages'],
 			);
 			++$version_number;
 		}
@@ -915,12 +924,12 @@ class SiteGenService {
 	 */
 	public static function set_site_title_and_tagline( $site_details ) {
 
-		// Updates the Site Title
+		// Updates the Site Title.
 		if ( ( ! empty( $site_details['site_title'] ) ) ) {
 			\update_option( Options::get_option_name( 'blog_name', false ), $site_details['site_title'] );
 		}
 
-		// Updates the Site Desc (Tagline)
+		// Updates the Site Desc (Tagline).
 		if ( ( ! empty( $site_details['tagline'] ) ) ) {
 			\update_option( Options::get_option_name( 'blog_description', false ), $site_details['tagline'] );
 		}
@@ -988,5 +997,161 @@ class SiteGenService {
 		}
 
 		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
+	}
+
+	/**
+	 * Uploads images to the WordPress media library as attachments.
+	 *
+	 * This function takes an array of image URLs, downloads them, and
+	 * uploads them to the WordPress media library, returning the URLs
+	 * of the newly uploaded images.
+	 *
+	 * @param array $image_urls An array of image URLs to upload.
+	 * @return array|false An array of WordPress attachment URLs on success, false on failure.
+	 * @throws Exception If there is an error during the upload process.
+	 */
+	public static function upload_images_to_wp_media_library( $image_urls ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		$uploaded_image_urls = array();
+		try {
+			foreach ( $image_urls as $image_url ) {
+				// Check if the URL is valid.
+				if ( ! filter_var( $image_url, FILTER_VALIDATE_URL ) ) {
+					continue;
+				}
+
+				// Fetch the image via  remote get.
+				$response = wp_remote_get( $image_url );
+				if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+					continue;
+				}
+
+				// Reading the headers from the image url to determine.
+				$headers      = wp_remote_retrieve_headers( $response );
+				$content_type = $headers['content-type'] ?? '';
+				$image_data   = wp_remote_retrieve_body( $response );
+				if ( empty( $content_type ) || empty( $image_data ) ) {
+					continue;
+				}
+
+				// Determine the file extension based on MIME type.
+				$file_extension = '';
+				switch ( $content_type ) {
+					case 'image/jpeg':
+						$file_extension = '.jpg';
+						break;
+					case 'image/png':
+						$file_extension = '.png';
+						break;
+					case 'image/gif':
+						$file_extension = '.gif';
+						break;
+					case 'image/webp':
+						$file_extension = '.webp';
+						break;
+					default:
+						error_log( 'Unsupported MIME type: ' . $content_type );
+						continue;
+				}
+				// create upload directory.
+				$upload_dir = wp_upload_dir();
+
+				// xtract a filename from the URL.
+				$parsed_url = parse_url( $image_url );
+				$path_parts = pathinfo( $parsed_url['path'] );
+				// filename to be added in directory.
+				$original_filename = $path_parts['filename'] . $file_extension;
+
+				// to ensure the filename is unique within the upload directory.
+				$filename = wp_unique_filename( $upload_dir['path'], $original_filename );
+				$filepath = $upload_dir['path'] . '/' . $filename;
+
+				// Saving the image to the uploads directory.
+				file_put_contents( $filepath, $image_data );
+
+				// Create an attachment post for the image, metadata needed for WordPress media library.
+				// guid -for url, post_title for cleaned up name, post content is empty as this is an attachment.
+				// post_status inherit is for visibility.
+				$attachment = array(
+					'guid'           => $upload_dir['url'] . '/' . $filename,
+					'post_mime_type' => $content_type,
+					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+					'post_content'   => '',
+					'post_status'    => 'inherit',
+				);
+
+				$attach_id = wp_insert_attachment( $attachment, $filepath );
+
+				// Generate and assign metadata for the attachment..
+				$attach_data = wp_generate_attachment_metadata( $attach_id, $filepath );
+				wp_update_attachment_metadata( $attach_id, $attach_data );
+
+				// Add the WordPress attachment URL to the list..
+				if ( $attach_id ) {
+					$attachment_url = wp_get_attachment_url( $attach_id );
+					if ( ! $attachment_url ) {
+						error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
+						$attachment_url = null;
+					}
+					$uploaded_image_urls[ $image_url ] = $attachment_url;
+				}
+			}
+		} catch ( Exception $e ) {
+			error_log( $e->getMessage() );
+		}
+
+		return $uploaded_image_urls;
+	}
+
+	/**
+	 * Replace the uploaded images in the block grammar.
+	 *
+	 * This function takes a block of content and an array of new image URLs, uploads the images
+	 * to the WordPress media library, and then replaces the old image URLs in the content
+	 * with the new ones.
+	 *
+	 * @param array $content The block grammar containing the old image URLs.
+	 * @param array $generated_image_urls An array of new image URLs to replace the old ones in the content.
+	 */
+	public static function sideload_images_and_replace_grammar( $content, $generated_image_urls ) {
+
+		if ( ! isset( $generated_image_urls ) || ! is_array( $generated_image_urls ) ) {
+			return;
+		}
+		// Upload the images in the 'generatedImages' array to WordPress media library.
+		$url_mapping = self::upload_images_to_wp_media_library( $generated_image_urls );
+
+		foreach ( $url_mapping as $old_url => $new_url ) {
+			if ( null === $new_url ) {
+				continue;
+			}
+			// escaping any special characters in the old URL to avoid breaking the regex.
+			$escaped_old_url = preg_quote( $old_url, '/' );
+
+			$escaped_old_url_regex_double_quote = '/"' . $escaped_old_url . '.*?"/m';
+			$content                            = preg_replace( $escaped_old_url_regex_double_quote, '"' . $new_url . '"', $content );
+
+			$escaped_old_url_regex_parenthesis = '/\(' . $escaped_old_url . '.*?\)/m';
+			$content                           = preg_replace( $escaped_old_url_regex_parenthesis, '(' . $new_url . ')', $content );
+		}
+
+		// Update the content with new image URLs.
+		return $content;
+	}
+
+	/**
+	 * Syncs flow data with new updates.
+	 *
+	 * This function is responsible for updating the flow data with new home page data changes.
+	 *
+	 * @param array $updated_data The new data to be integrated into the existing flow data.
+	 */
+	public static function sync_flow_data( $updated_data ) {
+		$data                                 = FlowService::read_data_from_wp_option( false );
+		$data['sitegen']['homepages']['data'] = $updated_data;
+		FlowService::update_data_in_wp_option( $data );
 	}
 }
