@@ -134,7 +134,8 @@ class SiteGenService {
 	 */
 	public static function complete( $active_homepage, $homepage_data ) {
 		/* Replace dalle images */
-		self::sideload_images_and_replace_grammar( $active_homepage );
+
+		$active_homepage['content'] = self::sideload_images_and_replace_grammar( $active_homepage['content'], $active_homepage['generatedImages'] );
 
 		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
 
@@ -197,7 +198,11 @@ class SiteGenService {
 			if ( $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
 				self::generate_child_theme( $data );
 			}
+			if ( $data['slug'] === $active_homepage['slug'] ) {
+				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
+			}
 		}
+		self::sync_flow_data( $homepage_data );
 
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
@@ -1104,23 +1109,22 @@ class SiteGenService {
 	/**
 	 * Replace the uploaded images in the block grammar.
 	 *
-	 * This function takes the active homepage array, processes it to
-	 * replace old image URLs with new ones based on some criteria or
-	 * operations performed within the function.
+	 * This function takes a block of content and an array of new image URLs, uploads the images
+	 * to the WordPress media library, and then replaces the old image URLs in the content
+	 * with the new ones.
 	 *
-	 * @param array $active_homepage The active homepage data, including block grammar and image URLs.
+	 * @param array $content The block grammar containing the old image URLs.
+	 * @param array $generated_image_urls An array of new image URLs to replace the old ones in the content.
 	 */
-	public static function sideload_images_and_replace_grammar( $active_homepage ) {
+	public static function sideload_images_and_replace_grammar( $content, $generated_image_urls ) {
 
-		if ( ! isset( $active_homepage['generatedImages'] ) || ! is_array( $active_homepage['generatedImages'] ) ) {
+		if ( ! isset( $generated_image_urls ) || ! is_array( $generated_image_urls ) ) {
 			return;
 		}
-
 		// Upload the images in the 'generatedImages' array to WordPress media library.
-		$uploaded_image_urls = self::upload_images_to_wp_media_library( $active_homepage['generatedImages'] );
-		$url_mapping         = array_combine( $active_homepage['generatedImages'], $uploaded_image_urls );
+		$uploaded_image_urls = self::upload_images_to_wp_media_library( $generated_image_urls );
+		$url_mapping         = array_combine( $generated_image_urls, $uploaded_image_urls );
 
-		$content = $active_homepage['content'];
 		foreach ( $url_mapping as $old_url => $new_url ) {
 			if ( null === $new_url ) {
 				continue;
@@ -1136,21 +1140,19 @@ class SiteGenService {
 		}
 
 		// Update the content with new image URLs.
-		$active_homepage['content'] = $content;
+		return $content;
+	}
 
-		$data = FlowService::read_data_from_wp_option( false );
-		if ( ! isset( $data['sitegen']['homepages']['active'] ) ) {
-			return false;
-		}
-
-		$data['sitegen']['homepages']['active'] = $active_homepage;
-
-		foreach ( $data['sitegen']['homepages']['data'] as $homepages_data => &$homepage_data ) {
-			if ( $homepage_data['slug'] === $active_homepage['slug'] ) {
-				$homepage_data = $active_homepage;
-				break;
-			}
-		}
+	/**
+	 * Syncs flow data with new updates.
+	 *
+	 * This function is responsible for updating the flow data with new home page data changes.
+	 *
+	 * @param array $updated_data The new data to be integrated into the existing flow data.
+	 */
+	public static function sync_flow_data( $updated_data ) {
+		$data                                 = FlowService::read_data_from_wp_option( false );
+		$data['sitegen']['homepages']['data'] = $updated_data;
 		FlowService::update_data_in_wp_option( $data );
 	}
 }
