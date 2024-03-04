@@ -1096,7 +1096,7 @@ class SiteGenService {
 						error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
 						$attachment_url = null;
 					}
-					$uploaded_image_urls[] = $attachment_url;
+					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
 		} catch ( Exception $e ) {
@@ -1122,8 +1122,7 @@ class SiteGenService {
 			return;
 		}
 		// Upload the images in the 'generatedImages' array to WordPress media library.
-		$uploaded_image_urls = self::upload_images_to_wp_media_library( $generated_image_urls );
-		$url_mapping         = array_combine( $generated_image_urls, $uploaded_image_urls );
+		$url_mapping = self::upload_images_to_wp_media_library( $generated_image_urls );
 
 		foreach ( $url_mapping as $old_url => $new_url ) {
 			if ( null === $new_url ) {
