@@ -1088,7 +1088,7 @@ class SiteGenService {
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
-						error_log('Failed to retrieve attachment URL for attachment ID: ' . $attach_id);
+						error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
 						$attachment_url = null;
 					}
 					$uploaded_image_urls[] = $attachment_url;
@@ -1118,7 +1118,7 @@ class SiteGenService {
 
 		// Upload the images in the 'generatedImages' array to WordPress media library.
 		$uploaded_image_urls = self::upload_images_to_wp_media_library( $active_homepage['generatedImages'] );
-		$url_mapping = array_combine( $active_homepage['generatedImages'], $uploaded_image_urls );
+		$url_mapping         = array_combine( $active_homepage['generatedImages'], $uploaded_image_urls );
 
 		$content = $active_homepage['content'];
 		foreach ( $url_mapping as $old_url => $new_url ) {
