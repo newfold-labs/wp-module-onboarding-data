@@ -117,7 +117,7 @@ class SiteGenService {
 			// Handle the error case by returning a WP_Error.
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Error generating site meta: ', 'wp-module-onboarding' ) . $identifier,
+				__( 'Error generating site meta: ', 'wp-module-onboarding' ) . $identifier . ' ' . $response['error'],
 				array( 'status' => 400 )
 			);
 		}
