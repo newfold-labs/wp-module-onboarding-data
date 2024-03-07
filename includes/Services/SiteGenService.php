@@ -1054,7 +1054,6 @@ class SiteGenService {
 						break;
 					default:
 						error_log( 'Unsupported MIME type: ' . $content_type );
-						continue;
 				}
 				// create upload directory.
 				$upload_dir = wp_upload_dir();
