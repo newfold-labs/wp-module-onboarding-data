@@ -9,6 +9,19 @@ use function NewfoldLabs\WP\ModuleLoader\container;
  * List of Plugin Slugs/URLs/Domains
  */
 final class Plugins {
+
+	/**
+	 * Hiive flags to install and activate specific plugins
+	 *
+	 * @var array
+	 */
+	public static function get_hiive_plugin_flags() {
+		return array(
+			'hasEcomdash'     => true,
+			'hasYithExtended' => true,
+		);
+	}
+
 	/**
 	 * Initial plugins to be installed classified based on the hosting plan.
 	 * Key 'default' contains a list of default plugins to be installed irrespective of the plan.
@@ -210,7 +223,7 @@ final class Plugins {
 	 *
 	 * @var array
 	 */
-	protected static $init_list_extended = array(
+	public static $hiive_flag_plugin_list = array(
 		'hasEcomdash'     => array(
 			array(
 				'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
