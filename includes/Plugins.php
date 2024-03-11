@@ -206,6 +206,53 @@ final class Plugins {
 	);
 
 	/**
+	 * Initial plugins to be installed based on the capabilities set by Hiive
+	 *
+	 * @var array
+	 */
+	protected static $init_list_extended = array(
+		'hasEcomdash'     => array(
+			array(
+				'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+				'activate' => true,
+				'priority' => 20,
+			),
+		),
+		'hasYithExtended' => array(
+			array(
+				'slug'     => 'nfd_slug_yith_woocommerce_booking',
+				'activate' => false,
+				'priority' => 260,
+			),
+			array(
+				'slug'     => 'yith-woocommerce-ajax-search',
+				'activate' => false,
+				'priority' => 260,
+			),
+			array(
+				'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+				'activate' => false,
+				'priority' => 260,
+			),
+			array(
+				'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+				'activate' => false,
+				'priority' => 260,
+			),
+			array(
+				'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+				'activate' => false,
+				'priority' => 260,
+			),
+			array(
+				'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+				'activate' => false,
+				'priority' => 266,
+			),
+		),
+	);
+
+	/**
 	 * Get the list of initial plugins to be installed for a particular hosting plan.
 	 *
 	 * @return array
