@@ -25,9 +25,9 @@ final class Patterns {
 		);
 
 		$current_flow = Data::current_flow();
-		if ( 'sitegen' === $current_flow && SiteGenService::is_enabled() ) {
+		if ( 'sitegen' === $current_flow ) {
 			$sitegen_dummy_navigation_menu_items = SiteGenService::get_dummy_navigation_menu_items();
-			if ( ! empty( $sitegen_dummy_navigation_menu_item ) ) {
+			if ( ! empty( $sitegen_dummy_navigation_menu_items ) ) {
 				return $sitegen_dummy_navigation_menu_items;
 			}
 		}
