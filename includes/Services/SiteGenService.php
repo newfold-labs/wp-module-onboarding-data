@@ -1068,10 +1068,24 @@ class SiteGenService {
 				// to ensure the filename is unique within the upload directory.
 				$filename = wp_unique_filename( $upload_dir['path'], $original_filename );
 				$filepath = $upload_dir['path'] . '/' . $filename;
+				
+				// Create an image resource
+				$image_data = imagecreatefromstring($image_data);
+
+				if ($image_data === false) {
+					error_log('Failed to create image resource.');
+					die('Failed to create image resource.');
+				}
+
+				ob_start(); // Start capturing the output buffer.
+				imagepng($image_data, NULL, 9); // Output the image with compression.
+				$compressed_image_data = ob_get_contents(); // Get the contents of the buffer.
+				ob_end_clean(); // End and clean the buffer.
 
 				// Saving the image to the uploads directory.
-				file_put_contents( $filepath, $image_data );
+				file_put_contents( $filepath, $compressed_image_data );
 
+				imagedestroy($image_data);
 				// Create an attachment post for the image, metadata needed for WordPress media library.
 				// guid -for url, post_title for cleaned up name, post content is empty as this is an attachment.
 				// post_status inherit is for visibility.
@@ -1082,7 +1096,6 @@ class SiteGenService {
 					'post_content'   => '',
 					'post_status'    => 'inherit',
 				);
-
 				$attach_id = wp_insert_attachment( $attachment, $filepath );
 
 				// Generate and assign metadata for the attachment..
