@@ -1000,6 +1000,59 @@ class SiteGenService {
 	}
 
 	/**
+	 * Compresses an image based on its MIME type.
+	 *
+	 * This function takes raw image data and its MIME type as input, and
+	 * returns the compressed image data. 
+	 *
+	 * @param string $image_data The raw data of the image to be compressed.
+	 * @param string $mime_type The MIME type of the image (e.g., 'image/jpeg', 'image/png').
+	 * 
+	 * @return string|false Returns the compressed image data as a string if successful or false.
+	 */
+	public static function compress_image($image_data, $mime_type) {
+		/* steps : 1. Create an image resource from string, check type, apply gd functions to reduce size based on quality
+		save output buffer content and return it, clean output buffer and destry created iamge */ 
+
+		$image = imagecreatefromstring($image_data);
+		if ($image === false) {
+			error_log('Failed to create image resource.');
+			return false;
+		}
+	
+		ob_start(); 
+	
+		switch ($mime_type) {
+			case 'image/jpeg':
+				// 75 is the quality it is not lossless
+				imagejpeg($image, NULL, 75); 
+				break;
+			case 'image/png':
+				// it can go from 0 to 9, it is lossless 
+				imagepng($image, NULL, 9); 
+				break;
+			case 'image/gif':
+				// Compress GIF
+				imagegif($image, NULL); 
+				break;
+			case 'image/webp':
+				// same as jpeg
+				imagewebp($image, NULL, 75);
+				break;
+			default:
+				error_log('Unsupported MIME type: ' . $mime_type);
+				imagedestroy($image);
+				return false;
+		}
+	
+		$compressed_image_data = ob_get_contents(); 
+		ob_end_clean(); 
+		imagedestroy($image);
+	
+		return $compressed_image_data;
+	}
+	
+	/**
 	 * Uploads images to the WordPress media library as attachments.
 	 *
 	 * This function takes an array of image URLs, downloads them, and
@@ -1069,23 +1122,16 @@ class SiteGenService {
 				$filename = wp_unique_filename( $upload_dir['path'], $original_filename );
 				$filepath = $upload_dir['path'] . '/' . $filename;
 				
-				// Create an image resource
-				$image_data = imagecreatefromstring($image_data);
+				/* Compressing the image to reduce size */
+				$compressed_image_data = self::compress_image($image_data, $content_type);
 
-				if ($image_data === false) {
-					error_log('Failed to create image resource.');
-					die('Failed to create image resource.');
+				if ($compressed_image_data !== false) {
+					file_put_contents($filepath, $compressed_image_data);
+				} else {
+					error_log("Image compression failed using as is");
+					file_put_contents($filepath, $image_data);
 				}
 
-				ob_start(); // Start capturing the output buffer.
-				imagepng($image_data, NULL, 9); // Output the image with compression.
-				$compressed_image_data = ob_get_contents(); // Get the contents of the buffer.
-				ob_end_clean(); // End and clean the buffer.
-
-				// Saving the image to the uploads directory.
-				file_put_contents( $filepath, $compressed_image_data );
-
-				imagedestroy($image_data);
 				// Create an attachment post for the image, metadata needed for WordPress media library.
 				// guid -for url, post_title for cleaned up name, post content is empty as this is an attachment.
 				// post_status inherit is for visibility.
