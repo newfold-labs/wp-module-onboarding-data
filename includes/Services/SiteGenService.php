@@ -1052,8 +1052,10 @@ class SiteGenService {
 					case 'image/webp':
 						$file_extension = '.webp';
 						break;
-					default:
-						error_log( 'Unsupported MIME type: ' . $content_type );
+				}
+
+				if ( '' === $file_extension ) {
+					continue;
 				}
 				// create upload directory.
 				$upload_dir = wp_upload_dir();
