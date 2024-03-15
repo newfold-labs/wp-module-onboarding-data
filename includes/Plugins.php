@@ -14,7 +14,7 @@ final class Plugins {
 	 * Key 'default' contains a list of default plugins to be installed irrespective of the plan.
 	 * Key <flow> contains a Key 'default' and a list of Key <subtype>'s.
 	 * Key <flow> => 'default' contains a list of default plugin installs for <flow>.
-	 * Key <flow> => <subtype> contains a list of plugins to be installed for a particular <subtype>.
+	 * Key <flow> => <site-capabilities> contains a list of plugins to be installed for a particular Capability.
 	 *
 	 * The final queue of Plugins to be installed makes use of a max heap and hence the greater the number the earlier
 	 * a Plugin will be placed for install in the queue. This will also allow us to
@@ -64,7 +64,7 @@ final class Plugins {
 				),
 			),
 			'bluehost'       => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -76,7 +76,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -119,14 +119,14 @@ final class Plugins {
 				),
 			),
 			'bluehost-india' => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_woo_razorpay',
 						'activate' => true,
 						'priority' => 240,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -169,7 +169,7 @@ final class Plugins {
 				),
 			),
 			'crazy-domains'  => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -181,7 +181,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -224,7 +224,7 @@ final class Plugins {
 				),
 			),
 			'hostgator-us'   => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -236,7 +236,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -279,7 +279,7 @@ final class Plugins {
 				),
 			),
 			'hostgator-br'   => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -291,7 +291,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -343,7 +343,7 @@ final class Plugins {
 				),
 			),
 			'bluehost'       => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -355,7 +355,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -398,14 +398,14 @@ final class Plugins {
 				),
 			),
 			'bluehost-india' => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_woo_razorpay',
 						'activate' => true,
 						'priority' => 240,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -448,7 +448,7 @@ final class Plugins {
 				),
 			),
 			'crazy-domains'  => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -460,7 +460,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -503,7 +503,7 @@ final class Plugins {
 				),
 			),
 			'hostgator-us'   => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -515,7 +515,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -558,7 +558,7 @@ final class Plugins {
 				),
 			),
 			'hostgator-br'   => array(
-				'default'            => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
@@ -570,7 +570,7 @@ final class Plugins {
 						'priority' => 260,
 					),
 				),
-				'hiive_capabilities' => array(
+				'site-capabilities' => array(
 					'hasEcomdash'     => array(
 						array(
 							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
@@ -638,12 +638,12 @@ final class Plugins {
 				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ][ $current_brand ]['default'] );
 			}
 			// The Capabilities based plugins for a certain flow and brand
-			if ( isset( self::$init_list[ $plan_flow ][ $current_brand ]['hiive_capabilities'] ) ) {
-				$plugins_data_for_hiive_capabilities = self::$init_list[ $plan_flow ][ $current_brand ]['hiive_capabilities'];
+			if ( isset( self::$init_list[ $plan_flow ][ $current_brand ]['site-capabilities'] ) ) {
+				$plugins_data_for_site_capabilities = self::$init_list[ $plan_flow ][ $current_brand ]['site-capabilities'];
 
-				foreach ( $plugins_data_for_hiive_capabilities as $hiive_capability => $plugins_data ) {
+				foreach ( $plugins_data_for_site_capabilities as $site_capability => $plugins_data ) {
 					// Check if the capability is enabled on Hiive
-					if ( true === Config::get_site_capability( $hiive_capability ) ) {
+					if ( true === Config::get_site_capability( $site_capability ) ) {
 						// Check if there are plugins for the flag.
 						if ( is_array( $plugins_data ) && ! empty( $plugins_data ) ) {
 							$init_list = array_merge( $init_list, $plugins_data );
