@@ -139,7 +139,7 @@ class ThemeGeneratorService {
 		global $wp_filesystem;
 
 		if ( ! $wp_filesystem->exists( $theme_dir . '/parts' ) ) {
-			$parts_directory_created = mkdir( $theme_dir . '/parts' );
+			$parts_directory_created = self::create_directory( $theme_dir . '/parts' );
 			if ( ! $parts_directory_created ) {
 				return false;
 			}
