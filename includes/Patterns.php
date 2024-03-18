@@ -24,14 +24,15 @@ final class Patterns {
 			__( 'Careers', 'wp-module-onboarding' ),
 		);
 
-		$flow_to_dummy_items = array(
-			'sitegen'   => SiteGenService::get_dummy_navigation_menu_items(),
-			'wp-setup'  => $default_items,
-			'ecommerce' => $default_items,
-		);
-
 		$current_flow = Data::current_flow();
-		return ! empty( $flow_to_dummy_items[ $current_flow ] ) ? $flow_to_dummy_items[ $current_flow ] : $default_items;
+		if ( 'sitegen' === $current_flow ) {
+			$sitegen_dummy_navigation_menu_items = SiteGenService::get_dummy_navigation_menu_items();
+			if ( ! empty( $sitegen_dummy_navigation_menu_items ) ) {
+				return $sitegen_dummy_navigation_menu_items;
+			}
+		}
+
+		return $default_items;
 	}
 
 	/**
