@@ -1015,11 +1015,7 @@ class SiteGenService {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
 		global $wp_filesystem;
-
-		if ( empty( $wp_filesystem ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-			\WP_Filesystem();
-		}
+		ThemeGeneratorService::connect_to_filesystem();
 
 		$uploaded_image_urls = array();
 		try {
