@@ -1011,11 +1011,15 @@ class SiteGenService {
 	 * @throws Exception If there is an error during the upload process.
 	 */
 	public static function upload_images_to_wp_media_library( $image_urls ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
 		global $wp_filesystem;
+
+		if ( empty( $wp_filesystem ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			\WP_Filesystem();
+		}
 
 		$uploaded_image_urls = array();
 		try {
