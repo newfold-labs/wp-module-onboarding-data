@@ -294,12 +294,12 @@ class FlowService {
 	/**
 	 * Logic to check for an Indexed Array
 	 *
-	 * @param array $array To verify for an Indexed Array
+	 * @param array $i_array To verify for an Indexed Array
 	 *
 	 * @return boolean
 	 */
-	private static function is_array_indexed( $array ) {
-		return count( array_filter( array_keys( $array ), 'is_string' ) ) === 0;
+	private static function is_array_indexed( $i_array ) {
+		return count( array_filter( array_keys( $i_array ), 'is_string' ) ) === 0;
 	}
 
 	/**
