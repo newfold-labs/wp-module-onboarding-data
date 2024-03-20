@@ -1163,7 +1163,7 @@ class SiteGenService {
 				}
 			}
 		} catch ( Exception $e ) {
-			error_log( ' Error:' . $e->getMessage());
+			error_log( 'Error:' . $e->getMessage() );
 		}
 
 		return $uploaded_image_urls;
