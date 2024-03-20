@@ -1065,9 +1065,11 @@ class SiteGenService {
 	 * @throws Exception If there is an error during the upload process.
 	 */
 	public static function upload_images_to_wp_media_library( $image_urls ) {
-		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
 		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		global $wp_filesystem;
+		ThemeGeneratorService::connect_to_filesystem();
 
 		$uploaded_image_urls = array();
 		try {
@@ -1106,15 +1108,16 @@ class SiteGenService {
 					case 'image/webp':
 						$file_extension = '.webp';
 						break;
-					default:
-						error_log( 'Unsupported MIME type: ' . $content_type );
-						continue;
+				}
+
+				if ( '' === $file_extension ) {
+					continue;
 				}
 				// create upload directory.
 				$upload_dir = wp_upload_dir();
 
 				// xtract a filename from the URL.
-				$parsed_url = parse_url( $image_url );
+				$parsed_url = wp_parse_url( $image_url );
 				$path_parts = pathinfo( $parsed_url['path'] );
 				// filename to be added in directory.
 				$original_filename = $path_parts['filename'] . $file_extension;
@@ -1127,10 +1130,10 @@ class SiteGenService {
 				$compressed_image_data = self::compress_image( $image_data, $content_type );
 
 				if ( $compressed_image_data !== false ) {
-					file_put_contents( $filepath, $compressed_image_data );
+					$wp_filesystem->put_contents( $filepath, $compressed_image_data );
 				} else {
 					error_log( 'Image compression failed using as is' );
-					file_put_contents( $filepath, $image_data );
+					$wp_filesystem->put_contents( $filepath, $image_data );
 				}
 
 				// Create an attachment post for the image, metadata needed for WordPress media library.
@@ -1153,14 +1156,14 @@ class SiteGenService {
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
-						error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
+						// Log Error error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
 						$attachment_url = null;
 					}
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
 		} catch ( Exception $e ) {
-			error_log( $e->getMessage() );
+			// Log Error
 		}
 
 		return $uploaded_image_urls;

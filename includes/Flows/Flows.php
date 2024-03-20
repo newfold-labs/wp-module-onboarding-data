@@ -67,8 +67,8 @@ final class Flows {
 
 			// This integer will map to the attachment ID for an uploaded image to the WordPress media library
 			'siteLogo'        => array(
-				'id'       => 0,
-				'url'      => '',
+				'id'  => 0,
+				'url' => '',
 			),
 
 			// key-value store for social media accounts
@@ -117,10 +117,11 @@ final class Flows {
 
 		'isFirstNFDOnboarding' => true,
 
-		// This is the common label like 'personal blog', 'restaurant', 'dentist'
+		// This is the common label like personal blog, restaurant, dentist
 		'siteType'             => 'blog',
 
-		// 'personal', 'professional', 'business', 'ecommerce', 'nonprofit', 'team/community', 'web-pro-agency', 'other'
+		// Ownertype can be one of personal, professional, business, ecommerce, nonprofit, team/community, web-pro-agency, other
+
 		'ownerType'            => 'personal',
 
 		// Set by Hosting Platform as a FOS-purchased ecommerce plan
@@ -167,7 +168,7 @@ final class Flows {
 			'siteGenErrorStatus'    => false,
 		),
 
-		'continueWithoutAi'      => false,
+		'continueWithoutAi'    => false,
 	);
 
 	/**

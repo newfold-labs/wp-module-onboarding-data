@@ -14,7 +14,7 @@ final class Plugins {
 	 * Key 'default' contains a list of default plugins to be installed irrespective of the plan.
 	 * Key <flow> contains a Key 'default' and a list of Key <subtype>'s.
 	 * Key <flow> => 'default' contains a list of default plugin installs for <flow>.
-	 * Key <flow> => <subtype> contains a list of plugins to be installed for a particular <subtype>.
+	 * Key <flow> => <site-capabilities> contains a list of plugins to be installed for a particular Capability.
 	 *
 	 * The final queue of Plugins to be installed makes use of a max heap and hence the greater the number the earlier
 	 * a Plugin will be placed for install in the queue. This will also allow us to
@@ -27,32 +27,32 @@ final class Plugins {
 			array(
 				'slug'     => 'nfd_slug_endurance_page_cache',
 				'activate' => true,
-				'priority' => 240,
+				'priority' => 30,
 			),
 			array(
 				'slug'     => 'jetpack',
 				'activate' => true,
-				'priority' => 220,
+				'priority' => 40,
 			),
 			array(
 				'slug'     => 'wordpress-seo',
 				'activate' => true,
-				'priority' => 200,
+				'priority' => 50,
 			),
 			array(
 				'slug'     => 'wpforms-lite',
 				'activate' => true,
-				'priority' => 180,
+				'priority' => 60,
 			),
 			array(
 				'slug'     => 'google-analytics-for-wordpress',
 				'activate' => true,
-				'priority' => 160,
+				'priority' => 70,
 			),
 			array(
 				'slug'     => 'optinmonster',
 				'activate' => true,
-				'priority' => 140,
+				'priority' => 80,
 			),
 		),
 		'ecommerce' => array(
@@ -60,145 +60,555 @@ final class Plugins {
 				array(
 					'slug'     => 'woocommerce',
 					'activate' => true,
-					'priority' => 260,
+					'priority' => 20,
 				),
 			),
 			'bluehost'       => array(
-				'wc_standard' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-						'activate' => true,
-						'priority' => 257,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-						'activate' => true,
-						'priority' => 100,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-						'activate' => true,
-						'priority' => 80,
-					),
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
-						'priority' => 259,
+						'priority' => 240,
 					),
 					array(
 						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
 						'activate' => true,
-						'priority' => 258,
+						'priority' => 260,
 					),
 				),
-				'wc_premium'  => array(
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-						'activate' => true,
-						'priority' => 257,
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
 					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-						'activate' => true,
-						'priority' => 100,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-						'activate' => true,
-						'priority' => 80,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 259,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 258,
-					),
-					array(
-						'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
-						'activate' => true,
-						'priority' => 20,
-					),
-				),
-				'wc_priority' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 259,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 258,
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
 					),
 				),
 			),
 			'bluehost-india' => array(
-				'wc_standard' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-						'activate' => true,
-						'priority' => 257,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-						'activate' => true,
-						'priority' => 100,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-						'activate' => true,
-						'priority' => 80,
-					),
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_woo_razorpay',
 						'activate' => true,
-						'priority' => 258,
+						'priority' => 240,
 					),
 				),
-				'wc_premium'  => array(
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-						'activate' => true,
-						'priority' => 257,
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
 					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-						'activate' => true,
-						'priority' => 100,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-						'activate' => true,
-						'priority' => 80,
-					),
-					array(
-						'slug'     => 'nfd_slug_woo_razorpay',
-						'activate' => true,
-						'priority' => 258,
-					),
-					array(
-						'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
-						'activate' => true,
-						'priority' => 20,
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
 					),
 				),
-				'wc_priority' => array(),
 			),
 			'crazy-domains'  => array(
-				'wc_priority' => array(
+				'default'           => array(
 					array(
 						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
 						'activate' => true,
-						'priority' => 259,
+						'priority' => 240,
 					),
 					array(
 						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
 						'activate' => true,
-						'priority' => 258,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+			'hostgator-us'   => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 240,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+			'hostgator-br'   => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 240,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+		),
+		'sitegen'   => array(
+			'default'        => array(
+				array(
+					'slug'     => 'woocommerce',
+					'activate' => true,
+					'priority' => 20,
+				),
+			),
+			'bluehost'       => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 140,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 100,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 120,
+						),
+					),
+				),
+			),
+			'bluehost-india' => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_woo_razorpay',
+						'activate' => true,
+						'priority' => 240,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+			'crazy-domains'  => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 240,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+			'hostgator-us'   => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 240,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
+					),
+				),
+			),
+			'hostgator-br'   => array(
+				'default'           => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 240,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 260,
+					),
+				),
+				'site-capabilities' => array(
+					'hasEcomdash'     => array(
+						array(
+							'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
+							'activate' => true,
+							'priority' => 100,
+						),
+					),
+					'hasYithExtended' => array(
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_booking',
+							'activate' => false,
+							'priority' => 120,
+						),
+						array(
+							'slug'     => 'yith-woocommerce-ajax-search',
+							'activate' => false,
+							'priority' => 140,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+							'activate' => false,
+							'priority' => 160,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+							'activate' => false,
+							'priority' => 180,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+							'activate' => false,
+							'priority' => 200,
+						),
+						array(
+							'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+							'activate' => false,
+							'priority' => 220,
+						),
 					),
 				),
 			),
@@ -211,17 +621,35 @@ final class Plugins {
 	 * @return array
 	 */
 	public static function get_init() {
-		$plan_data    = Data::current_plan();
-		$plan_flow    = $plan_data['flow'];
-		$plan_subtype = $plan_data['subtype'];
-		$init_list    = self::$init_list['default'];
+		$plan_data = Data::current_plan();
+		$plan_flow = $plan_data['flow'];
+
+		// The Default plugins for all types
+		$init_list = self::$init_list['default'];
 		if ( $plan_flow && isset( self::$init_list[ $plan_flow ] ) ) {
+			// The Default plugins for a specific flow
 			if ( isset( self::$init_list[ $plan_flow ]['default'] ) ) {
 				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ]['default'] );
 			}
+
 			$current_brand = Data::current_brand()['brand'];
-			if ( 'default' !== $plan_subtype && isset( self::$init_list[ $plan_flow ][ $current_brand ][ $plan_subtype ] ) ) {
-				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ][ $current_brand ][ $plan_subtype ] );
+			// The Default plugins for a certain flow and brand
+			if ( isset( self::$init_list[ $plan_flow ][ $current_brand ]['default'] ) ) {
+				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ][ $current_brand ]['default'] );
+			}
+			// The Capabilities based plugins for a certain flow and brand
+			if ( isset( self::$init_list[ $plan_flow ][ $current_brand ]['site-capabilities'] ) ) {
+				$plugins_data_for_site_capabilities = self::$init_list[ $plan_flow ][ $current_brand ]['site-capabilities'];
+
+				foreach ( $plugins_data_for_site_capabilities as $site_capability => $plugins_data ) {
+					// Check if the capability is enabled on Hiive
+					if ( true === Config::get_site_capability( $site_capability ) ) {
+						// Check if there are plugins for the flag.
+						if ( is_array( $plugins_data ) && ! empty( $plugins_data ) ) {
+							$init_list = array_merge( $init_list, $plugins_data );
+						}
+					}
+				}
 			}
 		}
 
