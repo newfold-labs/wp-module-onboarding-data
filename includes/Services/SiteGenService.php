@@ -1157,14 +1157,13 @@ class SiteGenService {
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
-						// Log Error error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );.
 						$attachment_url = null;
 					}
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
 		} catch ( Exception $e ) {
-			error_log( ' Error:' . $e );
+			error_log( ' Error:' . $e->getMessage());
 		}
 
 		return $uploaded_image_urls;
