@@ -1012,11 +1012,12 @@ class SiteGenService {
 	 */
 	public static function compress_image( $image_data, $mime_type ) {
 		/*
-		steps : 1. Create an image resource from string, check type, apply gd functions to reduce size based on quality,
-		save output buffer content and return it, clean output buffer and destry created iamge */
+		Steps : Create an image resource from string, check type, apply gd functions to reduce size based on quality,
+		save output buffer content and return it, clean output buffer and destry created iamge.
+		*/
 
 		$image = imagecreatefromstring( $image_data );
-		if ( $image === false ) {
+		if ( false === $image ) {
 			error_log( 'Failed to create image resource.' );
 			return false;
 		}
@@ -1025,19 +1026,19 @@ class SiteGenService {
 
 		switch ( $mime_type ) {
 			case 'image/jpeg':
-				// 75 is the quality it is not lossless
+				// 75 is the quality it is not lossless.
 				imagejpeg( $image, null, 75 );
 				break;
 			case 'image/png':
-				// it can go from 0 to 9, it is lossless
+				// it can go from 0 to 9, it is lossless.
 				imagepng( $image, null, 9 );
 				break;
 			case 'image/gif':
-				// Compress GIF
+				// Compress GIF.
 				imagegif( $image, null );
 				break;
 			case 'image/webp':
-				// same as jpeg
+				// same as jpeg.
 				imagewebp( $image, null, 75 );
 				break;
 			default:
@@ -1129,7 +1130,7 @@ class SiteGenService {
 				/* Compressing the image to reduce size */
 				$compressed_image_data = self::compress_image( $image_data, $content_type );
 
-				if ( $compressed_image_data !== false ) {
+				if ( false !== $compressed_image_data ) {
 					$wp_filesystem->put_contents( $filepath, $compressed_image_data );
 				} else {
 					error_log( 'Image compression failed using as is' );
@@ -1156,14 +1157,14 @@ class SiteGenService {
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
-						// Log Error error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
+						// Log Error error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );.
 						$attachment_url = null;
 					}
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
 		} catch ( Exception $e ) {
-			// Log Error
+			error_log( ' Error:' . $e );
 		}
 
 		return $uploaded_image_urls;
