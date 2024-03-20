@@ -1012,7 +1012,7 @@ class SiteGenService {
 	 */
 	public static function compress_image( $image_data, $mime_type ) {
 		/*
-		steps : 1. Create an image resource from string, check type, apply gd functions to reduce size based on quality
+		steps : 1. Create an image resource from string, check type, apply gd functions to reduce size based on quality,
 		save output buffer content and return it, clean output buffer and destry created iamge */
 
 		$image = imagecreatefromstring( $image_data );
@@ -1145,11 +1145,11 @@ class SiteGenService {
 				);
 				$attach_id  = wp_insert_attachment( $attachment, $filepath );
 
-				// Generate and assign metadata for the attachment..
+				// Generate and assign metadata for the attachment.
 				$attach_data = wp_generate_attachment_metadata( $attach_id, $filepath );
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 
-				// Add the WordPress attachment URL to the list..
+				// Add the WordPress attachment URL to the list.
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
