@@ -53,6 +53,7 @@ final class Events {
 		'social_connect_skipped'      => true,
 		'logo_skipped'                => true,
 		'site_generation_time'        => true,
+		'error_state_triggered'       => true,
 	);
 
 	/**
