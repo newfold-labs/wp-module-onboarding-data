@@ -91,6 +91,9 @@ class FlowService {
 			$result = self::get_default_data();
 			self::update_data_in_wp_option( $result );
 		}
+
+		$result = SiteGenService::reset_error_status( $result );
+
 		return $result;
 	}
 

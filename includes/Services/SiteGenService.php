@@ -1157,4 +1157,12 @@ class SiteGenService {
 		$data['sitegen']['homepages']['data'] = $updated_data;
 		FlowService::update_data_in_wp_option( $data );
 	}
+
+	public static function reset_error_status( $data ) {
+		if ( isset( $data['sitegen']['siteGenErrorStatus'] ) && true === $data['sitegen']['siteGenErrorStatus'] ) {
+			$data['sitegen']['siteGenErrorStatus'] = false;
+		}
+
+		return $data;
+	}
 }
