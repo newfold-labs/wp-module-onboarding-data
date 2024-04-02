@@ -1018,8 +1018,7 @@ class SiteGenService {
 
 		$image = imagecreatefromstring( $image_data );
 		if ( false === $image ) {
-			error_log( 'Failed to create image resource.' );
-			return false;
+			return $image_data;
 		}
 
 		ob_start();
@@ -1042,9 +1041,9 @@ class SiteGenService {
 				imagewebp( $image, null, 75 );
 				break;
 			default:
-				error_log( 'Unsupported MIME type: ' . $mime_type );
+				ob_end_clean();
 				imagedestroy( $image );
-				return false;
+				return $image_data;
 		}
 
 		$compressed_image_data = ob_get_contents();
