@@ -1128,7 +1128,7 @@ class SiteGenService {
 
 				/* Compressing the image to reduce size */
 				$compressed_image_data = self::compress_image( $image_data, $content_type );
-					
+
 				$wp_filesystem->put_contents( $filepath, $compressed_image_data );
 
 				// Create an attachment post for the image, metadata needed for WordPress media library.
@@ -1157,7 +1157,7 @@ class SiteGenService {
 				}
 			}
 		} catch ( Exception $e ) {
-			// Log error. 
+			// Log error.
 		}
 
 		return $uploaded_image_urls;
