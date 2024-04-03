@@ -1128,13 +1128,8 @@ class SiteGenService {
 
 				/* Compressing the image to reduce size */
 				$compressed_image_data = self::compress_image( $image_data, $content_type );
-
-				if ( false !== $compressed_image_data ) {
-					$wp_filesystem->put_contents( $filepath, $compressed_image_data );
-				} else {
-					error_log( 'Image compression failed using as is' );
-					$wp_filesystem->put_contents( $filepath, $image_data );
-				}
+					
+				$wp_filesystem->put_contents( $filepath, $compressed_image_data );
 
 				// Create an attachment post for the image, metadata needed for WordPress media library.
 				// guid -for url, post_title for cleaned up name, post content is empty as this is an attachment.
@@ -1162,7 +1157,7 @@ class SiteGenService {
 				}
 			}
 		} catch ( Exception $e ) {
-			error_log( 'Error:' . $e->getMessage() );
+			// Log error. 
 		}
 
 		return $uploaded_image_urls;
