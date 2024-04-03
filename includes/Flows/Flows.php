@@ -137,7 +137,8 @@ final class Flows {
 		),
 
 		'sitegen'              => array(
-			'siteDetails'           => array(
+			'theForkExperimentVersion' => 0,
+			'siteDetails'              => array(
 				'name'                => '',
 				'type'                => '',
 				'style'               => '',
@@ -145,27 +146,27 @@ final class Flows {
 				'uniqueAboutBusiness' => '',
 				'mode'                => 'simple',
 			),
-			'siteLogo'              => array(
+			'siteLogo'                 => array(
 				'id'       => 0,
 				'url'      => '',
 				'fileName' => '',
 				'fileSize' => 0,
 			),
-			'experience'            => array(
+			'experience'               => array(
 				'level' => 0,
 			),
-			'siteGenMetaStatus'     => array(
+			'siteGenMetaStatus'        => array(
 				'currentStatus' => 0,
 				'totalCount'    => 9,
 			),
-			'homepages'             => array(
+			'homepages'                => array(
 				'active' => array(),
 				'data'   => array(),
 			),
-			'skipCache'             => true,
-			'sitemapPagesGenerated' => false,
-			'customDesign'          => false,
-			'siteGenErrorStatus'    => false,
+			'skipCache'                => true,
+			'sitemapPagesGenerated'    => false,
+			'customDesign'             => false,
+			'siteGenErrorStatus'       => false,
 		),
 
 		'continueWithoutAi'    => false,
