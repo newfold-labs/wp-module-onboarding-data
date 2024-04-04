@@ -1080,14 +1080,14 @@ class SiteGenService {
 				}
 
 				// Fetch the image via remote get with timeout and a retry attempt.
-				$attempt = 0;
+				$attempt      = 0;
 				$max_attempts = 2;
-				while ($attempt < $max_attempts) {
-					$response = wp_remote_get($image_url, array('timeout' => 20));
-					if (!is_wp_error($response) && 200 === wp_remote_retrieve_response_code($response)) {
+				while ( $attempt < $max_attempts ) {
+					$response = wp_remote_get( $image_url, array( 'timeout' => 20 ) );
+					if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
 						break;
 					}
-					$attempt++;
+					++$attempt;
 				}
 				if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 					continue;
