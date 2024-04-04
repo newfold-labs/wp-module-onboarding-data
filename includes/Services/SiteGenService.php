@@ -1083,7 +1083,7 @@ class SiteGenService {
 				$attempt      = 0;
 				$max_attempts = 2;
 				while ( $attempt < $max_attempts ) {
-					$response = wp_remote_get( $image_url, array( 'timeout' => 20 ) );
+					$response = wp_remote_get( $image_url, array( 'timeout' => 15 ) );
 					if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
 						break;
 					}
