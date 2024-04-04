@@ -1079,12 +1079,19 @@ class SiteGenService {
 					continue;
 				}
 
-				// Fetch the image via  remote get.
-				$response = wp_remote_get( $image_url );
+				// Fetch the image via remote get with timeout and a retry attempt.
+				$attempt = 0;
+				$max_attempts = 2;
+				while ($attempt < $max_attempts) {
+					$response = wp_remote_get($image_url, array('timeout' => 20));
+					if (!is_wp_error($response) && 200 === wp_remote_retrieve_response_code($response)) {
+						break;
+					}
+					$attempt++;
+				}
 				if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 					continue;
 				}
-
 				// Reading the headers from the image url to determine.
 				$headers      = wp_remote_retrieve_headers( $response );
 				$content_type = $headers['content-type'] ?? '';
@@ -1092,7 +1099,6 @@ class SiteGenService {
 				if ( empty( $content_type ) || empty( $image_data ) ) {
 					continue;
 				}
-
 				// Determine the file extension based on MIME type.
 				$file_extension = '';
 				switch ( $content_type ) {
@@ -1115,7 +1121,6 @@ class SiteGenService {
 				}
 				// create upload directory.
 				$upload_dir = wp_upload_dir();
-
 				// xtract a filename from the URL.
 				$parsed_url = wp_parse_url( $image_url );
 				$path_parts = pathinfo( $parsed_url['path'] );
@@ -1125,7 +1130,6 @@ class SiteGenService {
 				// to ensure the filename is unique within the upload directory.
 				$filename = wp_unique_filename( $upload_dir['path'], $original_filename );
 				$filepath = $upload_dir['path'] . '/' . $filename;
-
 				/* Compressing the image to reduce size */
 				$compressed_image_data = self::compress_image( $image_data, $content_type );
 
