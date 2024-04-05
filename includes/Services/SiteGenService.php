@@ -1000,6 +1000,60 @@ class SiteGenService {
 	}
 
 	/**
+	 * Compresses an image based on its MIME type.
+	 *
+	 * This function takes raw image data and its MIME type as input, and
+	 * returns the compressed image data.
+	 *
+	 * @param string $image_data The raw data of the image to be compressed.
+	 * @param string $mime_type The MIME type of the image (e.g., 'image/jpeg', 'image/png').
+	 *
+	 * @return string|false Returns the compressed image data as a string if successful or false.
+	 */
+	public static function compress_image( $image_data, $mime_type ) {
+		/*
+		Steps : Create an image resource from string, check type, apply gd functions to reduce size based on quality,
+		save output buffer content and return it, clean output buffer and destry created iamge.
+		*/
+
+		$image = imagecreatefromstring( $image_data );
+		if ( false === $image ) {
+			return $image_data;
+		}
+
+		ob_start();
+
+		switch ( $mime_type ) {
+			case 'image/jpeg':
+				// 75 is the quality it is not lossless.
+				imagejpeg( $image, null, 75 );
+				break;
+			case 'image/png':
+				// it can go from 0 to 9, it is lossless.
+				imagepng( $image, null, 9 );
+				break;
+			case 'image/gif':
+				// Compress GIF.
+				imagegif( $image, null );
+				break;
+			case 'image/webp':
+				// same as jpeg.
+				imagewebp( $image, null, 75 );
+				break;
+			default:
+				ob_end_clean();
+				imagedestroy( $image );
+				return $image_data;
+		}
+
+		$compressed_image_data = ob_get_contents();
+		ob_end_clean();
+		imagedestroy( $image );
+
+		return $compressed_image_data;
+	}
+
+	/**
 	 * Uploads images to the WordPress media library as attachments.
 	 *
 	 * This function takes an array of image URLs, downloads them, and
@@ -1025,12 +1079,19 @@ class SiteGenService {
 					continue;
 				}
 
-				// Fetch the image via  remote get.
-				$response = wp_remote_get( $image_url );
+				// Fetch the image via remote get with timeout and a retry attempt.
+				$attempt      = 0;
+				$max_attempts = 2;
+				while ( $attempt < $max_attempts ) {
+					$response = wp_remote_get( $image_url, array( 'timeout' => 15 ) );
+					if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
+						break;
+					}
+					++$attempt;
+				}
 				if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 					continue;
 				}
-
 				// Reading the headers from the image url to determine.
 				$headers      = wp_remote_retrieve_headers( $response );
 				$content_type = $headers['content-type'] ?? '';
@@ -1038,7 +1099,6 @@ class SiteGenService {
 				if ( empty( $content_type ) || empty( $image_data ) ) {
 					continue;
 				}
-
 				// Determine the file extension based on MIME type.
 				$file_extension = '';
 				switch ( $content_type ) {
@@ -1061,7 +1121,6 @@ class SiteGenService {
 				}
 				// create upload directory.
 				$upload_dir = wp_upload_dir();
-
 				// xtract a filename from the URL.
 				$parsed_url = wp_parse_url( $image_url );
 				$path_parts = pathinfo( $parsed_url['path'] );
@@ -1071,9 +1130,10 @@ class SiteGenService {
 				// to ensure the filename is unique within the upload directory.
 				$filename = wp_unique_filename( $upload_dir['path'], $original_filename );
 				$filepath = $upload_dir['path'] . '/' . $filename;
+				/* Compressing the image to reduce size */
+				$compressed_image_data = self::compress_image( $image_data, $content_type );
 
-				// Saving the image to the uploads directory.
-				$wp_filesystem->put_contents( $filepath, $image_data );
+				$wp_filesystem->put_contents( $filepath, $compressed_image_data );
 
 				// Create an attachment post for the image, metadata needed for WordPress media library.
 				// guid -for url, post_title for cleaned up name, post content is empty as this is an attachment.
@@ -1085,25 +1145,23 @@ class SiteGenService {
 					'post_content'   => '',
 					'post_status'    => 'inherit',
 				);
+				$attach_id  = wp_insert_attachment( $attachment, $filepath );
 
-				$attach_id = wp_insert_attachment( $attachment, $filepath );
-
-				// Generate and assign metadata for the attachment..
+				// Generate and assign metadata for the attachment.
 				$attach_data = wp_generate_attachment_metadata( $attach_id, $filepath );
 				wp_update_attachment_metadata( $attach_id, $attach_data );
 
-				// Add the WordPress attachment URL to the list..
+				// Add the WordPress attachment URL to the list.
 				if ( $attach_id ) {
 					$attachment_url = wp_get_attachment_url( $attach_id );
 					if ( ! $attachment_url ) {
-						// Log Error error_log( 'Failed to retrieve attachment URL for attachment ID: ' . $attach_id );
 						$attachment_url = null;
 					}
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
 		} catch ( Exception $e ) {
-			// Log Error
+			// Log error.
 		}
 
 		return $uploaded_image_urls;
