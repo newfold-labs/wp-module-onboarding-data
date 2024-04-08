@@ -6,11 +6,11 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data;
  */
 final class Events {
 	/**
-	 * The category of an event.
+	 * The Array of categories in an event.
 	 *
-	 * @var string
+	 * @var array
 	 */
-	protected static $category = 'wonder_start';
+	protected static $category = array( 'wonder_start', 'experiment' );
 
 	/**
 	 * List of valid actions that an event can perform.
@@ -54,6 +54,7 @@ final class Events {
 		'logo_skipped'                => true,
 		'site_generation_time'        => true,
 		'error_state_triggered'       => true,
+		'exp_fork_ai'                 => true,
 	);
 
 	/**
@@ -66,9 +67,9 @@ final class Events {
 	}
 
 	/**
-	 * Valid category of on event.
+	 * Valid categories of on event.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public static function get_category() {
 		return self::$category;
