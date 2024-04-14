@@ -28,7 +28,7 @@ final class Colors {
 						'secondary'            => '#344A77',
 						'primary'              => '#1A4733',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Calm', 'wp-module-onboarding' ),
+						'name'                 => __( 'Calm', 'wp-module-onboarding-data' ),
 					),
 					'cool'         => array(
 						'header-background'    => '#C7DBFF',
@@ -40,7 +40,7 @@ final class Colors {
 						'secondary'            => '#3764B4',
 						'primary'              => '#21447B',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Cool', 'wp-module-onboarding' ),
+						'name'                 => __( 'Cool', 'wp-module-onboarding-data' ),
 					),
 					'warm'         => array(
 						'header-background'    => '#FDE5D0',
@@ -52,7 +52,7 @@ final class Colors {
 						'secondary'            => '#B97040',
 						'primary'              => '#7A3921',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Warm', 'wp-module-onboarding' ),
+						'name'                 => __( 'Warm', 'wp-module-onboarding-data' ),
 					),
 					'radiant'      => array(
 						'header-background'    => '#63156A',
@@ -64,7 +64,7 @@ final class Colors {
 						'secondary'            => '#64288C',
 						'primary'              => '#63156A',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Radiant', 'wp-module-onboarding' ),
+						'name'                 => __( 'Radiant', 'wp-module-onboarding-data' ),
 					),
 					'bold'         => array(
 						'header-background'    => '#FFD7F1',
@@ -76,7 +76,7 @@ final class Colors {
 						'secondary'            => '#076D66',
 						'primary'              => '#09857C',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Bold', 'wp-module-onboarding' ),
+						'name'                 => __( 'Bold', 'wp-module-onboarding-data' ),
 					),
 					'retro'        => array(
 						'header-background'    => '#096385',
@@ -88,7 +88,7 @@ final class Colors {
 						'secondary'            => '#BE9E00',
 						'primary'              => '#096385',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Retro', 'wp-module-onboarding' ),
+						'name'                 => __( 'Retro', 'wp-module-onboarding-data' ),
 					),
 					'professional' => array(
 						'header-background'    => '#6D8258',
@@ -100,7 +100,7 @@ final class Colors {
 						'secondary'            => '#405F1C',
 						'primary'              => '#558320',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Professional', 'wp-module-onboarding' ),
+						'name'                 => __( 'Professional', 'wp-module-onboarding-data' ),
 					),
 					'crisp'        => array(
 						'header-background'    => '#ccc',
@@ -112,7 +112,7 @@ final class Colors {
 						'secondary'            => '#17222E',
 						'primary'              => '#223344',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Crisp', 'wp-module-onboarding' ),
+						'name'                 => __( 'Crisp', 'wp-module-onboarding-data' ),
 					),
 					'polished'     => array(
 						'header-background'    => '#313131',
@@ -124,7 +124,7 @@ final class Colors {
 						'secondary'            => '#6B69EA',
 						'primary'              => '#5100FA',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Polished', 'wp-module-onboarding' ),
+						'name'                 => __( 'Polished', 'wp-module-onboarding-data' ),
 					),
 					'nightowl'     => array(
 						'header-background'    => '#06080A',
@@ -136,7 +136,7 @@ final class Colors {
 						'secondary'            => '#06080A',
 						'primary'              => '#B97900',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Nightowl', 'wp-module-onboarding' ),
+						'name'                 => __( 'Nightowl', 'wp-module-onboarding-data' ),
 					),
 					'subtle'       => array(
 						'header-background'    => '#C7ADBB',
@@ -148,7 +148,7 @@ final class Colors {
 						'secondary'            => '#57203c',
 						'primary'              => '#5A3C4B',
 						'base'                 => '#FFFFFF',
-						'name'                 => __( 'Subtle', 'wp-module-onboarding' ),
+						'name'                 => __( 'Subtle', 'wp-module-onboarding-data' ),
 					),
 				),
 				'custom-picker-grouping' => array(

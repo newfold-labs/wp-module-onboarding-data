@@ -40,7 +40,7 @@ class BlockRenderService {
 		if ( 201 !== $status ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Unable to generate screenshot.', 'wp-module-onboarding' ),
+				__( 'Unable to generate screenshot.', 'wp-module-onboarding-data' ),
 				array(
 					'status' => '500',
 				)
@@ -51,7 +51,7 @@ class BlockRenderService {
 		if ( empty( $body->screenshot ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Unable to generate screenshot.', 'wp-module-onboarding' ),
+				__( 'Unable to generate screenshot.', 'wp-module-onboarding-data' ),
 				array(
 					'status' => '500',
 				)

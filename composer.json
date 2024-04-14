@@ -32,7 +32,8 @@
         "newfold-labs/wp-module-performance": "^1.4"
     },
     "require-dev": {
-        "newfold-labs/wp-php-standards": "^1.2"
+        "newfold-labs/wp-php-standards": "^1.2",
+        "wp-cli/i18n-command": "^2.4.3"
     },
     "config": {
         "allow-plugins": {
