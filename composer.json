@@ -10,7 +10,10 @@
     "autoload": {
         "psr-4": {
             "NewfoldLabs\\WP\\Module\\Onboarding\\Data\\": "includes/"
-        }
+        },
+        "files": [
+            "includes/I18n.php"
+        ]
     },
     "repositories": {
         "newfold": {
