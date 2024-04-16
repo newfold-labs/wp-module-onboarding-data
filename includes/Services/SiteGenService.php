@@ -1229,4 +1229,32 @@ class SiteGenService {
 
 		return $data;
 	}
+
+	/**
+	 * Update the editor tour status.
+	 * @return boolean
+	 */
+	public static function update_editor_tour_status() {
+		$data = FlowService::read_data_from_wp_option( false );
+		if ( ! isset( $data['editorTour'] ) ) {
+			return false;
+		}
+
+		$data['editorTour']= false;
+		FlowService::update_data_in_wp_option( $data );
+		return true;
+	}
+
+	/**
+	 * Get the editor tour status.
+	 * @return boolean
+	 */
+	public static function get_editor_tour_status() {
+		$data = FlowService::read_data_from_wp_option( false );
+		if ( ! isset( $data['editorTour'] ) ) {
+			return false;
+		}
+		
+		return $data['editorTour'];
+	}
 }
