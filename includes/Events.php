@@ -54,7 +54,6 @@ final class Events {
 		'logo_skipped'                => true,
 		'site_generation_time'        => true,
 		'error_state_triggered'       => true,
-		'exp_fork_ai'                 => true,
 	);
 
 	/**
