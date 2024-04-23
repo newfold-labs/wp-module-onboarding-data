@@ -36,7 +36,6 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
-		return true;
 		$site_capabilities = new SiteCapabilities();
 		return $site_capabilities->get( $capability );
 	}
@@ -56,7 +55,6 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function has_ai_sitegen() {
-		return true;
 		return self::get_site_capability( 'hasAISiteGen' );
 	}
 
