@@ -39,7 +39,7 @@ final class Brands {
 
 		// Checks if customer has acess to AI Sitegen
 		$has_ai_sitegen = Config::has_ai_sitegen();
-		$can_migrate_sites = Config::can_migrate_sites();
+		$can_migrate_site = Config::can_migrate_site();
 
 		return array(
 			'bluehost'       => array(
@@ -103,7 +103,7 @@ final class Brands {
 					'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer'
 					: 'https://my.bluehost.com/cgi/services/migration',
 					'isImportEnabled' => true,
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -168,7 +168,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -231,7 +231,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -294,7 +294,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -364,7 +364,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -453,7 +453,7 @@ final class Brands {
 				),
 				'migrationInfo'               => array(
 					'isImportEnabled' => true,
-					'canMigrateSites'   => $can_migrate_sites,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(

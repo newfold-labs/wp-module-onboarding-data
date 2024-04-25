@@ -63,7 +63,7 @@ final class Config {
 	 *
 	 * @return boolean
 	 */
-	public static function can_migrate_sites() {
-		return self::get_site_capability( 'canMigrateSites' );
+	public static function can_migrate_site() {
+		return self::get_site_capability( 'canMigrateSite' );
 	}
 }
