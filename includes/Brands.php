@@ -102,7 +102,6 @@ final class Brands {
 					'defaultLink' => Config::is_jarvis() ?
 					'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer'
 					: 'https://my.bluehost.com/cgi/services/migration',
-					'isImportEnabled' => true,
 					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
@@ -452,7 +451,6 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'isImportEnabled' => true,
 					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
