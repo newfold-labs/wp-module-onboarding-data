@@ -102,7 +102,6 @@ final class Brands {
 					'defaultLink' => Config::is_jarvis() ?
 					'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer'
 					: 'https://my.bluehost.com/cgi/services/migration',
-					'canMigrateSite'   => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -112,6 +111,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 			'bluehost-india' => array(
@@ -166,9 +166,7 @@ final class Brands {
 						'utm_medium' => 'brand-plugin',
 					),
 				),
-				'migrationInfo'               => array(
-					'canMigrateSite'   => $can_migrate_site,
-				),
+				'migrationInfo'               => array(),
 				'config'                      => array(
 					'enabled_flows'  => array(
 						'ecommerce' => true,
@@ -177,6 +175,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 			'webcom'         => array(
@@ -230,7 +229,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSite'   => $can_migrate_site,
+					
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -240,6 +239,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 			'crazy-domains'  => array(
@@ -292,9 +292,7 @@ final class Brands {
 						'utm_medium' => 'brand-plugin',
 					),
 				),
-				'migrationInfo'               => array(
-					'canMigrateSite'   => $can_migrate_site,
-				),
+				'migrationInfo'               => array(),
 				'config'                      => array(
 					'enabled_flows'  => array(
 						'ecommerce' => true,
@@ -310,6 +308,7 @@ final class Brands {
 							),
 						),
 					),
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 			'hostgator-br'   => array(
@@ -362,9 +361,7 @@ final class Brands {
 						'utm_medium' => 'brand-plugin',
 					),
 				),
-				'migrationInfo'               => array(
-					'canMigrateSite'   => $can_migrate_site,
-				),
+				'migrationInfo'               => array(),
 				'config'                      => array(
 					'enabled_flows'  => array(
 						'ecommerce' => true,
@@ -391,6 +388,8 @@ final class Brands {
 							),
 						),
 					),
+
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 			'hostgator-us'   => array(
@@ -479,6 +478,7 @@ final class Brands {
 							),
 						),
 					),
+					'canMigrateSite'   => $can_migrate_site,
 				),
 			),
 		);
