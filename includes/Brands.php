@@ -37,8 +37,8 @@ final class Brands {
 	 */
 	public static function get_brands() {
 
-		// Checks if customer has acess to AI Sitegen
-		$has_ai_sitegen = Config::has_ai_sitegen();
+		// Checks if customer has acess to AI Sitegen.
+		$has_ai_sitegen   = Config::has_ai_sitegen();
 		$can_migrate_site = Config::can_migrate_site();
 
 		return array(
@@ -111,7 +111,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'bluehost-india' => array(
@@ -175,7 +175,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'webcom'         => array(
@@ -228,9 +228,7 @@ final class Brands {
 						'utm_medium' => '',
 					),
 				),
-				'migrationInfo'               => array(
-					
-				),
+				'migrationInfo'               => array(),
 				'config'                      => array(
 					'enabled_flows'  => array(
 						'ecommerce' => false,
@@ -239,7 +237,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'crazy-domains'  => array(
@@ -308,7 +306,7 @@ final class Brands {
 							),
 						),
 					),
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'hostgator-br'   => array(
@@ -389,7 +387,7 @@ final class Brands {
 						),
 					),
 
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'hostgator-us'   => array(
@@ -450,7 +448,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -478,7 +476,7 @@ final class Brands {
 							),
 						),
 					),
-					'canMigrateSite'   => $can_migrate_site,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 		);
@@ -494,7 +492,7 @@ final class Brands {
 		if ( ! defined( 'NFD_ONBOARDING_PLUGIN_BRAND' ) ) {
 			$brand = $container->plugin()->brand;
 			if ( empty( $brand ) ) {
-				$brand = 'wordpress';
+				$brand = 'WordPress';
 			}
 
 			if ( false !== stripos( $brand, 'hostgator' ) ) {
