@@ -133,7 +133,7 @@ class FlowService {
 				if ( ! $primary_type->save() ) {
 					return new \WP_Error(
 						'wrong_param_provided',
-						__( 'Wrong Parameter Provided : primary => value', 'wp-module-onboarding' ),
+						__( 'Wrong Parameter Provided : primary => value', 'wp-module-onboarding-data' ),
 						array( 'status' => 404 )
 					);
 				}
@@ -147,7 +147,7 @@ class FlowService {
 				if ( ! $secondary_type->save() ) {
 					return new \WP_Error(
 						'wrong_param_provided',
-						__( 'Wrong Parameter Provided : secondary => value', 'wp-module-onboarding' ),
+						__( 'Wrong Parameter Provided : secondary => value', 'wp-module-onboarding-data' ),
 						array( 'status' => 404 )
 					);
 				}

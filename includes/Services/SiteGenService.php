@@ -104,7 +104,7 @@ class SiteGenService {
 		if ( ! self::is_identifier( $identifier ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Not a valid identifier', 'wp-module-onboarding' ),
+				__( 'Not a valid identifier', 'wp-module-onboarding-data' ),
 				array(
 					'status' => '400',
 				)
@@ -117,7 +117,7 @@ class SiteGenService {
 			// Handle the error case by returning a WP_Error.
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Error generating site meta: ', 'wp-module-onboarding' ) . $identifier,
+				__( 'Error generating site meta: ', 'wp-module-onboarding-data' ) . $identifier,
 				array( 'status' => 400 )
 			);
 		}
@@ -342,7 +342,7 @@ class SiteGenService {
 		if ( isset( $homepages['error'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Error generating homepages: ', 'wp-module-onboarding' ),
+				__( 'Error generating homepages: ', 'wp-module-onboarding-data' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -370,7 +370,7 @@ class SiteGenService {
 		if ( ! isset( $existing_homepages[ $slug ] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'The homepage could not be found for regeneration.', 'wp-module-onboarding' ),
+				__( 'The homepage could not be found for regeneration.', 'wp-module-onboarding-data' ),
 				array(
 					'status' => 404,
 				)
@@ -402,12 +402,12 @@ class SiteGenService {
 		}
 
 		$homepage['slug']  .= '-copy';
-		$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding' );
+		$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding-data' );
 		$homepage['color']  = $selected_palette;
 
 		while ( isset( $existing_homepages[ $homepage['slug'] ] ) ) {
 			$homepage['slug']  .= '-copy';
-			$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding' );
+			$homepage['title'] .= __( ' (Copy)', 'wp-module-onboarding-data' );
 		}
 
 		$existing_homepages[ $homepage['slug'] ] = $homepage;
@@ -440,7 +440,7 @@ class SiteGenService {
 		if ( isset( $homepages['error'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Error re-generating homepages: ', 'wp-module-onboarding' ),
+				__( 'Error re-generating homepages: ', 'wp-module-onboarding-data' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -482,7 +482,7 @@ class SiteGenService {
 			$homepage_slug                         = 'version-' . $version_number;
 			$processed_homepages[ $homepage_slug ] = array(
 				'slug'            => $homepage_slug,
-				'title'           => __( 'Version ', 'wp-module-onboarding' ) . $version_number,
+				'title'           => __( 'Version ', 'wp-module-onboarding-data' ) . $version_number,
 				'isFavorite'      => false,
 				'content'         => $data['content'],
 				'header'          => $data['header'],
@@ -507,7 +507,7 @@ class SiteGenService {
 		if ( ! $prompt ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				__( 'Prompt not found.', 'wp-module-onboarding-data' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -522,7 +522,7 @@ class SiteGenService {
 		if ( is_wp_error( $color_palette ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Cannot retrieve color palatte', 'wp-module-onboarding' ),
+				__( 'Cannot retrieve color palatte', 'wp-module-onboarding-data' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -594,7 +594,7 @@ class SiteGenService {
 		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				__( 'Prompt not found.', 'wp-module-onboarding-data' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -610,7 +610,7 @@ class SiteGenService {
 		if ( isset( $plugin_recommendations['error'] ) || is_wp_error( $plugin_recommendations ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Cannot retrieve plugin recommendations.', 'wp-module-onboarding' ),
+				__( 'Cannot retrieve plugin recommendations.', 'wp-module-onboarding-data' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -647,7 +647,7 @@ class SiteGenService {
 		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				__( 'Prompt not found.', 'wp-module-onboarding' ),
+				__( 'Prompt not found.', 'wp-module-onboarding-data' ),
 				array( 'status' => 404 )
 			);
 		}

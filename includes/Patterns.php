@@ -16,12 +16,12 @@ final class Patterns {
 	 */
 	public static function get_dummy_navigation_menu_items() {
 		$default_items = array(
-			__( 'Home', 'wp-module-onboarding' ),
-			__( 'About', 'wp-module-onboarding' ),
-			__( 'Contact', 'wp-module-onboarding' ),
-			__( 'News', 'wp-module-onboarding' ),
-			__( 'Privacy', 'wp-module-onboarding' ),
-			__( 'Careers', 'wp-module-onboarding' ),
+			__( 'Home', 'wp-module-onboarding-data' ),
+			__( 'About', 'wp-module-onboarding-data' ),
+			__( 'Contact', 'wp-module-onboarding-data' ),
+			__( 'News', 'wp-module-onboarding-data' ),
+			__( 'Privacy', 'wp-module-onboarding-data' ),
+			__( 'Careers', 'wp-module-onboarding-data' ),
 		);
 
 		$current_flow = Data::current_flow();
@@ -89,34 +89,34 @@ final class Patterns {
 				'site-pages'      => array(
 					'company-page'      => array(
 						'active'        => true,
-						'title'         => __( 'About', 'wp-module-onboarding' ),
+						'title'         => __( 'About', 'wp-module-onboarding-data' ),
 						'selected'      => true,
 						'shown'         => true,
-						'description'   => __( 'Explain your company values or the history behind your brand.', 'wp-module-onboarding' ),
+						'description'   => __( 'Explain your company values or the history behind your brand.', 'wp-module-onboarding-data' ),
 						'wonder_blocks' => 'about-4',
 					),
 					'contact-us'        => array(
 						'active'        => true,
 						'selected'      => true,
-						'title'         => __( 'Contact', 'wp-module-onboarding' ),
+						'title'         => __( 'Contact', 'wp-module-onboarding-data' ),
 						'shown'         => true,
-						'description'   => __( 'Offer visitors a single page with a contact form, your street address and social media.', 'wp-module-onboarding' ),
+						'description'   => __( 'Offer visitors a single page with a contact form, your street address and social media.', 'wp-module-onboarding-data' ),
 						'wonder_blocks' => 'contact-4',
 					),
 					'testimonials-page' => array(
 						'active'        => true,
-						'title'         => __( 'Testimonials', 'wp-module-onboarding' ),
+						'title'         => __( 'Testimonials', 'wp-module-onboarding-data' ),
 						'selected'      => false,
 						'shown'         => true,
-						'description'   => __( 'Highlight your success with testimonials from your fans.', 'wp-module-onboarding' ),
+						'description'   => __( 'Highlight your success with testimonials from your fans.', 'wp-module-onboarding-data' ),
 						'wonder_blocks' => 'testimonials-template-2',
 					),
 					'blog-page'         => array(
 						'active'      => true,
 						'selected'    => true,
-						'title'       => __( 'Blog', 'wp-module-onboarding' ),
+						'title'       => __( 'Blog', 'wp-module-onboarding-data' ),
 						'shown'       => true,
-						'description' => __( 'A page for periodic news, announcements and ideas.', 'wp-module-onboarding' ),
+						'description' => __( 'A page for periodic news, announcements and ideas.', 'wp-module-onboarding-data' ),
 					),
 				),
 				'header-menu'     => array(
