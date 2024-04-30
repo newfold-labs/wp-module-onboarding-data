@@ -386,7 +386,6 @@ final class Brands {
 							),
 						),
 					),
-
 					'canMigrateSite' => $can_migrate_site,
 				),
 			),
@@ -447,9 +446,7 @@ final class Brands {
 						'utm_medium' => 'brand-plugin',
 					),
 				),
-				'migrationInfo'               => array(
-					'canMigrateSite' => $can_migrate_site,
-				),
+				'migrationInfo'               => array(),
 				'config'                      => array(
 					'enabled_flows'  => array(
 						'ecommerce' => true,
