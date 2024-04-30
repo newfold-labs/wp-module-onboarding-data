@@ -119,52 +119,52 @@ final class Options {
 			'wc_currency'          => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_default_country'   => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_email'             => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_address_primary'   => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_address_secondary' => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_city'              => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_postcode'          => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_taxes_enabled'     => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_calc_taxes'        => array(
 				'show_in_rest' => true,
 				'type'         => 'string',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 			'wc_no_sales_tax'      => array(
 				'show_in_rest' => true,
 				'type'         => 'boolean',
-				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding' ),
+				'description'  => __( 'Woocommerce Settings', 'wp-module-onboarding-data' ),
 			),
 		);
 	}
