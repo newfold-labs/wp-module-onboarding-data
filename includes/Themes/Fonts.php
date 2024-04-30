@@ -18,7 +18,7 @@ final class Fonts {
 		return array(
 			'yith-wonder' => array(
 				'modern-approachable'            => array(
-					'label'   => __( 'Modern & approachable', 'wp-module-onboarding' ),
+					'label'   => __( 'Modern & approachable', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/theme-json',
 					'styles'  => array(
 						'typography' => array(
@@ -34,7 +34,7 @@ final class Fonts {
 					),
 				),
 				'strong-sleek'                   => array(
-					'label'   => __( 'Strong & sleek', 'wp-module-onboarding' ),
+					'label'   => __( 'Strong & sleek', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/01-blue-shades',
 					'styles'  => array(
 						'typography' => array(
@@ -50,7 +50,7 @@ final class Fonts {
 					),
 				),
 				'stately-elevated'               => array(
-					'label'   => __( 'Stately & elevated', 'wp-module-onboarding' ),
+					'label'   => __( 'Stately & elevated', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/02-pink-shades',
 					'styles'  => array(
 						'typography' => array(
@@ -66,7 +66,7 @@ final class Fonts {
 					),
 				),
 				'typewriter-crisp-midcentury'    => array(
-					'label'   => __( 'Typewriter & crisp midcentury', 'wp-module-onboarding' ),
+					'label'   => __( 'Typewriter & crisp midcentury', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/03-orange-shades',
 					'styles'  => array(
 						'typography' => array(
@@ -82,7 +82,7 @@ final class Fonts {
 					),
 				),
 				'refined-traditional-newsletter' => array(
-					'label'   => __( 'Refined traditional newsletter', 'wp-module-onboarding' ),
+					'label'   => __( 'Refined traditional newsletter', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/04-black-shades',
 					'styles'  => array(
 						'typography' => array(
@@ -98,7 +98,7 @@ final class Fonts {
 					),
 				),
 				'bold-stamp-slab'                => array(
-					'label'   => __( 'Bold stamp & slab', 'wp-module-onboarding' ),
+					'label'   => __( 'Bold stamp & slab', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/05-red-shades',
 					'styles'  => array(
 						'typography' => array(
@@ -114,7 +114,7 @@ final class Fonts {
 					),
 				),
 				'fast-simple'                    => array(
-					'label'   => __( 'Fast & Simple', 'wp-module-onboarding' ),
+					'label'   => __( 'Fast & Simple', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-01',
 					'styles'  => array(
 						'typography' => array(
@@ -130,7 +130,7 @@ final class Fonts {
 					),
 				),
 				'timeless-traditional'           => array(
-					'label'   => __( 'Timeless & Traditional', 'wp-module-onboarding' ),
+					'label'   => __( 'Timeless & Traditional', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-02',
 					'styles'  => array(
 						'typography' => array(
@@ -146,7 +146,7 @@ final class Fonts {
 					),
 				),
 				'sleek-sophisticated'            => array(
-					'label'   => __( 'Sleek & Sophisticated', 'wp-module-onboarding' ),
+					'label'   => __( 'Sleek & Sophisticated', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-03',
 					'styles'  => array(
 						'typography' => array(
@@ -162,7 +162,7 @@ final class Fonts {
 					),
 				),
 				'clear-crisp'                    => array(
-					'label'   => __( 'Clear & Crisp', 'wp-module-onboarding' ),
+					'label'   => __( 'Clear & Crisp', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-04',
 					'styles'  => array(
 						'typography' => array(
@@ -178,7 +178,7 @@ final class Fonts {
 					),
 				),
 				'retro-classy'                   => array(
-					'label'   => __( 'Retro & Classy', 'wp-module-onboarding' ),
+					'label'   => __( 'Retro & Classy', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-05',
 					'styles'  => array(
 						'typography' => array(
@@ -194,7 +194,7 @@ final class Fonts {
 					),
 				),
 				'defined-solid'                  => array(
-					'label'   => __( 'Defined & Solid', 'wp-module-onboarding' ),
+					'label'   => __( 'Defined & Solid', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-06',
 					'styles'  => array(
 						'typography' => array(

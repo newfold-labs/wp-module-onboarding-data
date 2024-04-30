@@ -1,0 +1,401 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-04-14T08:13:30+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: wp-module-onboarding-data\n"
+
+#: includes/Brands.php:17
+msgid "your web host"
+msgstr ""
+
+#: includes/Options.php:122
+#: includes/Options.php:127
+#: includes/Options.php:132
+#: includes/Options.php:137
+#: includes/Options.php:142
+#: includes/Options.php:147
+#: includes/Options.php:152
+#: includes/Options.php:157
+#: includes/Options.php:162
+#: includes/Options.php:167
+msgid "Woocommerce Settings"
+msgstr ""
+
+#: includes/Patterns.php:19
+msgid "Home"
+msgstr ""
+
+#: includes/Patterns.php:20
+#: includes/Patterns.php:92
+msgid "About"
+msgstr ""
+
+#: includes/Patterns.php:21
+#: includes/Patterns.php:101
+msgid "Contact"
+msgstr ""
+
+#: includes/Patterns.php:22
+msgid "News"
+msgstr ""
+
+#: includes/Patterns.php:23
+msgid "Privacy"
+msgstr ""
+
+#: includes/Patterns.php:24
+msgid "Careers"
+msgstr ""
+
+#: includes/Patterns.php:95
+msgid "Explain your company values or the history behind your brand."
+msgstr ""
+
+#: includes/Patterns.php:103
+msgid "Offer visitors a single page with a contact form, your street address and social media."
+msgstr ""
+
+#: includes/Patterns.php:108
+msgid "Testimonials"
+msgstr ""
+
+#: includes/Patterns.php:111
+msgid "Highlight your success with testimonials from your fans."
+msgstr ""
+
+#: includes/Patterns.php:117
+msgid "Blog"
+msgstr ""
+
+#: includes/Patterns.php:119
+msgid "A page for periodic news, announcements and ideas."
+msgstr ""
+
+#: includes/Services/BlockRenderService.php:43
+#: includes/Services/BlockRenderService.php:54
+msgid "Unable to generate screenshot."
+msgstr ""
+
+#: includes/Services/FlowService.php:136
+msgid "Wrong Parameter Provided : primary => value"
+msgstr ""
+
+#: includes/Services/FlowService.php:150
+msgid "Wrong Parameter Provided : secondary => value"
+msgstr ""
+
+#: includes/Services/SiteGenService.php:107
+msgid "Not a valid identifier"
+msgstr ""
+
+#: includes/Services/SiteGenService.php:120
+msgid "Error generating site meta: "
+msgstr ""
+
+#: includes/Services/SiteGenService.php:345
+msgid "Error generating homepages: "
+msgstr ""
+
+#: includes/Services/SiteGenService.php:373
+msgid "The homepage could not be found for regeneration."
+msgstr ""
+
+#: includes/Services/SiteGenService.php:405
+#: includes/Services/SiteGenService.php:410
+msgid " (Copy)"
+msgstr ""
+
+#: includes/Services/SiteGenService.php:443
+msgid "Error re-generating homepages: "
+msgstr ""
+
+#: includes/Services/SiteGenService.php:485
+msgid "Version "
+msgstr ""
+
+#: includes/Services/SiteGenService.php:510
+#: includes/Services/SiteGenService.php:597
+#: includes/Services/SiteGenService.php:650
+msgid "Prompt not found."
+msgstr ""
+
+#: includes/Services/SiteGenService.php:525
+msgid "Cannot retrieve color palatte"
+msgstr ""
+
+#: includes/Services/SiteGenService.php:613
+msgid "Cannot retrieve plugin recommendations."
+msgstr ""
+
+#: includes/SiteFeatures.php:23
+#: includes/SiteFeatures.php:87
+msgid "Security, Speed & Growth"
+msgstr ""
+
+#: includes/SiteFeatures.php:24
+#: includes/SiteFeatures.php:88
+msgid "Powered by Jetpack"
+msgstr ""
+
+#: includes/SiteFeatures.php:25
+#: includes/SiteFeatures.php:89
+msgid "Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic."
+msgstr ""
+
+#: includes/SiteFeatures.php:33
+#: includes/SiteFeatures.php:97
+msgid "Forms"
+msgstr ""
+
+#: includes/SiteFeatures.php:34
+#: includes/SiteFeatures.php:98
+msgid "Powered by WP Forms"
+msgstr ""
+
+#: includes/SiteFeatures.php:35
+#: includes/SiteFeatures.php:99
+msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
+msgstr ""
+
+#: includes/SiteFeatures.php:43
+#: includes/SiteFeatures.php:107
+msgid "Site Traffic"
+msgstr ""
+
+#: includes/SiteFeatures.php:44
+#: includes/SiteFeatures.php:108
+msgid "Powered by MonsterInsights"
+msgstr ""
+
+#: includes/SiteFeatures.php:45
+#: includes/SiteFeatures.php:109
+msgid "See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive."
+msgstr ""
+
+#: includes/SiteFeatures.php:53
+#: includes/SiteFeatures.php:117
+msgid "Search Engine Optimization"
+msgstr ""
+
+#: includes/SiteFeatures.php:54
+#: includes/SiteFeatures.php:118
+msgid "Powered by Yoast"
+msgstr ""
+
+#: includes/SiteFeatures.php:55
+#: includes/SiteFeatures.php:119
+msgid "Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast."
+msgstr ""
+
+#: includes/SiteFeatures.php:63
+#: includes/SiteFeatures.php:127
+msgid "Email Newsletters"
+msgstr ""
+
+#: includes/SiteFeatures.php:64
+#: includes/SiteFeatures.php:128
+msgid "Powered by Creative Email"
+msgstr ""
+
+#: includes/SiteFeatures.php:65
+#: includes/SiteFeatures.php:129
+msgid "A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact."
+msgstr ""
+
+#: includes/SiteFeatures.php:73
+#: includes/SiteFeatures.php:137
+msgid "Lead Generation"
+msgstr ""
+
+#: includes/SiteFeatures.php:74
+#: includes/SiteFeatures.php:138
+msgid "Powered by Optin Monster"
+msgstr ""
+
+#: includes/SiteFeatures.php:75
+#: includes/SiteFeatures.php:139
+msgid "Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive."
+msgstr ""
+
+#: includes/SiteFeatures.php:149
+#: includes/SiteFeatures.php:191
+msgid "Enhanced Product Search"
+msgstr ""
+
+#: includes/SiteFeatures.php:150
+#: includes/SiteFeatures.php:160
+#: includes/SiteFeatures.php:170
+#: includes/SiteFeatures.php:180
+#: includes/SiteFeatures.php:192
+#: includes/SiteFeatures.php:202
+#: includes/SiteFeatures.php:212
+#: includes/SiteFeatures.php:222
+msgid "Powered by YITH"
+msgstr ""
+
+#: includes/SiteFeatures.php:151
+#: includes/SiteFeatures.php:193
+msgid "Give your visitors great search experiences with this exclusive offering from our colleagues at YITH."
+msgstr ""
+
+#: includes/SiteFeatures.php:159
+#: includes/SiteFeatures.php:201
+msgid "Enhanced Product Filters"
+msgstr ""
+
+#: includes/SiteFeatures.php:161
+#: includes/SiteFeatures.php:203
+msgid "Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH."
+msgstr ""
+
+#: includes/SiteFeatures.php:169
+#: includes/SiteFeatures.php:211
+msgid "Bookings & Appointments"
+msgstr ""
+
+#: includes/SiteFeatures.php:171
+#: includes/SiteFeatures.php:213
+msgid "Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH."
+msgstr ""
+
+#: includes/SiteFeatures.php:179
+#: includes/SiteFeatures.php:221
+msgid "Product Wishlists"
+msgstr ""
+
+#: includes/SiteFeatures.php:181
+#: includes/SiteFeatures.php:223
+msgid "Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH."
+msgstr ""
+
+#: includes/SiteGen.php:17
+msgid "1. Do you have a business name or website title?"
+msgstr ""
+
+#: includes/SiteGen.php:18
+msgid "My business name is"
+msgstr ""
+
+#: includes/SiteGen.php:21
+msgid "2. What type of website are you making?"
+msgstr ""
+
+#: includes/SiteGen.php:22
+msgid "e.g. Graphic design portfolio"
+msgstr ""
+
+#: includes/SiteGen.php:23
+msgid "I am making a website type of"
+msgstr ""
+
+#: includes/SiteGen.php:26
+msgid "3. Is there anything unique about your business or brand?"
+msgstr ""
+
+#: includes/SiteGen.php:27
+msgid "e.g. Unique product, amazing customer service, customizations, etc."
+msgstr ""
+
+#: includes/SiteGen.php:28
+msgid "Unique about my business is"
+msgstr ""
+
+#: includes/Themes/Colors.php:31
+msgid "Calm"
+msgstr ""
+
+#: includes/Themes/Colors.php:43
+msgid "Cool"
+msgstr ""
+
+#: includes/Themes/Colors.php:55
+msgid "Warm"
+msgstr ""
+
+#: includes/Themes/Colors.php:67
+msgid "Radiant"
+msgstr ""
+
+#: includes/Themes/Colors.php:79
+msgid "Bold"
+msgstr ""
+
+#: includes/Themes/Colors.php:91
+msgid "Retro"
+msgstr ""
+
+#: includes/Themes/Colors.php:103
+msgid "Professional"
+msgstr ""
+
+#: includes/Themes/Colors.php:115
+msgid "Crisp"
+msgstr ""
+
+#: includes/Themes/Colors.php:127
+msgid "Polished"
+msgstr ""
+
+#: includes/Themes/Colors.php:139
+msgid "Nightowl"
+msgstr ""
+
+#: includes/Themes/Colors.php:151
+msgid "Subtle"
+msgstr ""
+
+#: includes/Themes/Fonts.php:21
+msgid "Modern & approachable"
+msgstr ""
+
+#: includes/Themes/Fonts.php:37
+msgid "Strong & sleek"
+msgstr ""
+
+#: includes/Themes/Fonts.php:53
+msgid "Stately & elevated"
+msgstr ""
+
+#: includes/Themes/Fonts.php:69
+msgid "Typewriter & crisp midcentury"
+msgstr ""
+
+#: includes/Themes/Fonts.php:85
+msgid "Refined traditional newsletter"
+msgstr ""
+
+#: includes/Themes/Fonts.php:101
+msgid "Bold stamp & slab"
+msgstr ""
+
+#: includes/Themes/Fonts.php:117
+msgid "Fast & Simple"
+msgstr ""
+
+#: includes/Themes/Fonts.php:133
+msgid "Timeless & Traditional"
+msgstr ""
+
+#: includes/Themes/Fonts.php:149
+msgid "Sleek & Sophisticated"
+msgstr ""
+
+#: includes/Themes/Fonts.php:165
+msgid "Clear & Crisp"
+msgstr ""
+
+#: includes/Themes/Fonts.php:181
+msgid "Retro & Classy"
+msgstr ""
+
+#: includes/Themes/Fonts.php:197
+msgid "Defined & Solid"
+msgstr ""
