@@ -10,7 +10,7 @@ final class Events {
 	 *
 	 * @var array
 	 */
-	protected static $category = array( 'wonder_start', 'experiment' );
+	protected static $category = array( 'wonder_start' );
 
 	/**
 	 * List of valid actions that an event can perform.
@@ -54,7 +54,6 @@ final class Events {
 		'logo_skipped'                => true,
 		'site_generation_time'        => true,
 		'error_state_triggered'       => true,
-		'exp_fork_ai'                 => true,
 	);
 
 	/**

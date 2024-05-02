@@ -139,7 +139,6 @@ final class Flows {
 		),
 
 		'sitegen'              => array(
-			'theForkExperimentVersion' => 0,
 			'siteDetails'              => array(
 				'name'                => '',
 				'type'                => '',
