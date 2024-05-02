@@ -39,7 +39,7 @@ final class Flows {
 		// to populate the step fields if a user is resuming a flow.
 		'data'                 => array(
 			// Any manual fixes or modification made to siteType shall also be made in FlowService::update_default_data_for_ecommerce()
-			'siteType'        => array(
+			'siteType'            => array(
 				'referTo'   => 'site',
 				'primary'   => array(
 					'refers' => '',
@@ -51,30 +51,30 @@ final class Flows {
 				),
 			),
 
-			'wpComfortLevel'  => '0',
+			'wpComfortLevel'      => '0',
 
 			// Any manual fixes or modification made to topPriority shall also be made in FlowServices::update_default_data_for_ecommerce()
 			// Enums: `publishing`, `designing`, `selling`, 'migrating', 'regenerate' and 'skip'
-			'topPriority'     => array(
+			'topPriority'         => array(
 				'priority1' => '',
 			),
 
 			// This data will map to WordPress default 'blogname'
-			'blogName'        => '',
+			'blogName'            => '',
 
 			// This data will map to WordPress default 'blogdescription'
-			'blogDescription' => '',
+			'blogDescription'     => '',
 
 			// This integer will map to the attachment ID for an uploaded image to the WordPress media library
-			'siteLogo'        => array(
+			'siteLogo'            => array(
 				'id'  => 0,
 				'url' => '',
 			),
 
 			// key-value store for social media accounts
-			'accounts'        => array(),
+			'accounts'            => array(),
 
-			'theme'           => array(
+			'theme'               => array(
 				// This is the WordPress parent theme slug
 				'template'   => '',
 
@@ -85,29 +85,31 @@ final class Flows {
 				'variation'  => '',
 			),
 
-			'customDesign'    => false,
+			'customDesign'        => false,
 
-			'colorStyle'      => '',
+			'colorStyle'          => '',
 
-			'fontStyle'       => '',
+			'fontStyle'           => '',
 
 			// This string will identify the Header Pattern
-			'partHeader'      => '',
+			'partHeader'          => '',
 
-			'partFooter'      => '',
+			'partFooter'          => '',
 
 			// for eg. Home, About, Contact, Blog|News, Resume, Portfolio, Staff and Link in Bio
-			'sitePages'       => array(
+			'sitePages'           => array(
 				'homepage' => '',
 				'other'    => array(),
 			),
 
 			// will include plugin installs, module activation/deactivation and perhaps API calls to the hosting platform for Newfold-specific services
-			'siteFeatures'    => array(),
+			'siteFeatures'        => array(),
 
-			'chapters'        => array(),
+			'chapters'            => array(),
 
-			'comingSoon'      => false,
+			'comingSoon'          => false,
+
+			'siteOverrideConsent' => false,
 		),
 
 		'activeFlow'           => '',

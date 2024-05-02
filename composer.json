@@ -32,7 +32,8 @@
         "mustache/mustache": "^2.14",
         "newfold-labs/wp-module-data": "^2.0",
         "newfold-labs/wp-module-coming-soon": "^1.2",
-        "newfold-labs/wp-module-performance": "^1.4"
+        "newfold-labs/wp-module-performance": "^1.4",
+        "newfold-labs/wp-module-install-checker": "^1.0"
     },
     "require-dev": {
         "newfold-labs/wp-php-standards": "^1.2",
