@@ -178,7 +178,7 @@ final class Data {
 	 *
 	 * @return boolean
 	 */
-	private static function is_fresh_installation() {
+	public static function is_fresh_installation() {
 		if ( container()->has( 'isFreshInstallation' ) ) {
 			return container()->get( 'isFreshInstallation' );
 		}
