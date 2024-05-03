@@ -20,7 +20,7 @@ class I18n {
 	 * @return boolean
 	 */
 	public static function load_php_textdomain() {
-		return load_plugin_textdomain(
+		return \load_plugin_textdomain(
 			'wp-module-onboarding-data',
 			false,
 			dirname( container()->plugin()->basename ) . '/vendor/newfold-labs/wp-module-onboarding-data/languages'
@@ -30,7 +30,7 @@ class I18n {
 
 // Instantiate the internationalization class for only Admins.
 if ( is_callable( 'is_admin' ) ) {
-	if ( is_admin() || ( is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
+	if ( \is_admin() || ( \is_user_logged_in() && \current_user_can( 'manage_options' ) ) ) {
 		new I18n();
 	}
 }
