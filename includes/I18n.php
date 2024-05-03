@@ -29,7 +29,7 @@ class I18n {
 }
 
 // Instantiate the internationalization class for only Admins.
-if ( is_callable( 'is_admin' ) ) {
+if ( is_callable( 'is_admin' ) && is_callable( 'is_user_logged_in' ) && is_callable( 'current_user_can' ) ) {
 	if ( is_admin() || ( is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
 		new I18n();
 	}
