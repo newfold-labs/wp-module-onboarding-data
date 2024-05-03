@@ -20,7 +20,7 @@ class I18n {
 	 * @return boolean
 	 */
 	public static function load_php_textdomain() {
-		return \load_plugin_textdomain(
+		return load_plugin_textdomain(
 			'wp-module-onboarding-data',
 			false,
 			dirname( container()->plugin()->basename ) . '/vendor/newfold-labs/wp-module-onboarding-data/languages'
