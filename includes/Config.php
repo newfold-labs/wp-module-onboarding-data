@@ -57,4 +57,13 @@ final class Config {
 	public static function has_ai_sitegen() {
 		return self::get_site_capability( 'hasAISiteGen' );
 	}
+
+	/**
+	 * Gets the current site's capability if it can import via instaWp.
+	 *
+	 * @return boolean
+	 */
+	public static function can_migrate_site() {
+		return self::get_site_capability( 'canMigrateSite' );
+	}
 }

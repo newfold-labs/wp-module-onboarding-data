@@ -37,8 +37,9 @@ final class Brands {
 	 */
 	public static function get_brands() {
 
-		// Checks if customer has acess to AI Sitegen
-		$has_ai_sitegen = Config::has_ai_sitegen();
+		// Checks if customer has acess to AI Sitegen.
+		$has_ai_sitegen   = Config::has_ai_sitegen();
+		$can_migrate_site = Config::can_migrate_site();
 
 		return array(
 			'bluehost'       => array(
@@ -110,6 +111,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'bluehost-india' => array(
@@ -173,6 +175,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'webcom'         => array(
@@ -234,6 +237,7 @@ final class Brands {
 					),
 					'wonder_blocks'  => true,
 					'prioritization' => false,
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'crazy-domains'  => array(
@@ -302,6 +306,7 @@ final class Brands {
 							),
 						),
 					),
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'hostgator-br'   => array(
@@ -381,6 +386,7 @@ final class Brands {
 							),
 						),
 					),
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 			'hostgator-us'   => array(
@@ -467,6 +473,7 @@ final class Brands {
 							),
 						),
 					),
+					'canMigrateSite' => $can_migrate_site,
 				),
 			),
 		);
