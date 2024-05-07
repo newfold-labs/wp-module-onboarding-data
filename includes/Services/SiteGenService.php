@@ -181,7 +181,7 @@ class SiteGenService {
 			wp_update_post(
 				array(
 					'ID'           => $navigation->posts[0]->ID,
-					'post_content' => $nav_link_grammar . $navigation->posts[0]->post_content,
+					'post_content' => $nav_link_grammar,
 				)
 			);
 		}
