@@ -1223,8 +1223,8 @@ class SiteGenService {
 	 * @return array
 	 */
 	public static function reset_error_status( $data ) {
-		if ( isset( $data['sitegen']['siteGenErrorStatus'] ) && true === $data['sitegen']['siteGenErrorStatus'] ) {
-			$data['sitegen']['siteGenErrorStatus'] = false;
+		if ( isset( $data['sitegen']['siteGenErrorMeta']['status'] ) && true === $data['sitegen']['siteGenErrorMeta']['status'] ) {
+			$data['sitegen']['siteGenErrorMeta']['status'] = false;
 		}
 
 		return $data;
