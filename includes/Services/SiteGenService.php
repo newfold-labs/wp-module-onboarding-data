@@ -95,7 +95,7 @@ class SiteGenService {
 	/**
 	 * Sends the data required for SiteGen Generation
 	 *
-	 * @param string|Object $site_info The prompt that configures the Site gen object.
+	 * @param string|array $site_info The prompt that configures the Site gen object.
 	 * @param string        $identifier The identifier for Generating Site Meta.
 	 * @param boolean       $skip_cache To override the cache and fetch the data.
 	 * @return array|\WP_Error
@@ -166,7 +166,7 @@ class SiteGenService {
 	 *
 	 * @param array $active_homepage The active homepage that was customized.
 	 * @param array $homepage_data All the other generated homepage options.
-	 * @return boolean
+	 * @return boolean|\WP_Error
 	 */
 	public static function complete( $active_homepage, $homepage_data ) {
 		/* Replace dalle images */
@@ -368,7 +368,7 @@ class SiteGenService {
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function generate_homepages( $site_description, $content_style, $target_audience ) {
 
@@ -403,7 +403,7 @@ class SiteGenService {
 	 *
 	 * @param string $slug slug of the home page to be regenerated.
 	 * @param array  $color_palette  color palatte.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function regenerate_favorite_homepage( $slug, $color_palette ) {
 		$existing_homepages = self::get_homepages();
@@ -462,7 +462,7 @@ class SiteGenService {
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function regenerate_homepage( $site_description, $content_style, $target_audience ) {
 		$existing_homepages    = self::get_homepages();
@@ -496,7 +496,7 @@ class SiteGenService {
 	 * Processes the Homepages response structure for homepages
 	 *
 	 * @param array $homepages array.
-	 * @return array
+	 * @return array|\WP_Error
 	 */
 	public static function process_homepages_response(
 		$homepages
@@ -580,7 +580,7 @@ class SiteGenService {
 	 * Get the last version number to increment excluiding the (copy) versions
 	 *
 	 * @param array $homepages unstructured home pages from sitegen ai responses.
-	 * @return array
+	 * @return array|int
 	 */
 	public static function get_last_version_number( $homepages ) {
 		// Initialize to zero, assuming there are no versions yet.
@@ -878,7 +878,7 @@ class SiteGenService {
 	 * @param array   $target_audience The target audience meta.
 	 * @param array   $sitemap The list of site pages and their keywords.
 	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
-	 * @return array
+	 * @return array|boolean
 	 */
 	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $update_nav_menu = true ) {
 		$other_pages = SiteGen::get_pages(
