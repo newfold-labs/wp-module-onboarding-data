@@ -168,8 +168,9 @@ final class Flows {
 			'sitemapPagesGenerated' => false,
 			'customDesign'          => false,
 			'siteGenErrorMeta'      => array(
-				'status'     => false,
-				'retryCount' => 0,
+				'status'        => false,
+				'retryCount'    => 0,
+				'maxRetryCount' => 3,
 			),
 		),
 
