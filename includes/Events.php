@@ -54,6 +54,7 @@ final class Events {
 		'logo_skipped'                => true,
 		'site_generation_time'        => true,
 		'error_state_triggered'       => true,
+		'migration_initiated'         => true,
 	);
 
 	/**
