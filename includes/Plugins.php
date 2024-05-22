@@ -341,6 +341,16 @@ final class Plugins {
 					'activate' => true,
 					'priority' => 300,
 				),
+				array(
+					'slug'     => 'jetpack',
+					'activate' => true,
+					'priority' => 250,
+				),
+				array(
+					'slug'     => 'wordpress-seo',
+					'activate' => true,
+					'priority' => 260,
+				),
 			),
 			'bluehost'       => array(
 				'default'           => array(
