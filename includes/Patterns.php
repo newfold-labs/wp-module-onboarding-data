@@ -88,6 +88,7 @@ final class Patterns {
 				),
 				'site-pages'      => array(
 					'company-page'      => array(
+						'key'           => 'about',
 						'active'        => true,
 						'title'         => __( 'About', 'wp-module-onboarding-data' ),
 						'selected'      => true,
@@ -96,6 +97,7 @@ final class Patterns {
 						'wonder_blocks' => 'about-4',
 					),
 					'contact-us'        => array(
+						'key'           => 'contact',
 						'active'        => true,
 						'selected'      => true,
 						'title'         => __( 'Contact', 'wp-module-onboarding-data' ),
@@ -104,6 +106,7 @@ final class Patterns {
 						'wonder_blocks' => 'contact-4',
 					),
 					'testimonials-page' => array(
+						'key'           => 'testimonials',
 						'active'        => true,
 						'title'         => __( 'Testimonials', 'wp-module-onboarding-data' ),
 						'selected'      => false,
@@ -112,6 +115,7 @@ final class Patterns {
 						'wonder_blocks' => 'testimonials-template-2',
 					),
 					'blog-page'         => array(
+						'key'         => 'blog',
 						'active'      => true,
 						'selected'    => true,
 						'title'       => __( 'Blog', 'wp-module-onboarding-data' ),
