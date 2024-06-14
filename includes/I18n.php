@@ -20,17 +20,17 @@ class I18n {
 	 * @return boolean
 	 */
 	public static function load_php_textdomain() {
-		return load_plugin_textdomain(
-			'wp-module-onboarding-data',
-			false,
-			dirname( container()->plugin()->basename ) . '/vendor/newfold-labs/wp-module-onboarding-data/languages'
-		);
+		if ( is_admin() || ( is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
+			return load_plugin_textdomain(
+				'wp-module-onboarding-data',
+				false,
+				dirname( container()->plugin()->basename ) . '/vendor/newfold-labs/wp-module-onboarding-data/languages'
+			);
+		}
 	}
 }
 
 // Instantiate the internationalization class for only Admins.
-if ( is_callable( 'is_admin' ) && is_callable( 'is_user_logged_in' ) && is_callable( 'current_user_can' ) ) {
-	if ( is_admin() || ( is_user_logged_in() && current_user_can( 'manage_options' ) ) ) {
-		new I18n();
-	}
+if ( is_callable( 'add_action' ) ) {
+	new I18n();
 }
