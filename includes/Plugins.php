@@ -64,6 +64,11 @@ final class Plugins {
 			),
 			'hasYithExtended' => array(
 				array(
+					'slug'     => 'woocommerce',
+					'activate' => true,
+					'priority' => 300,
+				),
+				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_booking',
 					'activate' => true,
 					'priority' => 100,
