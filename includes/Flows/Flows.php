@@ -145,7 +145,7 @@ final class Flows {
 				'style'               => '',
 				'prompt'              => '',
 				'uniqueAboutBusiness' => '',
-				'minCharLimit'        => '',
+				'minCharLimit'        => 35,
 				'mode'                => 'simple',
 			),
 			'siteLogo'              => array(
