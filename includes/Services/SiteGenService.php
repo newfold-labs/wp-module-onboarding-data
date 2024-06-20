@@ -259,14 +259,14 @@ class SiteGenService {
 	 */
 	public static function populate_fonts_in_theme_styles( $theme_styles, $homepage_styles ) {
 
-		if (!empty($homepage_styles['blocks']) && isset($homepage_styles['blocks'][0])) {
+		if ( ! empty( $homepage_styles['blocks'] ) && isset( $homepage_styles['blocks'][0] ) ) {
 			$first_block = $homepage_styles['blocks'][0];
-	
-			if (isset($first_block['core/heading']) && isset($first_block['core/heading']['typography']['fontFamily'])) {
+
+			if ( isset( $first_block['core/heading'] ) && isset( $first_block['core/heading']['typography']['fontFamily'] ) ) {
 				$theme_styles['blocks']['core/heading']['typography']['fontFamily'] = $first_block['core/heading']['typography']['fontFamily'];
 			}
-	
-			if (isset($first_block['core/body']) && isset($first_block['core/body']['typography']['fontFamily'])) {
+
+			if ( isset( $first_block['core/body'] ) && isset( $first_block['core/body']['typography']['fontFamily'] ) ) {
 				$theme_styles['typography']['fontFamily'] = $first_block['core/body']['typography']['fontFamily'];
 			}
 		}
@@ -316,7 +316,7 @@ class SiteGenService {
 		$theme_json_data = json_decode( $theme_json, true );
 
 		$theme_json_data['settings']['color']['palette'] = $data['color']['palette'];
-		$theme_json_data['styles'] = self::populate_fonts_in_theme_styles( $theme_json_data['styles'], $data['styles'] );
+		$theme_json_data['styles']                       = self::populate_fonts_in_theme_styles( $theme_json_data['styles'], $data['styles'] );
 
 		if ( ! $theme_json_data ) {
 			return new \WP_Error(
