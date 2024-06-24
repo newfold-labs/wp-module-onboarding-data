@@ -12,6 +12,7 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
 use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
 use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
 use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
+use NewfoldLabs\WP\Module\Onboarding\Data\Events;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
 
@@ -246,6 +247,16 @@ class SiteGenService {
 
 		self::trash_sample_page();
 		container()->get( 'cachePurger' )->purgeAll();
+
+		container()->get( 'survey' )->create_toast_survey(
+			Events::get_category()[0],
+			'customer_satisfaction_survey',
+			array(
+				'label_key' => 'value',
+			),
+			__( 'Help us improve', 'wp-module-onboarding-data' ),
+			__( 'How satisfied were you with the ease of creating your website?', 'wp-module-onboarding-data' ),
+		);
 
 		return true;
 	}
