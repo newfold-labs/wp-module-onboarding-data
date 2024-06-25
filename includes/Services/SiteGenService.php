@@ -251,6 +251,30 @@ class SiteGenService {
 	}
 
 	/**
+	 * Populates the the fonts in the Theme's styles.
+	 *
+	 * @param object $theme_styles Theme styles json data.
+	 * @param object $homepage_styles Customized Homepage styles.
+	 * @return object $theme_styles Updated theme styles.
+	 */
+	public static function populate_fonts_in_theme_styles( $theme_styles, $homepage_styles ) {
+
+		if ( ! empty( $homepage_styles['blocks'] ) && isset( $homepage_styles['blocks'][0] ) ) {
+			$first_block = $homepage_styles['blocks'][0];
+
+			if ( isset( $first_block['core/heading'] ) && isset( $first_block['core/heading']['typography']['fontFamily'] ) ) {
+				$theme_styles['blocks']['core/heading']['typography']['fontFamily'] = $first_block['core/heading']['typography']['fontFamily'];
+			}
+
+			if ( isset( $first_block['core/body'] ) && isset( $first_block['core/body']['typography']['fontFamily'] ) ) {
+				$theme_styles['typography']['fontFamily'] = $first_block['core/body']['typography']['fontFamily'];
+			}
+		}
+
+		return $theme_styles;
+	}
+
+	/**
 	 * Generates a child theme for the sitegen flow.
 	 *
 	 * @param array $data Data on each homepage and it's corresponding styles.
@@ -292,6 +316,7 @@ class SiteGenService {
 		$theme_json_data = json_decode( $theme_json, true );
 
 		$theme_json_data['settings']['color']['palette'] = $data['color']['palette'];
+		$theme_json_data['styles']                       = self::populate_fonts_in_theme_styles( $theme_json_data['styles'], $data['styles'] );
 
 		if ( ! $theme_json_data ) {
 			return new \WP_Error(
