@@ -176,6 +176,7 @@ final class Flows {
 		),
 
 		'continueWithoutAi'    => false,
+		'sitegenThemeMode' => '',
 	);
 
 	/**
