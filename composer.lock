@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62d714f3f8e26cb1990e9e9464467717",
+    "content-hash": "5a3931d220ce35df62120541a6d7c5a9",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -237,16 +237,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "05112a5908bb08ca0aa3aa7d7e7c508d44401b28"
+                "reference": "36da71998930ffc6fcb13d2ea082b82507a284b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/05112a5908bb08ca0aa3aa7d7e7c508d44401b28",
-                "reference": "05112a5908bb08ca0aa3aa7d7e7c508d44401b28",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/36da71998930ffc6fcb13d2ea082b82507a284b2",
+                "reference": "36da71998930ffc6fcb13d2ea082b82507a284b2",
                 "shasum": ""
             },
             "require": {
@@ -284,10 +284,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.2.4",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.2.5",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2024-05-31T16:22:17+00:00"
+            "time": "2024-06-19T19:13:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -345,16 +345,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "bd9642c155735fac8f114ea1eb237da4a72eb267"
+                "reference": "6c0941bc9ac3d18820f924de8c4afe58bb421782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/bd9642c155735fac8f114ea1eb237da4a72eb267",
-                "reference": "bd9642c155735fac8f114ea1eb237da4a72eb267",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/6c0941bc9ac3d18820f924de8c4afe58bb421782",
+                "reference": "6c0941bc9ac3d18820f924de8c4afe58bb421782",
                 "shasum": ""
             },
             "require": {
@@ -367,10 +367,20 @@
             },
             "require-dev": {
                 "10up/wp_mock": "^0.4.2",
+                "bluehost/bluehost-wordpress-plugin": "*",
+                "brianhenryie/composer-phpstorm": "*",
                 "johnpbloch/wordpress": "*",
-                "newfold-labs/wp-php-standards": "^1.2"
+                "kporras07/composer-symlinks": "^1.2",
+                "lucatume/wp-browser": "^3",
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wpackagist-plugin/woocommerce": "*"
             },
             "type": "library",
+            "extra": {
+                "symlinks": {
+                    ".": "wp-content/plugins/bluehost-wordpress-plugin/vendor/newfold-labs/wp-module-data"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "NewfoldLabs\\WP\\Module\\Data\\": "includes/"
@@ -381,8 +391,14 @@
             },
             "autoload-dev": {
                 "psr-4": {
-                    "NewfoldLabs\\WP\\Module\\Data\\": "tests/phpunit/includes/"
-                }
+                    "NewfoldLabs\\WP\\Module\\Data\\": [
+                        "tests/phpunit/includes/",
+                        "tests/wpunit/includes"
+                    ]
+                },
+                "classmap": [
+                    "wordpress"
+                ]
             },
             "scripts": {
                 "fix": [
@@ -393,6 +409,15 @@
                 ],
                 "lint": [
                     "vendor/bin/phpcs . --standard=phpcs.xml -s"
+                ],
+                "create-symlinks": [
+                    "Kporras07\\ComposerSymlinks\\ScriptHandler::createSymlinks"
+                ],
+                "post-install-cmd": [
+                    "@create-symlinks"
+                ],
+                "post-update-cmd": [
+                    "@create-symlinks"
                 ]
             },
             "license": [
@@ -400,10 +425,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.2",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.5.3",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-05-30T18:45:12+00:00"
+            "time": "2024-06-19T17:34:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-install-checker",
@@ -627,6 +652,49 @@
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
             "time": "2024-04-22T22:30:42+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-survey",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:newfold-labs/wp-module-survey.git",
+                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-survey/zipball/6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "reference": "6c37264f2a607a330ac25e65555d99ec38972b2e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/i18n-command": "^2.4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\Survey\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A Newfold module to collect customer satisfaction feedback via surveys in the WordPress admin dashboard.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-survey/tree/1.0.0",
+                "issues": "https://github.com/newfold-labs/wp-module-survey/issues"
+            },
+            "time": "2024-06-27T09:50:43+00:00"
         },
         {
             "name": "wp-forge/collection",
@@ -1773,90 +1841,24 @@
             "time": "2024-05-22T21:24:41+00:00"
         },
         {
-            "name": "symfony/deprecation-contracts",
-            "version": "v2.5.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/80d075412b557d41002320b96a096ca65aa2c98d",
-                "reference": "80d075412b557d41002320b96a096ca65aa2c98d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.5-dev"
-                },
-                "thanks": {
-                    "name": "symfony/contracts",
-                    "url": "https://github.com/symfony/contracts"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "function.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "A generic function and convention to trigger deprecation notices",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.5.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-01-24T14:02:46+00:00"
-        },
-        {
             "name": "symfony/finder",
-            "version": "v5.4.40",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "f51cff4687547641c7d8180d74932ab40b2205ce"
+                "reference": "3ef977a43883215d560a2cecb82ec8e62131471c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/f51cff4687547641c7d8180d74932ab40b2205ce",
-                "reference": "f51cff4687547641c7d8180d74932ab40b2205ce",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/3ef977a43883215d560a2cecb82ec8e62131471c",
+                "reference": "3ef977a43883215d560a2cecb82ec8e62131471c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/polyfill-php80": "^1.16"
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "symfony/filesystem": "^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1884,7 +1886,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v5.4.40"
+                "source": "https://github.com/symfony/finder/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -1900,87 +1902,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:33:22+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php80",
-            "version": "v1.29.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
-                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ion Bazan",
-                    "email": "ion.bazan@gmail.com"
-                },
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.29.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-01-29T20:11:03+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "wp-cli/i18n-command",
