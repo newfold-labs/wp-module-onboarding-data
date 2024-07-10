@@ -98,6 +98,11 @@ final class Plugins {
 					'activate' => true,
 					'priority' => 200,
 				),
+				array(
+					'slug'     => 'nfd_slug_wonder_cart',
+					'activate' => true,
+					'priority' => 210,
+				),
 			),
 		),
 		'ecommerce'         => array(
