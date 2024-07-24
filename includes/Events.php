@@ -55,6 +55,7 @@ final class Events {
 		'site_generation_time'        => true,
 		'error_state_triggered'       => true,
 		'migration_initiated'         => true,
+		'mfe_migration_initiated'     => true,
 	);
 
 	/**
