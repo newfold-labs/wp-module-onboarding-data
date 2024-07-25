@@ -938,7 +938,8 @@ class SiteGenService {
 				true,
 				array(
 					'nf_dc_page' => $page['slug'],
-				)
+				),
+				explode('/', $page['path'])[1]
 			);
 
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {

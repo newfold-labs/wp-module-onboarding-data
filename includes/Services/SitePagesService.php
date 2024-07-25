@@ -15,12 +15,13 @@ class SitePagesService {
 	 * @param boolean|array $meta The page post_meta.
 	 * @return int|\WP_Error
 	 */
-	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false ) {
+	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $name = false ) {
 		$post = array(
 			'post_title'   => $title,
 			'post_status'  => 'publish',
 			'post_content' => $content,
 			'post_type'    => 'page',
+			'post_name'    => $name ?? sanitize_title( $title ),
 		);
 
 		if ( $meta ) {
