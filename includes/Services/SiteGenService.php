@@ -942,7 +942,7 @@ class SiteGenService {
 			);
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
 				$navigation_links_grammar .= self::get_nav_link_grammar_from_post_data( $post_id, $page['title'], get_permalink( $post_id ) );
-				if( $page['slug'] == 'products' || $page['slug'] == 'shop' ){
+				if ( 'products' === $page['slug'] || 'shop' === $page['slug'] ) {
 					update_option( 'woocommerce_shop_page_id', $post_id );
 					update_option( 'woocommerce_queue_flush_rewrite_rules', 'yes' );
 				}
