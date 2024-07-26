@@ -16,7 +16,7 @@ class SitePagesService {
 	 * @param string        $name The page name that will be used in the slug.
 	 * @return int|\WP_Error
 	 */
-	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $name = false ) {
+	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $name = null ) {
 		$post = array(
 			'post_title'   => $title,
 			'post_status'  => 'publish',

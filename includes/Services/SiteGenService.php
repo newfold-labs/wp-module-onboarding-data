@@ -931,6 +931,7 @@ class SiteGenService {
 				continue;
 			}
 
+			$page_name    = count( explode( '/', $page['path'] ) ) > 1 ? explode( '/', $page['path'] )[1] : false;
 			$page_content = $other_pages[ $page['slug'] ];
 			$post_id      = SitePagesService::publish_page(
 				$page['title'],
@@ -939,7 +940,7 @@ class SiteGenService {
 				array(
 					'nf_dc_page' => $page['slug'],
 				),
-				explode( '/', $page['path'] )[1]
+				$page_name
 			);
 
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
