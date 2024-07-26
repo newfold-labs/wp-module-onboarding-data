@@ -13,16 +13,15 @@ class SitePagesService {
 	 * @param string        $content The content(block grammar/text) that will be displayed on the page.
 	 * @param boolean       $is_template_no_title checks for title
 	 * @param boolean|array $meta The page post_meta.
-	 * @param string        $name The page name that will be used in the slug.
+	 * @param string        $slug The page slug that will be used in the page url.
 	 * @return int|\WP_Error
 	 */
-	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $name = null ) {
+	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $slug = null ) {
 		$post = array(
 			'post_title'   => $title,
 			'post_status'  => 'publish',
 			'post_content' => $content,
 			'post_type'    => 'page',
-			'post_name'    => $name ?? sanitize_title( $title ),
 		);
 
 		if ( $meta ) {
@@ -31,6 +30,10 @@ class SitePagesService {
 
 		if ( $is_template_no_title ) {
 			$post['page_template'] = 'no-title';
+		}
+
+		if ( $slug && $slug != '' ) {
+			$post['post_name'] = $slug;
 		}
 
 		return \wp_insert_post( $post );

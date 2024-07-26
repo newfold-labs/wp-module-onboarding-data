@@ -931,7 +931,13 @@ class SiteGenService {
 				continue;
 			}
 
-			$page_name    = isset( $page['path'] ) && count( explode( '/', $page['path'] ) ) > 1 ? explode( '/', $page['path'] )[1] : null;
+			$slug         = '';
+			if( isset( $page['path'] ) ){
+				$slug_paths = explode( '/', $page['path'] );
+				if( count( $slug_paths ) > 1 ){
+					$slug = $slug_paths[1];
+				}
+			}
 			$page_content = $other_pages[ $page['slug'] ];
 			$post_id      = SitePagesService::publish_page(
 				$page['title'],
@@ -940,7 +946,7 @@ class SiteGenService {
 				array(
 					'nf_dc_page' => $page['slug'],
 				),
-				$page_name
+				$slug
 			);
 
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
