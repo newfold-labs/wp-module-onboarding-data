@@ -32,7 +32,7 @@ class SitePagesService {
 			$post['page_template'] = 'no-title';
 		}
 
-		if ( $slug && $slug != '' ) {
+		if ( $slug && '' != $slug ) {
 			$post['post_name'] = $slug;
 		}
 
