@@ -931,7 +931,7 @@ class SiteGenService {
 				continue;
 			}
 
-			$page_name    = count( explode( '/', $page['path'] ) ) > 1 ? explode( '/', $page['path'] )[1] : null;
+			$page_name    = isset( $page['path'] ) && count( explode( '/', $page['path'] ) ) > 1 ? explode( '/', $page['path'] )[1] : null;
 			$page_content = $other_pages[ $page['slug'] ];
 			$post_id      = SitePagesService::publish_page(
 				$page['title'],
