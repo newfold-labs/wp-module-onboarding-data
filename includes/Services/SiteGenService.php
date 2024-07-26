@@ -931,10 +931,10 @@ class SiteGenService {
 				continue;
 			}
 
-			$slug         = '';
-			if( isset( $page['path'] ) ){
+			$slug = '';
+			if ( isset( $page['path'] ) ) {
 				$slug_paths = explode( '/', $page['path'] );
-				if( count( $slug_paths ) > 1 ){
+				if ( count( $slug_paths ) > 1 ) {
 					$slug = $slug_paths[1];
 				}
 			}
