@@ -13,6 +13,7 @@ class SitePagesService {
 	 * @param string        $content The content(block grammar/text) that will be displayed on the page.
 	 * @param boolean       $is_template_no_title checks for title
 	 * @param boolean|array $meta The page post_meta.
+	 * @param string        $name The page name that will be used in the slug.
 	 * @return int|\WP_Error
 	 */
 	public static function publish_page( $title, $content, $is_template_no_title = false, $meta = false, $name = false ) {
