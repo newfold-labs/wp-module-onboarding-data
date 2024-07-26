@@ -249,7 +249,7 @@ class SiteGenService {
 		container()->get( 'cachePurger' )->purgeAll();
 
 		container()->get( 'survey' )->create_toast_survey(
-			Events::get_category()[0],
+			Events::get_category()[0] . '_sitegen_pulse',
 			'customer_satisfaction_survey',
 			array(
 				'label_key' => 'value',
