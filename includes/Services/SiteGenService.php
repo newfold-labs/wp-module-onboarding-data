@@ -978,7 +978,12 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function is_products_or_shop_page( $slug ) {
-		return ( 'products' === $slug || 'shop' === $slug || 'menu' === $slug );
+		$product_page_slug = array(
+			'products' => true,
+			'shop'     => true,
+			'menu'     => true,
+		);
+		return array_key_exists( $slug, $product_page_slug );
 	}
 
 	/**
@@ -989,8 +994,8 @@ class SiteGenService {
 	public static function set_woo_shop_page( $page_id ) {
 		$option_shop_page_id                 = Options::get_option_name( 'wc_shop_page_id', false );
 		$option_wc_queue_flush_rewrite_rules = Options::get_option_name( 'wc_queue_flush_rewrite_rules', false );
-			update_option( $option_shop_page_id, $page_id );
-			update_option( $option_wc_queue_flush_rewrite_rules, 'yes' );
+		update_option( $option_shop_page_id, $page_id );
+		update_option( $option_wc_queue_flush_rewrite_rules, 'yes' );
 	}
 
 	/**
