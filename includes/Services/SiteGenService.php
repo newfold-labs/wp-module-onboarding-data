@@ -978,7 +978,7 @@ class SiteGenService {
 	 * @return boolean
 	 */
 	public static function is_products_or_shop_page( $slug ) {
-		return ( 'products' === $slug || 'shop' === $slug );
+		return ( 'products' === $slug || 'shop' === $slug || 'menu' === $slug );
 	}
 
 	/**
