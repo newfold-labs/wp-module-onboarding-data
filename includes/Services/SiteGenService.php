@@ -987,11 +987,10 @@ class SiteGenService {
 	 * @param integer $page_id Id of the page
 	 */
 	public static function set_woo_shop_page( $page_id ) {
-		$prev_page_id = Options::get_option_name( 'woocommerce_shop_page_id', false );
-		if ( $prev_page_id !== $page_id ) {
-			update_option( 'woocommerce_shop_page_id', $page_id );
-			update_option( 'woocommerce_queue_flush_rewrite_rules', 'yes' );
-		}
+		$option_shop_page_id                 = Options::get_option_name( 'wc_shop_page_id', false );
+		$option_wc_queue_flush_rewrite_rules = Options::get_option_name( 'wc_queue_flush_rewrite_rules', false );
+			update_option( $option_shop_page_id, $page_id );
+			update_option( $option_wc_queue_flush_rewrite_rules, 'yes' );
 	}
 
 	/**

@@ -57,7 +57,8 @@ final class Options {
 		'filter_active_plugins'         => 'filter_active_plugins',
 		'sitegen_regenerated_homepages' => 'sitegen_regenerated_homepages',
 		'status'                        => 'status',
-		'woocommerce_shop_page_id'      => 'woocommerce_shop_page_id',
+		'wc_shop_page_id'               => 'woocommerce_shop_page_id',
+		'wc_queue_flush_rewrite_rules'  => 'woocommerce_queue_flush_rewrite_rules',
 	);
 
 	/**
