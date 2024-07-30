@@ -942,9 +942,9 @@ class SiteGenService {
 			);
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
 				$navigation_links_grammar .= self::get_nav_link_grammar_from_post_data( $post_id, $page['title'], get_permalink( $post_id ) );
-				if ( self::is_products_or_shop_page( $page['slug'] ) ) {
-					self::set_woo_shop_page( $post_id );
-				}
+			}
+			if ( ! is_wp_error( $post_id ) && self::is_products_or_shop_page( $page['slug'] ) ) {
+				self::set_woo_shop_page( $post_id );
 			}
 		}
 
