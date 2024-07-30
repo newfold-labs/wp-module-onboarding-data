@@ -981,7 +981,6 @@ class SiteGenService {
 		$product_page_slug = array(
 			'products' => true,
 			'shop'     => true,
-			'menu'     => true,
 		);
 		return array_key_exists( $slug, $product_page_slug );
 	}
