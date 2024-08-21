@@ -171,6 +171,11 @@ final class Patterns {
 				'about-4'                 => 'yith-wonder/company-page',
 				'contact-4'               => 'yith-wonder/contact-us',
 				'testimonials-template-2' => 'yith-wonder/testimonials-page',
+				'header-1'                => 'yith-wonder/site-header-left-logo-navigation-inline',
+                'header-3'                => 'yith-wonder/site-header-centered',
+                'header-8'                => 'yith-wonder/site-header-left-logo-navigation-below',
+                'header-10'               => 'yith-wonder/site-header-splitted-menu',
+                'footer-15'               => 'yith-wonder/site-footer',
 			),
 		);
 	}
@@ -414,7 +419,8 @@ final class Patterns {
 					if ( 'wonder-blocks' === $header_menu_data['type'] ) {
 						$pattern_slug_data['wonder_blocks'] = $slug;
 					} else {
-						$pattern_slug = $slug;
+						// to update the chosen header from the fallback in the homelayouts page(wp-setup/step/design/homepage-menu)
+						$pattern_slug_data['wonder_blocks'] = array_search($active_theme . '/' . $slug, self::get_fallbacks()['wonder-blocks']);
 					}
 				}
 				$pattern_slugs[ $pattern_slug ] = $pattern_slug_data;
