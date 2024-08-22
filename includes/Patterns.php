@@ -172,10 +172,10 @@ final class Patterns {
 				'contact-4'               => 'yith-wonder/contact-us',
 				'testimonials-template-2' => 'yith-wonder/testimonials-page',
 				'header-1'                => 'yith-wonder/site-header-left-logo-navigation-inline',
-                'header-3'                => 'yith-wonder/site-header-centered',
-                'header-8'                => 'yith-wonder/site-header-left-logo-navigation-below',
-                'header-10'               => 'yith-wonder/site-header-splitted-menu',
-                'footer-15'               => 'yith-wonder/site-footer',
+				'header-3'                => 'yith-wonder/site-header-centered',
+				'header-8'                => 'yith-wonder/site-header-left-logo-navigation-below',
+				'header-10'               => 'yith-wonder/site-header-splitted-menu',
+				'footer-15'               => 'yith-wonder/site-footer',
 			),
 		);
 	}
@@ -235,19 +235,19 @@ final class Patterns {
 	/**
 	 * Sanitize the content by cleaning wp_grammar.
 	 *
-	 * @param string $content Data to clean
+	 * @param string $content Data to clean.
 	 *
 	 * @return string
 	 */
 	private static function cleanup_wp_grammar( $content ) {
 
-		// Remove template-part if that exists
+		// Remove template-part if that exists.
 		$content = preg_replace( '/^<!-- wp:template-part .* \/-->$/m', '', $content );
 
-		// Create an array with the values you want to replace
+		// Create an array with the values you want to replace.
 		$searches = array( "\n", "\t" );
 
-		// Replace the line breaks and tabs with a empty string
+		// Replace the line breaks and tabs with a empty string.
 		$content = str_replace( $searches, '', $content );
 
 		return $content;
@@ -312,7 +312,7 @@ final class Patterns {
 	/**
 	 * Retrieve pattern from slug.
 	 *
-	 * @param string $pattern_slug Pattern Slug Data
+	 * @param string $pattern_slug Pattern Slug Data.
 	 *
 	 * @return array|boolean
 	 */
@@ -340,7 +340,7 @@ final class Patterns {
 	 * @return string|boolean
 	 */
 	private static function get_selected_header_from_flow_data() {
-		// fetch the selected header menu slug from DB
+		// fetch the selected header menu slug from DB.
 		$flow_data = \get_option( Options::get_option_name( 'flow' ), false );
 		if ( ! $flow_data ) {
 			return false;
@@ -369,7 +369,7 @@ final class Patterns {
 	/**
 	 * Replace the header menu slug in the patterns array
 	 *
-	 * @param array $pattern_content pattern grammar that is to be modified
+	 * @param array $pattern_content pattern grammar that is to be modified.
 	 *
 	 * @return array
 	 */
@@ -392,8 +392,8 @@ final class Patterns {
 	/**
 	 * Retrieve Theme Step Patterns from chosen Theme in Previous Step
 	 *
-	 * @param string  $step Step from which Theme Step Pattern is required
-	 * @param boolean $squash Flag set to retrieve the block pattern
+	 * @param string  $step Step from which Theme Step Pattern is required.
+	 * @param boolean $squash Flag set to retrieve the block pattern.
 	 *
 	 * @return array|string
 	 */
@@ -419,8 +419,8 @@ final class Patterns {
 					if ( 'wonder-blocks' === $header_menu_data['type'] ) {
 						$pattern_slug_data['wonder_blocks'] = $slug;
 					} else {
-						// to update the chosen header from the fallback in the homelayouts page(wp-setup/step/design/homepage-menu)
-						$pattern_slug_data['wonder_blocks'] = array_search($active_theme . '/' . $slug, self::get_fallbacks()['wonder-blocks']);
+						// to update the chosen header from the fallback in the homelayouts page(wp-setup/step/design/homepage-menu).
+						$pattern_slug_data['wonder_blocks'] = array_search( $active_theme . '/' . $slug, self::get_fallbacks()['wonder-blocks'], true );
 					}
 				}
 				$pattern_slugs[ $pattern_slug ] = $pattern_slug_data;
@@ -465,7 +465,7 @@ final class Patterns {
 	/**
 	 * Retrieve Homepage Menu Step Patterns
 	 *
-	 * @param array $patterns Step Patterns Data
+	 * @param array $patterns Step Patterns Data.
 	 * @return array
 	 */
 	private static function filter_yith_wonder_homepage_patterns( $patterns ) {
@@ -497,7 +497,7 @@ final class Patterns {
 	/**
 	 * Retrieve Header Menu Step Patterns
 	 *
-	 * @param array $patterns Step Patterns Data
+	 * @param array $patterns Step Patterns Data.
 	 * @return array
 	 */
 	private static function filter_yith_wonder_headermenu_patterns( $patterns ) {
