@@ -439,4 +439,18 @@ class FlowService {
 		$data = self::read_data_from_wp_option( false );
 		return isset( $data['data']['comingSoon'] ) ? $data['data']['comingSoon'] : null;
 	}
+
+	/**
+	 * Retrieves the selected header template part.
+	 *
+	 * This function reads data from the WordPress options and returns the selected
+	 * header template part if it exists. If the header template part is not set,
+	 * it returns null.
+	 *
+	 * @return string|null The selected header template part or null if not set.
+	 */
+	public static function get_selected_header_template_part() {
+		$data = self::read_data_from_wp_option( false );
+		return ( ! empty( $data['data']['partHeader'] ) ) ? $data['data']['partHeader'] : null;
+	}
 }
