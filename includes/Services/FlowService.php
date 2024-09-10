@@ -439,4 +439,24 @@ class FlowService {
 		$data = self::read_data_from_wp_option( false );
 		return isset( $data['data']['comingSoon'] ) ? $data['data']['comingSoon'] : null;
 	}
+
+	/**
+	 * Retrieves the selected header template part.
+	 *
+	 * @return string|null The selected header template part or null if not set.
+	 */
+	public static function get_selected_header_template_part() {
+		$data = self::read_data_from_wp_option( false );
+		return ( ! empty( $data['data']['partHeader'] ) ) ? $data['data']['partHeader'] : null;
+	}
+
+	/**
+	 * Retrieves the selected font style.
+	 *
+	 * @return string|null The selected font style or null if not set.
+	 */
+	public static function get_selected_font_style() {
+		$data = self::read_data_from_wp_option( false );
+		return ( ! empty( $data['data']['fontStyle'] ) ) ? $data['data']['fontStyle'] : null;
+	}
 }
