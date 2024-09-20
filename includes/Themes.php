@@ -114,4 +114,23 @@ final class Themes {
 	public static function get_active_theme() {
 		return ( \wp_get_theme() )->get( 'TextDomain' );
 	}
+
+	/**
+	 * Retrieves the selected DIY theme settings.
+	 *
+	 * @return mixed The stored DIY theme settings, or false if the option does not exist.
+	 */
+	public static function get_selected_diy_theme_settings() {
+		return get_option( Options::get_option_name( 'theme_settings' ) );
+	}
+
+	/**
+	 * Updates the DIY theme settings.
+	 *
+	 * @param array $settings The new theme settings to store.
+	 * @return bool True if the option value has changed, false if not or if an error occurred.
+	 */
+	public static function set_diy_theme_settings( $settings ) {
+		return update_option( Options::get_option_name( 'theme_settings' ), $settings );
+	}
 }

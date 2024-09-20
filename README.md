@@ -20,4 +20,4 @@ A non-toggleable module containing a standardized interface for interacting with
  composer require newfold-labs/wp-module-onboarding-data
  ```
 
-[More on NewFold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)
+[More on Newfold WordPress Modules](https://github.com/newfold-labs/wp-module-loader)

@@ -249,7 +249,7 @@ class SiteGenService {
 		container()->get( 'cachePurger' )->purgeAll();
 
 		container()->get( 'survey' )->create_toast_survey(
-			Events::get_category()[0],
+			Events::get_category()[0] . '_sitegen_pulse',
 			'customer_satisfaction_survey',
 			array(
 				'label_key' => 'value',
@@ -931,6 +931,13 @@ class SiteGenService {
 				continue;
 			}
 
+			$slug = '';
+			if ( isset( $page['path'] ) ) {
+				$slug_paths = explode( '/', $page['path'] );
+				if ( count( $slug_paths ) > 1 ) {
+					$slug = $slug_paths[1];
+				}
+			}
 			$page_content = $other_pages[ $page['slug'] ];
 			$post_id      = SitePagesService::publish_page(
 				$page['title'],
@@ -938,7 +945,8 @@ class SiteGenService {
 				true,
 				array(
 					'nf_dc_page' => $page['slug'],
-				)
+				),
+				$slug
 			);
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
 				$navigation_links_grammar .= self::get_nav_link_grammar_from_post_data( $post_id, $page['title'], get_permalink( $post_id ) );

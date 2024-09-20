@@ -20,6 +20,7 @@ final class Fonts {
 				'modern-approachable'            => array(
 					'label'   => __( 'Modern & approachable', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/theme-json',
+					'slugs'   => array( 'mulish', 'poppins' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--mulish)',
@@ -36,6 +37,7 @@ final class Fonts {
 				'strong-sleek'                   => array(
 					'label'   => __( 'Strong & sleek', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/01-blue-shades',
+					'slugs'   => array( 'raleway', 'oswald' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--raleway)',
@@ -52,6 +54,7 @@ final class Fonts {
 				'stately-elevated'               => array(
 					'label'   => __( 'Stately & elevated', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/02-pink-shades',
+					'slugs'   => array( 'source-sans-pro', 'playfair' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--source-sans-pro)',
@@ -68,6 +71,7 @@ final class Fonts {
 				'typewriter-crisp-midcentury'    => array(
 					'label'   => __( 'Typewriter & crisp midcentury', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/03-orange-shades',
+					'slugs'   => array( 'jost', 'solway' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--jost)',
@@ -84,6 +88,7 @@ final class Fonts {
 				'refined-traditional-newsletter' => array(
 					'label'   => __( 'Refined traditional newsletter', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/04-black-shades',
+					'slugs'   => array( 'jost', 'merriweather' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--jost)',
@@ -100,6 +105,7 @@ final class Fonts {
 				'bold-stamp-slab'                => array(
 					'label'   => __( 'Bold stamp & slab', 'wp-module-onboarding-data' ),
 					'matches' => 'yith-wonder/styles/05-red-shades',
+					'slugs'   => array( 'changa-one', 'roboto-slab' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--roboto-slab)',
@@ -116,6 +122,7 @@ final class Fonts {
 				'fast-simple'                    => array(
 					'label'   => __( 'Fast & Simple', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-01',
+					'slugs'   => array( 'system' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--system)',
@@ -132,6 +139,7 @@ final class Fonts {
 				'timeless-traditional'           => array(
 					'label'   => __( 'Timeless & Traditional', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-02',
+					'slugs'   => array( 'serif' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--serif)',
@@ -148,6 +156,7 @@ final class Fonts {
 				'sleek-sophisticated'            => array(
 					'label'   => __( 'Sleek & Sophisticated', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-03',
+					'slugs'   => array( 'dm-sans' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--dm-sans)',
@@ -164,6 +173,7 @@ final class Fonts {
 				'clear-crisp'                    => array(
 					'label'   => __( 'Clear & Crisp', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-04',
+					'slugs'   => array( 'inter' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--inter)',
@@ -180,6 +190,7 @@ final class Fonts {
 				'retro-classy'                   => array(
 					'label'   => __( 'Retro & Classy', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-05',
+					'slugs'   => array( 'league-spartan' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--league-spartan)',
@@ -196,6 +207,7 @@ final class Fonts {
 				'defined-solid'                  => array(
 					'label'   => __( 'Defined & Solid', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-06',
+					'slugs'   => array( 'roboto-slab' ),
 					'styles'  => array(
 						'typography' => array(
 							'fontFamily' => 'var(--wp--preset--font-family--roboto-slab)',
