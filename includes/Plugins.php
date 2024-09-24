@@ -55,53 +55,11 @@ final class Plugins {
 			),
 		),
 		'site-capabilities' => array(
-			'hasEcomdash'     => array(
+			'hasEcomdash' => array(
 				array(
 					'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
 					'activate' => true,
 					'priority' => 220,
-				),
-			),
-			'hasYithExtended' => array(
-				array(
-					'slug'     => 'woocommerce',
-					'activate' => true,
-					'priority' => 300,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_booking',
-					'activate' => true,
-					'priority' => 100,
-				),
-				array(
-					'slug'     => 'yith-woocommerce-ajax-search',
-					'activate' => true,
-					'priority' => 120,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-					'activate' => true,
-					'priority' => 140,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-					'activate' => true,
-					'priority' => 160,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-					'activate' => true,
-					'priority' => 180,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
-					'activate' => true,
-					'priority' => 200,
-				),
-				array(
-					'slug'     => 'nfd_slug_wonder_cart',
-					'activate' => true,
-					'priority' => 210,
 				),
 			),
 		),
