@@ -11,6 +11,7 @@ use function NewfoldLabs\WP\ModuleLoader\container;
  * CRUD methods for Onboarding config for use in API, CLI and runtime.
  */
 final class Data {
+	
 	/**
 	 * Runtime data for Onboarding application
 	 */
