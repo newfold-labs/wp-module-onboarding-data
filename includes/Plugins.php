@@ -2,6 +2,7 @@
 namespace NewfoldLabs\WP\Module\Onboarding\Data;
 
 use NewfoldLabs\WP\Module\Installer\Data\Plugins as PluginsInstaller;
+use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller as PluginsInstallerService;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
 
@@ -55,53 +56,11 @@ final class Plugins {
 			),
 		),
 		'site-capabilities' => array(
-			'hasEcomdash'     => array(
+			'hasEcomdash' => array(
 				array(
 					'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
 					'activate' => true,
 					'priority' => 220,
-				),
-			),
-			'hasYithExtended' => array(
-				array(
-					'slug'     => 'woocommerce',
-					'activate' => true,
-					'priority' => 300,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_booking',
-					'activate' => true,
-					'priority' => 100,
-				),
-				array(
-					'slug'     => 'yith-woocommerce-ajax-search',
-					'activate' => true,
-					'priority' => 120,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-					'activate' => true,
-					'priority' => 140,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-					'activate' => true,
-					'priority' => 160,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-					'activate' => true,
-					'priority' => 180,
-				),
-				array(
-					'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
-					'activate' => true,
-					'priority' => 200,
-				),
-				array(
-					'slug'     => 'nfd_slug_wonder_cart',
-					'activate' => true,
-					'priority' => 210,
 				),
 			),
 		),
@@ -256,6 +215,42 @@ final class Plugins {
 	);
 
 	/**
+	 * Default Premium Yith Plugins Data
+	 *
+	 * @var array
+	 */
+	protected static $default_premium_yith_plugins = array(
+		array(
+			'slug'     => 'nfd_slug_yith_woocommerce_booking',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'yith-woocommerce-ajax-search',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+			'activate' => true,
+		),
+		array(
+			'slug'     => 'nfd_slug_wonder_cart',
+			'activate' => true,
+		),
+	);
+
+	/**
 	 * Get the list of initial plugins to be installed for a particular hosting plan.
 	 *
 	 * @return array
@@ -263,6 +258,8 @@ final class Plugins {
 	public static function get_init() {
 		// The Default plugins for all types
 		$init_list = self::$init_list['default'];
+		// The Default premium Yith plugins to be installed
+		$default_premium_yith_plugins = self::$default_premium_yith_plugins;
 
 		// The default plugins for Site Capabilities.
 		if ( isset( self::$init_list['site-capabilities'] ) ) {
@@ -276,6 +273,12 @@ final class Plugins {
 						$init_list = array_merge( $init_list, $plugins_data );
 					}
 				}
+			}
+		}
+
+		if ( isset( $default_premium_yith_plugins ) ) {
+			foreach ( $default_premium_yith_plugins as $yith_plugin_data ) {
+				PluginsInstallerService::install_premium_plugin( $yith_plugin_data['slug'], $yith_plugin_data['activate'] );
 			}
 		}
 
