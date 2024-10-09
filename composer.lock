@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a9f8fb749a3f28acf8597c3525fa01b",
+    "content-hash": "837c81fe2ee7e029194ed202cd9cc0e4",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -540,20 +540,24 @@
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "1.1.5",
+            "version": "1.2.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "b418c3aa8c192e805930abd9871b301d16671ba8"
+                "reference": "ac8d961df8e6826df952d08eeb3f5a7f9b171db0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/b418c3aa8c192e805930abd9871b301d16671ba8",
-                "reference": "b418c3aa8c192e805930abd9871b301d16671ba8",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/ac8d961df8e6826df952d08eeb3f5a7f9b171db0",
+                "reference": "ac8d961df8e6826df952d08eeb3f5a7f9b171db0",
                 "shasum": ""
             },
+            "require": {
+                "newfold-labs/wp-module-pls": "^0.1.0"
+            },
             "require-dev": {
-                "newfold-labs/wp-php-standards": "^1.2"
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/wp-cli": "^2.11"
             },
             "type": "library",
             "autoload": {
@@ -575,10 +579,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.1.5",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.2.0-beta",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2024-08-28T06:37:38+00:00"
+            "time": "2024-10-09T08:34:34+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -628,21 +632,22 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "2d8bb11201123adc6505afd89af6494490f929ed"
+                "reference": "d5e37c1b9ac7290e117001c40fe33ac2f95af094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/2d8bb11201123adc6505afd89af6494490f929ed",
-                "reference": "2d8bb11201123adc6505afd89af6494490f929ed",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/d5e37c1b9ac7290e117001c40fe33ac2f95af094",
+                "reference": "d5e37c1b9ac7290e117001c40fe33ac2f95af094",
                 "shasum": ""
             },
             "require": {
                 "newfold-labs/wp-module-data": "^2.5.1",
-                "newfold-labs/wp-module-features": "^1.4"
+                "newfold-labs/wp-module-features": "^1.4",
+                "newfold-labs/wp-module-installer": "^1.1"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "^1.2.2"
@@ -675,10 +680,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.4.1",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.5.0",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2024-09-04T13:49:43+00:00"
+            "time": "2024-09-26T18:04:12+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
@@ -730,6 +735,53 @@
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
             "time": "2024-08-15T22:17:47+00:00"
+        },
+        {
+            "name": "newfold-labs/wp-module-pls",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newfold-labs/wp-module-pls.git",
+                "reference": "ffa1517c18da067dd830c809f74aee597f05dc17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-pls/zipball/ffa1517c18da067dd830c809f74aee597f05dc17",
+                "reference": "ffa1517c18da067dd830c809f74aee597f05dc17",
+                "shasum": ""
+            },
+            "require": {
+                "newfold-labs/wp-module-data": "^2.0"
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2",
+                "wp-cli/i18n-command": "^2.4.3",
+                "wp-cli/wp-cli": "^2.11"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NewfoldLabs\\WP\\Module\\PLS\\": "includes"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "arunshenoy99",
+                    "email": "devarunshenoy99@gmail.com"
+                }
+            ],
+            "description": "A Newfold module that handles license key provisioning, validation, and other lifecycle events for registered plugins using the PLS API via Hiive.",
+            "support": {
+                "source": "https://github.com/newfold-labs/wp-module-pls/tree/0.1.0",
+                "issues": "https://github.com/newfold-labs/wp-module-pls/issues"
+            },
+            "time": "2024-10-09T08:23:27+00:00"
         },
         {
             "name": "newfold-labs/wp-module-survey",
@@ -2450,10 +2502,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "newfold-labs/wp-module-installer": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
