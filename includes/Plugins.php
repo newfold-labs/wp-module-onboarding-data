@@ -55,11 +55,53 @@ final class Plugins {
 			),
 		),
 		'site-capabilities' => array(
-			'hasEcomdash' => array(
+			'hasEcomdash'     => array(
 				array(
 					'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
 					'activate' => true,
 					'priority' => 220,
+				),
+			),
+			'hasYithExtended' => array(
+				array(
+					'slug'     => 'woocommerce',
+					'activate' => true,
+					'priority' => 300,
+				),
+				array(
+					'slug'     => 'nfd_slug_yith_woocommerce_booking',
+					'activate' => true,
+					'priority' => 100,
+				),
+				array(
+					'slug'     => 'yith-woocommerce-ajax-search',
+					'activate' => true,
+					'priority' => 120,
+				),
+				array(
+					'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
+					'activate' => true,
+					'priority' => 140,
+				),
+				array(
+					'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
+					'activate' => true,
+					'priority' => 160,
+				),
+				array(
+					'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
+					'activate' => true,
+					'priority' => 180,
+				),
+				array(
+					'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
+					'activate' => true,
+					'priority' => 200,
+				),
+				array(
+					'slug'     => 'nfd_slug_wonder_cart',
+					'activate' => true,
+					'priority' => 210,
 				),
 			),
 		),
@@ -214,6 +256,13 @@ final class Plugins {
 	);
 
 	/**
+	 * An array of capabilities that should not be run if the site has solution.
+	 *
+	 * @return array
+	 */
+	protected static $solution_override_capabilities = array( 'hasYithExtended' );
+
+	/**
 	 * Get the list of initial plugins to be installed for a particular hosting plan.
 	 *
 	 * @return array
@@ -227,6 +276,11 @@ final class Plugins {
 			$plugins_data_for_site_capabilities = self::$init_list['site-capabilities'];
 
 			foreach ( $plugins_data_for_site_capabilities as $site_capability => $plugins_data ) {
+				// Skip capability installation if solution is present.
+				if ( Config::has_solution() &&
+						in_array( $site_capability, self::$solution_override_capabilities ) ) {
+					continue;
+				}
 				// Check if the capability is enabled on Hiive
 				if ( true === Config::get_site_capability( $site_capability ) ) {
 					// Check if there are plugins for the flag.

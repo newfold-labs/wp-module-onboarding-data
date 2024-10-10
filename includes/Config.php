@@ -66,4 +66,13 @@ final class Config {
 	public static function can_migrate_site() {
 		return self::get_site_capability( 'canMigrateSite' );
 	}
+
+	/**
+	 * Gets the current site's capability if it has solution.
+	 *
+	 * @return boolean
+	 */
+	public static function has_solution() {
+		return self::get_site_capability( 'hasSolution' );
+	}
 }
