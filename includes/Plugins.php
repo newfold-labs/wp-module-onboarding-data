@@ -258,7 +258,7 @@ final class Plugins {
 	/**
 	 * An array of capabilities that should not be run if the site has solution.
 	 *
-	 * @return array
+	 * @var array
 	 */
 	protected static $solution_override_capabilities = array( 'hasYithExtended' );
 
@@ -278,7 +278,7 @@ final class Plugins {
 			foreach ( $plugins_data_for_site_capabilities as $site_capability => $plugins_data ) {
 				// Skip capability installation if solution is present.
 				if ( Config::has_solution() &&
-						in_array( $site_capability, self::$solution_override_capabilities ) ) {
+						in_array( $site_capability, self::$solution_override_capabilities, true ) ) {
 					continue;
 				}
 				// Check if the capability is enabled on Hiive
