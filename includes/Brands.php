@@ -37,18 +37,9 @@ final class Brands {
 	 *               contact information, and enabled features.
 	 */
 	public static function get_brands(): array {
-
-		// Only populate capabilities when in the WordPress admin
-		$populate_capabilities = is_admin();
-
-		// Forcibly prevent capabilities from being fetched in front-end requests
-//		if(! is_admin()) {
-//			$populate_capabilities = false;
-//		}
-
 		// Checks if customer has access to AI Sitegen.
-		$has_ai_sitegen   = $populate_capabilities ? Config::has_ai_sitegen() : false;
-		$can_migrate_site = $populate_capabilities ? Config::can_migrate_site() : false;
+		$has_ai_sitegen   = Config::has_ai_sitegen();
+		$can_migrate_site = Config::can_migrate_site();
 
 		return array(
 			'bluehost'       => array(
