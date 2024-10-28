@@ -41,15 +41,6 @@ final class Config {
 	}
 
 	/**
-	 * Checks if the site is on Jarvis hosting.
-	 *
-	 * @return boolean
-	 */
-	public static function is_jarvis() {
-		return self::get_site_capability( 'isJarvis' );
-	}
-
-	/**
 	 * Gets the current customer capability if he has access to AI Sitegen.
 	 *
 	 * @return boolean

@@ -99,9 +99,7 @@ final class Brands {
 					),
 				),
 				'migrationInfo'               => array(
-					'defaultLink' => Config::is_jarvis() ?
-					'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer'
-					: 'https://my.bluehost.com/cgi/services/migration',
+					'defaultLink' => 'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer',
 				),
 				'config'                      => array(
 					'enabled_flows'  => array(
@@ -401,15 +399,9 @@ final class Brands {
 				'twitterUrl'                  => 'https://twitter.com/hostgator',
 				'youtubeUrl'                  => 'https://www.youtube.com/user/hostgator',
 				'linkedinUrl'                 => 'https://www.linkedin.com/company/hostgator-com/',
-				'accountUrl'                  => Config::is_jarvis() ?
-				'https://www.hostgator.com/my-account/login'
-				: 'https://portal.hostgator.com/',
-				'domainsUrl'                  => Config::is_jarvis() ?
-				'https://www.hostgator.com/my-account/domain-center/domain-list'
-				: 'https://portal.hostgator.com/domain/manage',
-				'emailUrl'                    => Config::is_jarvis() ?
-				'https://www.hostgator.com/my-account/hosting/details/email'
-				: 'https://portal.hostgator.com/email',
+				'accountUrl'                  => 'https://www.hostgator.com/my-account/login',
+				'domainsUrl'                  => 'https://www.hostgator.com/my-account/domain-center/domain-list',
+				'emailUrl'                    => 'https://www.hostgator.com/my-account/hosting/details/email',
 				'pluginDashboardPage'         => \admin_url( 'admin.php?page=hostgator' ),
 				'phoneNumbers'                => array(
 					'support' => '866-964-2867',
