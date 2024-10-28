@@ -35,12 +35,16 @@ final class Data {
 	}
 
 	/**
-	 * Establish brand to apply to Onboarding experience.
+	 * Establish the brand to apply to the Onboarding experience.
 	 *
-	 * @return array
+	 * @param bool $populate_capabilities Optional. Determines whether capabilities should be populated
+	 *                                    for the selected brand. Defaults to true.
+	 *
+	 * @return array The configuration array of the current brand. If the specified brand is not found,
+	 *               returns the default brand configuration.
 	 */
-	public static function current_brand() {
-		$brands = Brands::get_brands();
+	public static function current_brand( $populate_capabilities = true ) {
+		$brands = Brands::get_brands( $populate_capabilities );
 
 		return array_key_exists( NFD_ONBOARDING_PLUGIN_BRAND, $brands ) ?
 			$brands[ NFD_ONBOARDING_PLUGIN_BRAND ] :
