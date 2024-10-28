@@ -27,21 +27,26 @@ final class Brands {
 			),
 		);
 
-		return array_replace( self::get_brands( false )['bluehost'], $default_brand_data );
+		return array_replace( self::get_brands()['bluehost'], $default_brand_data );
 	}
 
 	/**
 	 * Retrieve brand-specific data for various brands such as Bluehost, Bluehost India, Web.com, etc.
 	 *
-	 * @param bool $populate_capabilities Optional. Determines whether capabilities such as `has_ai_sitegen`
-	 *                                    and `can_migrate_site` should be populated for each brand. Defaults to true.
-	 *
 	 * @return array Associative array containing configuration details for each brand, including links,
-	 *               contact information, and enabled features. Capabilities are set based on the
-	 *               $populate_capabilities argument.
+	 *               contact information, and enabled features.
 	 */
-	public static function get_brands( $populate_capabilities = true ) {
-		// Checks if customer has acess to AI Sitegen.
+	public static function get_brands(): array {
+
+		// Only populate capabilities when in the WordPress admin
+		$populate_capabilities = is_admin();
+
+		// Forcibly prevent capabilities from being fetched in front-end requests
+//		if(! is_admin()) {
+//			$populate_capabilities = false;
+//		}
+
+		// Checks if customer has access to AI Sitegen.
 		$has_ai_sitegen   = $populate_capabilities ? Config::has_ai_sitegen() : false;
 		$can_migrate_site = $populate_capabilities ? Config::can_migrate_site() : false;
 
