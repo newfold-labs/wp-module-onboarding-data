@@ -220,16 +220,13 @@ final class Flows {
 	/**
 	 * Retrieve all the known onboarding flows.
 	 *
-	 * @param bool $populate_capabilities Optional. Determines whether capabilities should be populated
-	 *                                    for the current brand. Defaults to true.
-	 *
 	 * @return array Associative array of onboarding flows. A value of true for each key indicates that the
 	 *               flow has been approved. A value of null indicates the flow has not been approved or has
 	 *               been temporarily disabled. If no enabled flows are found, default flows are provided with
 	 *               a value of false.
 	 */
-	public static function get_flows( $populate_capabilities = true ) {
-		$current_brand = Data::current_brand( $populate_capabilities );
+	public static function get_flows() {
+		$current_brand = Data::current_brand();
 		return isset( $current_brand['config']['enabled_flows'] )
 		? $current_brand['config']['enabled_flows'] : array(
 			'wp-setup'  => false,
