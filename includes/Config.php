@@ -36,17 +36,12 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
+		// Only fetch capabilities in the admin when a user is logged in
+		if ( ! is_admin() || ! is_user_logged_in() ) {
+			return false;
+		}
 		$site_capabilities = new SiteCapabilities();
 		return $site_capabilities->get( $capability );
-	}
-
-	/**
-	 * Checks if the site is on Jarvis hosting.
-	 *
-	 * @return boolean
-	 */
-	public static function is_jarvis() {
-		return self::get_site_capability( 'isJarvis' );
 	}
 
 	/**

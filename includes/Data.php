@@ -35,9 +35,10 @@ final class Data {
 	}
 
 	/**
-	 * Establish brand to apply to Onboarding experience.
+	 * Establish the brand to apply to the Onboarding experience.
 	 *
-	 * @return array
+	 * @return array The configuration array of the current brand. If the specified brand is not found,
+	 *               returns the default brand configuration.
 	 */
 	public static function current_brand() {
 		$brands = Brands::get_brands();
