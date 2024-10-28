@@ -27,19 +27,23 @@ final class Brands {
 			),
 		);
 
-		return array_replace( self::get_brands()['bluehost'], $default_brand_data );
+		return array_replace( self::get_brands( false )['bluehost'], $default_brand_data );
 	}
 
 	/**
-	 * Brand specific data - Bluehost, Bluehost India, Webcom
+	 * Retrieve brand-specific data for various brands such as Bluehost, Bluehost India, Web.com, etc.
 	 *
-	 * @return array
+	 * @param bool $populate_capabilities Optional. Determines whether capabilities such as `has_ai_sitegen`
+	 *                                    and `can_migrate_site` should be populated for each brand. Defaults to true.
+	 *
+	 * @return array Associative array containing configuration details for each brand, including links,
+	 *               contact information, and enabled features. Capabilities are set based on the
+	 *               $populate_capabilities argument.
 	 */
-	public static function get_brands() {
-
+	public static function get_brands( $populate_capabilities = true ) {
 		// Checks if customer has acess to AI Sitegen.
-		$has_ai_sitegen   = Config::has_ai_sitegen();
-		$can_migrate_site = Config::can_migrate_site();
+		$has_ai_sitegen   = $populate_capabilities ? Config::has_ai_sitegen() : false;
+		$can_migrate_site = $populate_capabilities ? Config::can_migrate_site() : false;
 
 		return array(
 			'bluehost'       => array(
