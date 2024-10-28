@@ -36,8 +36,8 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
-		// Make sure we don't fetch capabilities on the front-end
-		if ( ! is_admin() ) {
+		// Only fetch capabilities in the admin when a user is logged in
+		if ( ! is_admin() || ! is_user_logged_in() ) {
 			return false;
 		}
 		$site_capabilities = new SiteCapabilities();
