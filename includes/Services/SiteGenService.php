@@ -681,7 +681,7 @@ class SiteGenService {
 			'plugin_recommendation'
 		);
 
-		if ( isset( $plugin_recommendations['error'] ) || is_wp_error( $plugin_recommendations ) ) {
+		if ( is_wp_error( $plugin_recommendations ) || isset( $plugin_recommendations['error'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
 				__( 'Cannot retrieve plugin recommendations.', 'wp-module-onboarding-data' ),
