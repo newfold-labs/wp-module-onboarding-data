@@ -88,8 +88,7 @@ class SiteGenService {
 		if ( ! ( class_exists( 'NewfoldLabs\WP\Module\AI\SiteGen\SiteGen' ) ) ) {
 			return false;
 		}
-		return isset( Data::current_brand()['config']['enabled_flows']['sitegen'] )
-		&& true === Data::current_brand()['config']['enabled_flows']['sitegen'];
+		return true;
 	}
 
 
