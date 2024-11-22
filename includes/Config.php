@@ -37,9 +37,6 @@ final class Config {
 	 */
 	public static function get_site_capability( $capability ) {
 		// Only fetch capabilities in the admin when a user is logged in
-		if ( ! is_user_logged_in() ) {
-			return false;
-		}
 		$site_capabilities = new SiteCapabilities();
 		return $site_capabilities->get( $capability );
 	}
