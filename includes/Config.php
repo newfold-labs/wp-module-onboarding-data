@@ -36,12 +36,12 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
-		// Only fetch capabilities in the admin when a user is logged in
-		if ( ! is_user_logged_in() ) {
-			return false;
+		// Allow fetch if in admin area or if authenticated user can manage options
+		if ( is_admin() || current_user_can( 'manage_options' ) ) {
+			$site_capabilities = new SiteCapabilities();
+			return $site_capabilities->get( $capability );
 		}
-		$site_capabilities = new SiteCapabilities();
-		return $site_capabilities->get( $capability );
+		return false;
 	}
 
 	/**
