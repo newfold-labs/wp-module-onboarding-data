@@ -12,6 +12,7 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Themes\Fonts;
 use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassification;
 use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
 use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\GlobalStylesService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Events;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
@@ -227,22 +228,18 @@ class SiteGenService {
 
 		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
 
-		// Update name and slug before generating child theme
-		$active_homepage = self::update_info_for_child_theme( $site_config, $active_homepage );
-		self::generate_child_theme( $active_homepage );
+		// Use global styles and global theme to add the styles
+		self::update_styles_for_sitegen( $site_config );
 
 		foreach ( $homepage_data as $index => $data ) {
 			if ( $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
-				$data = self::update_info_for_child_theme( $site_config, $data, $index );
-				self::generate_child_theme( $data );
+				self::update_styles_for_sitegen( $data );
 			}
 			if ( $data['slug'] === $active_homepage['slug'] ) {
 				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
 			}
 		}
 		self::sync_flow_data( $homepage_data );
-
-		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
 		self::trash_sample_page();
 		container()->get( 'cachePurger' )->purgeAll();
@@ -282,6 +279,36 @@ class SiteGenService {
 		}
 
 		return $theme_styles;
+	}
+
+	/**
+	 * Updates the global theme for the sitegen flow.
+	 *
+	 * @param array $data Data on homepage and it's corresponding styles.
+	 * @return true|\WP_Error
+	 */
+	public static function update_styles_for_sitegen( $data ) {
+		global $wp_filesystem;
+
+		// Get the currently activated theme and the corresponding theme json
+		$active_theme_dir       = \get_template_directory();
+		$active_theme_json_file = $active_theme_dir . '/theme.json';
+
+		// If the theme json doesn't exist, give up
+		if ( ! $wp_filesystem->exists( $active_theme_json_file ) ) {
+			return false;
+		}
+
+		$active_theme_json      = $wp_filesystem->get_content( $active_theme_json_file );
+		$active_theme_json_data = json_decode( $active_theme_json_file, true );
+
+		// Apply the required changes to theme json
+		$active_theme_json_data['settings']['color']['palette'] = $data['color']['palette'];
+		$active_theme_json_data['styles']                       = self::populate_fonts_in_theme_styles( $active_theme_json_data['styles'], $data['styles'] );
+
+		// Add the styles to global variation
+		$active_global_styles_post_id = GlobalStylesService::get_active_custom_global_styles_post_id();
+		GlobalStylesService::update_global_style_variation( $active_global_styles_post_id, $active_theme_json_data['styles'], $active_theme_json_data['settings'] );
 	}
 
 	/**
