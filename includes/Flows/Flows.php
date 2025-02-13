@@ -177,6 +177,7 @@ final class Flows {
 
 		'continueWithoutAi'    => false,
 		'sitegenThemeMode'     => '',
+		'totalOnboardingTries' => 0,
 	);
 
 	/**

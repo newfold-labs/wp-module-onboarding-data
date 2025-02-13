@@ -110,6 +110,7 @@ final class Brands {
 					'wonder_blocks'  => true,
 					'prioritization' => false,
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => true,
 				),
 			),
 			'bluehost-india' => array(
@@ -174,6 +175,7 @@ final class Brands {
 					'wonder_blocks'  => true,
 					'prioritization' => false,
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => false,
 				),
 			),
 			'webcom'         => array(
@@ -236,6 +238,7 @@ final class Brands {
 					'wonder_blocks'  => true,
 					'prioritization' => false,
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => false,
 				),
 			),
 			'crazy-domains'  => array(
@@ -305,6 +308,7 @@ final class Brands {
 						),
 					),
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => false,
 				),
 			),
 			'hostgator-br'   => array(
@@ -385,6 +389,7 @@ final class Brands {
 						),
 					),
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => false,
 				),
 			),
 			'hostgator-us'   => array(
@@ -466,6 +471,7 @@ final class Brands {
 						),
 					),
 					'canMigrateSite' => $can_migrate_site,
+					'canRestartOnboarding' => false,
 				),
 			),
 		);
