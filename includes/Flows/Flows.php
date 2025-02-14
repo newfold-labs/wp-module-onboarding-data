@@ -177,7 +177,10 @@ final class Flows {
 
 		'continueWithoutAi'    => false,
 		'sitegenThemeMode'     => '',
-		'totalOnboardingTries' => 0,
+		'onboardingRetries'    => array(
+			'retryCount'    => 0,
+			'maxRetryCount' => 3,
+		),
 	);
 
 	/**

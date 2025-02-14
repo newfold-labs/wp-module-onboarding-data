@@ -60,6 +60,7 @@ final class Options {
 		'wc_shop_page_id'               => 'woocommerce_shop_page_id',
 		'wc_queue_flush_rewrite_rules'  => 'woocommerce_queue_flush_rewrite_rules',
 		'bluehost_plugin_install_date'  => 'bluehost_plugin_install_date',
+		'can_restart'                   => 'can_restart',
 	);
 
 	/**

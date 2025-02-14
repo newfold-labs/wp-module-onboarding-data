@@ -102,14 +102,14 @@ final class Brands {
 					'defaultLink' => 'https://www.bluehost.com/my-account/hosting/details/sites/add/transfer',
 				),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'canMigrateSite' => $can_migrate_site,
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => true,
 				),
 			),
@@ -167,14 +167,14 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => true,
 						'wp-setup'  => false,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'canMigrateSite' => $can_migrate_site,
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => false,
 				),
 			),
@@ -230,14 +230,14 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => false,
 						'wp-setup'  => false,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'canMigrateSite' => $can_migrate_site,
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => false,
 				),
 			),
@@ -293,21 +293,21 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'views'          => array(
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'views'                => array(
 						'sidebar' => array(
 							'illustration' => array(
 								'shown' => false,
 							),
 						),
 					),
-					'canMigrateSite' => $can_migrate_site,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => false,
 				),
 			),
@@ -363,14 +363,14 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'views'          => array(
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'views'                => array(
 						'sidebar' => array(
 							'illustration' => array(
 								'shown' => false,
@@ -388,7 +388,7 @@ final class Brands {
 							),
 						),
 					),
-					'canMigrateSite' => $can_migrate_site,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => false,
 				),
 			),
@@ -445,14 +445,14 @@ final class Brands {
 				),
 				'migrationInfo'               => array(),
 				'config'                      => array(
-					'enabled_flows'  => array(
+					'enabled_flows'        => array(
 						'ecommerce' => true,
 						'wp-setup'  => true,
 						'sitegen'   => $has_ai_sitegen,
 					),
-					'wonder_blocks'  => true,
-					'prioritization' => false,
-					'views'          => array(
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'views'                => array(
 						'sidebar' => array(
 							'illustration' => array(
 								'shown' => false,
@@ -470,7 +470,7 @@ final class Brands {
 							),
 						),
 					),
-					'canMigrateSite' => $can_migrate_site,
+					'canMigrateSite'       => $can_migrate_site,
 					'canRestartOnboarding' => false,
 				),
 			),
