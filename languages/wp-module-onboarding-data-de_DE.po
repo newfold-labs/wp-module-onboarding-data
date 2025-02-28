@@ -2,29 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Vara Prasad Maruboina <varaprasad.maruboina@newfold.com>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-02-17 22:22+0530\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
 msgstr ""
 
-#: includes/Options.php:124
-#: includes/Options.php:129
-#: includes/Options.php:134
-#: includes/Options.php:139
-#: includes/Options.php:144
-#: includes/Options.php:149
-#: includes/Options.php:154
-#: includes/Options.php:159
-#: includes/Options.php:164
+#: includes/Options.php:124 includes/Options.php:129 includes/Options.php:134
+#: includes/Options.php:139 includes/Options.php:144 includes/Options.php:149
+#: includes/Options.php:154 includes/Options.php:159 includes/Options.php:164
 #: includes/Options.php:169
 msgid "Woocommerce Settings"
 msgstr ""
@@ -33,13 +29,11 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: includes/Patterns.php:20
-#: includes/Patterns.php:93
+#: includes/Patterns.php:20 includes/Patterns.php:93
 msgid "About"
 msgstr ""
 
-#: includes/Patterns.php:21
-#: includes/Patterns.php:103
+#: includes/Patterns.php:21 includes/Patterns.php:103
 msgid "Contact"
 msgstr ""
 
@@ -60,7 +54,9 @@ msgid "Explain your company values or the history behind your brand."
 msgstr ""
 
 #: includes/Patterns.php:105
-msgid "Offer visitors a single page with a contact form, your street address and social media."
+msgid ""
+"Offer visitors a single page with a contact form, your street address and "
+"social media."
 msgstr ""
 
 #: includes/Patterns.php:111
@@ -143,145 +139,136 @@ msgstr ""
 msgid "Cannot retrieve plugin recommendations."
 msgstr ""
 
-#: includes/SiteFeatures.php:23
-#: includes/SiteFeatures.php:87
+#: includes/SiteFeatures.php:23 includes/SiteFeatures.php:87
 msgid "Security, Speed & Growth"
 msgstr ""
 
-#: includes/SiteFeatures.php:24
-#: includes/SiteFeatures.php:88
+#: includes/SiteFeatures.php:24 includes/SiteFeatures.php:88
 msgid "Powered by Jetpack"
 msgstr ""
 
-#: includes/SiteFeatures.php:25
-#: includes/SiteFeatures.php:89
-msgid "Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic."
+#: includes/SiteFeatures.php:25 includes/SiteFeatures.php:89
+msgid ""
+"Jetpack includes dozens of powerful, unique capabilities for your WordPress "
+"sites from Automattic."
 msgstr ""
 
-#: includes/SiteFeatures.php:33
-#: includes/SiteFeatures.php:97
+#: includes/SiteFeatures.php:33 includes/SiteFeatures.php:97
 msgid "Forms"
 msgstr ""
 
-#: includes/SiteFeatures.php:34
-#: includes/SiteFeatures.php:98
+#: includes/SiteFeatures.php:34 includes/SiteFeatures.php:98
 msgid "Powered by WP Forms"
 msgstr ""
 
-#: includes/SiteFeatures.php:35
-#: includes/SiteFeatures.php:99
-msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
+#: includes/SiteFeatures.php:35 includes/SiteFeatures.php:99
+msgid ""
+"Five million people build smarter forms and surveys with WPForms from "
+"Awesome Motive."
 msgstr ""
 
-#: includes/SiteFeatures.php:43
-#: includes/SiteFeatures.php:107
+#: includes/SiteFeatures.php:43 includes/SiteFeatures.php:107
 msgid "Site Traffic"
 msgstr ""
 
-#: includes/SiteFeatures.php:44
-#: includes/SiteFeatures.php:108
+#: includes/SiteFeatures.php:44 includes/SiteFeatures.php:108
 msgid "Powered by MonsterInsights"
 msgstr ""
 
-#: includes/SiteFeatures.php:45
-#: includes/SiteFeatures.php:109
-msgid "See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive."
+#: includes/SiteFeatures.php:45 includes/SiteFeatures.php:109
+msgid ""
+"See the opportunities in your website analytics traffic data using "
+"MonsterInsights from Awesome Motive."
 msgstr ""
 
-#: includes/SiteFeatures.php:53
-#: includes/SiteFeatures.php:117
+#: includes/SiteFeatures.php:53 includes/SiteFeatures.php:117
 msgid "Search Engine Optimization"
 msgstr ""
 
-#: includes/SiteFeatures.php:54
-#: includes/SiteFeatures.php:118
+#: includes/SiteFeatures.php:54 includes/SiteFeatures.php:118
 msgid "Powered by Yoast"
 msgstr ""
 
-#: includes/SiteFeatures.php:55
-#: includes/SiteFeatures.php:119
-msgid "Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast."
+#: includes/SiteFeatures.php:55 includes/SiteFeatures.php:119
+msgid ""
+"Get more traffic to your WordPress site with powerful analysis and tools "
+"from our colleagues at Yoast."
 msgstr ""
 
-#: includes/SiteFeatures.php:63
-#: includes/SiteFeatures.php:127
+#: includes/SiteFeatures.php:63 includes/SiteFeatures.php:127
 msgid "Email Newsletters"
 msgstr ""
 
-#: includes/SiteFeatures.php:64
-#: includes/SiteFeatures.php:128
+#: includes/SiteFeatures.php:64 includes/SiteFeatures.php:128
 msgid "Powered by Creative Email"
 msgstr ""
 
-#: includes/SiteFeatures.php:65
-#: includes/SiteFeatures.php:129
-msgid "A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact."
+#: includes/SiteFeatures.php:65 includes/SiteFeatures.php:129
+msgid ""
+"A professional logo builder, marketing automations with WooCommerce and "
+"social management -- CreativeMail is a whole lot more than mail from "
+"Constant Contact."
 msgstr ""
 
-#: includes/SiteFeatures.php:73
-#: includes/SiteFeatures.php:137
+#: includes/SiteFeatures.php:73 includes/SiteFeatures.php:137
 msgid "Lead Generation"
 msgstr ""
 
-#: includes/SiteFeatures.php:74
-#: includes/SiteFeatures.php:138
+#: includes/SiteFeatures.php:74 includes/SiteFeatures.php:138
 msgid "Powered by Optin Monster"
 msgstr ""
 
-#: includes/SiteFeatures.php:75
-#: includes/SiteFeatures.php:139
-msgid "Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive."
+#: includes/SiteFeatures.php:75 includes/SiteFeatures.php:139
+msgid ""
+"Connect with website visitors using a proven kit of tools for growth using "
+"this offering from Awesome Motive."
 msgstr ""
 
-#: includes/SiteFeatures.php:149
-#: includes/SiteFeatures.php:191
+#: includes/SiteFeatures.php:149 includes/SiteFeatures.php:191
 msgid "Enhanced Product Search"
 msgstr ""
 
-#: includes/SiteFeatures.php:150
-#: includes/SiteFeatures.php:160
-#: includes/SiteFeatures.php:170
-#: includes/SiteFeatures.php:180
-#: includes/SiteFeatures.php:192
-#: includes/SiteFeatures.php:202
-#: includes/SiteFeatures.php:212
-#: includes/SiteFeatures.php:222
+#: includes/SiteFeatures.php:150 includes/SiteFeatures.php:160
+#: includes/SiteFeatures.php:170 includes/SiteFeatures.php:180
+#: includes/SiteFeatures.php:192 includes/SiteFeatures.php:202
+#: includes/SiteFeatures.php:212 includes/SiteFeatures.php:222
 msgid "Powered by YITH"
 msgstr ""
 
-#: includes/SiteFeatures.php:151
-#: includes/SiteFeatures.php:193
-msgid "Give your visitors great search experiences with this exclusive offering from our colleagues at YITH."
+#: includes/SiteFeatures.php:151 includes/SiteFeatures.php:193
+msgid ""
+"Give your visitors great search experiences with this exclusive offering "
+"from our colleagues at YITH."
 msgstr ""
 
-#: includes/SiteFeatures.php:159
-#: includes/SiteFeatures.php:201
+#: includes/SiteFeatures.php:159 includes/SiteFeatures.php:201
 msgid "Enhanced Product Filters"
 msgstr ""
 
-#: includes/SiteFeatures.php:161
-#: includes/SiteFeatures.php:203
-msgid "Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH."
+#: includes/SiteFeatures.php:161 includes/SiteFeatures.php:203
+msgid ""
+"Give your visitors powerful tools to discover your great products with this "
+"exclusive offering from our colleagues at YITH."
 msgstr ""
 
-#: includes/SiteFeatures.php:169
-#: includes/SiteFeatures.php:211
+#: includes/SiteFeatures.php:169 includes/SiteFeatures.php:211
 msgid "Bookings & Appointments"
 msgstr ""
 
-#: includes/SiteFeatures.php:171
-#: includes/SiteFeatures.php:213
-msgid "Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH."
+#: includes/SiteFeatures.php:171 includes/SiteFeatures.php:213
+msgid ""
+"Have visitors book meetings and services with you, accepting payment and "
+"more using this exclusive offering from our colleagues at YITH."
 msgstr ""
 
-#: includes/SiteFeatures.php:179
-#: includes/SiteFeatures.php:221
+#: includes/SiteFeatures.php:179 includes/SiteFeatures.php:221
 msgid "Product Wishlists"
 msgstr ""
 
-#: includes/SiteFeatures.php:181
-#: includes/SiteFeatures.php:223
-msgid "Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH."
+#: includes/SiteFeatures.php:181 includes/SiteFeatures.php:223
+msgid ""
+"Let discerning shoppers curate their selections with a system of favorites "
+"using this exclusive offering from our colleagues at YITH."
 msgstr ""
 
 #: includes/SiteGen.php:17
