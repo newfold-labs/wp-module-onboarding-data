@@ -1,396 +1,417 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: newfold-labswp-module-staging\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Vara Prasad Maruboina <varaprasad.maruboina@newfold.com>\n"
-"Language-Team: French <traduc@traduc.org>\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
-"PO-Revision-Date: 2025-02-17 22:22+0530\n"
+"PO-Revision-Date: 2025-02-19 15:03\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: newfold-labswp-module-staging\n"
+"X-Crowdin-Project-ID: 764889\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: wp-module-onboarding-data.pot\n"
+"X-Crowdin-File-ID: 30\n"
+"Language: fr_FR\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
-msgstr ""
+msgstr "votre hébergeur web"
 
-#: includes/Options.php:124 includes/Options.php:129 includes/Options.php:134
-#: includes/Options.php:139 includes/Options.php:144 includes/Options.php:149
-#: includes/Options.php:154 includes/Options.php:159 includes/Options.php:164
+#: includes/Options.php:124
+#: includes/Options.php:129
+#: includes/Options.php:134
+#: includes/Options.php:139
+#: includes/Options.php:144
+#: includes/Options.php:149
+#: includes/Options.php:154
+#: includes/Options.php:159
+#: includes/Options.php:164
 #: includes/Options.php:169
 msgid "Woocommerce Settings"
-msgstr ""
+msgstr "Paramètres de Woocommerce"
 
 #: includes/Patterns.php:19
 msgid "Home"
-msgstr ""
+msgstr "Domicile"
 
-#: includes/Patterns.php:20 includes/Patterns.php:93
+#: includes/Patterns.php:20
+#: includes/Patterns.php:93
 msgid "About"
-msgstr ""
+msgstr "À propos de"
 
-#: includes/Patterns.php:21 includes/Patterns.php:103
+#: includes/Patterns.php:21
+#: includes/Patterns.php:103
 msgid "Contact"
-msgstr ""
+msgstr "Contacter"
 
 #: includes/Patterns.php:22
 msgid "News"
-msgstr ""
+msgstr "Actualités"
 
 #: includes/Patterns.php:23
 msgid "Privacy"
-msgstr ""
+msgstr "Confidentialité"
 
 #: includes/Patterns.php:24
 msgid "Careers"
-msgstr ""
+msgstr "Carrières"
 
 #: includes/Patterns.php:96
 msgid "Explain your company values or the history behind your brand."
-msgstr ""
+msgstr "Expliquez les valeurs de votre entreprise ou l'histoire derrière votre marque."
 
 #: includes/Patterns.php:105
-msgid ""
-"Offer visitors a single page with a contact form, your street address and "
-"social media."
-msgstr ""
+msgid "Offer visitors a single page with a contact form, your street address and social media."
+msgstr "Offrez aux visiteurs une seule page avec un formulaire de contact, votre adresse postale et les réseaux sociaux."
 
 #: includes/Patterns.php:111
 msgid "Testimonials"
-msgstr ""
+msgstr "Témoignages"
 
 #: includes/Patterns.php:114
 msgid "Highlight your success with testimonials from your fans."
-msgstr ""
+msgstr "Mettez en valeur votre succès grâce à des témoignages de vos fans."
 
 #: includes/Patterns.php:121
 msgid "Blog"
-msgstr ""
+msgstr "Blogue"
 
 #: includes/Patterns.php:123
 msgid "A page for periodic news, announcements and ideas."
-msgstr ""
+msgstr "Une page pour des nouvelles périodiques, des annonces et des idées."
 
 #: includes/Services/BlockRenderService.php:43
 #: includes/Services/BlockRenderService.php:54
 msgid "Unable to generate screenshot."
-msgstr ""
+msgstr "Impossible de générer une capture d'écran."
 
 #: includes/Services/FlowService.php:136
 msgid "Wrong Parameter Provided : primary => value"
-msgstr ""
+msgstr "Mauvais paramètre fourni : primaire => valeur"
 
 #: includes/Services/FlowService.php:150
 msgid "Wrong Parameter Provided : secondary => value"
-msgstr ""
+msgstr "Mauvais paramètre fourni : secondaire => valeur"
 
 #: includes/Services/SiteGenService.php:107
 msgid "Not a valid identifier"
-msgstr ""
+msgstr "Identifiant non valide"
 
 #: includes/Services/SiteGenService.php:120
 msgid "Error generating site meta: "
-msgstr ""
+msgstr "Erreur lors de la génération de la méta du site : "
 
 #: includes/Services/SiteGenService.php:256
 msgid "Help us improve"
-msgstr ""
+msgstr "Aidez-nous à améliorer"
 
 #: includes/Services/SiteGenService.php:257
 msgid "How satisfied were you with the ease of creating your website?"
-msgstr ""
+msgstr "Dans quelle mesure êtes-vous satisfait de la facilité de création de votre site Web?"
 
 #: includes/Services/SiteGenService.php:418
 msgid "Error generating homepages: "
-msgstr ""
+msgstr "Erreur lors de la génération des pages d'accueil: "
 
 #: includes/Services/SiteGenService.php:446
 msgid "The homepage could not be found for regeneration."
-msgstr ""
+msgstr "La page d'accueil n'a pas pu être trouvée pour la régénération."
 
 #: includes/Services/SiteGenService.php:478
 #: includes/Services/SiteGenService.php:483
 msgid " (Copy)"
-msgstr ""
+msgstr " (Copier)"
 
 #: includes/Services/SiteGenService.php:516
 msgid "Error re-generating homepages: "
-msgstr ""
+msgstr "Erreur lors de la régénération des pages d'accueil : "
 
 #: includes/Services/SiteGenService.php:558
 msgid "Version "
-msgstr ""
+msgstr "Version "
 
 #: includes/Services/SiteGenService.php:583
 #: includes/Services/SiteGenService.php:670
 #: includes/Services/SiteGenService.php:723
 msgid "Prompt not found."
-msgstr ""
+msgstr "Invitation introuvable."
 
 #: includes/Services/SiteGenService.php:598
 msgid "Cannot retrieve color palatte"
-msgstr ""
+msgstr "Impossible de récupérer le palatte de couleur"
 
 #: includes/Services/SiteGenService.php:686
 msgid "Cannot retrieve plugin recommendations."
-msgstr ""
+msgstr "Impossible de récupérer les recommandations du plugin."
 
-#: includes/SiteFeatures.php:23 includes/SiteFeatures.php:87
+#: includes/SiteFeatures.php:23
+#: includes/SiteFeatures.php:87
 msgid "Security, Speed & Growth"
-msgstr ""
+msgstr "Sécurité, vitesse et croissance"
 
-#: includes/SiteFeatures.php:24 includes/SiteFeatures.php:88
+#: includes/SiteFeatures.php:24
+#: includes/SiteFeatures.php:88
 msgid "Powered by Jetpack"
-msgstr ""
+msgstr "Propulsé par Jetpack"
 
-#: includes/SiteFeatures.php:25 includes/SiteFeatures.php:89
-msgid ""
-"Jetpack includes dozens of powerful, unique capabilities for your WordPress "
-"sites from Automattic."
-msgstr ""
+#: includes/SiteFeatures.php:25
+#: includes/SiteFeatures.php:89
+msgid "Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic."
+msgstr "Jetpack inclut des douzaines de fonctionnalités puissantes et uniques pour vos sites WordPress de Automattic."
 
-#: includes/SiteFeatures.php:33 includes/SiteFeatures.php:97
+#: includes/SiteFeatures.php:33
+#: includes/SiteFeatures.php:97
 msgid "Forms"
-msgstr ""
+msgstr "Formulaires"
 
-#: includes/SiteFeatures.php:34 includes/SiteFeatures.php:98
+#: includes/SiteFeatures.php:34
+#: includes/SiteFeatures.php:98
 msgid "Powered by WP Forms"
-msgstr ""
+msgstr "Propulsé par WP Forms"
 
-#: includes/SiteFeatures.php:35 includes/SiteFeatures.php:99
-msgid ""
-"Five million people build smarter forms and surveys with WPForms from "
-"Awesome Motive."
-msgstr ""
+#: includes/SiteFeatures.php:35
+#: includes/SiteFeatures.php:99
+msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
+msgstr "Cinq millions de personnes construisent des formulaires et des sondages plus intelligents avec WPForms d’Awesome Motive."
 
-#: includes/SiteFeatures.php:43 includes/SiteFeatures.php:107
+#: includes/SiteFeatures.php:43
+#: includes/SiteFeatures.php:107
 msgid "Site Traffic"
-msgstr ""
+msgstr "Trafic du site"
 
-#: includes/SiteFeatures.php:44 includes/SiteFeatures.php:108
+#: includes/SiteFeatures.php:44
+#: includes/SiteFeatures.php:108
 msgid "Powered by MonsterInsights"
-msgstr ""
+msgstr "Propulsé par MonsterInsights"
 
-#: includes/SiteFeatures.php:45 includes/SiteFeatures.php:109
-msgid ""
-"See the opportunities in your website analytics traffic data using "
-"MonsterInsights from Awesome Motive."
-msgstr ""
+#: includes/SiteFeatures.php:45
+#: includes/SiteFeatures.php:109
+msgid "See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive."
+msgstr "Voyez les opportunités dans les données de trafic de votre site Web d'analyse en utilisant MonsterInsights de Awesome Motive."
 
-#: includes/SiteFeatures.php:53 includes/SiteFeatures.php:117
+#: includes/SiteFeatures.php:53
+#: includes/SiteFeatures.php:117
 msgid "Search Engine Optimization"
-msgstr ""
+msgstr "Optimisation des moteurs de recherche"
 
-#: includes/SiteFeatures.php:54 includes/SiteFeatures.php:118
+#: includes/SiteFeatures.php:54
+#: includes/SiteFeatures.php:118
 msgid "Powered by Yoast"
-msgstr ""
+msgstr "Propulsé par Yoast"
 
-#: includes/SiteFeatures.php:55 includes/SiteFeatures.php:119
-msgid ""
-"Get more traffic to your WordPress site with powerful analysis and tools "
-"from our colleagues at Yoast."
-msgstr ""
+#: includes/SiteFeatures.php:55
+#: includes/SiteFeatures.php:119
+msgid "Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast."
+msgstr "Obtenez plus de trafic vers votre site WordPress avec une analyse et des outils puissants de nos collègues chez Yoast."
 
-#: includes/SiteFeatures.php:63 includes/SiteFeatures.php:127
+#: includes/SiteFeatures.php:63
+#: includes/SiteFeatures.php:127
 msgid "Email Newsletters"
-msgstr ""
+msgstr "Lettres d'information par e-mail"
 
-#: includes/SiteFeatures.php:64 includes/SiteFeatures.php:128
+#: includes/SiteFeatures.php:64
+#: includes/SiteFeatures.php:128
 msgid "Powered by Creative Email"
-msgstr ""
+msgstr "Propulsé par Creative Email"
 
-#: includes/SiteFeatures.php:65 includes/SiteFeatures.php:129
-msgid ""
-"A professional logo builder, marketing automations with WooCommerce and "
-"social management -- CreativeMail is a whole lot more than mail from "
-"Constant Contact."
-msgstr ""
+#: includes/SiteFeatures.php:65
+#: includes/SiteFeatures.php:129
+msgid "A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact."
+msgstr "Un constructeur de logo professionnel, des automatisations marketing avec WooCommerce et la gestion sociale -- CreativeMail est beaucoup plus que le courrier de Constant Contact."
 
-#: includes/SiteFeatures.php:73 includes/SiteFeatures.php:137
+#: includes/SiteFeatures.php:73
+#: includes/SiteFeatures.php:137
 msgid "Lead Generation"
-msgstr ""
+msgstr "Génération de Prospects"
 
-#: includes/SiteFeatures.php:74 includes/SiteFeatures.php:138
+#: includes/SiteFeatures.php:74
+#: includes/SiteFeatures.php:138
 msgid "Powered by Optin Monster"
-msgstr ""
+msgstr "Propulsé par Optin Monster"
 
-#: includes/SiteFeatures.php:75 includes/SiteFeatures.php:139
-msgid ""
-"Connect with website visitors using a proven kit of tools for growth using "
-"this offering from Awesome Motive."
-msgstr ""
+#: includes/SiteFeatures.php:75
+#: includes/SiteFeatures.php:139
+msgid "Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive."
+msgstr "Se connecter avec les visiteurs du site Web à l'aide d'un kit d'outils éprouvé pour la croissance à l'aide de cette offre de Awesome Motive."
 
-#: includes/SiteFeatures.php:149 includes/SiteFeatures.php:191
+#: includes/SiteFeatures.php:149
+#: includes/SiteFeatures.php:191
 msgid "Enhanced Product Search"
-msgstr ""
+msgstr "Recherche de produit améliorée"
 
-#: includes/SiteFeatures.php:150 includes/SiteFeatures.php:160
-#: includes/SiteFeatures.php:170 includes/SiteFeatures.php:180
-#: includes/SiteFeatures.php:192 includes/SiteFeatures.php:202
-#: includes/SiteFeatures.php:212 includes/SiteFeatures.php:222
+#: includes/SiteFeatures.php:150
+#: includes/SiteFeatures.php:160
+#: includes/SiteFeatures.php:170
+#: includes/SiteFeatures.php:180
+#: includes/SiteFeatures.php:192
+#: includes/SiteFeatures.php:202
+#: includes/SiteFeatures.php:212
+#: includes/SiteFeatures.php:222
 msgid "Powered by YITH"
-msgstr ""
+msgstr "Propulsé par YITH"
 
-#: includes/SiteFeatures.php:151 includes/SiteFeatures.php:193
-msgid ""
-"Give your visitors great search experiences with this exclusive offering "
-"from our colleagues at YITH."
-msgstr ""
+#: includes/SiteFeatures.php:151
+#: includes/SiteFeatures.php:193
+msgid "Give your visitors great search experiences with this exclusive offering from our colleagues at YITH."
+msgstr "Offrez à vos visiteurs d'excellentes expériences de recherche grâce à cette offre exclusive de nos collègues chez YITH."
 
-#: includes/SiteFeatures.php:159 includes/SiteFeatures.php:201
+#: includes/SiteFeatures.php:159
+#: includes/SiteFeatures.php:201
 msgid "Enhanced Product Filters"
-msgstr ""
+msgstr "Filtres de produits améliorés"
 
-#: includes/SiteFeatures.php:161 includes/SiteFeatures.php:203
-msgid ""
-"Give your visitors powerful tools to discover your great products with this "
-"exclusive offering from our colleagues at YITH."
-msgstr ""
+#: includes/SiteFeatures.php:161
+#: includes/SiteFeatures.php:203
+msgid "Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH."
+msgstr "Offrez à vos visiteurs de puissants outils pour découvrir vos excellents produits grâce à cette offre exclusive de nos collègues chez YITH."
 
-#: includes/SiteFeatures.php:169 includes/SiteFeatures.php:211
+#: includes/SiteFeatures.php:169
+#: includes/SiteFeatures.php:211
 msgid "Bookings & Appointments"
-msgstr ""
+msgstr "Réservations & Rendez-vous"
 
-#: includes/SiteFeatures.php:171 includes/SiteFeatures.php:213
-msgid ""
-"Have visitors book meetings and services with you, accepting payment and "
-"more using this exclusive offering from our colleagues at YITH."
-msgstr ""
+#: includes/SiteFeatures.php:171
+#: includes/SiteFeatures.php:213
+msgid "Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH."
+msgstr "Demandez aux visiteurs de réserver des réunions et des services avec vous, en acceptant le paiement et plus encore en utilisant cette offre exclusive de nos collègues chez YITH."
 
-#: includes/SiteFeatures.php:179 includes/SiteFeatures.php:221
+#: includes/SiteFeatures.php:179
+#: includes/SiteFeatures.php:221
 msgid "Product Wishlists"
-msgstr ""
+msgstr "Listes de souhaits du produit"
 
-#: includes/SiteFeatures.php:181 includes/SiteFeatures.php:223
-msgid ""
-"Let discerning shoppers curate their selections with a system of favorites "
-"using this exclusive offering from our colleagues at YITH."
-msgstr ""
+#: includes/SiteFeatures.php:181
+#: includes/SiteFeatures.php:223
+msgid "Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH."
+msgstr "Laissez les acheteurs avertis organiser leurs sélections avec un système de favoris en utilisant cette offre exclusive de nos collègues chez YITH."
 
 #: includes/SiteGen.php:17
 msgid "1. Do you have a business name or website title?"
-msgstr ""
+msgstr "1. Avez-vous un nom d'entreprise ou un titre de site Web?"
 
 #: includes/SiteGen.php:18
 msgid "My business name is"
-msgstr ""
+msgstr "Mon nom d'entreprise est"
 
 #: includes/SiteGen.php:21
 msgid "2. What type of website are you making?"
-msgstr ""
+msgstr "2. Quel type de site faites-vous ?"
 
 #: includes/SiteGen.php:22
 msgid "e.g. Graphic design portfolio"
-msgstr ""
+msgstr "par exemple : portfolio de design graphique"
 
 #: includes/SiteGen.php:23
 msgid "I am making a website type of"
-msgstr ""
+msgstr "Je fais un type de site web de"
 
 #: includes/SiteGen.php:26
 msgid "3. Is there anything unique about your business or brand?"
-msgstr ""
+msgstr "3. Y a-t-il quelque chose d'unique à propos de votre entreprise ou de votre marque?"
 
 #: includes/SiteGen.php:27
 msgid "e.g. Unique product, amazing customer service, customizations, etc."
-msgstr ""
+msgstr "par exemple un produit unique, un service client étonnant, des personnalisations, etc."
 
 #: includes/SiteGen.php:28
 msgid "Unique about my business is"
-msgstr ""
+msgstr "Unique à propos de mon entreprise est"
 
 #: includes/Themes/Colors.php:31
 msgid "Calm"
-msgstr ""
+msgstr "Calme"
 
 #: includes/Themes/Colors.php:43
 msgid "Cool"
-msgstr ""
+msgstr "Cool"
 
 #: includes/Themes/Colors.php:55
 msgid "Warm"
-msgstr ""
+msgstr "Chaud"
 
 #: includes/Themes/Colors.php:67
 msgid "Radiant"
-msgstr ""
+msgstr "Rayonnant"
 
 #: includes/Themes/Colors.php:79
 msgid "Bold"
-msgstr ""
+msgstr "Bold"
 
 #: includes/Themes/Colors.php:91
 msgid "Retro"
-msgstr ""
+msgstr "Rétro"
 
 #: includes/Themes/Colors.php:103
 msgid "Professional"
-msgstr ""
+msgstr "Professionnel"
 
 #: includes/Themes/Colors.php:115
 msgid "Crisp"
-msgstr ""
+msgstr "Croustillant"
 
 #: includes/Themes/Colors.php:127
 msgid "Polished"
-msgstr ""
+msgstr "Possède"
 
 #: includes/Themes/Colors.php:139
 msgid "Nightowl"
-msgstr ""
+msgstr "Serviette de nuit"
 
 #: includes/Themes/Colors.php:151
 msgid "Subtle"
-msgstr ""
+msgstr "Subtil"
 
 #: includes/Themes/Fonts.php:21
 msgid "Modern & approachable"
-msgstr ""
+msgstr "Moderne & abordable"
 
 #: includes/Themes/Fonts.php:38
 msgid "Strong & sleek"
-msgstr ""
+msgstr "Puissant et élégant"
 
 #: includes/Themes/Fonts.php:55
 msgid "Stately & elevated"
-msgstr ""
+msgstr "Statifier et élever"
 
 #: includes/Themes/Fonts.php:72
 msgid "Typewriter & crisp midcentury"
-msgstr ""
+msgstr "Machine à écrire et croustillante au milieu du siècle"
 
 #: includes/Themes/Fonts.php:89
 msgid "Refined traditional newsletter"
-msgstr ""
+msgstr "Newsletter traditionnelle raffinée"
 
 #: includes/Themes/Fonts.php:106
 msgid "Bold stamp & slab"
-msgstr ""
+msgstr "Médaille et dalle en gras"
 
 #: includes/Themes/Fonts.php:123
 msgid "Fast & Simple"
-msgstr ""
+msgstr "Rapide & Simple"
 
 #: includes/Themes/Fonts.php:140
 msgid "Timeless & Traditional"
-msgstr ""
+msgstr "Intemporel & Traditionnel"
 
 #: includes/Themes/Fonts.php:157
 msgid "Sleek & Sophisticated"
-msgstr ""
+msgstr "Élégant & Sophisticé"
 
 #: includes/Themes/Fonts.php:174
 msgid "Clear & Crisp"
-msgstr ""
+msgstr "Clair et croustillant"
 
 #: includes/Themes/Fonts.php:191
 msgid "Retro & Classy"
-msgstr ""
+msgstr "Retro & Classy"
 
 #: includes/Themes/Fonts.php:208
 msgid "Defined & Solid"
-msgstr ""
+msgstr "Défini et solide"
+
