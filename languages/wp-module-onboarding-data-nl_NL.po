@@ -1,20 +1,27 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: newfold-labswp-module-staging\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-02-19 15:03\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: newfold-labswp-module-staging\n"
+"X-Crowdin-Project-ID: 764889\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: wp-module-onboarding-data.pot\n"
+"X-Crowdin-File-ID: 30\n"
+"Language: nl_NL\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
-msgstr ""
+msgstr "je webhost"
 
 #: includes/Options.php:124
 #: includes/Options.php:129
@@ -27,216 +34,216 @@ msgstr ""
 #: includes/Options.php:164
 #: includes/Options.php:169
 msgid "Woocommerce Settings"
-msgstr ""
+msgstr "Woocommerce instellingen"
 
 #: includes/Patterns.php:19
 msgid "Home"
-msgstr ""
+msgstr "Startpagina"
 
 #: includes/Patterns.php:20
 #: includes/Patterns.php:93
 msgid "About"
-msgstr ""
+msgstr "Informatie"
 
 #: includes/Patterns.php:21
 #: includes/Patterns.php:103
 msgid "Contact"
-msgstr ""
+msgstr "Contactpersoon"
 
 #: includes/Patterns.php:22
 msgid "News"
-msgstr ""
+msgstr "Nieuws"
 
 #: includes/Patterns.php:23
 msgid "Privacy"
-msgstr ""
+msgstr "Privacy"
 
 #: includes/Patterns.php:24
 msgid "Careers"
-msgstr ""
+msgstr "Carrière"
 
 #: includes/Patterns.php:96
 msgid "Explain your company values or the history behind your brand."
-msgstr ""
+msgstr "Leg uw bedrijfswaarden of de geschiedenis achter uw merk uit."
 
 #: includes/Patterns.php:105
 msgid "Offer visitors a single page with a contact form, your street address and social media."
-msgstr ""
+msgstr "Bied bezoekers één pagina met een contactformulier, uw straatadres en sociale media."
 
 #: includes/Patterns.php:111
 msgid "Testimonials"
-msgstr ""
+msgstr "Beoordelingen"
 
 #: includes/Patterns.php:114
 msgid "Highlight your success with testimonials from your fans."
-msgstr ""
+msgstr "Markeer je succes met getuigenissen van je fans."
 
 #: includes/Patterns.php:121
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: includes/Patterns.php:123
 msgid "A page for periodic news, announcements and ideas."
-msgstr ""
+msgstr "Een pagina voor periodiek nieuws, aankondigingen en ideeën."
 
 #: includes/Services/BlockRenderService.php:43
 #: includes/Services/BlockRenderService.php:54
 msgid "Unable to generate screenshot."
-msgstr ""
+msgstr "Kan schermafbeelding niet genereren."
 
 #: includes/Services/FlowService.php:136
 msgid "Wrong Parameter Provided : primary => value"
-msgstr ""
+msgstr "Verkeerde parameter opgegeven: primaire => waarde"
 
 #: includes/Services/FlowService.php:150
 msgid "Wrong Parameter Provided : secondary => value"
-msgstr ""
+msgstr "Verkeerde parameter gegeven: secundaire => waarde"
 
 #: includes/Services/SiteGenService.php:107
 msgid "Not a valid identifier"
-msgstr ""
+msgstr "Geen geldig id"
 
 #: includes/Services/SiteGenService.php:120
 msgid "Error generating site meta: "
-msgstr ""
+msgstr "Fout bij genereren van websitemeta: "
 
 #: includes/Services/SiteGenService.php:256
 msgid "Help us improve"
-msgstr ""
+msgstr "Help ons te verbeteren"
 
 #: includes/Services/SiteGenService.php:257
 msgid "How satisfied were you with the ease of creating your website?"
-msgstr ""
+msgstr "Hoe tevreden was je met het gemak van het maken van je website?"
 
 #: includes/Services/SiteGenService.php:418
 msgid "Error generating homepages: "
-msgstr ""
+msgstr "Fout bij genereren homepages: "
 
 #: includes/Services/SiteGenService.php:446
 msgid "The homepage could not be found for regeneration."
-msgstr ""
+msgstr "De homepage kon niet worden gevonden voor regeneratie."
 
 #: includes/Services/SiteGenService.php:478
 #: includes/Services/SiteGenService.php:483
 msgid " (Copy)"
-msgstr ""
+msgstr " (Kopie)"
 
 #: includes/Services/SiteGenService.php:516
 msgid "Error re-generating homepages: "
-msgstr ""
+msgstr "Fout bij opnieuw genereren van homepages: "
 
 #: includes/Services/SiteGenService.php:558
 msgid "Version "
-msgstr ""
+msgstr "Versie "
 
 #: includes/Services/SiteGenService.php:583
 #: includes/Services/SiteGenService.php:670
 #: includes/Services/SiteGenService.php:723
 msgid "Prompt not found."
-msgstr ""
+msgstr "Prompt niet gevonden."
 
 #: includes/Services/SiteGenService.php:598
 msgid "Cannot retrieve color palatte"
-msgstr ""
+msgstr "Kan kleurenpalat niet ophalen"
 
 #: includes/Services/SiteGenService.php:686
 msgid "Cannot retrieve plugin recommendations."
-msgstr ""
+msgstr "Kan plugin aanbevelingen niet ophalen."
 
 #: includes/SiteFeatures.php:23
 #: includes/SiteFeatures.php:87
 msgid "Security, Speed & Growth"
-msgstr ""
+msgstr "Veiligheid, Snelheid & Groei"
 
 #: includes/SiteFeatures.php:24
 #: includes/SiteFeatures.php:88
 msgid "Powered by Jetpack"
-msgstr ""
+msgstr "Mogelijk gemaakt door Jetpack"
 
 #: includes/SiteFeatures.php:25
 #: includes/SiteFeatures.php:89
 msgid "Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic."
-msgstr ""
+msgstr "Jetpack bevat tientallen krachtige, unieke mogelijkheden voor uw WordPress-sites van Automattic."
 
 #: includes/SiteFeatures.php:33
 #: includes/SiteFeatures.php:97
 msgid "Forms"
-msgstr ""
+msgstr "Formulieren"
 
 #: includes/SiteFeatures.php:34
 #: includes/SiteFeatures.php:98
 msgid "Powered by WP Forms"
-msgstr ""
+msgstr "Mogelijk gemaakt door WP formulieren"
 
 #: includes/SiteFeatures.php:35
 #: includes/SiteFeatures.php:99
 msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
-msgstr ""
+msgstr "Vijf miljoen mensen bouwen slimmere formulieren en onderzoeken met WPForms uit de geweldige Motive."
 
 #: includes/SiteFeatures.php:43
 #: includes/SiteFeatures.php:107
 msgid "Site Traffic"
-msgstr ""
+msgstr "Website Dataverkeer"
 
 #: includes/SiteFeatures.php:44
 #: includes/SiteFeatures.php:108
 msgid "Powered by MonsterInsights"
-msgstr ""
+msgstr "Mogelijk gemaakt door MonsterInsights"
 
 #: includes/SiteFeatures.php:45
 #: includes/SiteFeatures.php:109
 msgid "See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive."
-msgstr ""
+msgstr "Bekijk de mogelijkheden in uw website analytics gegevens met behulp van MonsterInsights uit Awesome Motive."
 
 #: includes/SiteFeatures.php:53
 #: includes/SiteFeatures.php:117
 msgid "Search Engine Optimization"
-msgstr ""
+msgstr "Zoekmachine-optimalisatie (SEO)"
 
 #: includes/SiteFeatures.php:54
 #: includes/SiteFeatures.php:118
 msgid "Powered by Yoast"
-msgstr ""
+msgstr "Mogelijk gemaakt door Yoast"
 
 #: includes/SiteFeatures.php:55
 #: includes/SiteFeatures.php:119
 msgid "Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast."
-msgstr ""
+msgstr "Krijg meer verkeer naar uw WordPress-site met krachtige analyses en hulpmiddelen van onze collega's in Yoast."
 
 #: includes/SiteFeatures.php:63
 #: includes/SiteFeatures.php:127
 msgid "Email Newsletters"
-msgstr ""
+msgstr "Nieuwsbrieven e-mailen"
 
 #: includes/SiteFeatures.php:64
 #: includes/SiteFeatures.php:128
 msgid "Powered by Creative Email"
-msgstr ""
+msgstr "Mogelijk gemaakt door Creative Email"
 
 #: includes/SiteFeatures.php:65
 #: includes/SiteFeatures.php:129
 msgid "A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact."
-msgstr ""
+msgstr "Een professioneel logo builder, marketing automations met WooCommerce en sociaal management -- CreativeMail is veel meer dan mail van Constant Contact."
 
 #: includes/SiteFeatures.php:73
 #: includes/SiteFeatures.php:137
 msgid "Lead Generation"
-msgstr ""
+msgstr "Lead generatie"
 
 #: includes/SiteFeatures.php:74
 #: includes/SiteFeatures.php:138
 msgid "Powered by Optin Monster"
-msgstr ""
+msgstr "Aangedreven door Optin Monster"
 
 #: includes/SiteFeatures.php:75
 #: includes/SiteFeatures.php:139
 msgid "Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive."
-msgstr ""
+msgstr "Maak verbinding met website bezoekers die gebruik maken van een beproefde set tools voor groei met behulp van dit aanbod van Awesome Motive."
 
 #: includes/SiteFeatures.php:149
 #: includes/SiteFeatures.php:191
 msgid "Enhanced Product Search"
-msgstr ""
+msgstr "Verbeterd product zoeken"
 
 #: includes/SiteFeatures.php:150
 #: includes/SiteFeatures.php:160
@@ -247,163 +254,164 @@ msgstr ""
 #: includes/SiteFeatures.php:212
 #: includes/SiteFeatures.php:222
 msgid "Powered by YITH"
-msgstr ""
+msgstr "Mogelijk gemaakt door JITH"
 
 #: includes/SiteFeatures.php:151
 #: includes/SiteFeatures.php:193
 msgid "Give your visitors great search experiences with this exclusive offering from our colleagues at YITH."
-msgstr ""
+msgstr "Geef uw bezoekers geweldige zoekervaring met dit exclusieve aanbod van onze collega's bij YITH."
 
 #: includes/SiteFeatures.php:159
 #: includes/SiteFeatures.php:201
 msgid "Enhanced Product Filters"
-msgstr ""
+msgstr "Verbeterde productfilters"
 
 #: includes/SiteFeatures.php:161
 #: includes/SiteFeatures.php:203
 msgid "Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH."
-msgstr ""
+msgstr "Geef uw bezoekers krachtige hulpmiddelen om uw geweldige producten te ontdekken met dit exclusieve aanbod van onze collega's bij YITH."
 
 #: includes/SiteFeatures.php:169
 #: includes/SiteFeatures.php:211
 msgid "Bookings & Appointments"
-msgstr ""
+msgstr "Boekingen & Afspraken"
 
 #: includes/SiteFeatures.php:171
 #: includes/SiteFeatures.php:213
 msgid "Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH."
-msgstr ""
+msgstr "Hebben bezoekers ontmoetingen en diensten met u geboekt, betalingen accepteren en meer gebruik maken van dit exclusieve aanbod van onze collega's bij YITH?"
 
 #: includes/SiteFeatures.php:179
 #: includes/SiteFeatures.php:221
 msgid "Product Wishlists"
-msgstr ""
+msgstr "Product verlanglijsts"
 
 #: includes/SiteFeatures.php:181
 #: includes/SiteFeatures.php:223
 msgid "Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH."
-msgstr ""
+msgstr "Laat opvallende kopers hun selectie beperken met een systeem van favorieten met behulp van dit exclusieve aanbod van onze collega's bij YITH."
 
 #: includes/SiteGen.php:17
 msgid "1. Do you have a business name or website title?"
-msgstr ""
+msgstr "1. Heeft u een bedrijfsnaam of websitetitel?"
 
 #: includes/SiteGen.php:18
 msgid "My business name is"
-msgstr ""
+msgstr "Mijn bedrijfsnaam is"
 
 #: includes/SiteGen.php:21
 msgid "2. What type of website are you making?"
-msgstr ""
+msgstr "2. Wat voor soort website maak je?"
 
 #: includes/SiteGen.php:22
 msgid "e.g. Graphic design portfolio"
-msgstr ""
+msgstr "bijv. Grafisch ontwerp portfolio"
 
 #: includes/SiteGen.php:23
 msgid "I am making a website type of"
-msgstr ""
+msgstr "Ik maak een soort website van"
 
 #: includes/SiteGen.php:26
 msgid "3. Is there anything unique about your business or brand?"
-msgstr ""
+msgstr "3. Is er iets uniek aan uw bedrijf of merk?"
 
 #: includes/SiteGen.php:27
 msgid "e.g. Unique product, amazing customer service, customizations, etc."
-msgstr ""
+msgstr "bijv. Uniek product, geweldige klantenservice, aanpassingen, etc."
 
 #: includes/SiteGen.php:28
 msgid "Unique about my business is"
-msgstr ""
+msgstr "Uniek over mijn bedrijf is"
 
 #: includes/Themes/Colors.php:31
 msgid "Calm"
-msgstr ""
+msgstr "Rustig"
 
 #: includes/Themes/Colors.php:43
 msgid "Cool"
-msgstr ""
+msgstr "Koud"
 
 #: includes/Themes/Colors.php:55
 msgid "Warm"
-msgstr ""
+msgstr "Hartelijk"
 
 #: includes/Themes/Colors.php:67
 msgid "Radiant"
-msgstr ""
+msgstr "Radiant"
 
 #: includes/Themes/Colors.php:79
 msgid "Bold"
-msgstr ""
+msgstr "Bold"
 
 #: includes/Themes/Colors.php:91
 msgid "Retro"
-msgstr ""
+msgstr "Retro"
 
 #: includes/Themes/Colors.php:103
 msgid "Professional"
-msgstr ""
+msgstr "Professioneel"
 
 #: includes/Themes/Colors.php:115
 msgid "Crisp"
-msgstr ""
+msgstr "Krokant"
 
 #: includes/Themes/Colors.php:127
 msgid "Polished"
-msgstr ""
+msgstr "Gepolijst"
 
 #: includes/Themes/Colors.php:139
 msgid "Nightowl"
-msgstr ""
+msgstr "Nachtstad"
 
 #: includes/Themes/Colors.php:151
 msgid "Subtle"
-msgstr ""
+msgstr "Subtiel"
 
 #: includes/Themes/Fonts.php:21
 msgid "Modern & approachable"
-msgstr ""
+msgstr "Modern & toegankelijk"
 
 #: includes/Themes/Fonts.php:38
 msgid "Strong & sleek"
-msgstr ""
+msgstr "Sterk & Slaap"
 
 #: includes/Themes/Fonts.php:55
 msgid "Stately & elevated"
-msgstr ""
+msgstr "Staand & verhoogd"
 
 #: includes/Themes/Fonts.php:72
 msgid "Typewriter & crisp midcentury"
-msgstr ""
+msgstr "Typewriter & chip in de middeneeuw"
 
 #: includes/Themes/Fonts.php:89
 msgid "Refined traditional newsletter"
-msgstr ""
+msgstr "Verfijnde traditionele nieuwsbrief"
 
 #: includes/Themes/Fonts.php:106
 msgid "Bold stamp & slab"
-msgstr ""
+msgstr "Vetgedrukt stempel & plaat"
 
 #: includes/Themes/Fonts.php:123
 msgid "Fast & Simple"
-msgstr ""
+msgstr "Snel & Eenvoudig"
 
 #: includes/Themes/Fonts.php:140
 msgid "Timeless & Traditional"
-msgstr ""
+msgstr "Tijdloos & Traditioneel"
 
 #: includes/Themes/Fonts.php:157
 msgid "Sleek & Sophisticated"
-msgstr ""
+msgstr "Geslepen & gesorteerd"
 
 #: includes/Themes/Fonts.php:174
 msgid "Clear & Crisp"
-msgstr ""
+msgstr "Leegmaken en riskeren"
 
 #: includes/Themes/Fonts.php:191
 msgid "Retro & Classy"
-msgstr ""
+msgstr "Retro & Classy"
 
 #: includes/Themes/Fonts.php:208
 msgid "Defined & Solid"
-msgstr ""
+msgstr "Gedefinieerd & Solid"
+
