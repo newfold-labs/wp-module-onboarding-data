@@ -25,6 +25,7 @@ final class Events {
 		'onboarding_chapter_started'  => true,
 		'onboarding_chapter_complete' => true,
 		'onboarding_complete'         => true,
+		'onboarding_restarted'        => true,
 		'experience_level_set'        => true,
 		'primary_type_set'            => true,
 		'secondary_type_set'          => true,
