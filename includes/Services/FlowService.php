@@ -166,7 +166,7 @@ class FlowService {
 			\update_option( Options::get_option_name( 'blog_description', false ), $data['data']['blogDescription'] );
 		}
 
-		if ( ( 'sitegen' === Data::current_flow() && ! empty( $data['sitegen']['siteLogo'] ) ) && ! empty( $data['sitegen']['siteLogo']['id'] ) ) {
+		if ( ( 'sitegen' === $data['activeFlow'] && ! empty( $data['sitegen']['siteLogo'] ) ) && ! empty( $data['sitegen']['siteLogo']['id'] ) ) {
 			update_option( Options::get_option_name( 'site_icon', false ), $data['sitegen']['siteLogo']['id'] );
 			update_option( Options::get_option_name( 'site_logo', false ), $data['sitegen']['siteLogo']['id'] );
 		} elseif ( ( ! empty( $data['data']['siteLogo'] ) ) && ! empty( $data['data']['siteLogo']['id'] ) ) {
