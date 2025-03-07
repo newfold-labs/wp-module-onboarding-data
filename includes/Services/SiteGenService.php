@@ -398,14 +398,16 @@ class SiteGenService {
 	/**
 	 * Gets the preview homepages
 	 *
+	 * @param string $site_id The site id generated for the site.
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
 	 * @return array|\WP_Error
 	 */
-	public static function generate_homepages( $site_description, $content_style, $target_audience ) {
+	public static function generate_homepages( $site_id, $site_description, $content_style, $target_audience ) {
 
 		$homepages = SiteGen::get_home_pages(
+			$site_id,
 			$site_description,
 			$content_style,
 			$target_audience,
@@ -906,6 +908,7 @@ class SiteGenService {
 	/**
 	 * Generate and publish the sitemap pages.
 	 *
+	 * @param string  $site_id The site id generated for the site.
 	 * @param string  $site_description The description of the site (prompt).
 	 * @param array   $content_style The type of content style.
 	 * @param array   $target_audience The target audience meta.
@@ -913,8 +916,9 @@ class SiteGenService {
 	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
 	 * @return array|boolean
 	 */
-	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $update_nav_menu = true ) {
+	public static function publish_sitemap_pages( $site_id, $site_description, $content_style, $target_audience, $sitemap, $update_nav_menu = true ) {
 		$other_pages = SiteGen::get_pages(
+			$site_id,
 			$site_description,
 			$content_style,
 			$target_audience,
