@@ -147,6 +147,7 @@ final class Flows {
 				'uniqueAboutBusiness' => '',
 				'minCharLimit'        => 34,
 				'mode'                => 'simple',
+				'uuid'                => '',
 			),
 			'siteLogo'              => array(
 				'id'       => 0,

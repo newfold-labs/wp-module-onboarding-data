@@ -396,6 +396,17 @@ class SiteGenService {
 	}
 
 	/**
+	 * Function to refine the site description, i.e. translate and summarize when required
+	 *
+	 * @param string $site_id          The site UUID for persistance.
+	 * @param string $site_description The site description
+	 */
+	public static function refine_site_description( $site_id, $site_description ) {
+		$refined_description = SiteGen::get_refined_site_description( $site_id, $site_description );
+		return $refined_description;
+	}
+
+	/**
 	 * Gets the preview homepages
 	 *
 	 * @param string $site_id The site id generated for the site.
@@ -578,7 +589,8 @@ class SiteGenService {
 	 * @return array|\WP_Error
 	 */
 	public static function get_color_palettes() {
-		$prompt = self::get_prompt();
+		$prompt  = self::get_prompt();
+		$site_id = self::get_site_id();
 		if ( ! $prompt ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -586,10 +598,18 @@ class SiteGenService {
 				array( 'status' => 404 )
 			);
 		}
+		if ( ! $site_id ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Site ID not found.', 'wp-module-onboarding-data' ),
+				array( 'status' => 404 )
+			);
+		}
 
 		$color_palette = self::instantiate_site_meta(
 			array(
 				'site_description' => $prompt,
+				'site_id'          => $site_id,
 			),
 			'color_palette'
 		);
@@ -853,6 +873,16 @@ class SiteGenService {
 	public static function get_prompt() {
 		$data = FlowService::read_data_from_wp_option( false );
 		return ! empty( $data['sitegen']['siteDetails']['prompt'] ) ? $data['sitegen']['siteDetails']['prompt'] : false;
+	}
+
+	/**
+	 * Get the site id generated during the site flow
+	 *
+	 * @return string|false
+	 */
+	public static function get_site_id() {
+		$data = FlowService::read_data_from_wp_option( false );
+		return ! empty( $data['sitegen']['siteDetails']['uuid'] ) ? $data['sitegen']['siteDetails']['prompt'] : false;
 	}
 
 	/**
