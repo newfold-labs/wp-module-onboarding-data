@@ -97,7 +97,7 @@ class GlobalStylesService {
 	 * @param array  $settings The settings to apply.
 	 * @return true|\WP_Error  Returns true on success, or a WP_Error on failure.
 	 */
-	private static function update_global_style_variation( $id, $styles, $settings ) {
+	public static function update_global_style_variation( $id, $styles, $settings ) {
 		// Create a REST request to update global styles.
 		$update_active_global_style_request = new \WP_REST_Request(
 			'POST',

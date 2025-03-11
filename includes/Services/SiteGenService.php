@@ -13,6 +13,7 @@ use NewfoldLabs\WP\Module\Patterns\SiteClassification as PatternsSiteClassificat
 use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
 use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\GlobalStylesService;
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\TemplatePartsService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Events;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
@@ -228,13 +229,11 @@ class SiteGenService {
 
 		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
 
-		// Use global styles and global theme to add the styles
-		self::update_styles_for_sitegen( $site_config );
+		// Update name and slug before generating child theme
+		$active_homepage = self::update_info_for_child_theme( $site_config, $active_homepage );
+		self::update_styles_for_sitegen( $active_homepage );
 
 		foreach ( $homepage_data as $index => $data ) {
-			if ( $data['isFavorite'] && $data['slug'] !== $active_homepage['slug'] ) {
-				self::update_styles_for_sitegen( $data );
-			}
 			if ( $data['slug'] === $active_homepage['slug'] ) {
 				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
 			}
@@ -299,8 +298,8 @@ class SiteGenService {
 			return false;
 		}
 
-		$active_theme_json      = $wp_filesystem->get_content( $active_theme_json_file );
-		$active_theme_json_data = json_decode( $active_theme_json_file, true );
+		$active_theme_json      = $wp_filesystem->get_contents( $active_theme_json_file );
+		$active_theme_json_data = json_decode( $active_theme_json, true );
 
 		// Apply the required changes to theme json
 		$active_theme_json_data['settings']['color']['palette'] = $data['color']['palette'];
@@ -309,6 +308,19 @@ class SiteGenService {
 		// Add the styles to global variation
 		$active_global_styles_post_id = GlobalStylesService::get_active_custom_global_styles_post_id();
 		GlobalStylesService::update_global_style_variation( $active_global_styles_post_id, $active_theme_json_data['styles'], $active_theme_json_data['settings'] );
+		if ( ! empty( $data['header'] ) ) {
+			$active_theme      = Themes::get_active_theme();
+			$default_header_id = "$active_theme/header";
+			// Update the default header template part with the selected content.
+			$update_status = TemplatePartsService::update_template_part( $default_header_id, $data['header'] );
+		}
+
+		if ( ! empty( $data['footer'] ) ) {
+			$active_theme      = Themes::get_active_theme();
+			$default_footer_id = "$active_theme/footer";
+			// Update the default header template part with the selected content.
+			$update_status = TemplatePartsService::update_template_part( $default_footer_id, $data['footer'] );
+		}
 	}
 
 	/**
