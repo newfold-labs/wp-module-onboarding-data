@@ -245,7 +245,7 @@ class SiteGenService {
 		ThemeGeneratorService::activate_theme( $active_homepage['slug'] );
 
 		self::trash_sample_page();
-		container()->get( 'cachePurger' )->purgeAll();
+		container()->get( 'cachePurger' )->purge_all();
 
 		container()->get( 'survey' )->create_toast_survey(
 			Events::get_category()[0] . '_sitegen_pulse',
