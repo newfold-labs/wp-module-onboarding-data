@@ -19,16 +19,16 @@ final class Preview {
 	}
 
 	/**
-	 * Map of pre requisites to show the live preview successfully for a flow.
+	 * Map of pre requisites to sho w the live preview successfully for a flow.
 	 *
 	 * @return array
 	 */
 	private static function pre_requisites() {
 		$theme_map = Themes::get();
 		return array(
-			'sitegen'  => array(
+			'sitegen'   => array(
 				'themes' => array(
-					'nfd_slug_yith_wonder' => self::boolean_to_status( ThemeInstaller::is_theme_active( $theme_map['nfd_slugs']['nfd_slug_yith_wonder']['stylesheet'] ) ),
+					'nfd_slug_bluehost_blueprint' => self::boolean_to_status( ThemeInstaller::is_theme_active( $theme_map['nfd_slugs']['nfd_slug_bluehost_blueprint']['stylesheet'] ) ),
 				),
 			),
 			'wp-setup'  => array(

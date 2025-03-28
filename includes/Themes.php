@@ -14,7 +14,7 @@ final class Themes {
 	protected static $flow_default_theme_slugs = array(
 		'wp-setup'  => 'yith-wonder',
 		'ecommerce' => 'yith-wonder',
-		'sitegen'   => 'yith-wonder',
+		'sitegen'   => 'bluehost-blueprint',
 	);
 
 	/**
@@ -52,7 +52,7 @@ final class Themes {
 		'sitegen'   => array(
 			'default' => array(
 				array(
-					'slug'     => 'nfd_slug_yith_wonder',
+					'slug'     => 'nfd_slug_bluehost_blueprint',
 					'activate' => true,
 					'priority' => 20,
 				),
@@ -91,7 +91,6 @@ final class Themes {
 				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ][ $plan_subtype ] );
 			}
 		}
-
 		return $init_list;
 	}
 
