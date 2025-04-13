@@ -52,10 +52,12 @@ final class Preview {
 	 */
 	public static function get_pre_requisites( $flow = null ) {
 		$pre_requisites = self::pre_requisites();
-		if ( ! isset( $flow ) ) {
-			$flow = Data::current_flow();
+
+		if ( isset( $flow ) ) {
+			return isset( $pre_requisites[ $flow ] ) ? $pre_requisites[ $flow ] : array();
 		}
-		return isset( $pre_requisites[ $flow ] ) ? $pre_requisites[ $flow ] : array();
+
+		return $pre_requisites;
 	}
 
 	/**
