@@ -26,7 +26,7 @@ final class Preview {
 	private static function pre_requisites() {
 		$theme_map = Themes::get();
 		return array(
-			'sitegen'  => array(
+			'sitegen'   => array(
 				'themes' => array(
 					'nfd_slug_yith_wonder' => self::boolean_to_status( ThemeInstaller::is_theme_active( $theme_map['nfd_slugs']['nfd_slug_yith_wonder']['stylesheet'] ) ),
 				),
