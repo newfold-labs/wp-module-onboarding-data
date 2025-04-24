@@ -487,7 +487,7 @@ final class Brands {
 		if ( ! defined( 'NFD_ONBOARDING_PLUGIN_BRAND' ) ) {
 			$brand = $container->plugin()->brand;
 			if ( empty( $brand ) ) {
-				$brand = 'wordpress';
+				$brand = 'WordPress';
 			}
 
 			if ( false !== stripos( $brand, 'hostgator' ) ) {
