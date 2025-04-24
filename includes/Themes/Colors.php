@@ -252,8 +252,8 @@ final class Colors {
 
 		if ( ! isset( $pattern_slugs ) ) {
 			return new \WP_Error(
-				'Theme Colors not found',
-				'No WordPress Colors are available for this theme.',
+				__( 'Theme Colors not found', 'wp-module-onboarding-data' ),
+				__( 'No WordPress Colors are available for this theme.', 'wp-module-onboarding-data' ),
 				array( 'status' => 404 )
 			);
 		}

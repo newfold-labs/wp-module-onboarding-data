@@ -92,6 +92,26 @@ msgstr ""
 msgid "Wrong Parameter Provided : secondary => value"
 msgstr ""
 
+#: includes/Services/FlowService.php:186
+msgid "There was an error saving the data"
+msgstr ""
+
+#: includes/Services/FlowService.php:251
+msgid "Parameter not provided: %s"
+msgstr ""
+
+#: includes/Services/FlowService.php:267
+msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
+msgstr ""
+
+#: includes/Services/FlowService.php:288
+msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
+msgstr ""
+
+#: includes/Services/FlowService.php:329
+msgid "Flow not enabled."
+msgstr ""
+
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
 msgstr ""
@@ -122,6 +142,14 @@ msgstr ""
 
 #: includes/Services/SiteGenService.php:253
 msgid "How satisfied were you with the ease of creating your website?"
+msgstr ""
+
+#: includes/Services/SiteGenService.php:340
+msgid "Parent theme is missing to generate the child theme."
+msgstr ""
+
+#: includes/Services/SiteGenService.php:373
+msgid "Could not generate theme.json"
 msgstr ""
 
 #: includes/Services/SiteGenService.php:457
@@ -165,6 +193,26 @@ msgstr ""
 
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:60
+msgid "Error creating child directory."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:68
+msgid "Error writing theme.json."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:77
+msgid "Error writing template part."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:86
+msgid "Error writing stylesheet."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:95
+msgid "Error generating screenshot"
 msgstr ""
 
 #: includes/SiteFeatures.php:23
@@ -384,6 +432,14 @@ msgstr ""
 msgid "Subtle"
 msgstr ""
 
+#: includes/Themes/Colors.php:255
+msgid "Theme Colors not found"
+msgstr ""
+
+#: includes/Themes/Colors.php:256
+msgid "No WordPress Colors are available for this theme."
+msgstr ""
+
 #: includes/Themes/Fonts.php:21
 msgid "Modern & approachable"
 msgstr ""
@@ -409,25 +465,25 @@ msgid "Bold stamp & slab"
 msgstr ""
 
 #: includes/Themes/Fonts.php:123
-msgid "Fast & Simple"
+msgid "Fast & simple"
 msgstr ""
 
 #: includes/Themes/Fonts.php:140
-msgid "Timeless & Traditional"
+msgid "Timeless & traditional"
 msgstr ""
 
 #: includes/Themes/Fonts.php:157
-msgid "Sleek & Sophisticated"
+msgid "Sleek & sophisticated"
 msgstr ""
 
 #: includes/Themes/Fonts.php:174
-msgid "Clear & Crisp"
+msgid "Clear & crisp"
 msgstr ""
 
 #: includes/Themes/Fonts.php:191
-msgid "Retro & Classy"
+msgid "Retro & classy"
 msgstr ""
 
 #: includes/Themes/Fonts.php:208
-msgid "Defined & Solid"
+msgid "Defined & solid"
 msgstr ""
