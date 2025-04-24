@@ -417,24 +417,24 @@ msgstr "Definido y sólido"
 
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
-msgstr ""
+msgstr "No se encontraron los ajustes del tema seleccionado."
 
 #: includes/Services/GlobalStylesService.php:54
 msgid "Styles does not exist under the selected theme settings."
-msgstr ""
+msgstr "Los estilos no existen en los ajustes del tema seleccionado."
 
 #: includes/Services/GlobalStylesService.php:67
 msgid "Settings does not exist under the selected theme settings."
-msgstr ""
+msgstr "Los ajustes no existen en los ajustes del tema seleccionado."
 
 #: includes/Services/GlobalStylesService.php:112
 msgid "There is an error with your styles or settings."
-msgstr ""
+msgstr "Hay un error con tus estilos o ajustes."
 
 #: includes/Services/TemplatePartsService.php:76
 msgid "Selected header template part not stored."
-msgstr ""
+msgstr "La parte de la plantilla de encabezado seleccionada no se ha almacenado."
 
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
-msgstr ""
+msgstr "No se encontró la parte de la plantilla de encabezado seleccionada."

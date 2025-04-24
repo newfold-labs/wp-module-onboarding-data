@@ -403,32 +403,32 @@ msgstr "Definida & Sólida"
 
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
-msgstr ""
+msgstr "As configurações do tema selecionado não foram encontradas."
 
 #: includes/Services/GlobalStylesService.php:54
 msgid "Styles does not exist under the selected theme settings."
-msgstr ""
+msgstr "Os estilos não existem nas configurações do tema selecionado."
 
 #: includes/Services/GlobalStylesService.php:67
 msgid "Settings does not exist under the selected theme settings."
-msgstr ""
+msgstr "As configurações não existem nas configurações do tema selecionado."
 
 #: includes/Services/GlobalStylesService.php:112
 msgid "There is an error with your styles or settings."
-msgstr ""
+msgstr "Há um erro com seus estilos ou configurações."
 
 #: includes/Services/SiteGenService.php:252
 msgid "Help us improve"
-msgstr ""
+msgstr "Ajude-nos a melhorar"
 
 #: includes/Services/SiteGenService.php:253
 msgid "How satisfied were you with the ease of creating your website?"
-msgstr ""
+msgstr "Quão satisfeito você ficou com a facilidade de criar seu site?"
 
 #: includes/Services/TemplatePartsService.php:76
 msgid "Selected header template part not stored."
-msgstr ""
+msgstr "Parte do modelo de cabeçalho selecionado não foi armazenada."
 
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
-msgstr ""
+msgstr "Parte do modelo de cabeçalho selecionado não foi encontrada."

@@ -178,7 +178,7 @@ msgstr "Propulsé par WP Forms"
 #: includes/SiteFeatures.php:35
 #: includes/SiteFeatures.php:99
 msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
-msgstr "Cinq millions de personnes construisent des formulaires et des sondages plus intelligents avec WPForms d’Awesome Motive."
+msgstr "Cinq millions de personnes construisent des formulaires et des sondages plus intelligents avec WPForms d'Awesome Motive."
 
 #: includes/SiteFeatures.php:43
 #: includes/SiteFeatures.php:107
@@ -417,24 +417,24 @@ msgstr "Défini et solide"
 
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
-msgstr ""
+msgstr "Les paramètres du thème sélectionné n'ont pas été trouvés."
 
 #: includes/Services/GlobalStylesService.php:54
 msgid "Styles does not exist under the selected theme settings."
-msgstr ""
+msgstr "Les styles n'existent pas dans les paramètres du thème sélectionné."
 
 #: includes/Services/GlobalStylesService.php:67
 msgid "Settings does not exist under the selected theme settings."
-msgstr ""
+msgstr "Les paramètres n'existent pas dans les paramètres du thème sélectionné."
 
 #: includes/Services/GlobalStylesService.php:112
 msgid "There is an error with your styles or settings."
-msgstr ""
+msgstr "Il y a une erreur avec vos styles ou paramètres."
 
 #: includes/Services/TemplatePartsService.php:76
 msgid "Selected header template part not stored."
-msgstr ""
+msgstr "La partie du modèle d'en-tête sélectionnée n'a pas été enregistrée."
 
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
-msgstr ""
+msgstr "La partie du modèle d'en-tête sélectionnée n'a pas été trouvée."
