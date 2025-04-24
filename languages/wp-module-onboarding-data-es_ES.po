@@ -9,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
 "PO-Revision-Date: 2025-02-19 15:03\n"
+"Language: es_ES\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,22 +18,21 @@ msgstr ""
 "X-Crowdin-Language: es-ES\n"
 "X-Crowdin-File: wp-module-onboarding-data.pot\n"
 "X-Crowdin-File-ID: 30\n"
-"Language: es_ES\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
 msgstr "tu servidor web"
 
-#: includes/Options.php:124
-#: includes/Options.php:129
-#: includes/Options.php:134
-#: includes/Options.php:139
-#: includes/Options.php:144
-#: includes/Options.php:149
-#: includes/Options.php:154
-#: includes/Options.php:159
-#: includes/Options.php:164
-#: includes/Options.php:169
+#: includes/Options.php:126
+#: includes/Options.php:131
+#: includes/Options.php:136
+#: includes/Options.php:141
+#: includes/Options.php:146
+#: includes/Options.php:151
+#: includes/Options.php:156
+#: includes/Options.php:161
+#: includes/Options.php:166
+#: includes/Options.php:171
 msgid "Woocommerce Settings"
 msgstr "Ajustes de Woocommerce"
 
@@ -99,54 +99,54 @@ msgstr "Parámetro incorrecto proporcionado: primario => valor"
 msgid "Wrong Parameter Provided : secondary => value"
 msgstr "Parámetro incorrecto proporcionado: secundario => valor"
 
-#: includes/Services/SiteGenService.php:107
+#: includes/Services/SiteGenService.php:109
 msgid "Not a valid identifier"
 msgstr "No es un identificador válido"
 
-#: includes/Services/SiteGenService.php:120
+#: includes/Services/SiteGenService.php:122
 msgid "Error generating site meta: "
 msgstr "Error al generar meta: "
 
-#: includes/Services/SiteGenService.php:256
+#: includes/Services/SiteGenService.php:252
 msgid "Help us improve"
 msgstr "Ayúdanos a mejorar"
 
-#: includes/Services/SiteGenService.php:257
+#: includes/Services/SiteGenService.php:253
 msgid "How satisfied were you with the ease of creating your website?"
 msgstr "¿Hasta qué punto estaba satisfecho con la facilidad de crear su sitio web?"
 
-#: includes/Services/SiteGenService.php:418
+#: includes/Services/SiteGenService.php:457
 msgid "Error generating homepages: "
 msgstr "Error al generar la página de inicio: "
 
-#: includes/Services/SiteGenService.php:446
+#: includes/Services/SiteGenService.php:485
 msgid "The homepage could not be found for regeneration."
 msgstr "No se pudo encontrar la página de inicio para la regeneración."
 
-#: includes/Services/SiteGenService.php:478
-#: includes/Services/SiteGenService.php:483
+#: includes/Services/SiteGenService.php:517
+#: includes/Services/SiteGenService.php:522
 msgid " (Copy)"
 msgstr " (Copiar)"
 
-#: includes/Services/SiteGenService.php:516
+#: includes/Services/SiteGenService.php:555
 msgid "Error re-generating homepages: "
 msgstr "Error regenerando páginas de inicio: "
 
-#: includes/Services/SiteGenService.php:558
+#: includes/Services/SiteGenService.php:597
 msgid "Version "
 msgstr "Versión "
 
-#: includes/Services/SiteGenService.php:583
-#: includes/Services/SiteGenService.php:670
-#: includes/Services/SiteGenService.php:723
+#: includes/Services/SiteGenService.php:622
+#: includes/Services/SiteGenService.php:709
+#: includes/Services/SiteGenService.php:762
 msgid "Prompt not found."
 msgstr "Prompt no encontrado."
 
-#: includes/Services/SiteGenService.php:598
+#: includes/Services/SiteGenService.php:637
 msgid "Cannot retrieve color palatte"
 msgstr "No se puede recuperar el paladar de color"
 
-#: includes/Services/SiteGenService.php:686
+#: includes/Services/SiteGenService.php:725
 msgid "Cannot retrieve plugin recommendations."
 msgstr "No se pueden recuperar las recomendaciones del plugin."
 
@@ -415,3 +415,26 @@ msgstr "Retro & Classy"
 msgid "Defined & Solid"
 msgstr "Definido y sólido"
 
+#: includes/Services/GlobalStylesService.php:44
+msgid "Selected theme settings were not found."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:54
+msgid "Styles does not exist under the selected theme settings."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:67
+msgid "Settings does not exist under the selected theme settings."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:112
+msgid "There is an error with your styles or settings."
+msgstr ""
+
+#: includes/Services/TemplatePartsService.php:76
+msgid "Selected header template part not stored."
+msgstr ""
+
+#: includes/Services/TemplatePartsService.php:86
+msgid "Selected header template part not found."
+msgstr ""
