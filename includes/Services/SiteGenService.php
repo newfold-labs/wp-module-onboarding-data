@@ -337,7 +337,7 @@ class SiteGenService {
 		if ( ! $parent_theme_exists ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				'Parent theme is missing to generate the child theme.',
+				__( 'Parent theme is missing to generate the child theme.', 'wp-module-onboarding-data' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -370,7 +370,7 @@ class SiteGenService {
 		if ( ! $theme_json_data ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				'Could not generate theme.json',
+				__( 'Could not generate theme.json', 'wp-module-onboarding-data' ),
 				array( 'status' => 500 )
 			);
 		}

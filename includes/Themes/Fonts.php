@@ -120,7 +120,7 @@ final class Fonts {
 					),
 				),
 				'fast-simple'                    => array(
-					'label'   => __( 'Fast & Simple', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Fast & simple', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-01',
 					'slugs'   => array( 'system' ),
 					'styles'  => array(
@@ -137,7 +137,7 @@ final class Fonts {
 					),
 				),
 				'timeless-traditional'           => array(
-					'label'   => __( 'Timeless & Traditional', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Timeless & traditional', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-02',
 					'slugs'   => array( 'serif' ),
 					'styles'  => array(
@@ -154,7 +154,7 @@ final class Fonts {
 					),
 				),
 				'sleek-sophisticated'            => array(
-					'label'   => __( 'Sleek & Sophisticated', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Sleek & sophisticated', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-03',
 					'slugs'   => array( 'dm-sans' ),
 					'styles'  => array(
@@ -171,7 +171,7 @@ final class Fonts {
 					),
 				),
 				'clear-crisp'                    => array(
-					'label'   => __( 'Clear & Crisp', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Clear & crisp', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-04',
 					'slugs'   => array( 'inter' ),
 					'styles'  => array(
@@ -188,7 +188,7 @@ final class Fonts {
 					),
 				),
 				'retro-classy'                   => array(
-					'label'   => __( 'Retro & Classy', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Retro & classy', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-05',
 					'slugs'   => array( 'league-spartan' ),
 					'styles'  => array(
@@ -205,7 +205,7 @@ final class Fonts {
 					),
 				),
 				'defined-solid'                  => array(
-					'label'   => __( 'Defined & Solid', 'wp-module-onboarding-data' ),
+					'label'   => __( 'Defined & solid', 'wp-module-onboarding-data' ),
 					'matches' => 'newfold/onboarding-06',
 					'slugs'   => array( 'roboto-slab' ),
 					'styles'  => array(

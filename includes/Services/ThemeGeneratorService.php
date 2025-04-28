@@ -57,7 +57,7 @@ class ThemeGeneratorService {
 	public static function write_child_theme( $child_theme_data ) {
 		$child_directory_created = self::create_directory( $child_theme_data['child_theme_dir'] );
 		if ( ! $child_directory_created ) {
-			return 'Error creating child directory.';
+			return __( 'Error creating child directory.', 'wp-module-onboarding-data' );
 		}
 
 		$theme_json_written = self::write_theme_json(
@@ -65,7 +65,7 @@ class ThemeGeneratorService {
 			$child_theme_data['child_theme_json']
 		);
 		if ( ! $theme_json_written ) {
-			return 'Error writing theme.json.';
+			return __( 'Error writing theme.json.', 'wp-module-onboarding-data' );
 		}
 
 		if ( ! empty( $child_theme_data['part_patterns'] ) ) {
@@ -74,7 +74,7 @@ class ThemeGeneratorService {
 				$child_theme_data['part_patterns']
 			);
 			if ( ! $template_parts_written ) {
-				return 'Error writing template part.';
+				return __( 'Error writing template part.', 'wp-module-onboarding-data' );
 			}
 		}
 
@@ -83,7 +83,7 @@ class ThemeGeneratorService {
 			$child_theme_data['child_theme_dir']
 		);
 		if ( ! $child_stylesheet_written ) {
-			return 'Error writing stylesheet.';
+			return __( 'Error writing stylesheet.', 'wp-module-onboarding-data' );
 		}
 
 		$generate_screenshot = self::generate_screenshot(
@@ -92,7 +92,7 @@ class ThemeGeneratorService {
 			$child_theme_data['child_theme_dir']
 		);
 		if ( ! $generate_screenshot ) {
-			return 'Error generating screenshot';
+			return __( 'Error generating screenshot', 'wp-module-onboarding-data' );
 		}
 
 		return true;
