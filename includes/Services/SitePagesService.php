@@ -29,7 +29,7 @@ class SitePagesService {
 		}
 
 		if ( $is_template_no_title ) {
-			$post['page_template'] = 'no-title';
+			$post['page_template'] = 'page-no-title';
 		}
 
 		if ( $slug && '' != $slug ) {
