@@ -541,7 +541,7 @@ class SiteGenService {
 	 * @param string $locale The site content's locale.
 	 * @return array|\WP_Error
 	 */
-	public static function regenerate_homepage( $site_description, $content_style, $target_audience ) {
+	public static function regenerate_homepage( $site_description, $content_style, $target_audience, $locale ) {
 		$existing_homepages    = self::get_homepages();
 		$regenerated_homepages = self::get_regenerated_homepages();
 
