@@ -184,7 +184,7 @@ class SiteGenService {
 		// Setting page title from sitemap option.
 		$title       = $active_homepage['title'];
 		$prompt      = self::get_prompt();
-		$locale      = $self::get_locale();
+		$locale      = self::get_locale();
 		$site_info   = array( 'site_description' => $prompt );
 		$sitemap     = self::instantiate_site_meta( $site_info, 'sitemap', $locale );
 		$site_config = self::instantiate_site_meta( $site_info, 'site_config', $locale );
