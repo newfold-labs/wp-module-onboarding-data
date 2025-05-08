@@ -391,30 +391,6 @@ msgstr "Raffinato newsletter tradizionale"
 msgid "Bold stamp & slab"
 msgstr "Bold francobollo e lastra"
 
-#: includes/Themes/Fonts.php:123
-msgid "Fast & Simple"
-msgstr "Veloce & Semplice"
-
-#: includes/Themes/Fonts.php:140
-msgid "Timeless & Traditional"
-msgstr "Senza Tempo & Tradizionale"
-
-#: includes/Themes/Fonts.php:157
-msgid "Sleek & Sophisticated"
-msgstr "Elegante & Sofisticato"
-
-#: includes/Themes/Fonts.php:174
-msgid "Clear & Crisp"
-msgstr "Pulisci & Fresco"
-
-#: includes/Themes/Fonts.php:191
-msgid "Retro & Classy"
-msgstr "Retro & Classy"
-
-#: includes/Themes/Fonts.php:208
-msgid "Defined & Solid"
-msgstr "Definito E Solido"
-
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
 msgstr "Le impostazioni del tema selezionato non sono state trovate."
@@ -438,3 +414,83 @@ msgstr "Parte del template dell'intestazione selezionata non memorizzata."
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
 msgstr "Parte del template dell'intestazione selezionata non trovata."
+
+#: includes/Services/FlowService.php:186
+msgid "There was an error saving the data"
+msgstr "Si è verificato un errore durante il salvataggio dei dati."
+
+#: includes/Services/FlowService.php:251
+msgid "Parameter not provided: %s"
+msgstr "Parametro non fornito: %s"
+
+#: includes/Services/FlowService.php:267
+msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
+msgstr "Tipo di parametro errato per %1$s: ricevuto %2$s, previsto %3$s."
+
+#: includes/Services/FlowService.php:288
+msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
+msgstr "Tipo di parametro errato per %s: array indicizzato. Previsto: array associativo."
+
+#: includes/Services/FlowService.php:329
+msgid "Flow not enabled."
+msgstr "Flow non abilitato."
+
+#: includes/Services/SiteGenService.php:340
+msgid "Parent theme is missing to generate the child theme."
+msgstr "Tema genitore mancante per generare il tema child."
+
+#: includes/Services/SiteGenService.php:373
+msgid "Could not generate theme.json"
+msgstr "Impossibile generare theme.json"
+
+#: includes/Services/ThemeGeneratorService.php:60
+msgid "Error creating child directory."
+msgstr "Errore durante la creazione della directory del tema child."
+
+#: includes/Services/ThemeGeneratorService.php:68
+msgid "Error writing theme.json."
+msgstr "Errore durante la scrittura di theme.json."
+
+#: includes/Services/ThemeGeneratorService.php:77
+msgid "Error writing template part."
+msgstr "Errore durante la scrittura della parte del template."
+
+#: includes/Services/ThemeGeneratorService.php:86
+msgid "Error writing stylesheet."
+msgstr "Errore durante la scrittura del foglio di stile."
+
+#: includes/Services/ThemeGeneratorService.php:95
+msgid "Error generating screenshot"
+msgstr "Errore durante la generazione dello screenshot"
+
+#: includes/Themes/Colors.php:255
+msgid "Theme Colors not found"
+msgstr "Colori del tema non trovati"
+
+#: includes/Themes/Colors.php:256
+msgid "No WordPress Colors are available for this theme."
+msgstr "Non sono disponibili colori WordPress per questo tema."
+
+#: includes/Themes/Fonts.php:123
+msgid "Fast & simple"
+msgstr "Veloce e semplice"
+
+#: includes/Themes/Fonts.php:140
+msgid "Timeless & traditional"
+msgstr "Senza tempo e tradizionale"
+
+#: includes/Themes/Fonts.php:157
+msgid "Sleek & sophisticated"
+msgstr "Elegante e sofisticato"
+
+#: includes/Themes/Fonts.php:174
+msgid "Clear & crisp"
+msgstr "Chiaro e nitido"
+
+#: includes/Themes/Fonts.php:191
+msgid "Retro & classy"
+msgstr "Retrò e raffinato"
+
+#: includes/Themes/Fonts.php:208
+msgid "Defined & solid"
+msgstr "Definito e solido"
