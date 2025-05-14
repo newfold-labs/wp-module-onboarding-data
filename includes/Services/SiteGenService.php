@@ -332,7 +332,7 @@ class SiteGenService {
 	public static function generate_child_theme( $data ) {
 		global $wp_filesystem;
 		ThemeGeneratorService::connect_to_filesystem();
-		$parent_theme_slug   = 'yith-wonder';
+		$parent_theme_slug   = 'bluehost-blueprint';
 		$parent_theme_exists = ( \wp_get_theme( $parent_theme_slug ) )->exists();
 		if ( ! $parent_theme_exists ) {
 			return new \WP_Error(
