@@ -28,6 +28,7 @@ final class Data {
 				'settings'        => Preview::get_settings(),
 				'stepPreviewData' => Themes::step_preview_data(),
 			),
+			'languages'           => Languages::get_all_languages(),
 			'currentUserDetails'  => self::wp_current_user_details(),
 			'isFreshInstallation' => self::is_fresh_installation(),
 			'sentryInitDsnURL'    => 'https://cd5bd4c30b914e0d1d0f49413e600afa@o4506197201715200.ingest.us.sentry.io/4507383861805056',
