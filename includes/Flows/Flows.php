@@ -148,6 +148,7 @@ final class Flows {
 				'uniqueAboutBusiness' => '',
 				'minCharLimit'        => 34,
 				'mode'                => 'simple',
+				'locale'              => '',
 			),
 			'siteLogo'                 => array(
 				'id'       => 0,

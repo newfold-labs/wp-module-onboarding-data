@@ -99,10 +99,11 @@ class SiteGenService {
 	 *
 	 * @param string|array $site_info The prompt that configures the Site gen object.
 	 * @param string       $identifier The identifier for Generating Site Meta.
+	 * @param string       $locale The locale for the site's content.
 	 * @param boolean      $skip_cache To override the cache and fetch the data.
 	 * @return array|\WP_Error
 	 */
-	public static function instantiate_site_meta( $site_info, $identifier, $skip_cache = false ) {
+	public static function instantiate_site_meta( $site_info, $identifier, $locale, $skip_cache = false ) {
 		if ( ! self::is_identifier( $identifier ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -114,7 +115,7 @@ class SiteGenService {
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
-		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $skip_cache );
+		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $locale, $skip_cache );
 		if ( isset( $response['error'] ) ) {
 			// Handle the error case by returning a WP_Error.
 			return new \WP_Error(
@@ -183,9 +184,10 @@ class SiteGenService {
 		// Setting page title from sitemap option.
 		$title       = $active_homepage['title'];
 		$prompt      = self::get_prompt();
+		$locale      = self::get_locale();
 		$site_info   = array( 'site_description' => $prompt );
-		$sitemap     = self::instantiate_site_meta( $site_info, 'sitemap' );
-		$site_config = self::instantiate_site_meta( $site_info, 'site_config' );
+		$sitemap     = self::instantiate_site_meta( $site_info, 'sitemap', $locale );
+		$site_config = self::instantiate_site_meta( $site_info, 'site_config', $locale );
 
 		if ( ! is_wp_error( $sitemap ) ) {
 			foreach ( $sitemap as $page ) {
@@ -440,14 +442,16 @@ class SiteGenService {
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
+	 * @param string $locale The locale for site's content.
 	 * @return array|\WP_Error
 	 */
-	public static function generate_homepages( $site_description, $content_style, $target_audience ) {
+	public static function generate_homepages( $site_description, $content_style, $target_audience, $locale ) {
 
 		$homepages = SiteGen::get_home_pages(
 			$site_description,
 			$content_style,
 			$target_audience,
+			$locale,
 			false
 		);
 
@@ -534,9 +538,10 @@ class SiteGenService {
 	 * @param string $site_description Description of the site.
 	 * @param array  $content_style Description of the content style.
 	 * @param array  $target_audience Description of the target audience.
+	 * @param string $locale The site content's locale.
 	 * @return array|\WP_Error
 	 */
-	public static function regenerate_homepage( $site_description, $content_style, $target_audience ) {
+	public static function regenerate_homepage( $site_description, $content_style, $target_audience, $locale ) {
 		$existing_homepages    = self::get_homepages();
 		$regenerated_homepages = self::get_regenerated_homepages();
 
@@ -548,7 +553,7 @@ class SiteGenService {
 			return $regenerated_homepage;
 		}
 
-		$regenerated_homepages = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, true );
+		$regenerated_homepages = SiteGen::get_home_pages( $site_description, $content_style, $target_audience, $locale, true );
 		if ( isset( $homepages['error'] ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -616,6 +621,7 @@ class SiteGenService {
 	 */
 	public static function get_color_palettes() {
 		$prompt = self::get_prompt();
+		$locale = self::get_locale();
 		if ( ! $prompt ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -628,7 +634,8 @@ class SiteGenService {
 			array(
 				'site_description' => $prompt,
 			),
-			'color_palette'
+			'color_palette',
+			$locale
 		);
 
 		if ( is_wp_error( $color_palette ) ) {
@@ -712,11 +719,13 @@ class SiteGenService {
 		}
 
 		$prompt                 = $flow_data['sitegen']['siteDetails']['prompt'];
+		$locale                 = $flow_data['sitegen']['siteDetails']['locale'];
 		$plugin_recommendations = self::instantiate_site_meta(
 			array(
 				'site_description' => $prompt,
 			),
-			'plugin_recommendation'
+			'plugin_recommendation',
+			$locale
 		);
 
 		if ( is_wp_error( $plugin_recommendations ) || isset( $plugin_recommendations['error'] ) ) {
@@ -765,17 +774,20 @@ class SiteGenService {
 		}
 
 		$prompt        = $flow_data['sitegen']['siteDetails']['prompt'];
+		$locale        = $flow_data['sitegen']['siteDetails']['locale'];
 		$color_palette = self::instantiate_site_meta(
 			array(
 				'site_description' => $prompt,
 			),
-			'color_palette'
+			'color_palette',
+			$locale
 		);
 		$font_pair     = self::instantiate_site_meta(
 			array(
 				'site_description' => $prompt,
 			),
-			'font_pair'
+			'font_pair',
+			$locale
 		);
 
 		if ( is_wp_error( $color_palette ) ) {
@@ -883,6 +895,16 @@ class SiteGenService {
 	}
 
 	/**
+	 * Get the locale entered during the sitegen flow.
+	 *
+	 * @return string|false
+	 */
+	public static function get_locale() {
+		$data = FlowService::read_data_from_wp_option( false );
+		return ! empty( $data['sitegen']['siteDetails']['locale'] ) ? $data['sitegen']['siteDetails']['locale'] : false;
+	}
+
+	/**
 	 * Get the prompt entered during the sitegen flow.
 	 *
 	 * @return string|false
@@ -949,15 +971,17 @@ class SiteGenService {
 	 * @param array   $content_style The type of content style.
 	 * @param array   $target_audience The target audience meta.
 	 * @param array   $sitemap The list of site pages and their keywords.
+	 * @param string  $locale The site content's locale.
 	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
 	 * @return array|boolean
 	 */
-	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $update_nav_menu = true ) {
+	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = true ) {
 		$other_pages = SiteGen::get_pages(
 			$site_description,
 			$content_style,
 			$target_audience,
 			$sitemap,
+			$locale,
 			false
 		);
 
@@ -1109,8 +1133,9 @@ class SiteGenService {
 	 */
 	public static function get_dummy_navigation_menu_items() {
 		$prompt    = self::get_prompt();
+		$locale    = self::get_locale();
 		$site_info = array( 'site_description' => $prompt );
-		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap' );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $locale );
 		if ( is_wp_error( $sitemap ) ) {
 			return array();
 		}
@@ -1138,8 +1163,9 @@ class SiteGenService {
 	 */
 	public static function get_nav_link_grammar_from_post_data( $id, $name, $url ) {
 		$prompt    = self::get_prompt();
+		$locale    = self::get_locale();
 		$site_info = array( 'site_description' => $prompt );
-		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', true );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $locale, true );
 		if ( is_wp_error( $sitemap ) ) {
 			return false;
 		}
