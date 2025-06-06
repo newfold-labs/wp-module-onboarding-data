@@ -183,7 +183,7 @@ class FlowService {
 		if ( ! self::update_data_in_wp_option( $updated_data ) ) {
 			return new \WP_Error(
 				'database_update_failed',
-				'There was an error saving the data',
+				__( 'There was an error saving the data', 'wp-module-onboarding-data' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -248,7 +248,7 @@ class FlowService {
 			if ( ! array_key_exists( $key, $params ) ) {
 				return new \WP_Error(
 					'param_not_provided',
-					'Parameter Not Provided : ' . $key,
+					sprintf( __( 'Parameter not provided: %s', 'wp-module-onboarding-data' ), $key ),
 					array( 'status' => 400 )
 				);
 			}
@@ -263,7 +263,12 @@ class FlowService {
 			if ( gettype( $value ) !== gettype( $params[ $key ] ) ) {
 				return new \WP_Error(
 					'wrong_param_type_provided',
-					'Wrong Parameter Type Provided : ' . $key . ' => ' . gettype( $params[ $key ] ) . '. Expected: ' . gettype( $value ),
+					sprintf(
+						__( 'Wrong parameter type provided for %1$s: got %2$s, expected %3$s.', 'wp-module-onboarding-data' ),
+						$key,
+						gettype( $params[ $key ] ),
+						gettype( $value )
+					),
 					array( 'status' => 400 )
 				);
 			}
@@ -279,7 +284,10 @@ class FlowService {
 				// Verify if a value expected as an Associative Array is NOT an Indexed Array
 				return new \WP_Error(
 					'wrong_param_type_provided',
-					'Wrong Parameter Type Provided : ' . $key . ' => Indexed Array. Expected: Associative Array',
+					sprintf(
+						__( 'Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array.', 'wp-module-onboarding-data' ),
+						$key
+					),
 					array( 'status' => 400 )
 				);
 			}
@@ -318,7 +326,7 @@ class FlowService {
 		if ( ! isset( $enabled_flows[ $flow ] ) || true !== $enabled_flows[ $flow ] ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
-				'Flow not enabled.',
+				__( 'Flow not enabled.', 'wp-module-onboarding-data' ),
 				array( 'status' => 400 )
 			);
 		}

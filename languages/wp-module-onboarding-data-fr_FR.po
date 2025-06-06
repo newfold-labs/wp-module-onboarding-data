@@ -9,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
 "PO-Revision-Date: 2025-02-19 15:03\n"
+"Language: fr_FR\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
@@ -17,22 +18,21 @@ msgstr ""
 "X-Crowdin-Language: fr\n"
 "X-Crowdin-File: wp-module-onboarding-data.pot\n"
 "X-Crowdin-File-ID: 30\n"
-"Language: fr_FR\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
 msgstr "votre hébergeur web"
 
-#: includes/Options.php:124
-#: includes/Options.php:129
-#: includes/Options.php:134
-#: includes/Options.php:139
-#: includes/Options.php:144
-#: includes/Options.php:149
-#: includes/Options.php:154
-#: includes/Options.php:159
-#: includes/Options.php:164
-#: includes/Options.php:169
+#: includes/Options.php:126
+#: includes/Options.php:131
+#: includes/Options.php:136
+#: includes/Options.php:141
+#: includes/Options.php:146
+#: includes/Options.php:151
+#: includes/Options.php:156
+#: includes/Options.php:161
+#: includes/Options.php:166
+#: includes/Options.php:171
 msgid "Woocommerce Settings"
 msgstr "Paramètres de Woocommerce"
 
@@ -99,54 +99,54 @@ msgstr "Mauvais paramètre fourni : primaire => valeur"
 msgid "Wrong Parameter Provided : secondary => value"
 msgstr "Mauvais paramètre fourni : secondaire => valeur"
 
-#: includes/Services/SiteGenService.php:107
+#: includes/Services/SiteGenService.php:109
 msgid "Not a valid identifier"
 msgstr "Identifiant non valide"
 
-#: includes/Services/SiteGenService.php:120
+#: includes/Services/SiteGenService.php:122
 msgid "Error generating site meta: "
 msgstr "Erreur lors de la génération de la méta du site : "
 
-#: includes/Services/SiteGenService.php:256
+#: includes/Services/SiteGenService.php:252
 msgid "Help us improve"
 msgstr "Aidez-nous à améliorer"
 
-#: includes/Services/SiteGenService.php:257
+#: includes/Services/SiteGenService.php:253
 msgid "How satisfied were you with the ease of creating your website?"
 msgstr "Dans quelle mesure êtes-vous satisfait de la facilité de création de votre site Web?"
 
-#: includes/Services/SiteGenService.php:418
+#: includes/Services/SiteGenService.php:457
 msgid "Error generating homepages: "
 msgstr "Erreur lors de la génération des pages d'accueil: "
 
-#: includes/Services/SiteGenService.php:446
+#: includes/Services/SiteGenService.php:485
 msgid "The homepage could not be found for regeneration."
 msgstr "La page d'accueil n'a pas pu être trouvée pour la régénération."
 
-#: includes/Services/SiteGenService.php:478
-#: includes/Services/SiteGenService.php:483
+#: includes/Services/SiteGenService.php:517
+#: includes/Services/SiteGenService.php:522
 msgid " (Copy)"
 msgstr " (Copier)"
 
-#: includes/Services/SiteGenService.php:516
+#: includes/Services/SiteGenService.php:555
 msgid "Error re-generating homepages: "
 msgstr "Erreur lors de la régénération des pages d'accueil : "
 
-#: includes/Services/SiteGenService.php:558
+#: includes/Services/SiteGenService.php:597
 msgid "Version "
 msgstr "Version "
 
-#: includes/Services/SiteGenService.php:583
-#: includes/Services/SiteGenService.php:670
-#: includes/Services/SiteGenService.php:723
+#: includes/Services/SiteGenService.php:622
+#: includes/Services/SiteGenService.php:709
+#: includes/Services/SiteGenService.php:762
 msgid "Prompt not found."
 msgstr "Invitation introuvable."
 
-#: includes/Services/SiteGenService.php:598
+#: includes/Services/SiteGenService.php:637
 msgid "Cannot retrieve color palatte"
 msgstr "Impossible de récupérer le palatte de couleur"
 
-#: includes/Services/SiteGenService.php:686
+#: includes/Services/SiteGenService.php:725
 msgid "Cannot retrieve plugin recommendations."
 msgstr "Impossible de récupérer les recommandations du plugin."
 
@@ -178,7 +178,7 @@ msgstr "Propulsé par WP Forms"
 #: includes/SiteFeatures.php:35
 #: includes/SiteFeatures.php:99
 msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
-msgstr "Cinq millions de personnes construisent des formulaires et des sondages plus intelligents avec WPForms d’Awesome Motive."
+msgstr "Cinq millions de personnes construisent des formulaires et des sondages plus intelligents avec WPForms d'Awesome Motive."
 
 #: includes/SiteFeatures.php:43
 #: includes/SiteFeatures.php:107
@@ -415,3 +415,26 @@ msgstr "Retro & Classy"
 msgid "Defined & Solid"
 msgstr "Défini et solide"
 
+#: includes/Services/GlobalStylesService.php:44
+msgid "Selected theme settings were not found."
+msgstr "Les paramètres du thème sélectionné n'ont pas été trouvés."
+
+#: includes/Services/GlobalStylesService.php:54
+msgid "Styles does not exist under the selected theme settings."
+msgstr "Les styles n'existent pas dans les paramètres du thème sélectionné."
+
+#: includes/Services/GlobalStylesService.php:67
+msgid "Settings does not exist under the selected theme settings."
+msgstr "Les paramètres n'existent pas dans les paramètres du thème sélectionné."
+
+#: includes/Services/GlobalStylesService.php:112
+msgid "There is an error with your styles or settings."
+msgstr "Il y a une erreur avec vos styles ou paramètres."
+
+#: includes/Services/TemplatePartsService.php:76
+msgid "Selected header template part not stored."
+msgstr "La partie du modèle d'en-tête sélectionnée n'a pas été enregistrée."
+
+#: includes/Services/TemplatePartsService.php:86
+msgid "Selected header template part not found."
+msgstr "La partie du modèle d'en-tête sélectionnée n'a pas été trouvée."
