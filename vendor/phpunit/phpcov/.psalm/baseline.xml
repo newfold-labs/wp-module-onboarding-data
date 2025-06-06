@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.x-dev@">
+  <file src="src/PatchCoverage.php">
+    <UnresolvableInclude occurrences="1">
+      <code>include($coverageFile)</code>
+    </UnresolvableInclude>
+  </file>
+  <file src="src/cli/Application.php">
+    <InvalidCatch occurrences="1"/>
+  </file>
+  <file src="src/cli/Arguments.php">
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;cobertura</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;cobertura</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="src/cli/Command.php">
+    <InternalClass occurrences="2">
+      <code>new FilterMapper</code>
+      <code>new Loader</code>
+    </InternalClass>
+    <InternalMethod occurrences="7">
+      <code>codeCoverage</code>
+      <code>codeCoverage</code>
+      <code>codeCoverage</code>
+      <code>includeUncoveredFiles</code>
+      <code>load</code>
+      <code>map</code>
+      <code>processUncoveredFiles</code>
+    </InternalMethod>
+  </file>
+  <file src="src/cli/ExecuteCommand.php">
+    <DeprecatedMethod occurrences="2">
+      <code>Driver::forLineAndPathCoverage($filter)</code>
+      <code>Driver::forLineCoverage($filter)</code>
+    </DeprecatedMethod>
+    <PossiblyNullArgument occurrences="2">
+      <code>$arguments-&gt;script()</code>
+      <code>$arguments-&gt;script()</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/cli/MergeCommand.php">
+    <PossiblyNullArgument occurrences="4">
+      <code>$arguments-&gt;directory()</code>
+      <code>$arguments-&gt;directory()</code>
+      <code>$arguments-&gt;directory()</code>
+      <code>$arguments-&gt;directory()</code>
+    </PossiblyNullArgument>
+    <UnresolvableInclude occurrences="1">
+      <code>include($file)</code>
+    </UnresolvableInclude>
+  </file>
+  <file src="src/cli/PatchCoverageCommand.php">
+    <PossiblyNullArgument occurrences="6">
+      <code>$arguments-&gt;coverage()</code>
+      <code>$arguments-&gt;coverage()</code>
+      <code>$arguments-&gt;coverage()</code>
+      <code>$arguments-&gt;patch()</code>
+      <code>$arguments-&gt;patch()</code>
+      <code>$arguments-&gt;patch()</code>
+    </PossiblyNullArgument>
+  </file>
+</files>

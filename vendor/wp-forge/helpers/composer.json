@@ -1,0 +1,23 @@
+{
+  "name": "wp-forge/helpers",
+  "description": "A collection of helpers for WordPress and PHP development.",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WP_Forge\\Helpers\\": "includes"
+    },
+    "files": [
+      "includes/functions.php"
+    ]
+  },
+  "require": {
+    "ext-mbstring": "*",
+    "doctrine/inflector": "^1.3"
+  }
+}

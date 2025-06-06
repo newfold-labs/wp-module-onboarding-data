@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-features/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-13T09:55:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-module-features\n"
+
+#: includes/FeaturesCLI.php:74
+#: includes/FeaturesCLI.php:95
+#: includes/FeaturesCLI.php:116
+msgid "Invalid feature name: "
+msgstr ""
+
+#: includes/FeaturesCLI.php:130
+#: includes/FeaturesCLI.php:137
+msgid "Invalid JSON response"
+msgstr ""
+
+#: static/js/features.js:23
+msgid "'%s' is already enabled."
+msgstr ""
+
+#: static/js/features.js:36
+msgid "'%s' is now enabled"
+msgstr ""
+
+#: static/js/features.js:39
+msgid "'%s' could not be enabled"
+msgstr ""
+
+#: static/js/features.js:59
+msgid "'%s' is already disabled."
+msgstr ""
+
+#: static/js/features.js:72
+msgid "'%s' is now disabled"
+msgstr ""
+
+#: static/js/features.js:75
+msgid "'%s' could not be disabled"
+msgstr ""

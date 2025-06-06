@@ -1,0 +1,43 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-13T10:54:39+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-module-pls\n"
+
+#: bootstrap.php:15
+msgid "wp-module-pls"
+msgstr ""
+
+#: includes/Utilities/HiiveUtility.php:70
+msgid "Failed to connect to the API"
+msgstr ""
+
+#: includes/Utilities/HiiveUtility.php:107
+#: includes/Utilities/PLSUtility.php:299
+msgid "API returned a non-success status code: "
+msgstr ""
+
+#: includes/Utilities/PLSUtility.php:215
+msgid "No license storage map found for the specified plugin slug."
+msgstr ""
+
+#: includes/Utilities/PLSUtility.php:226
+msgid "Provider is not set in the storage data."
+msgstr ""
+
+#: includes/Utilities/PLSUtility.php:242
+#: includes/Utilities/PLSUtility.php:270
+msgid "License ID not found for the plugin."
+msgstr ""
+
+#: includes/Utilities/PLSUtility.php:314
+msgid "Unexpected response format from the API."
+msgstr ""

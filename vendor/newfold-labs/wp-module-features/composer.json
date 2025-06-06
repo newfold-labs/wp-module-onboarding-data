@@ -1,0 +1,73 @@
+{
+    "name": "newfold-labs/wp-module-features",
+    "description": "A module for providing an interface for features.",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Micah Wood",
+            "homepage": "https://wpscholar.com"
+        },
+        {
+            "name": "Evan Mullins",
+            "homepage": "https://evanmullins.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://newfold-labs.github.io/satis/",
+            "only": [
+                "newfold-labs/*"
+            ]
+        }
+    ],
+    "require": {
+        "wp-forge/wp-options": "^1.1.1"
+    },
+    "require-dev": {
+        "newfold-labs/wp-php-standards": "^1.2.3",
+        "wp-cli/i18n-command": "^2.6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "NewfoldLabs\\WP\\Module\\Features\\": "includes"
+        },
+        "files": [
+            "includes/functions.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+          "php": "7.3.0"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "fix": [
+            "vendor/bin/phpcbf . --standard=phpcs.xml"
+        ],
+        "lint": [
+            "vendor/bin/phpcs . --standard=phpcs.xml -s"
+        ],
+        "i18n-pot": "vendor/bin/wp i18n make-pot . ./languages/wp-module-features.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-features/issues\",\"POT-Creation-Date\":\"2025-02-13T09:55:55+00:00\"}'",
+        "i18n-po": "vendor/bin/wp i18n update-po ./languages/wp-module-features.pot ./languages",
+        "i18n-mo": "vendor/bin/wp i18n make-mo ./languages",
+        "i18n-php": "vendor/bin/wp i18n make-php ./languages",
+        "i18n-json": "rm -f languages/*.json && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print",
+        "i18n": [
+          "@i18n-pot",
+          "@i18n-po",
+          "@i18n-mo",
+          "@i18n-php",
+          "@i18n-json"
+        ]
+    },
+    "scripts-descriptions": {
+        "fix": "Automatically fix coding standards issues where possible.",
+        "lint": "Check files against coding standards."
+    }
+}

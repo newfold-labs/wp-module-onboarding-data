@@ -1,0 +1,53 @@
+{
+  "name": "newfold-labs/wp-module-context",
+  "description": "Newfold module to determine context for various brands and platforms.",
+  "type": "library",
+  "license": "GPL-2.0-or-later",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://newfold-labs.github.io/satis/",
+      "only": [
+        "newfold-labs/*"
+      ]
+    }
+  ],
+  "authors": [
+    {
+      "name": "Evan Mullins",
+      "homepage": "https://evanmullins.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NewfoldLabs\\WP\\Context\\": "includes"
+    },
+    "files": [
+      "includes/functions.php",
+      "bootstrap.php"
+    ]
+  },
+  "require": {
+    "wp-forge/helpers": "^2.0"
+  },
+  "require-dev": {
+    "newfold-labs/wp-php-standards": "^1.2"
+  },
+  "scripts": {
+    "fix": [
+      "vendor/bin/phpcbf . --standard=phpcs.xml"
+    ],
+    "lint": [
+      "vendor/bin/phpcs . --standard=phpcs.xml -s"
+    ]
+  },
+  "scripts-descriptions": {
+    "fix": "Automatically fix coding standards issues where possible.",
+    "lint": "Check files against coding standards."
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

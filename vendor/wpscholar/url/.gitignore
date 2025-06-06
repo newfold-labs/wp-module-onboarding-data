@@ -1,0 +1,19 @@
+# Mac
+.DS_Store
+
+# PHPStorm
+.idea
+
+# VSCode
+.vscode
+
+# Composer
+vendor
+composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+
+# Coverage
+/coverage/
+coverage.xml

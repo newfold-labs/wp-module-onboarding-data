@@ -1,0 +1,27 @@
+{
+  "version": "1.4.3",
+  "name": "@newfold-labs/wp-module-installer",
+  "description": "An installer for WordPress plugins and themes.",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "author": {
+    "name": "Micah Wood",
+    "email": "micah.wood@newfold.com"
+  },
+  "dependencies": {
+    "@wordpress/base-styles": "^5.18.0",
+    "@wordpress/element": "^6.9.0",
+    "@wordpress/icons": "^10.18.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^26.19.0",
+    "node-fetch": "^3.3.2",
+    "semver": "^7.7.1",
+    "webpack-merge": "^6.0.1"
+  },
+  "scripts": {
+    "build": "wp-scripts build ./src/Installer/installer.js ./src/Scripts/dataAttrListener.js",
+    "set-version-bump": "node ./set-version-bump.js && npm i && composer i && rm -rf ./build && npm run build && composer run i18n",
+    "start": "wp-scripts start ./src/Installer/installer.js ./src/Scripts/dataAttrListener.js"
+  }
+}

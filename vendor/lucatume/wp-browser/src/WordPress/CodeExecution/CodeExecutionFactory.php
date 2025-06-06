@@ -1,0 +1,116 @@
+<?php
+
+namespace lucatume\WPBrowser\WordPress\CodeExecution;
+
+use Closure;
+use lucatume\WPBrowser\WordPress\FileRequests\FileRequestFactory;
+
+class CodeExecutionFactory
+{
+    /**
+     * @var mixed[]
+     */
+    private $redirectFiles = [];
+    /**
+     * @var mixed[]
+     */
+    private $presetGlobalVars = [];
+    /**
+     * @var string
+     */
+    private $wpRootDir;
+    /**
+     * @var \lucatume\WPBrowser\WordPress\FileRequests\FileRequestFactory
+     */
+    private $requestFactory;
+
+    public function __construct(
+        string $wpRootDir,
+        string $domain,
+        array $redirectFiles = [],
+        array $presetGlobalVars = []
+    ) {
+        /**
+         * @var array<string,string>
+         */
+        $this->redirectFiles = $redirectFiles;
+        /**
+         * @var array<string,mixed>
+         */
+        $this->presetGlobalVars = $presetGlobalVars;
+        $this->wpRootDir = rtrim($wpRootDir, '\\/');
+        $this->requestFactory = new FileRequestFactory($wpRootDir, $domain);
+    }
+
+    public function toCheckIfWpIsInstalled(bool $multisite): Closure
+    {
+        $request = $this->requestFactory->buildGetRequest()
+            ->runInFastMode($this->wpRootDir)
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new CheckWordPressInstalledAction($request, $this->wpRootDir, $multisite))
+            ->getClosure();
+    }
+
+    public function toActivatePlugin(string $plugin, bool $multisite, bool $silent = false): Closure
+    {
+        $request = $this->requestFactory->buildGetRequest()
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new ActivatePluginAction($request, $this->wpRootDir, $plugin, $multisite, $silent))
+            ->getClosure();
+    }
+
+    public function toSwitchTheme(string $stylesheet, bool $multisite): Closure
+    {
+        $request = $this->requestFactory->buildGetRequest()
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new ThemeSwitchAction($request, $this->wpRootDir, $stylesheet, $multisite))
+            ->getClosure();
+    }
+
+    public function toInstallWordPressNetwork(string $adminEmail, string $title, bool $subdomain): Closure
+    {
+        $request = $this->requestFactory->buildGetRequest()
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new InstallNetworkAction($request, $this->wpRootDir, $adminEmail, $title, $subdomain))
+            ->getClosure();
+    }
+
+    public function toInstallWordPress(
+        string $title,
+        string $adminUser,
+        string $adminPassword,
+        string $adminEmail,
+        string $url
+    ): Closure {
+        $request = $this->requestFactory->buildGetRequest()
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new InstallAction($request, $this->wpRootDir, $title, $adminUser, $adminPassword, $adminEmail, $url))
+            ->getClosure();
+    }
+
+    public function wrapClosureToExecuteInWordPress(Closure $closure):Closure
+    {
+        $request = $this->requestFactory->buildGetRequest()
+            ->blockHttpRequests()
+            ->setRedirectFiles($this->redirectFiles)
+            ->addPresetGlobalVars($this->presetGlobalVars);
+
+        return (new ExecuteClosureAction($request, $this->wpRootDir, $closure))
+            ->getClosure();
+    }
+}

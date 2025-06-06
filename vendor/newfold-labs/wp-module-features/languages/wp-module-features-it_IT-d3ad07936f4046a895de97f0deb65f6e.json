@@ -1,0 +1,33 @@
+{
+    "translation-revision-date": "2025-02-19 16:18",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "static\/js\/features.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "it_IT",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "'%s' is already enabled.": [
+                "'%s' \u00e8 gi\u00e0 abilitato."
+            ],
+            "'%s' is now enabled": [
+                "'%s' \u00e8 ora abilitato."
+            ],
+            "'%s' could not be enabled": [
+                "'%s' non pu\u00f2 essere abilitato."
+            ],
+            "'%s' is already disabled.": [
+                "'%s' \u00e8 gi\u00e0 disabilitato."
+            ],
+            "'%s' is now disabled": [
+                "'%s' \u00e8 ora disabilitato."
+            ],
+            "'%s' could not be disabled": [
+                "'%s' non pu\u00f2 essere disabilitato."
+            ]
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="Features-Module">
+    <rule ref="Newfold"/>
+    <config name="testVersion" value="7.3-"/>
+    <config name="minimum_supported_wp_version" value="6.5"/>
+    <rule ref="WordPress-Core">
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.NamingConventions.ValidHookName.NotLowercase"/>
+        <exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+    </rule>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array" value="wp-module-features" />
+        </properties>
+    </rule>
+</ruleset>

@@ -1,0 +1,34 @@
+.nfd-survey-toast {
+	display: flex;
+	flex-direction: row;
+
+	&__comment {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	&__content {
+		margin-left: 12px;
+		display: flex;
+		flex-direction: column;
+
+		&__heading {
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+
+		&__subheading {
+			margin-bottom: 12px;
+		}
+
+		&__buttons {
+			display: flex;
+			flex-direction: row;
+
+			&--icon {
+				cursor: pointer;
+				margin-right: 24px;
+			}
+		}
+	}
+}

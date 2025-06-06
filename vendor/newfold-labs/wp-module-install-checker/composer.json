@@ -1,0 +1,20 @@
+{
+    "name": "newfold-labs/wp-module-install-checker",
+    "description": "A module that handles checking a WordPress installation to see if it is a fresh install and to fetch the estimated installation date.",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "files": [
+            "bootstrap.php"
+        ],
+        "psr-4": {
+            "NewfoldLabs\\WP\\Module\\InstallChecker\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Micah Wood",
+            "homepage": "https://wpscholar.com"
+        }
+    ],
+    "require": {}
+}

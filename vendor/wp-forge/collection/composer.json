@@ -1,0 +1,17 @@
+{
+  "name": "wp-forge/collection",
+  "description": "A PHP utility class for manipulating collections.",
+  "type": "library",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WP_Forge\\Collection\\": ""
+    }
+  }
+}

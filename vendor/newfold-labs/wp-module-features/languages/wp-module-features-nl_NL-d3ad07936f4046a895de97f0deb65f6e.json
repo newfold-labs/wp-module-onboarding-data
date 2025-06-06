@@ -1,0 +1,33 @@
+{
+    "translation-revision-date": "2025-02-19 16:18",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "static\/js\/features.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl_NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "'%s' is already enabled.": [
+                "'%s' is al ingeschakeld."
+            ],
+            "'%s' is now enabled": [
+                "'%s' is nu ingeschakeld."
+            ],
+            "'%s' could not be enabled": [
+                "'%s' kon niet worden ingeschakeld."
+            ],
+            "'%s' is already disabled.": [
+                "'%s' is al uitgeschakeld."
+            ],
+            "'%s' is now disabled": [
+                "'%s' is nu uitgeschakeld."
+            ],
+            "'%s' could not be disabled": [
+                "'%s' kon niet worden uitgeschakeld."
+            ]
+        }
+    }
+}

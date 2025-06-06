@@ -1,0 +1,23 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "parts/woocommerce/woocommerce";
+@import "parts/backgrounds/backgrounds";
+@import "parts/typography/typography";
+@import "parts/animations/animations";
+@import "parts/container/container";
+@import "parts/dividers/dividers";
+@import "parts/spacing/spacing";
+@import "parts/borders/separator";
+@import "parts/buttons/buttons";
+@import "parts/shadows/shadows";
+@import "parts/radius/radius";
+@import "parts/colors/colors";
+@import "parts/slider/slider";
+@import "parts/block-preview";
+@import "parts/lists/lists";
+@import "parts/blog/blog";
+@import "parts/form/form";
+@import "parts/mask/mask";
+@import "parts/misc";

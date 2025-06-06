@@ -1,0 +1,33 @@
+version: 2
+updates:
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "develop"
+    allow:
+      - dependency-type: direct
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "GitHub Actions"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  # Maintain dependencies for Composer
+  - package-ecosystem: "composer"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: direct
+    versioning-strategy: increase
+    commit-message:
+      prefix: "Composer"
+      prefix-development: "Composer Dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "php"

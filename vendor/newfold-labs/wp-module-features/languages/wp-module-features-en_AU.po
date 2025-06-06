@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Vara Prasad Maruboina <varaprasad.maruboina@newfold.com>\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-13T10:07:39+00:00\n"
+"PO-Revision-Date: 2025-02-13 19:19+0530\n"
+"Language: en_AU\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-module-features\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/FeaturesCLI.php:74
+#: includes/FeaturesCLI.php:95
+#: includes/FeaturesCLI.php:116
+msgid "Invalid feature name: "
+msgstr "Invalid feature name: "
+
+#: includes/FeaturesCLI.php:130
+#: includes/FeaturesCLI.php:137
+msgid "Invalid JSON response"
+msgstr "Invalid JSON response"
+
+#: static/js/features.js:23
+msgid "'%s' is already enabled."
+msgstr "'%s' is already enabled."
+
+#: static/js/features.js:36
+msgid "'%s' is now enabled"
+msgstr "'%s' is now enabled."
+
+#: static/js/features.js:39
+msgid "'%s' could not be enabled"
+msgstr "'%s' could not be enabled."
+
+#: static/js/features.js:59
+msgid "'%s' is already disabled."
+msgstr "'%s' is already disabled."
+
+#: static/js/features.js:72
+msgid "'%s' is now disabled"
+msgstr "'%s' is now disabled."
+
+#: static/js/features.js:75
+msgid "'%s' could not be disabled"
+msgstr "'%s' could not be disabled."

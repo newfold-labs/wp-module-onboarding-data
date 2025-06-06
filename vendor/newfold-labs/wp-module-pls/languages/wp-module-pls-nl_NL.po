@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: newfold-labswp-module-staging\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-13T10:54:39+00:00\n"
+"PO-Revision-Date: 2025-02-19 14:40\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-module-pls\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: newfold-labswp-module-staging\n"
+"X-Crowdin-Project-ID: 764889\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: wp-module-pls.pot\n"
+"X-Crowdin-File-ID: 26\n"
+"Language: nl_NL\n"
+
+#: bootstrap.php:15
+msgid "wp-module-pls"
+msgstr "wp-module-pls"
+
+#: includes/Utilities/HiiveUtility.php:70
+msgid "Failed to connect to the API"
+msgstr "Kan geen verbinding maken met de API"
+
+#: includes/Utilities/HiiveUtility.php:107
+#: includes/Utilities/PLSUtility.php:299
+msgid "API returned a non-success status code: "
+msgstr "API heeft een niet-succesvolle status code teruggegeven: "
+
+#: includes/Utilities/PLSUtility.php:215
+msgid "No license storage map found for the specified plugin slug."
+msgstr "Geen licentiekaart gevonden voor de opgegeven plugin slug."
+
+#: includes/Utilities/PLSUtility.php:226
+msgid "Provider is not set in the storage data."
+msgstr "Provider is niet ingesteld in opslaggegevens."
+
+#: includes/Utilities/PLSUtility.php:242
+#: includes/Utilities/PLSUtility.php:270
+msgid "License ID not found for the plugin."
+msgstr "Licentienummer niet gevonden voor de plugin."
+
+#: includes/Utilities/PLSUtility.php:314
+msgid "Unexpected response format from the API."
+msgstr "Onverwacht antwoordformaat van de API."
+

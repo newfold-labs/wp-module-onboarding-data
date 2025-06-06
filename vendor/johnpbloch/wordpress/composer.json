@@ -1,0 +1,30 @@
+{
+  "name": "johnpbloch/wordpress",
+  "description": "WordPress is open source software you can use to create a beautiful website, blog, or app.",
+  "keywords": [
+    "wordpress",
+    "blog",
+    "cms"
+  ],
+  "type": "package",
+  "homepage": "https://wordpress.org/",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "WordPress Community",
+      "homepage": "https://wordpress.org/about/"
+    }
+  ],
+  "support": {
+    "issues": "https://core.trac.wordpress.org/",
+    "forum": "https://wordpress.org/support/",
+    "docs": "https://developer.wordpress.org/",
+    "irc": "irc://irc.freenode.net/wordpress",
+    "source": "https://core.trac.wordpress.org/browser"
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
+    "johnpbloch/wordpress-core": "6.8.0"
+  }
+}

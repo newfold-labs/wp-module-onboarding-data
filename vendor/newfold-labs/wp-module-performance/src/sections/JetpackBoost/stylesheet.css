@@ -1,0 +1,145 @@
+.nfd-performance-jetpack-boost-upsell,
+.nfd-performance-jetpack-boost-container-options {
+	position: relative;
+}
+
+.nfd-performance-jetpack-boost-critical-css-modal .nfd-modal__panel {
+	padding-right: 40px;
+	z-index: 400;
+}
+
+.nfd-performance-jetpack-boost-action-buttons-container .nfd-button--primary {
+	margin-right: 10px;
+}
+
+.nfd-performance-jetpack-boost-critical-css-modal p {
+	margin-bottom: 10px;
+}
+
+
+.nfd-performance-jetpack-boost-container-options .automatic-critical-css {
+	position: relative;
+}
+
+.nfd-performance-jetpack-boost-container-options .automatic-critical-css::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+	z-index: 10;
+}
+
+.nfd-performance-jetpack-boost-container-options .automatic-critical-css .nfd-feature-upsell .nfd-button--upsell {
+	top: 0;
+	right: 0;
+	position: absolute;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+	z-index: 11;
+}
+
+.nfd-performance-jetpack-boost-regenerate-critical-css {
+	margin: 10px 0;
+}
+
+.nfd-performance-jetpack-boost-regenerate-critical-css:hover {
+	text-decoration: underline;
+}
+
+.nfd-performance-jetpack-boost-regenerate-critical-css svg {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.nfd-performance-jetpack-boost-container-options.module-disabled {
+	padding: 20px;
+}
+
+.nfd-performance-jetpack-boost-container-options .nfd-feature-upsell .nfd-toggle-field {
+	margin-top: 0 !important;
+}
+
+
+.nfd-performance-jetpack-boost-upsell::before,
+.nfd-performance-jetpack-boost-container-options.module-disabled::before,
+.nfd-performance-jetpack-boost-container-options.is-loading::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.nfd-performance-jetpack-boost-upsell::before {
+	background-color: rgba(255, 255, 0, 0.1);
+}
+
+.nfd-performance-jetpack-boost-container-options.module-disabled::before {
+	left: 0;
+	top: 0;
+	z-index: 99;
+	background-color: #ffffea;
+	opacity: 0.4;
+}
+
+.nfd-performance-jetpack-boost-container-options.is-loading::before {
+	z-index: 99;
+	background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+.nfd-performance-jetpack-boost-loader {
+	position: absolute;
+	width: 300px;
+	left: calc(50% - 22px);
+	top: calc(50% - 22px);
+	z-index: 100;
+}
+
+.nfd-performance-jetpack-boost-container-install-activate-button {
+	position: absolute;
+	width: 300px;
+	left: calc(50% - 150px);
+	top: -20px;
+	z-index: 100;
+}
+
+.nfd-performance-jetpack-boost-container-options.module-disabled:hover .nfd-performance-jetpack-boost-container-install-activate-button {
+	opacity: 1;
+	z-index: 100;
+}
+
+.nfd-root .nfd-performance-jetpack-boost-container-install-activate-button svg {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.nfd-root .nfd-performance-jetpack-boost-container-install-activate-button button {
+	padding: 10px;
+	border-radius: 6px;
+	width: 100%;
+}
+
+.nfd-performance-jetpack-boost-single-option .nfd-toggle-field__header {
+	justify-content: left;
+}
+
+.nfd-performance-jetpack-boost-single-option .child-field .wrap-button button {
+	text-decoration: underline;
+	margin: 10px 0 0 0;
+}
+
+.nfd-performance-jetpack-boost-single-option-container {
+	 margin-bottom: 20px;
+}
+
+.margin20 {
+	margin: 20px 0;
+}

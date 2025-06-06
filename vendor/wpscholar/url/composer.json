@@ -1,0 +1,39 @@
+{
+    "name": "wpscholar/url",
+    "description": "A PHP class for parsing and manipulating URLs.",
+    "type": "library",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Micah Wood",
+            "email": "micah@wpscholar.com",
+            "homepage": "http://wpscholar.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "wpscholar\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "wpscholar\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5.36 || ^9.0"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --coverage-clover coverage.xml"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

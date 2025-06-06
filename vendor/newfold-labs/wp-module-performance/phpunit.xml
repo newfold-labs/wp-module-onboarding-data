@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+    bootstrap="./tests/phpunit/bootstrap.php"
+    cacheResult="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+>
+    <php>
+        <ini name="display_errors" value="true"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory>tests/phpunit</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">includes/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

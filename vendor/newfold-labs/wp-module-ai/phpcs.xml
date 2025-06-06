@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ruleset name="Project Rules">
+    <rule ref="Newfold" />
+    <config name="testVersion" value="7.0-" />
+    <config name="minimum_supported_wp_version" value="6.0" />
+    <rule ref="WordPress-Extra">
+        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing" />
+
+        <!-- Allow short array declaration -->
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax" />
+
+        <!-- Forget about file names -->
+        <exclude name="WordPress.Files.FileName" />
+
+        <!-- Allow same line control structures e.g. if ( true ) { echo 1; } -->
+        <exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace" />
+
+        <!-- Don't require punctuation after inline comments -->
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+
+        <!-- Allow empty catch statements -->
+        <exclude name="Generic.CodeAnalysis.EmptyStatement.DetectedCatch" />
+
+        <!-- Comment punctuation doesn't matter -->
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+    </rule>
+</ruleset>

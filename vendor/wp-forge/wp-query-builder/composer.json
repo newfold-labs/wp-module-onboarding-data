@@ -1,0 +1,25 @@
+{
+  "name": "wp-forge/wp-query-builder",
+  "description": "A lightweight and efficient SQL query builder for WordPress.",
+  "license": "GPL-2.0-or-later",
+  "type": "library",
+  "keywords": [
+    "wordpress",
+    "query builder",
+    "database"
+  ],
+  "authors": [
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "WP_Forge\\QueryBuilder\\": "src"
+    }
+  }
+}

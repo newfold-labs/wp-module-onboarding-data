@@ -1,0 +1,23 @@
+{
+  "name": "newfold-labs/wp-php-standards",
+  "description": "PHP Code Sniffer Standards for Newfold WordPress projects.",
+  "type": "phpcodesniffer-standard",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com"
+    }
+  ],
+  "require": {
+    "squizlabs/php_codesniffer": "@stable",
+    "wp-coding-standards/wpcs": "@stable",
+    "phpcompatibility/phpcompatibility-wp": "@stable",
+    "dealerdirect/phpcodesniffer-composer-installer": "@stable"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

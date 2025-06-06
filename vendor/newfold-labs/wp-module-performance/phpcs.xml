@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="Performance-Module">
+   <rule ref="Newfold"/>
+    <config name="testVersion" value="7.3-"/>
+    <config name="minimum_supported_wp_version" value="6.3"/>
+    <rule ref="WordPress-Core">
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    </rule>
+	<rule ref="WordPress.WP.I18n">
+	    <properties>
+            <property name="text_domain" type="array" value="wp-module-performance" />
+        </properties>
+    </rule>
+</ruleset>

@@ -1,0 +1,45 @@
+{
+    "translation-revision-date": "2025-02-14 12:57+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/image-bulk-optimizer\/image-bulk-optimizer.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es_MX",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Optimizing Images\u2026": [
+                "Optimizando las im\u00e1genes\u2026"
+            ],
+            "Preparing files\u2026": [
+                "Preparando archivos\u2026"
+            ],
+            "Done": [
+                "Hecho"
+            ],
+            "Optimization Canceled": [
+                "Optimizaci\u00f3n cancelada"
+            ],
+            "Optimizing:": [
+                "Optimizando:"
+            ],
+            "Optimization Complete!": [
+                "\u00a1Optimizaci\u00f3n finalizada!"
+            ],
+            "Passed": [
+                "Aprobado"
+            ],
+            "Failed": [
+                "Fallido"
+            ],
+            "An error occurred.": [
+                "Ha ocurrido un error."
+            ],
+            "Optimize": [
+                "Optimizar"
+            ]
+        }
+    }
+}

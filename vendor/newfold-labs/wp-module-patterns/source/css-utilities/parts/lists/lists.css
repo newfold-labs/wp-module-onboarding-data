@@ -1,0 +1,21 @@
+ol.nfd-gap-sm:not(.is-layout-flex) li:not(:last-child),
+ul.nfd-gap-sm:not(.is-layout-flex) li:not(:last-child) {
+	margin-bottom: 0.5em;
+}
+
+ol.nfd-gap-md:not(.is-layout-flex) li:not(:last-child),
+ul.nfd-gap-md:not(.is-layout-flex) li:not(:last-child) {
+	margin-bottom: 1em;
+}
+
+ul.nfd-list-check {
+	list-style-type: none;
+	padding-inline-start: 1em;
+}
+
+ul.nfd-list-check li::before {
+	/* no important */
+	content: "✓";
+	display: inline-block;
+	margin-inline-end: 8px;
+}

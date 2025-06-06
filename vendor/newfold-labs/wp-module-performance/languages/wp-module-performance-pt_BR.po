@@ -1,0 +1,1022 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-performance/issues\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-02-14 12:58+0000\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Domain: wp-module-performance\n"
+
+#: includes/functions.php:48
+#: components/performance/defaultText.js:61
+msgid "Cache Level"
+msgstr "Nível de cache"
+
+#: includes/functions.php:75
+msgid "Skip WordPress 404 Handling For Static Files"
+msgstr "Ignorar o tratamento de erro 404 do WordPress para arquivos estáticos"
+
+#: includes/Performance.php:263
+msgid "Caching"
+msgstr "Cache"
+
+#: includes/RestApi/JetpackController.php:67
+msgid "The parameter 'field' is missing or invalid."
+msgstr "O parâmetro ‘field’ está ausente ou é inválido."
+
+#: includes/RestApi/JetpackController.php:79
+msgid "The fields 'id' and 'value' are required."
+msgstr "Os campos ‘id’ e ‘value’ são obrigatórios."
+
+#: includes/RestApi/JetpackController.php:103
+#: includes/RestApi/JetpackController.php:123
+msgid "An error occurred while updating the option."
+msgstr "Ocorreu um erro ao atualizar a opção."
+
+#: includes/Performance.php:270
+msgid "Purge All"
+msgstr "Limpar Tudo"
+
+#: includes/Performance.php:280
+msgid "Purge This Page"
+msgstr "Limpar esta página"
+
+#: includes/Performance.php:291
+msgid "Cache Settings"
+msgstr "Configurações de cache"
+
+#: includes/Images/ImageService.php:34
+msgid "The provided image URL is invalid."
+msgstr "A URL da imagem fornecida é inválida."
+
+#. translators: %s: Error message
+#: includes/Images/ImageService.php:99
+#: includes/Images/ImageService.php:401
+msgid "Error connecting to Cloudflare Worker: %s"
+msgstr "Erro ao conectar ao Cloudflare Worker: %s"
+
+#: includes/Images/ImageService.php:128
+#: includes/Images/ImageService.php:424
+msgid "Invalid response from Cloudflare Worker."
+msgstr "Resposta inválida do Cloudflare Worker."
+
+#: includes/Images/ImageService.php:143
+msgid "Failed to save the optimized WebP image."
+msgstr "Falha ao salvar a imagem WebP otimizada."
+
+#: includes/Images/ImageService.php:176
+msgid "Invalid file path for generating WebP."
+msgstr "Caminho de arquivo inválido para gerar WebP."
+
+#. translators: 1: HTTP response code, 2: Response message
+#: includes/Images/ImageService.php:218
+msgid "HTTP %1$d: %2$s"
+msgstr "HTTP %1$d: %2$s"
+
+#: includes/Images/ImageService.php:243
+msgid "WebP file is missing or empty."
+msgstr "Arquivo WebP está ausente ou vazio."
+
+#: includes/Images/ImageService.php:254
+msgid "Invalid Media ID provided."
+msgstr "ID de mídia inválido fornecido."
+
+#: includes/Images/ImageService.php:274
+msgid "Invalid Media ID or file path provided."
+msgstr "ID de mídia ou caminho do arquivo inválido fornecido."
+
+#: includes/Images/ImageService.php:282
+msgid "Failed to delete the original file."
+msgstr "Falha ao excluir o arquivo original."
+
+#: includes/Images/ImageService.php:298
+msgid "Failed to generate attachment metadata."
+msgstr "Falha ao gerar metadados do anexo."
+
+#: includes/Images/ImageSettings.php:55
+msgid "Settings for NFD Image Optimization."
+msgstr "Configurações de Otimização de Imagem NFD."
+
+#: includes/Images/ImageSettings.php:64
+msgid "Enable image optimization."
+msgstr "Ativar otimização de imagem."
+
+#: includes/Images/ImageSettings.php:69
+msgid "Prefer WebP format when it exists."
+msgstr "Preferir formato WebP quando existir."
+
+#: includes/Images/ImageSettings.php:74
+msgid "Auto-optimized uploaded images settings."
+msgstr "Configurações de imagens carregadas otimizadas automaticamente."
+
+#: includes/Images/ImageSettings.php:78
+msgid "Automatically optimize uploaded images."
+msgstr "Otimizar automaticamente imagens carregadas."
+
+#: includes/Images/ImageSettings.php:83
+msgid "Delete the original uploaded image after optimization."
+msgstr "Excluir a imagem carregada original após a otimização."
+
+#: includes/Images/ImageSettings.php:90
+msgid "Settings for lazy loading."
+msgstr "Configurações de carregamento lento."
+
+#: includes/Images/ImageSettings.php:94
+msgid "Enable lazy loading."
+msgstr "Ativar carregamento lento."
+
+#: includes/Images/ImageSettings.php:101
+msgid "Enable bulk optimization of images."
+msgstr "Ativar otimização em massa de imagens."
+
+#: includes/Images/RestApi/ImagesController.php:45
+msgid "The ID of the media item to optimize."
+msgstr "O ID do item de mídia a ser otimizado."
+
+#: includes/Images/RestApi/ImagesController.php:71
+msgid "Invalid media ID or media item not found."
+msgstr "ID de mídia inválido ou item de mídia não encontrado."
+
+#: includes/Images/RestApi/ImagesController.php:110
+msgid "Image successfully optimized."
+msgstr "Imagem otimizada com sucesso."
+
+#: includes/Performance.php:304
+#: includes/Performance.php:305
+msgid "Performance"
+msgstr "Desempenho"
+
+#: components/performance/defaultText.js:4
+msgid "No cache enabled. Every page load is fresh."
+msgstr "Nenhum cache ativado. Cada carregamento de página é novo."
+
+#: components/performance/defaultText.js:8
+msgid "Disabled"
+msgstr "Desativado"
+
+#: components/performance/defaultText.js:9
+msgid "Caching disabled."
+msgstr "Cache desativada."
+
+#: components/performance/defaultText.js:10
+msgid "Not recommended."
+msgstr "Não recomendado."
+
+#: components/performance/defaultText.js:14
+msgid "Cache static assets like images and the appearance of your site for 1 hour."
+msgstr "Recurso de caches estáticos, como imagens e a aparência do seu site, por 1 hora."
+
+#: components/performance/defaultText.js:18
+msgid "Assets Only"
+msgstr "Somente Recursos"
+
+#: components/performance/defaultText.js:19
+msgid "Cache enabled for assets only."
+msgstr "Cache ativado apenas para recursos."
+
+#: components/performance/defaultText.js:23
+msgid "Tuned for online stores and member sites that need to be fresh."
+msgstr "Ajustado para lojas online e sites de membros que precisam ser atualizados com frequência."
+
+#: components/performance/defaultText.js:27
+msgid "Cache static assets for 24 hours and web pages for 2 hours."
+msgstr "Recurso de caches estáticos por 24 horas e páginas da web por 2 horas."
+
+#: components/performance/defaultText.js:31
+msgid "Assets & Web Pages"
+msgstr "Recursos & Páginas da Web"
+
+#: components/performance/defaultText.js:32
+msgid "Cache enabled for assets and pages."
+msgstr "Cache ativado para ativos e páginas."
+
+#: components/performance/defaultText.js:36
+msgid "Tuned for sites that change at least weekly."
+msgstr "Ajustado para sites que mudam pelo menos semanalmente."
+
+#: components/performance/defaultText.js:40
+msgid "Cache static assets for 1 week and web pages for 8 hours."
+msgstr "Recurso de caches estáticos por 1 semana e páginas da web por 8 horas."
+
+#: components/performance/defaultText.js:44
+msgid "Assets & Web Pages - Extended"
+msgstr "Recursos & Páginas da Web - Estendido"
+
+#: components/performance/defaultText.js:48
+msgid "Cache enabled for assets and pages (extended)."
+msgstr "Cache ativado para recursos e páginas (estendido)."
+
+#: components/performance/defaultText.js:52
+msgid "Tuned for sites that update a few times a month or less."
+msgstr "Ajustado para sites que atualizam poucas vezes por mês ou menos."
+
+#: components/performance/defaultText.js:56
+msgid "Boost speed and performance by storing a copy of your website content, files, and images online so the pages of your website load faster for your visitors."
+msgstr "Aumente a velocidade e o desempenho armazenando uma cópia do conteúdo, arquivos e imagens do seu site on-line para que as páginas do seu site sejam carregadas mais rapidamente para seus visitantes."
+
+#: components/performance/defaultText.js:60
+msgid "Cache setting saved"
+msgstr "Configuração de cache salva"
+
+#: components/performance/defaultText.js:62
+msgid "Clear All Cache Now"
+msgstr "Limpar Todo o Cache Agora"
+
+#: components/performance/defaultText.js:63
+msgid "We automatically clear your cache as you work (creating content, changing settings, installing plugins and more). But you can manually clear it here to be confident it is fresh."
+msgstr "Nós limpamos seu cache automaticamente conforme você trabalha (criando conteúdo, alterando configurações, instalando plugins e mais). Mas você pode limpá-lo manualmente aqui para ter certeza de que ele está atualizado."
+
+#: components/performance/defaultText.js:67
+msgid "Cache cleared"
+msgstr "Cache limpo"
+
+#: components/performance/defaultText.js:68
+msgid "Clear Cache"
+msgstr "Limpar Cache"
+
+#: components/performance/defaultText.js:69
+msgid "Exclude from cache"
+msgstr "Excluir do cache"
+
+#: components/performance/defaultText.js:70
+msgid "This setting controls what pages pass a “no-cache” header so that page caching and browser caching is not used."
+msgstr "Esta configuração determina quais páginas recebem o cabeçalho ‘no-cache’, evitando assim o uso de cache de página e de navegador."
+
+#: components/performance/defaultText.js:74
+msgid "Cache Exclusion saved"
+msgstr "Configuração de exclusão de cache salva"
+
+#: components/performance/defaultText.js:75
+msgid "Save"
+msgstr "Guardar"
+
+#: components/performance/defaultText.js:77
+msgid "Skip 404"
+msgstr "Ignorar 404"
+
+#: components/performance/defaultText.js:78
+msgid "When enabled, static resources like images and fonts will use a default server 404 page and not WordPress 404 pages. Pages and posts will continue using WordPress for 404 pages. This can considerably speed up your website if a static resource like an image or font is missing."
+msgstr "Quando ativado, recursos estáticos como imagens e fontes usarão uma página 404 padrão do servidor e não as páginas 404 do WordPress. Páginas e posts continuarão usando o WordPress para páginas 404. Isso pode acelerar consideravelmente o seu site se um recurso estático, como uma imagem ou fonte, estiver ausente."
+
+#: components/performance/defaultText.js:86
+#: components/performance/defaultText.js:87
+msgid "Skip 404 saved"
+msgstr "Ignorar 404 guardado"
+
+#: components/performance/defaultText.js:89
+msgid "Image Optimization"
+msgstr "Otimização de Imagens"
+
+#: components/performance/defaultText.js:93
+msgid "We automatically optimize your uploaded images to WebP format for faster performance and reduced file sizes. You can also choose to delete the original images to save storage space."
+msgstr "Otimizamos automaticamente suas imagens carregadas para o formato WebP para melhor desempenho e redução do tamanho dos arquivos. Você também pode optar por excluir as imagens originais para economizar espaço de armazenamento."
+
+#: components/performance/defaultText.js:97
+msgid "Enable Image Optimization"
+msgstr "Habilitar otimização de imagens"
+
+#: components/performance/defaultText.js:101
+msgid "Enable or disable image optimization globally."
+msgstr "Ativar ou desativar a otimização de imagens globalmente."
+
+#: components/performance/defaultText.js:105
+msgid "Automatically Optimize Uploaded Images"
+msgstr "Otimizar automaticamente imagens carregadas"
+
+#: components/performance/defaultText.js:109
+msgid "When enabled, all your new image uploads will be automatically optimized to WebP format, ensuring faster page loading and reduced file sizes."
+msgstr "Quando ativado, todas as suas novas imagens carregadas serão automaticamente otimizadas para o formato WebP, garantindo carregamento de página mais rápido e redução do tamanho dos arquivos."
+
+#: components/performance/defaultText.js:113
+msgid "Auto Delete Original Image"
+msgstr "Deletar automaticamente a imagem original"
+
+#: components/performance/defaultText.js:117
+msgid "When enabled, the original uploaded image is deleted and replaced with the optimized version, helping to save storage space. If disabled, the optimized image is saved as a separate file, retaining the original."
+msgstr "Quando ativado, a imagem original carregada é excluída e substituída pela versão otimizada, ajudando a economizar espaço de armazenamento. Se desativado, a imagem otimizada é salva como um arquivo separado, mantendo a original."
+
+#: components/performance/defaultText.js:121
+msgid "No settings available."
+msgstr "Nenhuma configuração disponível."
+
+#: components/performance/defaultText.js:125
+msgid "Oops! Something went wrong. Please try again."
+msgstr "Oops! Algo deu errado. Tente novamente."
+
+#: components/performance/defaultText.js:129
+msgid "Loading settings…"
+msgstr "Carregando configurações…"
+
+#: components/performance/defaultText.js:133
+msgid "Settings updated successfully"
+msgstr "Configurações atualizadas com sucesso"
+
+#: components/performance/defaultText.js:137
+msgid "Your image optimization settings have been saved."
+msgstr "Suas configurações de otimização de imagem foram salvas."
+
+#: components/performance/defaultText.js:141
+msgid "Enable Lazy Loading"
+msgstr "Ativar Carregamento Preguiçoso"
+
+#: components/performance/defaultText.js:145
+msgid "Lazy loading defers the loading of images until they are visible on the screen, improving page load speed and performance."
+msgstr "O carregamento preguiçoso adia o carregamento das imagens até que elas fiquem visíveis na tela, melhorando a velocidade de carregamento da página e o desempenho."
+
+#: components/performance/defaultText.js:149
+msgid "Lazy loading has been updated."
+msgstr "O carregamento preguiçoso foi atualizado."
+
+#: components/performance/defaultText.js:153
+msgid "Oops! There was an error updating the lazy loading settings."
+msgstr "Oops! Ocorreu um erro ao atualizar as configurações de carregamento lento."
+
+#: components/performance/defaultText.js:157
+msgid "Enable Bulk Optimization of Images"
+msgstr "Ativar Otimização em Massa de Imagens"
+
+#: components/performance/defaultText.js:161
+msgid "When enabled, allows bulk optimization of images in the media library."
+msgstr "Quando ativado, permite a otimização em massa de imagens na biblioteca de mídia."
+
+#: components/performance/defaultText.js:165
+msgid "Go to Media Library"
+msgstr "Ir para a Biblioteca de Mídia"
+
+#: components/performance/defaultText.js:169
+msgid "Error Updating Settings"
+msgstr "Erro ao Atualizar Configurações"
+
+#: components/performance/defaultText.js:173
+msgid "Prefer Optimized Image When Exists"
+msgstr "Preferir Imagem Otimizada Quando Existir"
+
+#: components/performance/defaultText.js:177
+msgid "When enabled, optimized images will be served in place of original images when they exist, improving performance."
+msgstr "Quando ativado, as imagens otimizadas serão servidas no lugar das imagens originais quando existirem, melhorando o desempenho."
+
+#: components/performance/defaultText.js:181
+msgid "Something went wrong while updating the settings. Please try again."
+msgstr "Algo deu errado durante a atualização das configurações. Por favor, tente novamente."
+
+#: components/performance/defaultText.js:195
+msgid "Asks the browser to download and cache links on the page ahead of them being clicked on, so that when they are clicked they load almost instantly."
+msgstr "Solicita ao navegador que baixe e armazene em cache os links na página antes de serem clicados, para que, quando clicados, eles carreguem quase instantaneamente."
+
+#: components/performance/defaultText.js:199
+msgid "Link prefetching setting saved"
+msgstr "Configurações de pré-carregamento de links salvas"
+
+#: components/performance/defaultText.js:203
+msgid "Link Prefetch"
+msgstr "Pré-carregamento de links"
+
+#: components/performance/defaultText.js:204
+msgid "Enable link prefetching on desktop"
+msgstr "Ativar o pré-carregamento de links no desktop"
+
+#: components/performance/defaultText.js:208
+msgid "Activate on desktop"
+msgstr "Ativar no desktop"
+
+#: components/performance/defaultText.js:212
+msgid "Behavior of the prefetch"
+msgstr "Comportamento do pré-carregamento"
+
+#: components/performance/defaultText.js:216
+msgid "Behavior"
+msgstr "Comportamento"
+
+#: components/performance/defaultText.js:217
+msgid "Prefetch on Mouse Down"
+msgstr "Pré-carregar ao pressionar o mouse"
+
+#: components/performance/defaultText.js:221
+msgid "Prefetch on Mouse Down: Starts loading the page as soon as you click down, for faster response when you release the click."
+msgstr "Pré-carregar ao Clicar: Inicia o carregamento da página assim que você clica, para uma resposta mais rápida quando soltar o clique."
+
+#: components/performance/defaultText.js:225
+msgid "Prefetch on Mouse Hover (Recommended)"
+msgstr "Pré-carregar ao passar o mouse (Recomendado)"
+
+#: components/performance/defaultText.js:229
+msgid "Prefetch on Mouse Hover: Begins loading the page the moment your cursor hovers over a link"
+msgstr "Pré-carregar ao passar o mouse: começa a carregar a página no momento em que o cursor passa sobre um link"
+
+#: components/performance/defaultText.js:233
+msgid "Enable link prefetching on mobile"
+msgstr "Ativar o pré-carregamento de links no mobile"
+
+#: components/performance/defaultText.js:237
+msgid "Activate on mobile"
+msgstr "Ativar no mobile"
+
+#: components/performance/defaultText.js:241
+msgid "Prefetch on Touchstart (Recommended)"
+msgstr "Pré-carregar ao tocar (Recomendado)"
+
+#: components/performance/defaultText.js:245
+msgid "Prefetch on Touchstart: Instantly starts loading the page as soon as you tap the screen, ensuring a quicker response when you lift your finger."
+msgstr "Pré-carregar ao tocar na tela: começa a carregar a página instantaneamente assim que você toca na tela, garantindo uma resposta mais rápida quando você levantar o dedo."
+
+#: components/performance/defaultText.js:249
+msgid "Prefetch Above the Fold"
+msgstr "Pré-carregar acima da dobra"
+
+#: components/performance/defaultText.js:253
+msgid "Prefetch Above the Fold: Loads links in your current view instantly, ensuring they're ready when you need them."
+msgstr "Pré-carregar acima da dobra: carrega os links na sua visão atual instantaneamente, garantindo que eles estejam prontos quando você precisar."
+
+#: components/performance/defaultText.js:257
+msgid "Exclude Keywords: A comma separated list of words or strings that will exclude a link from being prefetched. For example, excluding \"app\" will prevent https://example.com/apple from being prefetched."
+msgstr "Excluir palavras-chave: uma lista separada por vírgulas de palavras ou cadeias de caracteres que excluirão um link de ser pré-carregado. Por exemplo, excluir ‘app’ impedirá que https://example.com/apple seja pré-carregado."
+
+#: components/performance/defaultText.js:261
+msgid "Exclude keywords"
+msgstr "Excluir palavras-chave"
+
+#: components/performance/defaultText.js:265
+msgid "Advanced settings"
+msgstr "Configurações avançadas"
+
+#: components/performance/defaultText.js:269
+msgid "Additional speed and scalability features powered by Jetpack Boost to make your site as fast as it can be."
+msgstr "Recursos adicionais de velocidade e escalabilidade impulsionados pelo Jetpack Boost para tornar o seu site o mais rápido possível."
+
+#: components/performance/defaultText.js:273
+msgid "Optimize Critical CSS Loading (manual)"
+msgstr "Otimizar o carregamento de CSS crítico (manual)"
+
+#: components/performance/defaultText.js:277
+msgid "Move important styling information to the start of the page, which helps pages display your content sooner, so your users don’t have to wait for the entire page to load."
+msgstr "Mova as informações de estilo importantes para o início da página, o que ajuda as páginas a exibir seu conteúdo mais rapidamente, para que seus usuários não precisem esperar o carregamento de toda a página."
+
+#: components/performance/defaultText.js:281
+msgid "Optimize Critical CSS Loading (UPGRADED)"
+msgstr "Otimizar o carregamento de CSS crítico (ATUALIZADO)"
+
+#: components/performance/defaultText.js:285
+msgid "Generate Critical CSS Automatically"
+msgstr "Gerar CSS crítico automaticamente"
+
+#. translators: %1$s is a line break (<br>), %2$s is the opening <strong> tag, %3$s is the closing </strong> tag.
+#: components/performance/defaultText.js:291
+msgid "Move important styling information to the start of the page, which helps pages display your content sooner, so your users don’t have to wait for the entire page to load.%1$s %2$sBoost will automatically generate your Critical CSS%3$s whenever you make changes to the HTML or CSS structure of your site."
+msgstr "Mova informações de estilo importantes para o início da página, o que ajuda as páginas a exibir seu conteúdo mais rapidamente, para que seus usuários não precisem esperar o carregamento completo da página.%1$s %2$sO Boost gerará automaticamente seu CSS Crítico%3$s sempre que você fizer alterações na estrutura HTML ou CSS do seu site."
+
+#: includes/HealthChecks/DeferNonEssentialJsHealthCheck.php:14
+#: components/performance/defaultText.js:299
+msgid "Defer Non-Essential JavaScript"
+msgstr "Atrasar o carregamento de JavaScript não essencial"
+
+#: components/performance/defaultText.js:303
+msgid "Run non-essential JavaScript after the page has loaded so that styles and images can load more quickly."
+msgstr "Executar JavaScript não essencial após o carregamento da página, para que os estilos e as imagens possam carregar mais rapidamente."
+
+#: components/performance/defaultText.js:307
+msgid "Concatenate JS"
+msgstr "Concatenar JS"
+
+#: components/performance/defaultText.js:308
+msgid "Scripts are grouped by their original placement, concatenated and minified to reduce site loading time and reduce the number of requests."
+msgstr "Os scripts são agrupados conforme sua colocação original, concatenados e minificados para reduzir o tempo de carregamento do site e diminuir o número de requisições."
+
+#: components/performance/defaultText.js:312
+msgid "Exclude JS Strings"
+msgstr "Excluir strings de JS"
+
+#: includes/HealthChecks/ConcatenateCssHealthCheck.php:14
+#: components/performance/defaultText.js:316
+msgid "Concatenate CSS"
+msgstr "Concatenar CSS"
+
+#: components/performance/defaultText.js:320
+msgid "Styles are grouped by their original placement, concatenated and minified to reduce site loading time and reduce the number of requests."
+msgstr "Os estilos são agrupados conforme sua colocação original, concatenados e minificados para reduzir o tempo de carregamento do site e diminuir o número de requisições."
+
+#: components/performance/defaultText.js:324
+msgid "Exclude CSS Strings"
+msgstr "Excluir strings de CSS"
+
+#: components/performance/defaultText.js:328
+msgid "Show more"
+msgstr "Mostrar mais"
+
+#: components/performance/defaultText.js:329
+msgid "Show less"
+msgstr "Mostrar menos"
+
+#: components/performance/defaultText.js:330
+msgid "Discover More"
+msgstr "Descubra mais"
+
+#: components/performance/defaultText.js:331
+msgid "Install Jetpack Boost to unlock"
+msgstr "Instale o Jetpack Boost para desbloquear"
+
+#: components/performance/defaultText.js:335
+msgid "Installing Jetpack Boost…"
+msgstr "Instalando o Jetpack Boost…"
+
+#: components/performance/defaultText.js:339
+msgid "Jetpack Boost is now active"
+msgstr "O Jetpack Boost está agora ativo"
+
+#: components/performance/defaultText.js:343
+msgid "Activation failed"
+msgstr "Ativação falhou"
+
+#. translators: %1$s is the opening <a> tag, %2$s is the closing </a> tag.
+#: components/performance/defaultText.js:348
+msgid "Discover more %1$shere%2$s"
+msgstr "Descubra mais %1$saqui%2$s"
+
+#: components/performance/defaultText.js:352
+msgid "Option saved correctly"
+msgstr "Opção salva corretamente"
+
+#: components/performance/defaultText.js:353
+msgid "Error saving option"
+msgstr "Erro ao salvar opção"
+
+#: components/performance/defaultText.js:354
+msgid "Upgrade to unlock"
+msgstr "Faça um upgrade para ter acesso"
+
+#: includes/HealthChecks/AutosaveIntervalHealthCheck.php:14
+msgid "Autosave Interval"
+msgstr "Intervalo de Salvamento Automático"
+
+#: includes/HealthChecks/AutosaveIntervalHealthCheck.php:15
+msgid "Autosaving is set to happen every 30 seconds or more"
+msgstr "O salvamento automático está configurado para ocorrer a cada 30 segundos ou mais"
+
+#: includes/HealthChecks/AutosaveIntervalHealthCheck.php:16
+msgid "Autosaving is set to be frequent, less than every 30 seconds"
+msgstr "O salvamento automático está configurado para ser frequente, menos de 30 segundos"
+
+#: includes/HealthChecks/AutosaveIntervalHealthCheck.php:17
+msgid "Setting the autosave interval to a longer period can reduce server load. It is recommended to set it to 30 seconds or more."
+msgstr "Definir o intervalo de salvamento automático para um período mais longo pode reduzir a carga do servidor. Recomenda-se defini-lo para 30 segundos ou mais."
+
+#: includes/HealthChecks/BrowserCachingHealthCheck.php:14
+msgid "Browser Caching"
+msgstr "Cache do Navegador"
+
+#: includes/HealthChecks/BrowserCachingHealthCheck.php:15
+msgid "Browser caching is enabled"
+msgstr "O cache do navegador está ativado"
+
+#: includes/HealthChecks/BrowserCachingHealthCheck.php:16
+msgid "Browser caching is disabled"
+msgstr "O cache do navegador está desativado"
+
+#: includes/HealthChecks/BrowserCachingHealthCheck.php:17
+msgid "Enabling browser caching can improve performance by storing static assets in the browser for faster page loads."
+msgstr "Ativar o cache do navegador pode melhorar o desempenho armazenando ativos estáticos no navegador para carregamentos de página mais rápidos."
+
+#: includes/HealthChecks/CloudflareHealthCheck.php:14
+msgid "Cloudflare enabled"
+msgstr "Cloudflare ativado"
+
+#: includes/HealthChecks/CloudflareHealthCheck.php:15
+msgid "Cloudflare integration is enabled"
+msgstr "A integração com o Cloudflare está ativada"
+
+#: includes/HealthChecks/CloudflareHealthCheck.php:16
+msgid "Cloudflare integration is disabled"
+msgstr "A integração com o Cloudflare está desativada"
+
+#: includes/HealthChecks/CloudflareHealthCheck.php:17
+msgid "Cloudflare integration can improve performance and security."
+msgstr "A integração com o Cloudflare pode melhorar o desempenho e a segurança."
+
+#: includes/HealthChecks/ConcatenateCssHealthCheck.php:15
+msgid "CSS files are concatenated"
+msgstr "Arquivos CSS estão concatenados"
+
+#: includes/HealthChecks/ConcatenateCssHealthCheck.php:16
+msgid "CSS files are not concatenated"
+msgstr "Arquivos CSS não estão concatenados"
+
+#: includes/HealthChecks/ConcatenateCssHealthCheck.php:17
+msgid "Concatenating CSS can improve performance by reducing the number of requests."
+msgstr "Concatenar CSS pode melhorar o desempenho, reduzindo o número de solicitações."
+
+#: includes/HealthChecks/ConcatenateJsHealthCheck.php:14
+msgid "Concatenate JavaScript"
+msgstr "Concatenar JavaScript"
+
+#: includes/HealthChecks/ConcatenateJsHealthCheck.php:15
+msgid "JavaScript files are concatenated"
+msgstr "Arquivos JavaScript estão concatenados"
+
+#: includes/HealthChecks/ConcatenateJsHealthCheck.php:16
+msgid "JavaScript files are not concatenated"
+msgstr "Arquivos JavaScript não estão concatenados"
+
+#: includes/HealthChecks/ConcatenateJsHealthCheck.php:17
+msgid "Concatenating JavaScript can improve performance by reducing the number of requests."
+msgstr "Concatenar JavaScript pode melhorar o desempenho, reduzindo o número de solicitações."
+
+#: includes/HealthChecks/CronLockTimeoutHealthCheck.php:14
+msgid "WP Cron Lock Timeout"
+msgstr "Tempo Limite de Bloqueio do WP Cron"
+
+#: includes/HealthChecks/CronLockTimeoutHealthCheck.php:15
+msgid "Cron lock timeout is set to 60 seconds or less."
+msgstr "O tempo limite de bloqueio do Cron está definido para 60 segundos ou menos."
+
+#: includes/HealthChecks/CronLockTimeoutHealthCheck.php:16
+msgid "Cron lock timeout is set to a high number."
+msgstr "O tempo limite de bloqueio do Cron está definido para um número alto."
+
+#: includes/HealthChecks/CronLockTimeoutHealthCheck.php:17
+msgid "Cron lock timeout affects how long a cron job can run for. Setting it to a lower number can improve performance."
+msgstr "O tempo limite de bloqueio do Cron afeta por quanto tempo um trabalho cron pode ser executado. Definir para um número menor pode melhorar o desempenho."
+
+#: includes/HealthChecks/DeferNonEssentialJsHealthCheck.php:15
+msgid "Non-essential JavaScript is deferred"
+msgstr "JavaScript não essencial está adiado"
+
+#: includes/HealthChecks/DeferNonEssentialJsHealthCheck.php:16
+msgid "Non-essential JavaScript is not deferred"
+msgstr "JavaScript não essencial não está adiado"
+
+#: includes/HealthChecks/DeferNonEssentialJsHealthCheck.php:17
+msgid "JavaScript can be deferred to improve performance by loading it after the page has loaded."
+msgstr "O JavaScript pode ser adiado para melhorar o desempenho, carregando-o depois que a página for carregada."
+
+#: includes/HealthChecks/EmptyTrashDaysHealthCheck.php:14
+msgid "Empty Trash Days"
+msgstr "Dias para Esvaziar a Lixeira"
+
+#: includes/HealthChecks/EmptyTrashDaysHealthCheck.php:15
+msgid "Trash is emptied every 30 days or less"
+msgstr "A lixeira é esvaziada a cada 30 dias ou menos"
+
+#: includes/HealthChecks/EmptyTrashDaysHealthCheck.php:16
+msgid "Trash is emptied less frequently than every 30 days."
+msgstr "A lixeira é esvaziada com menos frequência do que a cada 30 dias."
+
+#: includes/HealthChecks/EmptyTrashDaysHealthCheck.php:17
+msgid "Emptying the trash more frequently can reduce database bloat."
+msgstr "Esvaziar a lixeira com mais frequência pode reduzir o inchaço do banco de dados."
+
+#: includes/HealthChecks/LazyLoadingHealthCheck.php:14
+msgid "Lazy Loading"
+msgstr "Carregamento Lento"
+
+#: includes/HealthChecks/LazyLoadingHealthCheck.php:15
+msgid "Lazy loading is enabled"
+msgstr "Carregamento lento está ativado"
+
+#: includes/HealthChecks/LazyLoadingHealthCheck.php:16
+msgid "Lazy loading is disabled"
+msgstr "Carregamento lento está desativado"
+
+#: includes/HealthChecks/LazyLoadingHealthCheck.php:17
+msgid "Lazy loading can improve performance by only loading images when they are in view."
+msgstr "O carregamento lento pode melhorar o desempenho carregando imagens apenas quando elas estão visíveis."
+
+#: includes/HealthChecks/LinkPrefetchHealthCheck.php:16
+msgid "Link Prefetching"
+msgstr "Pré-busca de Links"
+
+#: includes/HealthChecks/LinkPrefetchHealthCheck.php:17
+msgid "Link prefetching is enabled"
+msgstr "Pré-busca de links está ativada"
+
+#: includes/HealthChecks/LinkPrefetchHealthCheck.php:18
+msgid "Link prefetching is disabled"
+msgstr "Pré-busca de links está desativada"
+
+#: includes/HealthChecks/LinkPrefetchHealthCheck.php:19
+msgid "Link prefetching can improve performance by loading pages immediately before they are requested."
+msgstr "A pré-busca de links pode melhorar o desempenho carregando páginas imediatamente antes de serem solicitadas."
+
+#: includes/HealthChecks/PageCachingHealthCheck.php:14
+msgid "Page Caching"
+msgstr "Cache de Página"
+
+#: includes/HealthChecks/PageCachingHealthCheck.php:15
+msgid "Page caching is enabled"
+msgstr "Cache de página está ativado"
+
+#: includes/HealthChecks/PageCachingHealthCheck.php:16
+msgid "Page caching is disabled"
+msgstr "Cache de página está desativado"
+
+#: includes/HealthChecks/PageCachingHealthCheck.php:17
+msgid "Page caching can improve performance by bypassing PHP and database queries for faster page loads."
+msgstr "O cache de página pode melhorar o desempenho, ignorando as consultas de PHP e do banco de dados para carregamentos de página mais rápidos."
+
+#: includes/HealthChecks/PermalinksHealthCheck.php:14
+msgid "Permalinks"
+msgstr "Links Permanentes"
+
+#: includes/HealthChecks/PermalinksHealthCheck.php:15
+msgid "Permalinks are pretty"
+msgstr "Links permanentes estão otimizados"
+
+#: includes/HealthChecks/PermalinksHealthCheck.php:16
+msgid "Permalinks are not set up"
+msgstr "Links permanentes não estão configurados"
+
+#: includes/HealthChecks/PermalinksHealthCheck.php:17
+msgid "Setting permalinks to anything other than plain can improve performance and SEO."
+msgstr "Definir links permanentes para qualquer coisa diferente de “simples” pode melhorar o desempenho e o SEO."
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:14
+msgid "Object Caching"
+msgstr "Cache de Objetos"
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:15
+msgid "Object caching is enabled"
+msgstr "Cache de objetos está ativado"
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:16
+msgid "Object caching is disabled"
+msgstr "Cache de objetos está desativado"
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:17
+msgid "Object caching saves results from frequent database queries, reducing load times by avoiding repetitive query processing. Object caching is available in all tiers of Bluehost Cloud."
+msgstr "O cache de objetos salva os resultados de consultas frequentes ao banco de dados, reduzindo os tempos de carregamento, evitando o processamento repetitivo de consultas. O cache de objetos está disponível em todos os níveis do Bluehost Cloud."
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:21
+msgid "Learn more about object caching"
+msgstr "Saiba mais sobre o cache de objetos"
+
+#: includes/HealthChecks/PostRevisionsHealthCheck.php:14
+msgid "Post Revisions"
+msgstr "Revisões de Posts"
+
+#: includes/HealthChecks/PostRevisionsHealthCheck.php:15
+msgid "Number of post revisions is limited to 5 or less"
+msgstr "O número de revisões de posts é limitado a 5 ou menos"
+
+#: includes/HealthChecks/PostRevisionsHealthCheck.php:16
+msgid "Number of post revisions is set to a high number"
+msgstr "O número de revisões de posts está definido para um número alto"
+
+#: includes/HealthChecks/PostRevisionsHealthCheck.php:17
+msgid "Setting the number of post revisions to a lower number can reduce database bloat."
+msgstr "Definir o número de revisões de posts para um número menor pode reduzir o inchaço do banco de dados."
+
+#: includes/HealthChecks/PrioritizeCssHealthCheck.php:14
+msgid "Prioritize Critical CSS"
+msgstr "Priorizar CSS Crítico"
+
+#: includes/HealthChecks/PrioritizeCssHealthCheck.php:15
+msgid "Critical CSS is prioritized"
+msgstr "CSS crítico é priorizado"
+
+#: includes/HealthChecks/PrioritizeCssHealthCheck.php:16
+msgid "Critical CSS is not prioritized"
+msgstr "CSS crítico não é priorizado"
+
+#: includes/HealthChecks/PrioritizeCssHealthCheck.php:17
+msgid "Prioritizing critical CSS can improve performance by loading the most important CSS first."
+msgstr "Priorizar o CSS crítico pode melhorar o desempenho carregando o CSS mais importante primeiro."
+
+#: components/performance/defaultText.js:82
+msgid "Enable Skip 404 Handling For Static Files"
+msgstr "Ativar Ignorar Tratamento de Erro 404 para Arquivos Estáticos"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:38
+msgid "Optimizing Images…"
+msgstr "Otimizando Imagens…"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:45
+msgid "Preparing files…"
+msgstr "Preparando arquivos…"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:64
+msgid "Done"
+msgstr "Concluído"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:151
+msgid "Optimization Canceled"
+msgstr "Otimização Cancelada"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:160
+msgid "Optimizing:"
+msgstr "Otimizando:"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:179
+msgid "Optimization Complete!"
+msgstr "Otimização Concluída!"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:190
+msgid "Passed"
+msgstr "Aprovado"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:191
+msgid "Failed"
+msgstr "Falhou"
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:199
+msgid "An error occurred."
+msgstr "Ocorreu um erro."
+
+#: assets/image-bulk-optimizer/image-bulk-optimizer.js:211
+msgid "Optimize"
+msgstr "Otimizar"
+
+#: assets/image-optimized-marker/image-optimized-marker.js:23
+msgid "Optimized"
+msgstr "Otimizado"
+
+#. translators: %s is the list of valid cache levels.
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:27
+msgid "Invalid cache level. Use one of the following: %s."
+msgstr "Nível de cache inválido. Use um dos seguintes: %s."
+
+#. translators: %s is the list of valid cache levels.
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:56
+msgid "A value for cache level is required. Use one of the following: %s."
+msgstr "Um valor para o nível de cache é obrigatório. Use um dos seguintes: %s."
+
+#. translators: %s is the new cache level.
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:66
+msgid "Setting 'newfold_cache_level' has been set to '%s'."
+msgstr "A configuração ‘newfold_cache_level’ foi definida como ‘%s’."
+
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:91
+msgid "Invalid value. Use 'true' or 'false' for skip_404 handling."
+msgstr "Valor inválido. Use ‘verdadeiro’ ou ‘falso’ para o tratamento de erro 404."
+
+#. translators: %s is the new boolean status.
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:98
+msgid "Setting 'newfold_skip_404_handling' has been set to '%s'."
+msgstr "A configuração ‘newfold_skip_404_handling’ foi definida como ‘%s’."
+
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:122
+msgid "A value for cache exclusion is required."
+msgstr "Um valor para exclusão de cache é obrigatório."
+
+#. translators: %s is the new cache exclusion list.
+#: includes/CacheTypes/WPCLI/CacheTypesCommandHandler.php:136
+msgid "Setting 'newfold_cache_exclusion' has been updated to: '%s'."
+msgstr "A configuração ‘newfold_cache_exclusion’ foi atualizada para: ‘%s’."
+
+#. translators: %s is the on/off status.
+#: includes/Images/WPCLI/ImageCommandHandler.php:156
+msgid "All image optimization settings have been turned %s."
+msgstr "Todas as configurações de otimização de imagem foram %s."
+
+#. translators: 1: the setting key, 2: the on/off status
+#: includes/Images/WPCLI/ImageCommandHandler.php:192
+msgid "Setting '%1$s' has been turned %2$s."
+msgstr "A configuração ‘%1$s’ foi %2$s."
+
+#: includes/Images/WPCLI/ImageCommandHandler.php:247
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:43
+msgid "A status ('on' or 'off') is required."
+msgstr "Um status (‘ligado’ ou ‘desligado’) é obrigatório."
+
+#: includes/Images/WPCLI/ImageCommandHandler.php:251
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:47
+msgid "Invalid status: Use 'on' or 'off'."
+msgstr "Status inválido: Use ‘ligado’ ou ‘desligado’."
+
+#. translators: %s is the on/off status.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:75
+msgid "Setting 'activeOnDesktop' has been turned %s."
+msgstr "A configuração ‘activeOnDesktop’ foi %s."
+
+#. translators: %s is the on/off status.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:104
+msgid "Setting 'activeOnMobile' has been turned %s."
+msgstr "A configuração ‘activeOnMobile’ foi %s."
+
+#. translators: %s is the on/off status.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:133
+msgid "Setting 'instantClick' has been turned %s."
+msgstr "A configuração ‘ignoreKeywords’ foi definida como ‘%s’."
+
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:160
+msgid "A behavior value is required."
+msgstr "Um valor de comportamento é obrigatório."
+
+#. translators: %s is the list of valid mobile behaviors.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:167
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:238
+msgid "Invalid behavior: Use one of the following - %s."
+msgstr "Comportamento inválido: Use um dos seguintes - %s."
+
+#. translators: %s is the new behavior value.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:176
+msgid "Setting 'behavior' has been set to '%s'."
+msgstr "A configuração ‘behavior’ foi definida como ‘%s’."
+
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:200
+msgid "A numeric value for hoverDelay is required."
+msgstr "Um valor numérico para hoverDelay (atraso ao passar o mouse) é obrigatório."
+
+#. translators: %s is the numeric value for hoverDelay.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:207
+msgid "Setting 'hoverDelay' has been set to '%s'."
+msgstr "A configuração ‘hoverDelay’ foi definida como ‘%s’."
+
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:231
+msgid "A mobile behavior value is required."
+msgstr "Um valor de comportamento para dispositivos móveis é obrigatório."
+
+#. translators: %s is the new mobile behavior value.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:247
+msgid "Setting 'mobileBehavior' has been set to '%s'."
+msgstr "A configuração ‘mobileBehavior’ foi definida como ‘%s’."
+
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:271
+msgid "A value for ignoreKeywords is required."
+msgstr "Um valor para ignorar palavras-chave é obrigatório."
+
+#. translators: %s is the new ignoreKeywords value.
+#: includes/LinkPrefetch/WPCLI/LinkPrefetchCommandHandler.php:286
+msgid "Setting 'ignoreKeywords' has been set to '%s'."
+msgstr "A configuração ‘ignoreKeywords’ foi definida como ‘%s’."
+
+#. translators: %s is the name of the field that is invalid (e.g., 'namespace', 'command', or 'handler').
+#: includes/NFD_WPCLI.php:49
+msgid "Newfold CLI: Invalid %s provided to NFD_WPCLI::add_command()."
+msgstr "Newfold CLI: %s inválido fornecido para NFD_WPCLI::add_command()."
+
+#. translators: %s is the name of the handler class.
+#: includes/NFD_WPCLI.php:87
+msgid "Newfold CLI: The handler class %s does not exist."
+msgstr "Newfold CLI: A classe de manipulador %s não existe."
+
+#: includes/HealthChecks/PersistentObjectCacheHealthCheck.php:22
+msgid "opens in a new tab"
+msgstr "abre em uma nova aba"
+
+#. translators: %s: Time remaining
+#. translators: %s: Retry time in seconds
+#: includes/Images/ImageLimitBanner.php:56
+#: includes/Images/ImageService.php:61
+msgid "This site has made too many requests in a short period. Please wait %s before trying again."
+msgstr "Este site fez muitas solicitações em um curto período. Aguarde %s antes de tentar novamente."
+
+#. translators: %s: Support link
+#: includes/Images/ImageLimitBanner.php:74
+msgid "This site no longer qualifies for image optimization as it has reached its usage limits. Please <a href=\"%s\">contact support</a> for assistance."
+msgstr "Este site não se qualifica mais para otimização de imagens, pois atingiu seus limites de uso. Por favor, <a href=\"%s\">entre em contato com o suporte</a> para obter assistência."
+
+#: includes/Images/ImageService.php:42
+#: includes/Images/ImageService.php:380
+msgid "Error retrieving site URL."
+msgstr "Erro ao recuperar a URL do site."
+
+#: includes/Images/ImageService.php:50
+#: components/performance/defaultText.js:185
+msgid "This site no longer qualifies for image optimization as it has reached its usage limits."
+msgstr "Este site não se qualifica mais para otimização de imagens, pois atingiu seus limites de uso."
+
+#: includes/Images/ImageService.php:112
+msgid "Image optimization access has been permanently revoked for this site."
+msgstr "O acesso à otimização de imagens foi permanentemente revogado para este site."
+
+#: includes/Images/ImageService.php:121
+msgid "Rate limit exceeded. Please try again later."
+msgstr "Limite de taxa excedido. Por favor, tente novamente mais tarde."
+
+#. translators: %s: HTTP response code
+#: includes/Images/ImageService.php:414
+msgid "Unexpected response from Cloudflare Worker: HTTP %s"
+msgstr "Resposta inesperada do Cloudflare Worker: HTTP %s"
+
+#: includes/Images/ImageSettings.php:106
+msgid "Indicates if the site is banned from image optimization."
+msgstr "Indica se o site está banido da otimização de imagens."
+
+#: includes/Images/ImageSettings.php:111
+msgid "Monthly usage statistics for image optimization."
+msgstr "Estatísticas de uso mensal para otimização de imagens."
+
+#: includes/Images/ImageSettings.php:115
+msgid "Number of requests made this month."
+msgstr "Número de solicitações feitas neste mês."
+
+#: includes/Images/ImageSettings.php:120
+msgid "Maximum allowed requests per month."
+msgstr "Número máximo de solicitações permitidas por mês."
+
+#: components/performance/defaultText.js:189
+msgid "Usage:"
+msgstr "Uso:"
+
+#: components/performance/defaultText.js:190
+msgid "images processed of"
+msgstr "imagens processadas de"
+
+#: components/performance/defaultText.js:194
+msgid "/month"
+msgstr "/mês"

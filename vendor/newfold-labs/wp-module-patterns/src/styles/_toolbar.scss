@@ -1,0 +1,36 @@
+/* -------------------------------------------------------------------------- */
+/*                  WordPress admin toolbar specific styles.                  */
+/* -------------------------------------------------------------------------- */
+#nfd-wba-toolbar-button button {
+	&.nfd-wba-bg-dark {
+		--nfd-wba-color-brand: var(--nfd-wba-color-dark);
+	}
+
+	svg {
+		fill: none;
+	}
+
+	&:focus,
+	&.is-pressed {
+		&:before {
+			height: unset;
+			inset: 0;
+			animation: none;
+		}
+	}
+
+	&:focus {
+		&:before {
+			box-shadow:
+				0 0 0 1px #fff,
+				0 0 0 3px var(--nfd-wba-color-brand);
+			outline: none;
+		}
+	}
+
+	&.is-pressed:focus:before {
+		box-shadow:
+			0 0 0 1px #fff,
+			0 0 0 3px var(--wp-admin-theme-color);
+	}
+}

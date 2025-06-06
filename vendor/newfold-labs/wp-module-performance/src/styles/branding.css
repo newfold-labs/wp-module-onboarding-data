@@ -1,0 +1,50 @@
+:root {
+    --nfd-color-primary: #196BDE;
+    --nfd-color-primary-dark: #1A4884;
+    --nfd-color-primary-light: #CCDCF4;
+    --nfd-color-primary-lighter: #949FB1;
+  
+    --nfd-color-secondary: #FCD34D;
+    --nfd-color-secondary-dark: #E9B404;
+    --nfd-color-secondary-light: #FEF6D9;
+    --nfd-color-secondary-lighter: #FEF6D9;
+  
+    --nfd-color-title: #0F172A;
+    --nfd-color-body: #4A5567;
+
+  }
+
+  .nfd-brand--bluehost {
+    --nfd-color-primary: #196BDE;
+    --nfd-color-primary-dark: #1A4884;
+    --nfd-color-primary-light: #CCDCF4;
+    --nfd-color-primary-lighter: #949FB1;
+  
+    --nfd-color-secondary: #FCD34D;
+    --nfd-color-secondary-dark: #E9B404;
+    --nfd-color-secondary-light: #FEF6D9;
+    --nfd-color-secondary-lighter: #FEF6D9;
+  
+    --nfd-color-title: #0F172A;
+    --nfd-color-body: #4A5567;
+  }
+
+  .nfd-brand--hostgator {
+    /* Primary */
+    --nfd-color-primary: #1F2044;
+    --nfd-color-primary-dark: #191936;
+    --nfd-color-primary-light: #2E93EE;
+    --nfd-color-primary-lighter: #74C1FF;
+  
+    /* Secondary */
+    --nfd-color-secondary: #FFCF00;
+    --nfd-color-secondary-dark: #ECA93E;
+    --nfd-color-secondary-light: #FF9144;
+    --nfd-color-secondary-lighter: #FFE885;
+  
+    /* UI */
+    --nfd-color-title: #1F2044;
+    --nfd-color-body: #4A4A4A;
+  }
+
+  
