@@ -15,6 +15,7 @@ use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\GlobalStylesService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\TemplatePartsService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Events;
+use NewfoldLabs\WP\Module\Onboarding\Services\ReduxStateService;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
 
@@ -111,6 +112,11 @@ class SiteGenService {
 					'status' => '400',
 				)
 			);
+		}
+
+		// If the site info is a string, convert it to an array.
+		if ( gettype( $site_info ) === 'string' ) {
+			$site_info = array( 'site_description' => $site_info );
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
@@ -888,8 +894,8 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_prompt() {
-		$data = FlowService::read_data_from_wp_option( false );
-		return ! empty( $data['sitegen']['siteDetails']['prompt'] ) ? $data['sitegen']['siteDetails']['prompt'] : false;
+		$data = ReduxStateService::get( 'input' );
+		return ! empty( $data['prompt'] ) ? $data['prompt'] : false;
 	}
 
 	/**
