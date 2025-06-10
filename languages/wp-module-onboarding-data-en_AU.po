@@ -386,30 +386,6 @@ msgstr "Refined traditional newsletter"
 msgid "Bold stamp & slab"
 msgstr "Bold stamp & slab"
 
-#: includes/Themes/Fonts.php:123
-msgid "Fast & Simple"
-msgstr "Fast & Simple"
-
-#: includes/Themes/Fonts.php:140
-msgid "Timeless & Traditional"
-msgstr "Timeless & Traditional"
-
-#: includes/Themes/Fonts.php:157
-msgid "Sleek & Sophisticated"
-msgstr "Sleek & Sophisticated"
-
-#: includes/Themes/Fonts.php:174
-msgid "Clear & Crisp"
-msgstr "Clear & Crisp"
-
-#: includes/Themes/Fonts.php:191
-msgid "Retro & Classy"
-msgstr "Retro & Classy"
-
-#: includes/Themes/Fonts.php:208
-msgid "Defined & Solid"
-msgstr "Defined & Solid"
-
 #: includes/Services/GlobalStylesService.php:44
 msgid "Selected theme settings were not found."
 msgstr "Selected theme settings were not found."
@@ -433,3 +409,83 @@ msgstr "Selected header template part not stored."
 #: includes/Services/TemplatePartsService.php:86
 msgid "Selected header template part not found."
 msgstr "Selected header template part not found."
+
+#: includes/Services/FlowService.php:186
+msgid "There was an error saving the data"
+msgstr "There was an error saving the data"
+
+#: includes/Services/FlowService.php:251
+msgid "Parameter not provided: %s"
+msgstr "Parameter not provided: %s"
+
+#: includes/Services/FlowService.php:267
+msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
+msgstr "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
+
+#: includes/Services/FlowService.php:288
+msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
+msgstr "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
+
+#: includes/Services/FlowService.php:329
+msgid "Flow not enabled."
+msgstr "Flow not enabled."
+
+#: includes/Services/SiteGenService.php:340
+msgid "Parent theme is missing to generate the child theme."
+msgstr "Parent theme is missing to generate the child theme."
+
+#: includes/Services/SiteGenService.php:373
+msgid "Could not generate theme.json"
+msgstr "Could not generate theme.json"
+
+#: includes/Services/ThemeGeneratorService.php:60
+msgid "Error creating child directory."
+msgstr "Error creating child directory."
+
+#: includes/Services/ThemeGeneratorService.php:68
+msgid "Error writing theme.json."
+msgstr "Error writing theme.json."
+
+#: includes/Services/ThemeGeneratorService.php:77
+msgid "Error writing template part."
+msgstr "Error writing template part."
+
+#: includes/Services/ThemeGeneratorService.php:86
+msgid "Error writing stylesheet."
+msgstr "Error writing stylesheet."
+
+#: includes/Services/ThemeGeneratorService.php:95
+msgid "Error generating screenshot"
+msgstr "Error generating screenshot"
+
+#: includes/Themes/Colors.php:255
+msgid "Theme Colors not found"
+msgstr "Theme Colours not found"
+
+#: includes/Themes/Colors.php:256
+msgid "No WordPress Colors are available for this theme."
+msgstr "No WordPress Colours are available for this theme."
+
+#: includes/Themes/Fonts.php:123
+msgid "Fast & simple"
+msgstr "Fast & simple"
+
+#: includes/Themes/Fonts.php:140
+msgid "Timeless & traditional"
+msgstr "Timeless & traditional"
+
+#: includes/Themes/Fonts.php:157
+msgid "Sleek & sophisticated"
+msgstr "Sleek & sophisticated"
+
+#: includes/Themes/Fonts.php:174
+msgid "Clear & crisp"
+msgstr "Clear & crisp"
+
+#: includes/Themes/Fonts.php:191
+msgid "Retro & classy"
+msgstr "Retro & classy"
+
+#: includes/Themes/Fonts.php:208
+msgid "Defined & solid"
+msgstr "Defined & solid"
