@@ -77,27 +77,13 @@ final class Config {
 	 * @return bool
 	 */
 	private static function check_permissions(): bool {
-		// Check if user is logged in and has admin capabilities
-		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
-			return false;
+		if (
+			current_user_can( 'manage_options' ) &&
+			( wp_is_serving_rest_request() || is_admin() ) 
+		) {
+			return true;
 		}
 
-		// Check if the request is a valid REST request
-		$is_rest_request = false;
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-			// Verify the request is coming from wp-admin
-			if ( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
-				$referer = $_SERVER['HTTP_REFERER'];
-				$admin_url = admin_url();
-				if ( strpos( $referer, $admin_url ) === 0 ) {
-					$is_rest_request = true;
-				}
-			}
-		}
-
-		// Check if the request is an admin page request
-		$is_admin_request = is_admin();
-
-		return $is_rest_request || $is_admin_request;
+		return false;
 	}
 }
