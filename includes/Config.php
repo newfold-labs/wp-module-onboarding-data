@@ -79,7 +79,7 @@ final class Config {
 	private static function check_permissions(): bool {
 		if (
 			current_user_can( 'manage_options' ) &&
-			( wp_is_serving_rest_request() || is_admin() ) 
+			( wp_is_serving_rest_request() || is_admin() )
 		) {
 			return true;
 		}
