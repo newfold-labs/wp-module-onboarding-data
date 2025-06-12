@@ -248,20 +248,18 @@ final class Plugins {
 	private static function remove_duplicates( array $plugins ): array {
 		$unique_plugins = array();
 
-		foreach ($plugins as $plugin) {
+		foreach ( $plugins as $plugin ) {
 			$slug = $plugin['slug'];
-			
+
 			// If the plugin is not in the unique plugins array, add it
 			if ( ! isset( $unique_plugins[ $slug ] ) ) {
 				$unique_plugins[ $slug ] = $plugin;
-			} else {
+			} elseif ( $plugin['activate'] && ! $unique_plugins[ $slug ]['activate'] ) {
 				// Only keep the plugin with activate = true
-				if ( $plugin['activate'] && ! $unique_plugins[ $slug ]['activate'] ) {
-					$unique_plugins[ $slug ] = $plugin;
-				}
+				$unique_plugins[ $slug ] = $plugin;
 			}
 		}
-		
+
 		return array_values( $unique_plugins );
 	}
 
