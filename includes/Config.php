@@ -36,10 +36,10 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
-		// Only fetch capabilities in the admin when a user is logged in
-		if ( ! is_admin() || ! is_user_logged_in() ) {
+		if ( ! self::check_permissions() ) {
 			return false;
 		}
+
 		$site_capabilities = new SiteCapabilities();
 		return $site_capabilities->get( $capability );
 	}
@@ -69,5 +69,35 @@ final class Config {
 	 */
 	public static function has_solution() {
 		return self::get_site_capability( 'hasSolution' );
+	}
+
+	/**
+	 * Checks if the request is valid and has the necessary permissions.
+	 *
+	 * @return bool
+	 */
+	private static function check_permissions(): bool {
+		// Check if user is logged in and has admin capabilities
+		if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+
+		// Check if the request is a valid REST request
+		$is_rest_request = false;
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+			// Verify the request is coming from wp-admin
+			if ( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
+				$referer = $_SERVER['HTTP_REFERER'];
+				$admin_url = admin_url();
+				if ( strpos( $referer, $admin_url ) === 0 ) {
+					$is_rest_request = true;
+				}
+			}
+		}
+
+		// Check if the request is an admin page request
+		$is_admin_request = is_admin();
+
+		return $is_rest_request || $is_admin_request;
 	}
 }
