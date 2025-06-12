@@ -58,7 +58,7 @@ final class Plugins {
 			'hasEcomdash'     => array(
 				array(
 					'slug'     => 'nfd_slug_ecomdash_wordpress_plugin',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 220,
 				),
 			),
@@ -70,32 +70,32 @@ final class Plugins {
 				),
 				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_booking',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 100,
 				),
 				array(
 					'slug'     => 'yith-woocommerce-ajax-search',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 120,
 				),
 				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_gift_cards',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 140,
 				),
 				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_wishlist',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 160,
 				),
 				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_customize_myaccount_page',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 180,
 				),
 				array(
 					'slug'     => 'nfd_slug_yith_woocommerce_ajax_product_filter',
-					'activate' => true,
+					'activate' => false,
 					'priority' => 200,
 				),
 				array(
@@ -106,80 +106,6 @@ final class Plugins {
 			),
 		),
 		'ecommerce'         => array(
-			'default'        => array(
-				array(
-					'slug'     => 'woocommerce',
-					'activate' => true,
-					'priority' => 300,
-				),
-			),
-			'bluehost'       => array(
-				'default' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 60,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 80,
-					),
-				),
-			),
-			'bluehost-india' => array(
-				'default' => array(
-					array(
-						'slug'     => 'nfd_slug_woo_razorpay',
-						'activate' => true,
-						'priority' => 80,
-					),
-				),
-			),
-			'crazy-domains'  => array(
-				'default' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 60,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 80,
-					),
-				),
-			),
-			'hostgator-us'   => array(
-				'default' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 60,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 80,
-					),
-				),
-			),
-			'hostgator-br'   => array(
-				'default' => array(
-					array(
-						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
-						'activate' => true,
-						'priority' => 60,
-					),
-					array(
-						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
-						'activate' => true,
-						'priority' => 80,
-					),
-				),
-			),
-		),
-		'sitegen'           => array(
 			'default'        => array(
 				array(
 					'slug'     => 'woocommerce',
@@ -291,22 +217,52 @@ final class Plugins {
 			}
 		}
 
-		$plan_data = Data::current_plan();
-		$plan_flow = $plan_data['flow'];
-		if ( $plan_flow && isset( self::$init_list[ $plan_flow ] ) ) {
+		// Install ecommerce plugins if the site is an ecommerce site.
+		$plan = null;
+		if ( Config::has_solution() || Config::get_site_capability( 'hasYithExtended' ) ) {
+			$plan = 'ecommerce';
+		}
+		if ( $plan && isset( self::$init_list[ $plan ] ) ) {
 			// The Default plugins for a specific flow
-			if ( isset( self::$init_list[ $plan_flow ]['default'] ) ) {
-				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ]['default'] );
+			if ( isset( self::$init_list[ $plan ]['default'] ) ) {
+				$init_list = array_merge( $init_list, self::$init_list[ $plan ]['default'] );
 			}
 
 			$current_brand = Data::current_brand()['brand'];
 			// The Default plugins for a certain flow and brand
-			if ( isset( self::$init_list[ $plan_flow ][ $current_brand ]['default'] ) ) {
-				$init_list = array_merge( $init_list, self::$init_list[ $plan_flow ][ $current_brand ]['default'] );
+			if ( isset( self::$init_list[ $plan ][ $current_brand ]['default'] ) ) {
+				$init_list = array_merge( $init_list, self::$init_list[ $plan ][ $current_brand ]['default'] );
 			}
 		}
 
+		$init_list = self::remove_duplicates( $init_list );
 		return $init_list;
+	}
+
+	/**
+	 * Remove duplicates from the init list.
+	 *
+	 * @param array $plugins The plugins to remove duplicates from.
+	 * @return array The plugins with duplicates removed.
+	 */
+	private static function remove_duplicates( array $plugins ): array {
+		$unique_plugins = array();
+
+		foreach ($plugins as $plugin) {
+			$slug = $plugin['slug'];
+			
+			// If the plugin is not in the unique plugins array, add it
+			if ( ! isset( $unique_plugins[ $slug ] ) ) {
+				$unique_plugins[ $slug ] = $plugin;
+			} else {
+				// Only keep the plugin with activate = true
+				if ( $plugin['activate'] && ! $unique_plugins[ $slug ]['activate'] ) {
+					$unique_plugins[ $slug ] = $plugin;
+				}
+			}
+		}
+		
+		return array_values( $unique_plugins );
 	}
 
 	/**
