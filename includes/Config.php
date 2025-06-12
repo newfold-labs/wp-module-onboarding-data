@@ -74,6 +74,10 @@ final class Config {
 	/**
 	 * Checks if the request is valid and has the necessary permissions.
 	 *
+	 * The capability check can be invoked many times during a request lifecycle.
+	 * Sometimes we need to reach out to Hiive to get results.
+	 * So we use this permission check to avoid unnecessary calls to Hiive.
+	 *
 	 * @return bool
 	 */
 	private static function check_permissions(): bool {
