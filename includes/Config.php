@@ -36,10 +36,10 @@ final class Config {
 	 * @return boolean
 	 */
 	public static function get_site_capability( $capability ) {
-		// Only fetch capabilities in the admin when a user is logged in
-		if ( ! is_admin() || ! is_user_logged_in() ) {
+		if ( ! self::check_permissions() ) {
 			return false;
 		}
+
 		$site_capabilities = new SiteCapabilities();
 		return $site_capabilities->get( $capability );
 	}
@@ -69,5 +69,25 @@ final class Config {
 	 */
 	public static function has_solution() {
 		return self::get_site_capability( 'hasSolution' );
+	}
+
+	/**
+	 * Checks if the request is valid and has the necessary permissions.
+	 *
+	 * The capability check can be invoked many times during a request lifecycle.
+	 * Sometimes we need to reach out to Hiive to get results.
+	 * So we use this permission check to avoid unnecessary calls to Hiive.
+	 *
+	 * @return bool
+	 */
+	private static function check_permissions(): bool {
+		if (
+			current_user_can( 'manage_options' ) &&
+			( wp_is_serving_rest_request() || is_admin() )
+		) {
+			return true;
+		}
+
+		return false;
 	}
 }
