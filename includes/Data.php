@@ -25,10 +25,6 @@ final class Data {
 			'currentPlan'         => self::current_plan(),
 			'currentFlow'         => self::current_flow(),
 			'pluginInstallHash'   => PluginInstaller::rest_get_plugin_install_hash(),
-			'previewSettings'     => array(
-				'settings'        => Preview::get_settings(),
-				'stepPreviewData' => Themes::step_preview_data(),
-			),
 			'languages'           => Languages::get_all_languages(),
 			'siteGen'             => array(
 				'identifiers' => array_keys( SiteGenService::enabled_identifiers() ),
