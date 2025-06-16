@@ -94,54 +94,54 @@ msgstr "Parámetro incorrecto proporcionado: primario => valor"
 msgid "Wrong Parameter Provided : secondary => value"
 msgstr "Parámetro incorrecto proporcionado: secundario => valor"
 
-#: includes/Services/SiteGenService.php:109
+#: includes/Services/SiteGenService.php:110
 msgid "Not a valid identifier"
 msgstr "No es un identificador válido"
 
-#: includes/Services/SiteGenService.php:122
+#: includes/Services/SiteGenService.php:123
 msgid "Error generating site meta: "
 msgstr "Error al generar los metadatos del sitio: "
 
-#: includes/Services/SiteGenService.php:252
+#: includes/Services/SiteGenService.php:254
 msgid "Help us improve"
 msgstr "Ayúdanos a mejorar"
 
-#: includes/Services/SiteGenService.php:253
+#: includes/Services/SiteGenService.php:255
 msgid "How satisfied were you with the ease of creating your website?"
 msgstr "¿Hasta qué punto estabas satisfecho con la facilidad de crear tu sitio web?"
 
-#: includes/Services/SiteGenService.php:457
+#: includes/Services/SiteGenService.php:461
 msgid "Error generating homepages: "
 msgstr "Error al generar la página de inicio: "
 
-#: includes/Services/SiteGenService.php:485
+#: includes/Services/SiteGenService.php:489
 msgid "The homepage could not be found for regeneration."
 msgstr "No se pudo encontrar la página de inicio para la regeneración."
 
-#: includes/Services/SiteGenService.php:517
-#: includes/Services/SiteGenService.php:522
+#: includes/Services/SiteGenService.php:521
+#: includes/Services/SiteGenService.php:526
 msgid " (Copy)"
 msgstr " (Copiar)"
 
-#: includes/Services/SiteGenService.php:555
+#: includes/Services/SiteGenService.php:560
 msgid "Error re-generating homepages: "
 msgstr "Error regenerando páginas de inicio: "
 
-#: includes/Services/SiteGenService.php:597
+#: includes/Services/SiteGenService.php:602
 msgid "Version "
 msgstr "Versión "
 
-#: includes/Services/SiteGenService.php:622
-#: includes/Services/SiteGenService.php:709
-#: includes/Services/SiteGenService.php:762
+#: includes/Services/SiteGenService.php:628
+#: includes/Services/SiteGenService.php:716
+#: includes/Services/SiteGenService.php:771
 msgid "Prompt not found."
 msgstr "Prompt no encontrado."
 
-#: includes/Services/SiteGenService.php:637
+#: includes/Services/SiteGenService.php:644
 msgid "Cannot retrieve color palatte"
 msgstr "No se puede recuperar la paleta de colores"
 
-#: includes/Services/SiteGenService.php:725
+#: includes/Services/SiteGenService.php:734
 msgid "Cannot retrieve plugin recommendations."
 msgstr "No se pueden recuperar las recomendaciones del plugin."
 
@@ -462,11 +462,11 @@ msgstr "Tipo de parámetro incorrecto proporcionado para %s: Array indexado. Se 
 msgid "Flow not enabled."
 msgstr "Flujo no habilitado."
 
-#: includes/Services/SiteGenService.php:340
+#: includes/Services/SiteGenService.php:342
 msgid "Parent theme is missing to generate the child theme."
 msgstr "No se encuentra el tema padre para generar el tema hijo."
 
-#: includes/Services/SiteGenService.php:373
+#: includes/Services/SiteGenService.php:375
 msgid "Could not generate theme.json"
 msgstr "No se pudo generar el archivo theme.json"
 
@@ -489,3 +489,8 @@ msgstr "Error al escribir la hoja de estilos."
 #: includes/Services/ThemeGeneratorService.php:95
 msgid "Error generating screenshot"
 msgstr "Error al generar la captura de pantalla"
+
+#: wordpress/wp-includes/blocks/widget-group/block.json
+msgctxt "block title"
+msgid "Widget Group"
+msgstr ""
