@@ -39,7 +39,7 @@ class PreviewsService {
 		$response['post_id']  = $post['post_id'];
 		
 		// Generate the screenshot.
-		$screenshot = self::capture_screenshot( url: 'https://oxl.rgy.mybluehost.me/website_c7c8852c', key: $slug );
+		$screenshot = self::capture_screenshot( url: $post['post_url'], key: $slug );
 		if ( ! is_wp_error( $screenshot ) ) {
 			$response['screenshot'] = $screenshot;
 		}
