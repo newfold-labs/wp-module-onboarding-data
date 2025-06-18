@@ -85,10 +85,39 @@ class PreviewsService {
 			$styles .= '</style>';
 		}
 
+		// Inject iframe script
+		$iframe_script = '<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// Check if page is loaded in an iframe
+				if (typeof window !== "undefined" && window.self !== window.top) {
+					// Hide the admin bar
+					const adminBar = document.getElementById("wpadminbar");
+					if (adminBar) {
+						adminBar.style.display = "none";
+						// Remove the admin bar reserved space
+						document.documentElement.style.setProperty("margin-top", "0px", "important");
+					}
+
+					// Prevent click events
+					document.addEventListener("click", function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						return false;
+					}, true);
+
+					// Prevent context menu (right click)
+					document.addEventListener("contextmenu", function(e) {
+						e.preventDefault();
+						return false;
+					});
+				}
+			});
+		</script>';
+
 		$post_id = wp_insert_post( array(
 			'post_title'    => 'Home-' . $slug,
 			'post_name'     => 'home-' . $slug,
-			'post_content'  => $styles . $content,
+			'post_content'  => $styles . $iframe_script . $content,
 			'post_status'   => 'publish',
 			'post_type'     => 'page',
 			'page_template' => 'blank',
