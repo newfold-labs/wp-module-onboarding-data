@@ -72,6 +72,41 @@ final class Config {
 	}
 
 	/**
+	 * Checks if the request is an onboarding request.
+	 *
+	 * @param string|null $request_url The request URL to check, if not provided, it will use the referer.
+	 * @return bool
+	 */
+	public static function is_onboarding_request( ?string $request_url = null ): bool {
+		try {
+			$request_url = $request_url ?? wp_get_referer();
+			$request_url = parse_url( $request_url );
+			$home_url    = parse_url( home_url() );
+
+			// Fail if request is not coming from the site
+			if (
+				isset( $request_url['host'] ) &&
+				isset( $home_url['host'] ) &&
+				$request_url['host'] !== $home_url['host']
+			) {
+				return false;
+			}
+
+			// Fail if request is not coming from the onboarding page
+			if (
+				! isset( $request_url['query'] ) ||
+				0 !== strpos( $request_url['query'], 'page=nfd-onboarding' )
+			) {
+				return false;
+			}
+
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+	}
+
+	/**
 	 * Checks if the request is valid and has the necessary permissions.
 	 *
 	 * The capability check can be invoked many times during a request lifecycle.
@@ -83,7 +118,7 @@ final class Config {
 	private static function check_permissions(): bool {
 		if (
 			current_user_can( 'manage_options' ) &&
-			( wp_is_serving_rest_request() || is_admin() )
+			( self::is_onboarding_request() || wp_is_serving_rest_request() || is_admin() )
 		) {
 			return true;
 		}

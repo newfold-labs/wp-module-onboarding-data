@@ -80,7 +80,7 @@ class PreviewsService {
 	private static function publish_page( string $content, string $slug, $custom_styles = null ): array {
 		// Inject custom styles if provided
 		if ( $custom_styles ) {
-			$styles = '<style>.entry-content .nfd-container:first-of-type {margin-top: 0 !important;}';
+			$styles = '<style>.entry-content > :not(style):not(script):first-of-type {margin-top: 0 !important;}';
 			$styles .= $custom_styles;
 			$styles .= '</style>';
 		}
@@ -166,9 +166,9 @@ class PreviewsService {
 		}
 
 		// Get the image data and convert it to base64.
-		$imgBinary = wp_remote_retrieve_body( $response );
-		$imgBase64 = base64_encode( $imgBinary );
-		$img = 'data:image/webp;base64,' . $imgBase64;
+		$img_binary = wp_remote_retrieve_body( $response );
+		$img_base64 = base64_encode( $img_binary );
+		$img        = 'data:image/webp;base64,' . $img_base64;
 		return $img;
 	}
 }
