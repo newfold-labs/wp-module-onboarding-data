@@ -2,6 +2,8 @@
 
 namespace NewfoldLabs\WP\Module\Onboarding\Data\Services;
 
+use NewfoldLabs\WP\Module\Onboarding\Data\Options;
+
 /**
  * Class for generating snapshots.
  */
@@ -78,22 +80,10 @@ class PreviewsService {
 	 * @return array
 	 */
 	private static function publish_page( string $content, string $slug, $custom_styles = null ): array {
-		$page_slug = 'home-' . $slug;
-		
-		// Check if a page with the same slug already exists
-		$existing_page = get_page_by_path( $page_slug, OBJECT, 'page' );
-		
-		if ( $existing_page ) {
-			// Return existing page data
-			return [
-				'post_url' => get_permalink( $existing_page->ID ),
-				'post_id' => $existing_page->ID,
-			];
-		}
-
 		// Inject custom styles if provided
 		if ( $custom_styles ) {
 			$styles = '<style>.entry-content > :not(style):not(script):first-of-type {margin-top: 0 !important;}';
+			$styles .= '.wp-block-pages-list__item:has(a[href*="home-version"]) { display: none !important; }';
 			$styles .= $custom_styles;
 			$styles .= '</style>';
 		}
@@ -104,9 +94,9 @@ class PreviewsService {
 				// Check if page is loaded in an iframe
 				if (typeof window !== "undefined" && window.self !== window.top) {
 					// Hide the admin bar
-					const adminBar = document.getElementById("wpadminbar");
-					if (adminBar) {
-						adminBar.style.display = "none";
+					const nfdOnboardingPreviewAdminBar = document.getElementById("wpadminbar");
+					if (nfdOnboardingPreviewAdminBar) {
+						nfdOnboardingPreviewAdminBar.style.display = "none";
 						// Remove the admin bar reserved space
 						document.documentElement.style.setProperty("margin-top", "0px", "important");
 					}
@@ -129,7 +119,7 @@ class PreviewsService {
 
 		$post_id = wp_insert_post( array(
 			'post_title'    => 'Home-' . $slug,
-			'post_name'     => $page_slug,
+			'post_name'     => 'home-' . $slug,
 			'post_content'  => $styles . $iframe_script . $content,
 			'post_status'   => 'publish',
 			'post_type'     => 'page',
@@ -137,6 +127,11 @@ class PreviewsService {
 		) );
 
 		$post_url = get_permalink( $post_id );
+
+		// Add the preview page id to 'sitegen_previews' option to be cleaned up later
+		$sitegen_previews = get_option( Options::get_option_name( 'sitegen_previews' ), array() );
+		$sitegen_previews[] = $post_id;
+		update_option( Options::get_option_name( 'sitegen_previews' ), $sitegen_previews );
 
 		return [
 			'post_url' => $post_url,
@@ -147,9 +142,9 @@ class PreviewsService {
 	/**
 	 * Generate the screenshot.
 	 * 
-	 * @link https://hiive.cloud/workers/screenshot-service/ documentation.
+	 * @link https://github.com/newfold-labs/cf-worker-screenshot-service — Documentation.
 	 * @param string $url The URL of the page.
-	 * @param string $key The key of the page.
+	 * @param string $key cache key.
 	 * @return string|WP_Error
 	 */
 	public static function capture_screenshot( string $url, string $key ): string | \WP_Error {
