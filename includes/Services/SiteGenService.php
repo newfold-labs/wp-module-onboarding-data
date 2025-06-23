@@ -237,17 +237,6 @@ class SiteGenService {
 
 		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
 
-		// Update name and slug before generating child theme
-		$active_homepage = self::update_info_for_child_theme( $site_config, $active_homepage );
-		self::update_styles_for_sitegen( $active_homepage );
-
-		foreach ( $homepage_data as $index => $data ) {
-			if ( $data['slug'] === $active_homepage['slug'] ) {
-				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
-			}
-		}
-		self::sync_flow_data( $homepage_data );
-
 		self::trash_sample_page();
 		container()->get( 'cachePurger' )->purge_all();
 
@@ -906,8 +895,8 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_locale() {
-		$data = FlowService::read_data_from_wp_option( false );
-		return ! empty( $data['sitegen']['siteDetails']['locale'] ) ? $data['sitegen']['siteDetails']['locale'] : false;
+		$data = ReduxStateService::get( 'input' );
+		return ! empty( $data['selectedLocale'] ) ? $data['selectedLocale'] : false;
 	}
 
 	/**
@@ -990,6 +979,7 @@ class SiteGenService {
 			$locale,
 			false
 		);
+
 
 		$navigation_links_grammar = '';
 
