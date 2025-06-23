@@ -235,4 +235,127 @@ class WonderBlocksService {
 
 		return WonderBlocks::clear_cache( $request );
 	}
+
+	/**
+	 * Get static homepages for the onboarding flow.
+	 * Each homepage consists of a header, template, and footer.
+	 * Uses WordPress transients to ensure consistency across all requests.
+	 *
+	 * @return array
+	 */
+	public static function get_fallback_homepages() {
+
+		$cached_homepages = get_transient( 'nfd_fallback_homepages_cache' );
+		
+		if ( $cached_homepages !== false ) {
+			return $cached_homepages;
+		}
+
+		$fallback_homepages = array();
+
+		$homepage_configs = array(
+			'homepage-2' => array(
+				'header'   => 'wonder-blocks/header-14',
+				'template' => 'wonder-blocks/home-2',
+				'footer'   => 'wonder-blocks/footer-12',
+				'title'    => 'Bold & Dynamic',
+				'slug'     => 'homepage-2',
+				'description' => 'A bold and dynamic design that makes a strong impression.',
+			),
+			'homepage-3' => array(
+				'header'   => 'wonder-blocks/header-15',
+				'template' => 'wonder-blocks/home-3',
+				'footer'   => 'wonder-blocks/footer-14',
+				'title'    => 'Contemporary Style',
+				'slug'     => 'homepage-3',
+				'description' => 'A contemporary design with modern aesthetics and clean lines.',
+			),
+			'homepage-4' => array(
+				'header'   => 'wonder-blocks/header-16',
+				'template' => 'wonder-blocks/home-4',
+				'footer'   => 'wonder-blocks/footer-6',
+				'title'    => 'Minimalist Elegance',
+				'slug'     => 'homepage-4',
+				'description' => 'A minimalist design that focuses on simplicity and elegance.',
+			),
+			'homepage-5' => array(
+				'header'   => 'wonder-blocks/header-17',
+				'template' => 'wonder-blocks/home-5',
+				'footer'   => 'wonder-blocks/footer-11',
+				'title'    => 'Warm & Welcoming',
+				'slug'     => 'homepage-5',
+				'description' => 'A warm and welcoming design that creates a friendly atmosphere.',
+			),
+		);
+
+		// Shuffle the configurations to get random order
+		$config_keys = array_keys( $homepage_configs );
+		shuffle( $config_keys );
+
+		// Take the first 3 configurations
+		$selected_configs = array_slice( $config_keys, 0, 3 );
+
+		foreach ( $selected_configs as $key ) {
+			$homepage = self::create_fallback_homepage( $homepage_configs[ $key ] );
+			if ( $homepage ) {
+				$fallback_homepages[ $key ] = $homepage;
+			}
+		}
+
+		// Cache the result in WordPress transients for 1 hour (3600 seconds)
+		// This ensures consistency across all requests during the onboarding session
+		set_transient( 'nfd_fallback_homepages_cache', $fallback_homepages, 3600 );
+
+		return $fallback_homepages;
+	}
+
+	/**
+	 * Create a static homepage by combining header, template, and footer.
+	 *
+	 * @param array $config Configuration containing header, template, footer slugs and metadata.
+	 * @return array|false
+	 */
+	private static function create_fallback_homepage( $config ) {
+		$header_data   = self::get_pattern_from_slug( $config['header'] );
+		$template_data = self::get_template_from_slug( $config['template'] );
+		$footer_data   = self::get_pattern_from_slug( $config['footer'] );
+
+		if ( ! $header_data || ! $template_data || ! $footer_data ) {
+			return false;
+		}
+
+		// Combine the content from header, template, and footer
+		$combined_content = $header_data['content'] . "\n\n" . $template_data['content'] . "\n\n" . $footer_data['content'];
+
+		return array(
+			'slug'        => $config['slug'],
+			'title'       => $config['title'],
+			'description' => $config['description'],
+			'header'      => $header_data['content'],
+			'content'     => $template_data['content'],
+			'footer'      => $footer_data['content'],
+			'fullContent' => $combined_content,
+			'color'       => array(
+				'palette' => array(),
+			),
+			'screenshot'  => null,
+			'iframeSrc'   => null,
+			'postId'      => null,
+			'components'  => array(
+				'header'   => $header_data,
+				'template' => $template_data,
+				'footer'   => $footer_data,
+			),
+		);
+	}
+
+	/**
+	 * Clear the static homepages cache.
+	 * Useful for testing or when you need fresh randomization.
+	 *
+	 * @return void
+	 */
+	public static function clear_fallback_homepages_cache() {
+		delete_transient( 'nfd_fallback_homepages_cache' );
+	}
 }

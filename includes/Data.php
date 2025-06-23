@@ -5,6 +5,7 @@ use NewfoldLabs\WP\Module\CustomerBluehost\CustomerBluehost;
 use NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\SiteGenService;
+use NewfoldLabs\WP\Module\Onboarding\Data\Services\WonderBlocksService;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
 
@@ -32,6 +33,7 @@ final class Data {
 			'currentUserDetails'  => self::wp_current_user_details(),
 			'isFreshInstallation' => self::is_fresh_installation(),
 			'sentryInitDsnURL'    => 'https://cd5bd4c30b914e0d1d0f49413e600afa@o4506197201715200.ingest.us.sentry.io/4507383861805056',
+			'fallbackHomepages'   => WonderBlocksService::get_fallback_homepages(),
 		);
 	}
 
