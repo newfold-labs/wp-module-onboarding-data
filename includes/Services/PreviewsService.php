@@ -183,4 +183,17 @@ class PreviewsService {
 		$img        = 'data:image/webp;base64,' . $img_base64;
 		return $img;
 	}
+
+	/**
+	 * Trash the preview pages.
+	 * 
+	 * @return void
+	 */
+	public static function trash_preview_pages(): void {
+		$sitegen_previews = get_option( Options::get_option_name( 'sitegen_previews' ), array() );
+		foreach ( $sitegen_previews as $post_id ) {
+			wp_delete_post( $post_id, true );
+		}
+		delete_option( Options::get_option_name( 'sitegen_previews' ) );
+	}
 }
