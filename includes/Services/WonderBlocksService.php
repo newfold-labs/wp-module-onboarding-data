@@ -254,14 +254,6 @@ class WonderBlocksService {
 		$fallback_homepages = array();
 
 		$homepage_configs = array(
-			'homepage-1' => array(
-				'header'   => 'wonder-blocks/header-13',
-				'template' => 'wonder-blocks/home-1',
-				'footer'   => 'wonder-blocks/footer-12',
-				'title'    => 'Clean & Modern',
-				'slug'     => 'homepage-1',
-				'description' => 'A clean and modern design with a professional look.',
-			),
 			'homepage-2' => array(
 				'header'   => 'wonder-blocks/header-14',
 				'template' => 'wonder-blocks/home-2',

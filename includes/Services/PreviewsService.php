@@ -78,6 +78,19 @@ class PreviewsService {
 	 * @return array
 	 */
 	private static function publish_page( string $content, string $slug, $custom_styles = null ): array {
+		$page_slug = 'home-' . $slug;
+		
+		// Check if a page with the same slug already exists
+		$existing_page = get_page_by_path( $page_slug, OBJECT, 'page' );
+		
+		if ( $existing_page ) {
+			// Return existing page data
+			return [
+				'post_url' => get_permalink( $existing_page->ID ),
+				'post_id' => $existing_page->ID,
+			];
+		}
+
 		// Inject custom styles if provided
 		if ( $custom_styles ) {
 			$styles = '<style>.entry-content > :not(style):not(script):first-of-type {margin-top: 0 !important;}';
@@ -116,7 +129,7 @@ class PreviewsService {
 
 		$post_id = wp_insert_post( array(
 			'post_title'    => 'Home-' . $slug,
-			'post_name'     => 'home-' . $slug,
+			'post_name'     => $page_slug,
 			'post_content'  => $styles . $iframe_script . $content,
 			'post_status'   => 'publish',
 			'post_type'     => 'page',
