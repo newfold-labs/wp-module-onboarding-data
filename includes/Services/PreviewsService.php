@@ -25,7 +25,7 @@ class PreviewsService {
 	 */
 	public static function generate_snapshot( $content, $slug, $custom_styles = null ): array | \WP_Error {
 		if ( ! self::validate( $content ) ) {
-			return new \WP_Error( 400, 'Invalid pattern content.', array( 'status' => 400 ) );
+			return new \WP_Error( 'invalid_pattern_content', 'Invalid pattern content.' );
 		}
 
 		// Initial response array.
