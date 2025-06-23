@@ -86,6 +86,7 @@ class PreviewsService {
 			$styles = '<style>.entry-content > :not(style):not(script):first-of-type {margin-top: 0 !important;}';
 			// Hide preview pages links from nav
 			$styles .= '.wp-block-pages-list__item:has(a[href*="home-version"]) { display: none !important; }';
+			$styles .= '.wp-block-pages-list__item:has(a[href*="home-homepage"]) { display: none !important; }';
 			// Add custom styles
 			$styles .= $custom_styles;
 			$styles .= '</style>';
