@@ -22,6 +22,7 @@ final class Data {
 			'siteUrl'             => \get_site_url(),
 			'restUrl'             => \get_home_url() . '/index.php?rest_route=',
 			'adminUrl'            => \admin_url(),
+			'status'              => get_option( Options::get_option_name( 'status' ) ),
 			'currentBrand'        => self::current_brand(),
 			'currentPlan'         => self::current_plan(),
 			'currentFlow'         => self::current_flow(),
