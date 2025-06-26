@@ -1009,21 +1009,22 @@ class SiteGenService {
 					'post_type' => 'wp_navigation',
 				)
 			);
-			// Empty the navigation menu.
-			if ( ! empty( $site_navigation->posts ) ) {
-				wp_update_post(
-					array(
-						'ID'           => $site_navigation->posts[0]->ID,
-						'post_content' => '',
-					)
-				);
-			}
 			// Add sitemap pages to the navigation menu.
 			if ( ! empty( $site_navigation->posts ) ) {
 				wp_update_post(
 					array(
 						'ID'           => $site_navigation->posts[0]->ID,
 						'post_content' => $navigation_links_grammar,
+						'post_status' => 'publish',
+					)
+				);
+			} else {
+				wp_insert_post(
+					array(
+						'post_title' => 'Navigation',
+						'post_content' => $navigation_links_grammar,
+						'post_type' => 'wp_navigation',
+						'post_status' => 'publish',
 					)
 				);
 			}
