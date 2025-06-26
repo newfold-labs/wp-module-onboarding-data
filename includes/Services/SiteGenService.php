@@ -947,19 +947,6 @@ class SiteGenService {
 	}
 
 	/**
-	 * Sets the sitemapPagesGenerated data in the flow.
-	 *
-	 * @param boolean $status The status of the generated sitemap pages.
-	 * @return true
-	 */
-	public static function set_sitemap_pages_generated( $status ) {
-		$data                                     = FlowService::read_data_from_wp_option( false );
-		$data['sitegen']['sitemapPagesGenerated'] = $status;
-		FlowService::update_data_in_wp_option( $data );
-		return true;
-	}
-
-	/**
 	 * Generate and publish the sitemap pages.
 	 *
 	 * @param string  $site_description The description of the site (prompt).
@@ -1015,24 +1002,32 @@ class SiteGenService {
 		}
 
 		if ( $update_nav_menu ) {
-			$navigation = new \WP_Query(
+			// Get the site navigation.
+			$site_navigation = new \WP_Query(
 				array(
 					'name'      => 'navigation',
 					'post_type' => 'wp_navigation',
 				)
 			);
-
-			if ( ! empty( $navigation->posts ) ) {
+			// Empty the navigation menu.
+			if ( ! empty( $site_navigation->posts ) ) {
 				wp_update_post(
 					array(
-						'ID'           => $navigation->posts[0]->ID,
+						'ID'           => $site_navigation->posts[0]->ID,
+						'post_content' => '',
+					)
+				);
+			}
+			// Add sitemap pages to the navigation menu.
+			if ( ! empty( $site_navigation->posts ) ) {
+				wp_update_post(
+					array(
+						'ID'           => $site_navigation->posts[0]->ID,
 						'post_content' => $navigation_links_grammar,
 					)
 				);
 			}
 		}
-
-		self::set_sitemap_pages_generated( true );
 
 		return true;
 	}
@@ -1322,7 +1317,7 @@ class SiteGenService {
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
 			// Log error.
 		}
 
