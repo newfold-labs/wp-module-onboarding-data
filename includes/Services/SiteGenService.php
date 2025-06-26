@@ -1158,14 +1158,6 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_nav_link_grammar_from_post_data( $id, $name, $url ) {
-		$prompt    = self::get_prompt();
-		$locale    = self::get_locale();
-		$site_info = array( 'site_description' => $prompt );
-		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $locale, true );
-		if ( is_wp_error( $sitemap ) ) {
-			return false;
-		}
-
 		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
 	}
 
