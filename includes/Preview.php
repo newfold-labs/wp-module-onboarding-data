@@ -19,7 +19,7 @@ final class Preview {
 	}
 
 	/**
-	 * Map of pre requisites to sho w the live preview successfully for a flow.
+	 * Map of pre requisites to show the live preview successfully for a flow.
 	 *
 	 * @return array
 	 */

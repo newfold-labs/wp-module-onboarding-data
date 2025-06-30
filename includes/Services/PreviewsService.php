@@ -20,10 +20,10 @@ class PreviewsService {
 	 * 
 	 * @param string $content The content to render.
 	 * @param string $slug The slug of the page.
-	 * @param string $custom_styles The custom styles to apply to the page.
+	 * @param ?string $custom_styles The custom styles to apply to the page.
 	 * @return array|\WP_Error
 	 */
-	public static function generate_snapshot( $content, $slug, $custom_styles = null ): array | \WP_Error {
+	public static function generate_snapshot( string $content, string $slug, ?string $custom_styles = null ): array | \WP_Error {
 		if ( ! self::validate( $content ) ) {
 			return new \WP_Error( 'invalid_pattern_content', 'Invalid pattern content.' );
 		}

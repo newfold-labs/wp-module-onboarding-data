@@ -967,7 +967,6 @@ class SiteGenService {
 			false
 		);
 
-
 		$navigation_links_grammar = '';
 
 		// TODO: Improve error handling to reliably determine if a page has been published or not instead of trying and returning true.
