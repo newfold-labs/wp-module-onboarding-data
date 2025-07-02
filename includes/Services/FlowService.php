@@ -9,6 +9,7 @@ use NewfoldLabs\WP\Module\Installer\TaskManagers\PluginInstallTaskManager;
 use NewfoldLabs\WP\Module\Installer\Tasks\PluginInstallTask;
 use NewfoldLabs\WP\Module\Data\SiteClassification\PrimaryType;
 use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
+use NewfoldLabs\WP\Module\Onboarding\Services\ReduxStateService;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 
 /**
@@ -431,11 +432,28 @@ class FlowService {
 	/**
 	 * Fetches the Experience Level selected during Onboarding.
 	 *
-	 * @return false|string
+	 * @return int
 	 */
-	public static function get_experience_level() {
-		$data = self::read_data_from_wp_option( false );
-		return isset( $data['data']['wpComfortLevel'] ) ? $data['data']['wpComfortLevel'] : false;
+	public static function get_experience_level(): int {
+		$experience_level = 3;
+		$data = ReduxStateService::get( 'input' );
+		if ( is_array( $data ) && isset( $data['experienceLevel'] ) ) {
+			switch ( $data['experienceLevel'] ) {
+				case 'beginner':
+					$experience_level = 1;
+					break;
+				case 'intermediate':
+					$experience_level = 2;
+					break;
+				case 'advanced':
+					$experience_level = 3;
+					break;
+				default:
+					$experience_level = 3;
+					break;
+			}
+		}
+		return $experience_level;
 	}
 
 	/**

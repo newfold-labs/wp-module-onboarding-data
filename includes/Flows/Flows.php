@@ -5,6 +5,7 @@ use NewfoldLabs\WP\Module\Onboarding\Data\Services\FlowService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Data;
 use NewfoldLabs\WP\Module\Onboarding\Data\Options;
 use NewfoldLabs\WP\Module\Installer\Services\PluginInstaller;
+use NewfoldLabs\WP\Module\Onboarding\Data\Config;
 
 /**
  * Contains Onboarding Flow information.
@@ -334,16 +335,7 @@ final class Flows {
 	 * @return boolean
 	 */
 	public static function is_sitegen() {
-		if ( ! self::get_flows()['sitegen'] ) {
-			return false;
-		}
-
-		$flow_data = FlowService::read_data_from_wp_option();
-		if ( ! $flow_data || empty( $flow_data['activeFlow'] ) ) {
-			return false;
-		}
-
-		return 'sitegen' === $flow_data['activeFlow'];
+		return self::get_flows()['sitegen'];
 	}
 
 	/**

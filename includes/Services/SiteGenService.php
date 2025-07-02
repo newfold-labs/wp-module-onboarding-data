@@ -15,6 +15,7 @@ use NewfoldLabs\WP\Module\Data\SiteClassification\SecondaryType;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\GlobalStylesService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Services\TemplatePartsService;
 use NewfoldLabs\WP\Module\Onboarding\Data\Events;
+use NewfoldLabs\WP\Module\Onboarding\Services\ReduxStateService;
 
 use function NewfoldLabs\WP\ModuleLoader\container;
 
@@ -112,6 +113,11 @@ class SiteGenService {
 					'status' => '400',
 				)
 			);
+		}
+
+		// If the site info is a string, convert it to an array.
+		if ( gettype( $site_info ) === 'string' ) {
+			$site_info = array( 'site_description' => $site_info );
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
@@ -231,17 +237,6 @@ class SiteGenService {
 
 		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
 
-		// Update name and slug before generating child theme
-		$active_homepage = self::update_info_for_child_theme( $site_config, $active_homepage );
-		self::update_styles_for_sitegen( $active_homepage );
-
-		foreach ( $homepage_data as $index => $data ) {
-			if ( $data['slug'] === $active_homepage['slug'] ) {
-				$homepage_data[ $active_homepage['slug'] ] = $active_homepage;
-			}
-		}
-		self::sync_flow_data( $homepage_data );
-
 		self::trash_sample_page();
 		container()->get( 'cachePurger' )->purge_all();
 
@@ -334,7 +329,7 @@ class SiteGenService {
 	public static function generate_child_theme( $data ) {
 		global $wp_filesystem;
 		ThemeGeneratorService::connect_to_filesystem();
-		$parent_theme_slug   = 'yith-wonder';
+		$parent_theme_slug   = 'bluehost-blueprint';
 		$parent_theme_exists = ( \wp_get_theme( $parent_theme_slug ) )->exists();
 		if ( ! $parent_theme_exists ) {
 			return new \WP_Error(
@@ -900,8 +895,8 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_locale() {
-		$data = FlowService::read_data_from_wp_option( false );
-		return ! empty( $data['sitegen']['siteDetails']['locale'] ) ? $data['sitegen']['siteDetails']['locale'] : false;
+		$data = ReduxStateService::get( 'input' );
+		return ! empty( $data['selectedLocale'] ) ? $data['selectedLocale'] : false;
 	}
 
 	/**
@@ -910,8 +905,8 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_prompt() {
-		$data = FlowService::read_data_from_wp_option( false );
-		return ! empty( $data['sitegen']['siteDetails']['prompt'] ) ? $data['sitegen']['siteDetails']['prompt'] : false;
+		$data = ReduxStateService::get( 'input' );
+		return ! empty( $data['prompt'] ) ? $data['prompt'] : false;
 	}
 
 	/**
@@ -948,19 +943,6 @@ class SiteGenService {
 	 */
 	public static function update_regenerated_homepages( $regenerated_homepages ) {
 		\update_option( Options::get_option_name( 'sitegen_regenerated_homepages' ), $regenerated_homepages );
-		return true;
-	}
-
-	/**
-	 * Sets the sitemapPagesGenerated data in the flow.
-	 *
-	 * @param boolean $status The status of the generated sitemap pages.
-	 * @return true
-	 */
-	public static function set_sitemap_pages_generated( $status ) {
-		$data                                     = FlowService::read_data_from_wp_option( false );
-		$data['sitegen']['sitemapPagesGenerated'] = $status;
-		FlowService::update_data_in_wp_option( $data );
 		return true;
 	}
 
@@ -1019,24 +1001,33 @@ class SiteGenService {
 		}
 
 		if ( $update_nav_menu ) {
-			$navigation = new \WP_Query(
+			// Get the site navigation.
+			$site_navigation = new \WP_Query(
 				array(
 					'name'      => 'navigation',
 					'post_type' => 'wp_navigation',
 				)
 			);
-
-			if ( ! empty( $navigation->posts ) ) {
+			// Add sitemap pages to the navigation menu.
+			if ( ! empty( $site_navigation->posts ) ) {
 				wp_update_post(
 					array(
-						'ID'           => $navigation->posts[0]->ID,
+						'ID'           => $site_navigation->posts[0]->ID,
 						'post_content' => $navigation_links_grammar,
+						'post_status' => 'publish',
+					)
+				);
+			} else {
+				wp_insert_post(
+					array(
+						'post_title' => 'Navigation',
+						'post_content' => $navigation_links_grammar,
+						'post_type' => 'wp_navigation',
+						'post_status' => 'publish',
 					)
 				);
 			}
 		}
-
-		self::set_sitemap_pages_generated( true );
 
 		return true;
 	}
@@ -1162,14 +1153,6 @@ class SiteGenService {
 	 * @return string|false
 	 */
 	public static function get_nav_link_grammar_from_post_data( $id, $name, $url ) {
-		$prompt    = self::get_prompt();
-		$locale    = self::get_locale();
-		$site_info = array( 'site_description' => $prompt );
-		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $locale, true );
-		if ( is_wp_error( $sitemap ) ) {
-			return false;
-		}
-
 		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
 	}
 
@@ -1334,7 +1317,7 @@ class SiteGenService {
 					$uploaded_image_urls[ $image_url ] = $attachment_url;
 				}
 			}
-		} catch ( Exception $e ) {
+		} catch ( \Exception $e ) {
 			// Log error.
 		}
 
