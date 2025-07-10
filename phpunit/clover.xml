@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1751467138">
-  <project timestamp="1751467138">
+<coverage generated="1752128093">
+  <project timestamp="1752128093">
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Brands.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Brands" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="461" coveredstatements="0" elements="464" coveredelements="0"/>
@@ -714,49 +714,46 @@
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Languages.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Languages" namespace="global">
-        <metrics complexity="10" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="0" elements="57" coveredelements="0"/>
+        <metrics complexity="10" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="0" elements="60" coveredelements="0"/>
       </class>
-      <line num="35" type="method" name="get_all_languages" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
+      <line num="38" type="method" name="get_all_languages" visibility="public" complexity="4" crap="20" count="0"/>
       <line num="40" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
       <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
       <line num="47" type="stmt" count="0"/>
       <line num="50" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
       <line num="54" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="72" type="method" name="standardize_list" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="74" type="stmt" count="0"/>
-      <line num="75" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="75" type="method" name="standardize_list" visibility="private" complexity="2" crap="6" count="0"/>
       <line num="77" type="stmt" count="0"/>
       <line num="78" type="stmt" count="0"/>
       <line num="79" type="stmt" count="0"/>
       <line num="80" type="stmt" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <line num="82" type="stmt" count="0"/>
       <line num="83" type="stmt" count="0"/>
       <line num="84" type="stmt" count="0"/>
       <line num="85" type="stmt" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="93" type="stmt" count="0"/>
-      <line num="102" type="method" name="is_default_language" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="103" type="stmt" count="0"/>
-      <line num="104" type="stmt" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="115" type="method" name="get_default_language" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="116" type="stmt" count="0"/>
-      <line num="117" type="stmt" count="0"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="126" type="method" name="get_fallback_languages" visibility="private" complexity="1" crap="2" count="0"/>
-      <line num="127" type="stmt" count="0"/>
-      <line num="128" type="stmt" count="0"/>
-      <line num="129" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
-      <line num="131" type="stmt" count="0"/>
-      <line num="132" type="stmt" count="0"/>
+      <line num="86" type="stmt" count="0"/>
+      <line num="89" type="stmt" count="0"/>
+      <line num="90" type="stmt" count="0"/>
+      <line num="91" type="stmt" count="0"/>
+      <line num="94" type="stmt" count="0"/>
+      <line num="98" type="stmt" count="0"/>
+      <line num="99" type="stmt" count="0"/>
+      <line num="108" type="method" name="is_default_language" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="109" type="stmt" count="0"/>
+      <line num="110" type="stmt" count="0"/>
+      <line num="113" type="stmt" count="0"/>
+      <line num="121" type="method" name="get_default_language" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="122" type="stmt" count="0"/>
+      <line num="123" type="stmt" count="0"/>
+      <line num="124" type="stmt" count="0"/>
+      <line num="132" type="method" name="get_fallback_languages" visibility="private" complexity="1" crap="2" count="0"/>
       <line num="133" type="stmt" count="0"/>
       <line num="134" type="stmt" count="0"/>
       <line num="135" type="stmt" count="0"/>
@@ -773,7 +770,13 @@
       <line num="146" type="stmt" count="0"/>
       <line num="147" type="stmt" count="0"/>
       <line num="148" type="stmt" count="0"/>
-      <metrics loc="151" ncloc="97" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="0" elements="57" coveredelements="0"/>
+      <line num="149" type="stmt" count="0"/>
+      <line num="150" type="stmt" count="0"/>
+      <line num="151" type="stmt" count="0"/>
+      <line num="152" type="stmt" count="0"/>
+      <line num="153" type="stmt" count="0"/>
+      <line num="154" type="stmt" count="0"/>
+      <metrics loc="157" ncloc="100" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="55" coveredstatements="0" elements="60" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Mustache/Mustache.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Mustache\Mustache" namespace="global">
@@ -3682,6 +3685,6 @@
       <line num="311" type="stmt" count="0"/>
       <metrics loc="314" ncloc="291" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="270" coveredstatements="0" elements="274" coveredelements="0"/>
     </file>
-    <metrics files="28" loc="6898" ncloc="5315" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3325" coveredstatements="0" elements="3519" coveredelements="0"/>
+    <metrics files="28" loc="6904" ncloc="5318" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3328" coveredstatements="0" elements="3522" coveredelements="0"/>
   </project>
 </coverage>
