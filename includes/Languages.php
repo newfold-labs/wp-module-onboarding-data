@@ -9,13 +9,13 @@ class Languages {
 	 * List of all available languages.
 	 * @var array
 	 */
-	private static array $languages = array();
+	private static $languages = array();
 
 	/**
 	 * English US language.
 	 * @var array
 	 */
-	private static array $english_us = array(
+	private static $english_us = array(
 		'language'     => 'en_US',
 		'english_name' => 'English (United States)',
 		'native_name'  => 'English (United States)',
@@ -25,7 +25,7 @@ class Languages {
 	 * Active site language.
 	 * @var string
 	 */
-	private static string $default_language = '';
+	private static $default_language = '';
 
 	/**
 	 * Get all available languages.
