@@ -7,12 +7,14 @@ namespace NewfoldLabs\WP\Module\Onboarding\Data;
 class Languages {
 	/**
 	 * List of all available languages.
+	 *
 	 * @var array
 	 */
 	private static $languages = array();
 
 	/**
 	 * English US language.
+	 *
 	 * @var array
 	 */
 	private static $english_us = array(
@@ -23,6 +25,7 @@ class Languages {
 
 	/**
 	 * Active site language.
+	 *
 	 * @var string
 	 */
 	private static $default_language = '';
@@ -71,13 +74,16 @@ class Languages {
 	 */
 	private static function standardize_list( array $languages ): array {
 		// standardize the shape.
-		$languages = array_map( function( $language ) {
-			return array(
-				'locale'      => $language['language'],
-				'name'        => $language['english_name'],
-				'native_name' => $language['native_name'],
-			);
-		}, $languages );
+		$languages = array_map(
+			function ( $language ) {
+				return array(
+					'locale'      => $language['language'],
+					'name'        => $language['english_name'],
+					'native_name' => $language['native_name'],
+				);
+			},
+			$languages
+		);
 
 		// Assign the default language.
 		$default_language = self::get_default_language();
@@ -104,7 +110,7 @@ class Languages {
 			return $locale === self::$default_language;
 		}
 
-		return $locale === self::get_default_language();
+		return self::get_default_language() === $locale;
 	}
 
 	/**
