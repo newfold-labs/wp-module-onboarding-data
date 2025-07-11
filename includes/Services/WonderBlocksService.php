@@ -299,6 +299,7 @@ class WonderBlocksService {
 
 		// Cache the result in WordPress transients for 1 hour (3600 seconds)
 		// This ensures consistency across all requests during the onboarding session
+		$fallback_homepages['fallback'] = true;
 		set_transient( 'nfd_fallback_homepages_cache', $fallback_homepages, 3600 );
 
 		return $fallback_homepages;
