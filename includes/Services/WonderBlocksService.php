@@ -128,24 +128,22 @@ class WonderBlocksService {
 	 */
 	public static function get_template_from_slug( $template_slug ) {
 		$primary_type = PrimaryType::instantiate_from_option();
-		if ( ! $primary_type ) {
-			return false;
-		}
+		$primary_type = $primary_type ? $primary_type->value : 'other';
+
 		$secondary_type = SecondaryType::instantiate_from_option();
-		if ( ! $secondary_type ) {
-			return false;
-		}
+		$secondary_type = $secondary_type ? $secondary_type->value : 'other';
 
 		$wonder_blocks_slug = self::strip_prefix_from_slug( $template_slug );
 		$request            = new WonderBlocksFetchRequest(
 			array(
 				'endpoint'       => 'templates',
 				'slug'           => $wonder_blocks_slug,
-				'primary_type'   => $primary_type->value,
-				'secondary_type' => $secondary_type->value,
+				'primary_type'   => $primary_type,
+				'secondary_type' => $secondary_type,
 			)
 		);
-		$template           = WonderBlocks::fetch( $request );
+
+		$template = WonderBlocks::fetch( $request );
 
 		if ( ! empty( $template ) ) {
 			$template['categories'] = array( $template['categories'], 'yith-wonder-pages' );
@@ -171,21 +169,18 @@ class WonderBlocksService {
 	 */
 	public static function get_pattern_from_slug( $pattern_slug ) {
 		$primary_type = PrimaryType::instantiate_from_option();
-		if ( ! $primary_type ) {
-			return false;
-		}
+		$primary_type = $primary_type ? $primary_type->value : 'other';
+
 		$secondary_type = SecondaryType::instantiate_from_option();
-		if ( ! $secondary_type ) {
-			return false;
-		}
+		$secondary_type = $secondary_type ? $secondary_type->value : 'other';
 
 		$wonder_blocks_slug = self::strip_prefix_from_slug( $pattern_slug );
 		$request            = new WonderBlocksFetchRequest(
 			array(
 				'endpoint'       => 'patterns',
 				'slug'           => $wonder_blocks_slug,
-				'primary_type'   => $primary_type->value,
-				'secondary_type' => $secondary_type->value,
+				'primary_type'   => $primary_type,
+				'secondary_type' => $secondary_type,
 			)
 		);
 		$patterns           = WonderBlocks::fetch( $request );
@@ -246,8 +241,8 @@ class WonderBlocksService {
 	public static function get_fallback_homepages() {
 
 		$cached_homepages = get_transient( 'nfd_fallback_homepages_cache' );
-		
-		if ( $cached_homepages !== false ) {
+
+		if ( false !== $cached_homepages ) {
 			return $cached_homepages;
 		}
 
@@ -255,35 +250,35 @@ class WonderBlocksService {
 
 		$homepage_configs = array(
 			'homepage-2' => array(
-				'header'   => 'wonder-blocks/header-14',
-				'template' => 'wonder-blocks/home-2',
-				'footer'   => 'wonder-blocks/footer-12',
-				'title'    => 'Bold & Dynamic',
-				'slug'     => 'homepage-2',
+				'header'      => 'wonder-blocks/header-14',
+				'template'    => 'wonder-blocks/home-2',
+				'footer'      => 'wonder-blocks/footer-12',
+				'title'       => 'Bold & Dynamic',
+				'slug'        => 'homepage-2',
 				'description' => 'A bold and dynamic design that makes a strong impression.',
 			),
 			'homepage-3' => array(
-				'header'   => 'wonder-blocks/header-15',
-				'template' => 'wonder-blocks/home-3',
-				'footer'   => 'wonder-blocks/footer-14',
-				'title'    => 'Contemporary Style',
-				'slug'     => 'homepage-3',
+				'header'      => 'wonder-blocks/header-15',
+				'template'    => 'wonder-blocks/home-3',
+				'footer'      => 'wonder-blocks/footer-14',
+				'title'       => 'Contemporary Style',
+				'slug'        => 'homepage-3',
 				'description' => 'A contemporary design with modern aesthetics and clean lines.',
 			),
 			'homepage-4' => array(
-				'header'   => 'wonder-blocks/header-16',
-				'template' => 'wonder-blocks/home-4',
-				'footer'   => 'wonder-blocks/footer-6',
-				'title'    => 'Minimalist Elegance',
-				'slug'     => 'homepage-4',
+				'header'      => 'wonder-blocks/header-16',
+				'template'    => 'wonder-blocks/home-4',
+				'footer'      => 'wonder-blocks/footer-6',
+				'title'       => 'Minimalist Elegance',
+				'slug'        => 'homepage-4',
 				'description' => 'A minimalist design that focuses on simplicity and elegance.',
 			),
 			'homepage-5' => array(
-				'header'   => 'wonder-blocks/header-17',
-				'template' => 'wonder-blocks/home-5',
-				'footer'   => 'wonder-blocks/footer-11',
-				'title'    => 'Warm & Welcoming',
-				'slug'     => 'homepage-5',
+				'header'      => 'wonder-blocks/header-17',
+				'template'    => 'wonder-blocks/home-5',
+				'footer'      => 'wonder-blocks/footer-11',
+				'title'       => 'Warm & Welcoming',
+				'slug'        => 'homepage-5',
 				'description' => 'A warm and welcoming design that creates a friendly atmosphere.',
 			),
 		);
@@ -304,6 +299,7 @@ class WonderBlocksService {
 
 		// Cache the result in WordPress transients for 1 hour (3600 seconds)
 		// This ensures consistency across all requests during the onboarding session
+		$fallback_homepages['fallback'] = true;
 		set_transient( 'nfd_fallback_homepages_cache', $fallback_homepages, 3600 );
 
 		return $fallback_homepages;
