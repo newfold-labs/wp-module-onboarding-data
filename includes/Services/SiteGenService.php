@@ -774,15 +774,15 @@ class SiteGenService {
 	/**
 	 * Get the site type entered during the sitegen flow.
 	 *
-	 * @return string|false - The site type or false if not set.
+	 * @return ?string - The site type or null if not set.
 	 */
-	public static function get_site_type(): string|false {
+	public static function get_site_type(): ?string {
 		$data = ReduxStateService::get( 'input' );
 		if ( ! empty( $data['siteType'] ) ) {
 			return $data['siteType'];
 		}
 
-		return false;;
+		return null;
 	}
 
 	/**
