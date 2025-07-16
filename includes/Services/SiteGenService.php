@@ -66,6 +66,7 @@ class SiteGenService {
 			'content_tones'         => true,
 			'content_structure'     => true,
 			'color_palette'         => true,
+			'keywords'              => true,
 			'sitemap'               => true,
 			'plugin_recommendation' => true,
 			'font_pair'             => true,
