@@ -100,11 +100,12 @@ class SiteGenService {
 	 *
 	 * @param string|array $site_info The prompt that configures the Site gen object.
 	 * @param string       $identifier The identifier for Generating Site Meta.
+	 * @param string       $site_type The type of site.
 	 * @param string       $locale The locale for the site's content.
 	 * @param boolean      $skip_cache To override the cache and fetch the data.
 	 * @return array|\WP_Error
 	 */
-	public static function instantiate_site_meta( $site_info, $identifier, $locale, $skip_cache = false ) {
+	public static function instantiate_site_meta( $site_info, $identifier, $site_type, $locale, $skip_cache = false ) {
 		if ( ! self::is_identifier( $identifier ) ) {
 			return new \WP_Error(
 				'nfd_onboarding_error',
@@ -121,7 +122,7 @@ class SiteGenService {
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
-		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $locale, $skip_cache );
+		$response   = SiteGen::generate_site_meta( $site_info, $identifier, $site_type, $locale, $skip_cache );
 		if ( isset( $response['error'] ) ) {
 			// Handle the error case by returning a WP_Error.
 			return new \WP_Error(
@@ -166,91 +167,6 @@ class SiteGenService {
 			$data['slug']  = implode( '-', array( $theme_slug, $slug_postfix ) );
 		}
 		return $data;
-	}
-
-	/**
-	 * Handle completion of the sitegen flow.
-	 *
-	 * @param array $active_homepage The active homepage that was customized.
-	 * @param array $homepage_data All the other generated homepage options.
-	 * @return boolean|\WP_Error
-	 */
-	public static function complete( $active_homepage, $homepage_data ) {
-		/* Replace dalle images */
-
-		$active_homepage['content'] = self::sideload_images_and_replace_grammar( $active_homepage['content'], $active_homepage['generatedImages'] );
-
-		$show_pages_on_front = \get_option( Options::get_option_name( 'show_on_front', false ) );
-
-		// Check if default homepage is posts.
-		if ( 'posts' === $show_pages_on_front ) {
-			\update_option( Options::get_option_name( 'show_on_front', false ), 'page' );
-		}
-
-		// Setting page title from sitemap option.
-		$title       = $active_homepage['title'];
-		$prompt      = self::get_prompt();
-		$locale      = self::get_locale();
-		$site_info   = array( 'site_description' => $prompt );
-		$sitemap     = self::instantiate_site_meta( $site_info, 'sitemap', $locale );
-		$site_config = self::instantiate_site_meta( $site_info, 'site_config', $locale );
-
-		if ( ! is_wp_error( $sitemap ) ) {
-			foreach ( $sitemap as $page ) {
-				if ( 'home' === $page['slug'] ) {
-					$title = $page['title'];
-					break;
-				}
-			}
-		}
-
-		$content = $active_homepage['content'];
-		$post_id = SitePagesService::publish_page(
-			$title,
-			$content,
-			true,
-			array(
-				'nf_dc_page' => 'home',
-			)
-		);
-
-		$nav_link_grammar = self::get_nav_link_grammar_from_post_data( $post_id, $title, get_permalink( $post_id ) );
-		$navigation       = new \WP_Query(
-			array(
-				'name'      => 'navigation',
-				'post_type' => 'wp_navigation',
-			)
-		);
-
-		if ( ! empty( $navigation->posts ) ) {
-			wp_update_post(
-				array(
-					'ID'           => $navigation->posts[0]->ID,
-					'post_content' => $nav_link_grammar . $navigation->posts[0]->post_content,
-				)
-			);
-		}
-
-		if ( is_wp_error( $post_id ) ) {
-			return $post_id;
-		}
-
-		\update_option( Options::get_option_name( 'page_on_front', false ), $post_id );
-
-		self::trash_sample_page();
-		container()->get( 'cachePurger' )->purge_all();
-
-		container()->get( 'survey' )->create_toast_survey(
-			Events::get_category()[0] . '_sitegen_pulse',
-			'customer_satisfaction_survey',
-			array(
-				'label_key' => 'value',
-			),
-			__( 'Help us improve', 'wp-module-onboarding-data' ),
-			__( 'How satisfied were you with the ease of creating your website?', 'wp-module-onboarding-data' ),
-		);
-
-		return true;
 	}
 
 	/**
@@ -440,10 +356,11 @@ class SiteGenService {
 	 * @param string $locale The locale for site's content.
 	 * @return array|\WP_Error
 	 */
-	public static function generate_homepages( $site_description, $content_style, $target_audience, $locale ) {
+	public static function generate_homepages( $site_description, $site_type, $content_style, $target_audience, $locale ) {
 
 		$homepages = SiteGen::get_home_pages(
 			$site_description,
+			$site_type,
 			$content_style,
 			$target_audience,
 			$locale,
@@ -616,6 +533,7 @@ class SiteGenService {
 	 */
 	public static function get_color_palettes() {
 		$prompt = self::get_prompt();
+		$site_type = self::get_site_type();
 		$locale = self::get_locale();
 		if ( ! $prompt ) {
 			return new \WP_Error(
@@ -630,6 +548,7 @@ class SiteGenService {
 				'site_description' => $prompt,
 			),
 			'color_palette',
+			$site_type,
 			$locale
 		);
 
@@ -713,13 +632,15 @@ class SiteGenService {
 			);
 		}
 
-		$prompt                 = $flow_data['sitegen']['siteDetails']['prompt'];
-		$locale                 = $flow_data['sitegen']['siteDetails']['locale'];
+		$prompt                 = self::get_prompt();
+		$site_type              = self::get_site_type();
+		$locale                 = self::get_locale();
 		$plugin_recommendations = self::instantiate_site_meta(
 			array(
 				'site_description' => $prompt,
 			),
 			'plugin_recommendation',
+			$site_type,
 			$locale
 		);
 
@@ -751,55 +672,6 @@ class SiteGenService {
 		}
 
 		return array_merge( $final_required_plugins, $final_recommended_plugins );
-	}
-
-	/**
-	 * Get SiteGen customize sidebar data.
-	 *
-	 * @return array|\WP_Error
-	 */
-	public static function get_customize_sidebar_data() {
-		$flow_data = get_option( Options::get_option_name( 'flow' ), false );
-		if ( ! $flow_data || empty( $flow_data['sitegen']['siteDetails']['prompt'] ) ) {
-			return new \WP_Error(
-				'nfd_onboarding_error',
-				__( 'Prompt not found.', 'wp-module-onboarding-data' ),
-				array( 'status' => 404 )
-			);
-		}
-
-		$prompt        = $flow_data['sitegen']['siteDetails']['prompt'];
-		$locale        = $flow_data['sitegen']['siteDetails']['locale'];
-		$color_palette = self::instantiate_site_meta(
-			array(
-				'site_description' => $prompt,
-			),
-			'color_palette',
-			$locale
-		);
-		$font_pair     = self::instantiate_site_meta(
-			array(
-				'site_description' => $prompt,
-			),
-			'font_pair',
-			$locale
-		);
-
-		if ( is_wp_error( $color_palette ) ) {
-			$color_palette = Colors::get_sitegen_color_palette_data();
-		}
-
-		if ( is_wp_error( $font_pair ) ) {
-			$font_pair = Fonts::get_sitegen_font_data();
-		}
-
-		$default_design = Fonts::get_sitegen_default_design_data();
-
-		return array(
-			'design'        => $default_design,
-			'colorPalettes' => $color_palette,
-			'designStyles'  => $font_pair,
-		);
 	}
 
 	/**
@@ -890,16 +762,6 @@ class SiteGenService {
 	}
 
 	/**
-	 * Get the locale entered during the sitegen flow.
-	 *
-	 * @return string|false
-	 */
-	public static function get_locale() {
-		$data = ReduxStateService::get( 'input' );
-		return ! empty( $data['selectedLocale'] ) ? $data['selectedLocale'] : false;
-	}
-
-	/**
 	 * Get the prompt entered during the sitegen flow.
 	 *
 	 * @return string|false
@@ -907,6 +769,30 @@ class SiteGenService {
 	public static function get_prompt() {
 		$data = ReduxStateService::get( 'input' );
 		return ! empty( $data['prompt'] ) ? $data['prompt'] : false;
+	}
+
+	/**
+	 * Get the site type entered during the sitegen flow.
+	 *
+	 * @return ?string - The site type or null if not set.
+	 */
+	public static function get_site_type(): ?string {
+		$data = ReduxStateService::get( 'input' );
+		if ( ! empty( $data['siteType'] ) ) {
+			return $data['siteType'];
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get the locale entered during the sitegen flow.
+	 *
+	 * @return string|false
+	 */
+	public static function get_locale() {
+		$data = ReduxStateService::get( 'input' );
+		return ! empty( $data['selectedLocale'] ) ? $data['selectedLocale'] : false;
 	}
 
 	/**
@@ -957,9 +843,10 @@ class SiteGenService {
 	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
 	 * @return array|boolean
 	 */
-	public static function publish_sitemap_pages( $site_description, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = true ) {
+	public static function publish_sitemap_pages( $site_description, $site_type, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = true ) {
 		$other_pages = SiteGen::get_pages(
 			$site_description,
+			$site_type,
 			$content_style,
 			$target_audience,
 			$sitemap,
@@ -1014,16 +901,16 @@ class SiteGenService {
 					array(
 						'ID'           => $site_navigation->posts[0]->ID,
 						'post_content' => $navigation_links_grammar,
-						'post_status' => 'publish',
+						'post_status'  => 'publish',
 					)
 				);
 			} else {
 				wp_insert_post(
 					array(
-						'post_title' => 'Navigation',
+						'post_title'   => 'Navigation',
 						'post_content' => $navigation_links_grammar,
-						'post_type' => 'wp_navigation',
-						'post_status' => 'publish',
+						'post_type'    => 'wp_navigation',
+						'post_status'  => 'publish',
 					)
 				);
 			}
@@ -1124,9 +1011,10 @@ class SiteGenService {
 	 */
 	public static function get_dummy_navigation_menu_items() {
 		$prompt    = self::get_prompt();
+		$site_type = self::get_site_type();
 		$locale    = self::get_locale();
 		$site_info = array( 'site_description' => $prompt );
-		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $locale );
+		$sitemap   = self::instantiate_site_meta( $site_info, 'sitemap', $site_type, $locale );
 		if ( is_wp_error( $sitemap ) ) {
 			return array();
 		}
