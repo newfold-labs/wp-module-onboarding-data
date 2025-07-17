@@ -39,6 +39,7 @@ class SiteGenService {
 		'content_structure'     => 'contentstructure',
 		'color_palette'         => 'colorpalette',
 		'sitemap'               => 'sitemap',
+		'keywords'              => 'keywords',
 		'plugin_recommendation' => 'pluginrecommendation',
 		'font_pair'             => 'fontpair',
 	);
