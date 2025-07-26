@@ -64,6 +64,9 @@ final class Options {
 		'state_input'                   => 'state_input',
 		'state_sitegen'                 => 'state_sitegen',
 		'sitegen_previews'              => 'sitegen_previews',
+		'site_info'                     => 'site_info',
+		'start_time'                    => 'start_time',
+		'completed_time'                => 'completed_time',
 	);
 
 	/**
