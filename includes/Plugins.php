@@ -240,6 +240,19 @@ final class Plugins {
 	}
 
 	/**
+	 * Get the ecommerce plugins for the current brand.
+	 *
+	 * @return array
+	 */
+	public static function get_ecommerce_plugins(): array {
+		$current_brand             = Data::current_brand()['brand'];
+		$default_ecommerce_plugins = self::$init_list['ecommerce']['default'];
+		$brand_ecommerce_plugins   = self::$init_list['ecommerce'][ $current_brand ]['default'];
+
+		return array_merge( $default_ecommerce_plugins, $brand_ecommerce_plugins );
+	}
+
+	/**
 	 * Remove duplicates from the init list.
 	 *
 	 * @param array $plugins The plugins to remove duplicates from.
