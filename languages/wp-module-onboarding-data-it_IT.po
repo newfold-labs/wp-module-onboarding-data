@@ -23,16 +23,16 @@ msgstr ""
 msgid "your web host"
 msgstr "il tuo host web"
 
-#: includes/Options.php:126
-#: includes/Options.php:131
-#: includes/Options.php:136
-#: includes/Options.php:141
-#: includes/Options.php:146
-#: includes/Options.php:151
-#: includes/Options.php:156
-#: includes/Options.php:161
-#: includes/Options.php:166
-#: includes/Options.php:171
+#: includes/Options.php:129
+#: includes/Options.php:134
+#: includes/Options.php:139
+#: includes/Options.php:144
+#: includes/Options.php:149
+#: includes/Options.php:154
+#: includes/Options.php:159
+#: includes/Options.php:164
+#: includes/Options.php:169
+#: includes/Options.php:174
 msgid "Woocommerce Settings"
 msgstr "Impostazioni Woocommerce"
 
@@ -86,67 +86,57 @@ msgstr "Blog"
 msgid "A page for periodic news, announcements and ideas."
 msgstr "Una pagina per notizie periodiche, annunci e idee."
 
-#: includes/Services/BlockRenderService.php:43
-#: includes/Services/BlockRenderService.php:54
+#: includes/Services/PreviewsService.php:176
 msgid "Unable to generate screenshot."
 msgstr "Impossibile generare screenshot."
 
-#: includes/Services/FlowService.php:136
+#: includes/Services/FlowService.php:137
 msgid "Wrong Parameter Provided : primary => value"
 msgstr "Parametro fornito errato : primario => valore"
 
-#: includes/Services/FlowService.php:150
+#: includes/Services/FlowService.php:151
 msgid "Wrong Parameter Provided : secondary => value"
 msgstr "Parametro Errato Fornito : secondario => valore"
 
-#: includes/Services/SiteGenService.php:109
+#: includes/Services/SiteGenService.php:114
 msgid "Not a valid identifier"
 msgstr "Non è un identificatore valido"
 
-#: includes/Services/SiteGenService.php:122
+#: includes/Services/SiteGenService.php:132
 msgid "Error generating site meta: "
 msgstr "Errore nella generazione dei meta del sito: "
 
-#: includes/Services/SiteGenService.php:252
-msgid "Help us improve"
-msgstr "Aiutaci a migliorare"
-
-#: includes/Services/SiteGenService.php:253
-msgid "How satisfied were you with the ease of creating your website?"
-msgstr "Quanto sei stato soddisfatto con la facilità di creare il tuo sito web?"
-
-#: includes/Services/SiteGenService.php:457
+#: includes/Services/SiteGenService.php:375
 msgid "Error generating homepages: "
 msgstr "Errore nella generazione delle homepages: "
 
-#: includes/Services/SiteGenService.php:485
+#: includes/Services/SiteGenService.php:403
 msgid "The homepage could not be found for regeneration."
 msgstr "La homepage non è stata trovata per la rigenerazione."
 
-#: includes/Services/SiteGenService.php:517
-#: includes/Services/SiteGenService.php:522
+#: includes/Services/SiteGenService.php:435
+#: includes/Services/SiteGenService.php:440
 msgid " (Copy)"
 msgstr " (Copy)"
 
-#: includes/Services/SiteGenService.php:555
+#: includes/Services/SiteGenService.php:474
 msgid "Error re-generating homepages: "
 msgstr "Errore nella generazione delle homepages: "
 
-#: includes/Services/SiteGenService.php:597
+#: includes/Services/SiteGenService.php:516
 msgid "Version "
 msgstr "Versione "
 
-#: includes/Services/SiteGenService.php:622
-#: includes/Services/SiteGenService.php:709
-#: includes/Services/SiteGenService.php:762
+#: includes/Services/SiteGenService.php:543
+#: includes/Services/SiteGenService.php:632
 msgid "Prompt not found."
 msgstr "Avverte non trovato."
 
-#: includes/Services/SiteGenService.php:637
+#: includes/Services/SiteGenService.php:560
 msgid "Cannot retrieve color palatte"
 msgstr "Impossibile recuperare i colori palatte"
 
-#: includes/Services/SiteGenService.php:725
+#: includes/Services/SiteGenService.php:652
 msgid "Cannot retrieve plugin recommendations."
 msgstr "Impossibile recuperare le raccomandazioni del plugin."
 
@@ -415,31 +405,31 @@ msgstr "Parte del template dell'intestazione selezionata non memorizzata."
 msgid "Selected header template part not found."
 msgstr "Parte del template dell'intestazione selezionata non trovata."
 
-#: includes/Services/FlowService.php:186
+#: includes/Services/FlowService.php:187
 msgid "There was an error saving the data"
 msgstr "Si è verificato un errore durante il salvataggio dei dati."
 
-#: includes/Services/FlowService.php:251
+#: includes/Services/FlowService.php:252
 msgid "Parameter not provided: %s"
 msgstr "Parametro non fornito: %s"
 
-#: includes/Services/FlowService.php:267
+#: includes/Services/FlowService.php:268
 msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
 msgstr "Tipo di parametro errato per %1$s: ricevuto %2$s, previsto %3$s."
 
-#: includes/Services/FlowService.php:288
+#: includes/Services/FlowService.php:289
 msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
 msgstr "Tipo di parametro errato per %s: array indicizzato. Previsto: array associativo."
 
-#: includes/Services/FlowService.php:329
+#: includes/Services/FlowService.php:330
 msgid "Flow not enabled."
 msgstr "Flow non abilitato."
 
-#: includes/Services/SiteGenService.php:340
+#: includes/Services/SiteGenService.php:255
 msgid "Parent theme is missing to generate the child theme."
 msgstr "Tema genitore mancante per generare il tema child."
 
-#: includes/Services/SiteGenService.php:373
+#: includes/Services/SiteGenService.php:288
 msgid "Could not generate theme.json"
 msgstr "Impossibile generare theme.json"
 
@@ -494,3 +484,8 @@ msgstr "Retrò e raffinato"
 #: includes/Themes/Fonts.php:208
 msgid "Defined & solid"
 msgstr "Definito e solido"
+
+#: wordpress/wp-includes/blocks/widget-group/block.json
+msgctxt "block title"
+msgid "Widget Group"
+msgstr ""
