@@ -845,7 +845,7 @@ class SiteGenService {
 	 * @param boolean $update_nav_menu Whether or not the nav menu should be updated with the new pages.
 	 * @return array|boolean
 	 */
-	public static function publish_sitemap_pages( $site_description, $site_type, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = true ) {
+	public static function publish_sitemap_pages( $site_description, $site_type, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = false ) {
 		$other_pages = SiteGen::get_pages(
 			$site_description,
 			$site_type,
