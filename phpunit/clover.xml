@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753712602">
-  <project timestamp="1753712602">
+<coverage generated="1753752704">
+  <project timestamp="1753752704">
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Brands.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Brands" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="461" coveredstatements="0" elements="464" coveredelements="0"/>
@@ -796,21 +796,18 @@
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Options" namespace="global">
         <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
       </class>
-      <line num="92" type="method" name="get_option_name" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="93" type="stmt" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="95" type="stmt" count="0"/>
+      <line num="95" type="method" name="get_option_name" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="96" type="stmt" count="0"/>
       <line num="97" type="stmt" count="0"/>
       <line num="98" type="stmt" count="0"/>
-      <line num="106" type="method" name="get_all_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="115" type="method" name="get_initialization_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="116" type="stmt" count="0"/>
-      <line num="124" type="method" name="get_wc_settings_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="125" type="stmt" count="0"/>
-      <line num="126" type="stmt" count="0"/>
-      <line num="127" type="stmt" count="0"/>
+      <line num="99" type="stmt" count="0"/>
+      <line num="100" type="stmt" count="0"/>
+      <line num="101" type="stmt" count="0"/>
+      <line num="109" type="method" name="get_all_options" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="110" type="stmt" count="0"/>
+      <line num="118" type="method" name="get_initialization_options" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="119" type="stmt" count="0"/>
+      <line num="127" type="method" name="get_wc_settings_options" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="128" type="stmt" count="0"/>
       <line num="129" type="stmt" count="0"/>
       <line num="130" type="stmt" count="0"/>
@@ -860,7 +857,10 @@
       <line num="174" type="stmt" count="0"/>
       <line num="175" type="stmt" count="0"/>
       <line num="176" type="stmt" count="0"/>
-      <metrics loc="179" ncloc="139" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
+      <line num="177" type="stmt" count="0"/>
+      <line num="178" type="stmt" count="0"/>
+      <line num="179" type="stmt" count="0"/>
+      <metrics loc="182" ncloc="142" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Patterns.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Patterns" namespace="global">
@@ -3615,6 +3615,6 @@
       <line num="311" type="stmt" count="0"/>
       <metrics loc="314" ncloc="291" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="270" coveredstatements="0" elements="274" coveredelements="0"/>
     </file>
-    <metrics files="28" loc="6807" ncloc="5225" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3258" coveredstatements="0" elements="3452" coveredelements="0"/>
+    <metrics files="28" loc="6810" ncloc="5228" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3258" coveredstatements="0" elements="3452" coveredelements="0"/>
   </project>
 </coverage>
