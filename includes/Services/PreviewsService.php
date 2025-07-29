@@ -124,6 +124,10 @@ class PreviewsService {
 			});
 		</script>';
 
+		// Remove hooks that can slow down the operation.
+		remove_all_actions('wp_insert_post');
+		remove_all_actions('save_post');
+		// Insert the page.
 		$post_id = wp_insert_post( array(
 			'post_title'    => 'Home-' . $slug,
 			'post_name'     => 'home-' . $slug,
@@ -132,7 +136,6 @@ class PreviewsService {
 			'post_type'     => 'page',
 			'page_template' => 'blank',
 		) );
-
 		$post_url = get_permalink( $post_id );
 
 		// Add the preview page id to 'sitegen_previews' option to be cleaned up later
