@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753752704">
-  <project timestamp="1753752704">
+<coverage generated="1753819708">
+  <project timestamp="1753819708">
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Brands.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Brands" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="461" coveredstatements="0" elements="464" coveredelements="0"/>
@@ -1633,7 +1633,7 @@
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Services/PreviewsService.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Services\PreviewsService" namespace="global">
-        <metrics complexity="13" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="0" elements="83" coveredelements="0"/>
+        <metrics complexity="13" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="0" elements="85" coveredelements="0"/>
       </class>
       <line num="26" type="method" name="generate_snapshot" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="27" type="stmt" count="0"/>
@@ -1670,26 +1670,25 @@
       <line num="95" type="stmt" count="0"/>
       <line num="99" type="stmt" count="0"/>
       <line num="125" type="stmt" count="0"/>
-      <line num="127" type="stmt" count="0"/>
       <line num="128" type="stmt" count="0"/>
       <line num="129" type="stmt" count="0"/>
-      <line num="130" type="stmt" count="0"/>
       <line num="131" type="stmt" count="0"/>
       <line num="132" type="stmt" count="0"/>
       <line num="133" type="stmt" count="0"/>
       <line num="134" type="stmt" count="0"/>
+      <line num="135" type="stmt" count="0"/>
       <line num="136" type="stmt" count="0"/>
+      <line num="137" type="stmt" count="0"/>
+      <line num="138" type="stmt" count="0"/>
       <line num="139" type="stmt" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="141" type="stmt" count="0"/>
+      <line num="142" type="stmt" count="0"/>
       <line num="143" type="stmt" count="0"/>
       <line num="144" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
       <line num="146" type="stmt" count="0"/>
-      <line num="157" type="method" name="capture_screenshot" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="158" type="stmt" count="0"/>
-      <line num="159" type="stmt" count="0"/>
-      <line num="160" type="stmt" count="0"/>
+      <line num="147" type="stmt" count="0"/>
+      <line num="148" type="stmt" count="0"/>
+      <line num="149" type="stmt" count="0"/>
+      <line num="160" type="method" name="capture_screenshot" visibility="public" complexity="2" crap="6" count="0"/>
       <line num="161" type="stmt" count="0"/>
       <line num="162" type="stmt" count="0"/>
       <line num="163" type="stmt" count="0"/>
@@ -1699,9 +1698,9 @@
       <line num="167" type="stmt" count="0"/>
       <line num="168" type="stmt" count="0"/>
       <line num="169" type="stmt" count="0"/>
+      <line num="170" type="stmt" count="0"/>
       <line num="171" type="stmt" count="0"/>
       <line num="172" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="0"/>
       <line num="174" type="stmt" count="0"/>
       <line num="175" type="stmt" count="0"/>
       <line num="176" type="stmt" count="0"/>
@@ -1709,16 +1708,19 @@
       <line num="178" type="stmt" count="0"/>
       <line num="179" type="stmt" count="0"/>
       <line num="180" type="stmt" count="0"/>
-      <line num="184" type="stmt" count="0"/>
-      <line num="185" type="stmt" count="0"/>
-      <line num="186" type="stmt" count="0"/>
+      <line num="181" type="stmt" count="0"/>
+      <line num="182" type="stmt" count="0"/>
+      <line num="183" type="stmt" count="0"/>
       <line num="187" type="stmt" count="0"/>
-      <line num="195" type="method" name="trash_preview_pages" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="196" type="stmt" count="0"/>
-      <line num="197" type="stmt" count="0"/>
-      <line num="198" type="stmt" count="0"/>
+      <line num="188" type="stmt" count="0"/>
+      <line num="189" type="stmt" count="0"/>
+      <line num="190" type="stmt" count="0"/>
+      <line num="198" type="method" name="trash_preview_pages" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="199" type="stmt" count="0"/>
       <line num="200" type="stmt" count="0"/>
-      <metrics loc="203" ncloc="149" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="0" elements="83" coveredelements="0"/>
+      <line num="201" type="stmt" count="0"/>
+      <line num="203" type="stmt" count="0"/>
+      <metrics loc="206" ncloc="150" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="0" elements="85" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Services/SiteGenService.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Services\SiteGenService" namespace="global">
@@ -3615,6 +3617,6 @@
       <line num="311" type="stmt" count="0"/>
       <metrics loc="314" ncloc="291" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="270" coveredstatements="0" elements="274" coveredelements="0"/>
     </file>
-    <metrics files="28" loc="6810" ncloc="5228" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3258" coveredstatements="0" elements="3452" coveredelements="0"/>
+    <metrics files="28" loc="6813" ncloc="5229" classes="27" methods="194" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3260" coveredstatements="0" elements="3454" coveredelements="0"/>
   </project>
 </coverage>
