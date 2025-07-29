@@ -1,27 +1,20 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: newfold-labswp-module-staging\n"
-"Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: German\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/newfold-labs/wp-module-patterns/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-17T16:50:49+00:00\n"
-"PO-Revision-Date: 2025-02-19 15:03\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2025-02-13T09:55:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-module-onboarding-data\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: newfold-labswp-module-staging\n"
-"X-Crowdin-Project-ID: 764889\n"
-"X-Crowdin-Language: de\n"
-"X-Crowdin-File: wp-module-onboarding-data.pot\n"
-"X-Crowdin-File-ID: 30\n"
 
 #: includes/Brands.php:17
 msgid "your web host"
-msgstr "dein Webhost"
+msgstr ""
 
 #: includes/Options.php:132
 #: includes/Options.php:137
@@ -34,206 +27,278 @@ msgstr "dein Webhost"
 #: includes/Options.php:172
 #: includes/Options.php:177
 msgid "Woocommerce Settings"
-msgstr "Woocommerce Einstellungen"
+msgstr ""
 
 #: includes/Patterns.php:19
 msgid "Home"
-msgstr "Zuhause"
+msgstr ""
 
 #: includes/Patterns.php:20
 #: includes/Patterns.php:93
 msgid "About"
-msgstr "Über"
+msgstr ""
 
 #: includes/Patterns.php:21
 #: includes/Patterns.php:103
 msgid "Contact"
-msgstr "Kontakt"
+msgstr ""
 
 #: includes/Patterns.php:22
 msgid "News"
-msgstr "Nachrichten"
+msgstr ""
 
 #: includes/Patterns.php:23
 msgid "Privacy"
-msgstr "Privatsphäre"
+msgstr ""
 
 #: includes/Patterns.php:24
 msgid "Careers"
-msgstr "Karrieren"
+msgstr ""
 
 #: includes/Patterns.php:96
 msgid "Explain your company values or the history behind your brand."
-msgstr "Erläutern Sie Ihre Unternehmenswerte oder die Geschichte hinter Ihrer Marke."
+msgstr ""
 
 #: includes/Patterns.php:105
 msgid "Offer visitors a single page with a contact form, your street address and social media."
-msgstr "Bieten Sie Besuchern eine einzelne Seite mit einem Kontaktformular, Ihrer Straßenadresse und sozialen Medien an."
+msgstr ""
 
 #: includes/Patterns.php:111
 msgid "Testimonials"
-msgstr "Referenzen"
+msgstr ""
 
 #: includes/Patterns.php:114
 msgid "Highlight your success with testimonials from your fans."
-msgstr "Hervorheben Sie Ihren Erfolg mit Zeugnissen Ihrer Fans."
+msgstr ""
 
 #: includes/Patterns.php:121
 msgid "Blog"
-msgstr "Blog"
+msgstr ""
 
 #: includes/Patterns.php:123
 msgid "A page for periodic news, announcements and ideas."
-msgstr "Eine Seite für regelmäßige Nachrichten, Ankündigungen und Ideen."
-
-#: includes/Services/PreviewsService.php:176
-msgid "Unable to generate screenshot."
-msgstr "Screenshot kann nicht erstellt werden."
+msgstr ""
 
 #: includes/Services/FlowService.php:137
 msgid "Wrong Parameter Provided : primary => value"
-msgstr "Falscher Parameter : primäres => Wert"
+msgstr ""
 
 #: includes/Services/FlowService.php:151
 msgid "Wrong Parameter Provided : secondary => value"
-msgstr "Falscher Parameter angegeben: sekundär => Wert"
+msgstr ""
+
+#: includes/Services/FlowService.php:187
+msgid "There was an error saving the data"
+msgstr ""
+
+#: includes/Services/FlowService.php:252
+msgid "Parameter not provided: %s"
+msgstr ""
+
+#: includes/Services/FlowService.php:268
+msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
+msgstr ""
+
+#: includes/Services/FlowService.php:289
+msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
+msgstr ""
+
+#: includes/Services/FlowService.php:330
+msgid "Flow not enabled."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:44
+msgid "Selected theme settings were not found."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:54
+msgid "Styles does not exist under the selected theme settings."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:67
+msgid "Settings does not exist under the selected theme settings."
+msgstr ""
+
+#: includes/Services/GlobalStylesService.php:112
+msgid "There is an error with your styles or settings."
+msgstr ""
+
+#: includes/Services/PreviewsService.php:176
+msgid "Unable to generate screenshot."
+msgstr ""
 
 #: includes/Services/SiteGenService.php:114
 msgid "Not a valid identifier"
-msgstr "Kein gültiger Bezeichner"
+msgstr ""
 
 #: includes/Services/SiteGenService.php:132
 msgid "Error generating site meta: "
-msgstr "Fehler beim Generieren der Site-Meta: "
+msgstr ""
+
+#: includes/Services/SiteGenService.php:255
+msgid "Parent theme is missing to generate the child theme."
+msgstr ""
+
+#: includes/Services/SiteGenService.php:288
+msgid "Could not generate theme.json"
+msgstr ""
 
 #: includes/Services/SiteGenService.php:375
 msgid "Error generating homepages: "
-msgstr "Fehler beim Generieren der Homepages: "
+msgstr ""
 
 #: includes/Services/SiteGenService.php:403
 msgid "The homepage could not be found for regeneration."
-msgstr "Die Homepage konnte nicht zur Regeneration gefunden werden."
+msgstr ""
 
 #: includes/Services/SiteGenService.php:435
 #: includes/Services/SiteGenService.php:440
 msgid " (Copy)"
-msgstr " (Kopie)"
+msgstr ""
 
 #: includes/Services/SiteGenService.php:474
 msgid "Error re-generating homepages: "
-msgstr "Fehler beim Regenerieren der Homepages: "
+msgstr ""
 
 #: includes/Services/SiteGenService.php:516
 msgid "Version "
-msgstr "Version "
+msgstr ""
 
 #: includes/Services/SiteGenService.php:543
 #: includes/Services/SiteGenService.php:632
 msgid "Prompt not found."
-msgstr "Anfrage nicht gefunden."
+msgstr ""
 
 #: includes/Services/SiteGenService.php:560
 msgid "Cannot retrieve color palatte"
-msgstr "Kann Farbpalatte nicht abrufen"
+msgstr ""
 
 #: includes/Services/SiteGenService.php:652
 msgid "Cannot retrieve plugin recommendations."
-msgstr "Plugin-Empfehlungen können nicht abgerufen werden."
+msgstr ""
+
+#: includes/Services/TemplatePartsService.php:76
+msgid "Selected header template part not stored."
+msgstr ""
+
+#: includes/Services/TemplatePartsService.php:86
+msgid "Selected header template part not found."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:60
+msgid "Error creating child directory."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:68
+msgid "Error writing theme.json."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:77
+msgid "Error writing template part."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:86
+msgid "Error writing stylesheet."
+msgstr ""
+
+#: includes/Services/ThemeGeneratorService.php:95
+msgid "Error generating screenshot"
+msgstr ""
 
 #: includes/SiteFeatures.php:23
 #: includes/SiteFeatures.php:87
 msgid "Security, Speed & Growth"
-msgstr "Sicherheit, Geschwindigkeit & Wachstum"
+msgstr ""
 
 #: includes/SiteFeatures.php:24
 #: includes/SiteFeatures.php:88
 msgid "Powered by Jetpack"
-msgstr "Powered by Jetpack"
+msgstr ""
 
 #: includes/SiteFeatures.php:25
 #: includes/SiteFeatures.php:89
 msgid "Jetpack includes dozens of powerful, unique capabilities for your WordPress sites from Automattic."
-msgstr "Jetpack enthält Dutzende von leistungsstarken, einzigartigen Fähigkeiten für Ihre WordPress-Seiten von Automattic."
+msgstr ""
 
 #: includes/SiteFeatures.php:33
 #: includes/SiteFeatures.php:97
 msgid "Forms"
-msgstr "Formulare"
+msgstr ""
 
 #: includes/SiteFeatures.php:34
 #: includes/SiteFeatures.php:98
 msgid "Powered by WP Forms"
-msgstr "Powered by WP Formulare"
+msgstr ""
 
 #: includes/SiteFeatures.php:35
 #: includes/SiteFeatures.php:99
 msgid "Five million people build smarter forms and surveys with WPForms from Awesome Motive."
-msgstr "Fünf Millionen Menschen bauen intelligentere Formulare und Umfragen mit WPForms von Awesome Motive auf."
+msgstr ""
 
 #: includes/SiteFeatures.php:43
 #: includes/SiteFeatures.php:107
 msgid "Site Traffic"
-msgstr "Seitenverkehr"
+msgstr ""
 
 #: includes/SiteFeatures.php:44
 #: includes/SiteFeatures.php:108
 msgid "Powered by MonsterInsights"
-msgstr "Powered by MonsterInsights"
+msgstr ""
 
 #: includes/SiteFeatures.php:45
 #: includes/SiteFeatures.php:109
 msgid "See the opportunities in your website analytics traffic data using MonsterInsights from Awesome Motive."
-msgstr "Sehen Sie die Möglichkeiten in Ihren Webanalysedaten unter Verwendung von MonsterInsights von Awesome Motive."
+msgstr ""
 
 #: includes/SiteFeatures.php:53
 #: includes/SiteFeatures.php:117
 msgid "Search Engine Optimization"
-msgstr "Suchmaschinenoptimierung"
+msgstr ""
 
 #: includes/SiteFeatures.php:54
 #: includes/SiteFeatures.php:118
 msgid "Powered by Yoast"
-msgstr "Angetrieben von Yoast"
+msgstr ""
 
 #: includes/SiteFeatures.php:55
 #: includes/SiteFeatures.php:119
 msgid "Get more traffic to your WordPress site with powerful analysis and tools from our colleagues at Yoast."
-msgstr "Holen Sie mehr Traffic auf Ihre WordPress-Seite mit leistungsstarken Analysen und Tools von unseren Kollegen bei Yoast."
+msgstr ""
 
 #: includes/SiteFeatures.php:63
 #: includes/SiteFeatures.php:127
 msgid "Email Newsletters"
-msgstr "E-Mail-Newsletter"
+msgstr ""
 
 #: includes/SiteFeatures.php:64
 #: includes/SiteFeatures.php:128
 msgid "Powered by Creative Email"
-msgstr "Unterstützt durch kreative E-Mail"
+msgstr ""
 
 #: includes/SiteFeatures.php:65
 #: includes/SiteFeatures.php:129
 msgid "A professional logo builder, marketing automations with WooCommerce and social management -- CreativeMail is a whole lot more than mail from Constant Contact."
-msgstr "Ein professioneller Logo-Builder, Marketing-Automationen mit WooCommerce und Social Management -- CreativeMail ist viel mehr als eine Mail von Constant Contact."
+msgstr ""
 
 #: includes/SiteFeatures.php:73
 #: includes/SiteFeatures.php:137
 msgid "Lead Generation"
-msgstr "Lead-Erzeugung"
+msgstr ""
 
 #: includes/SiteFeatures.php:74
 #: includes/SiteFeatures.php:138
 msgid "Powered by Optin Monster"
-msgstr "Betrieben von Optin Monster"
+msgstr ""
 
 #: includes/SiteFeatures.php:75
 #: includes/SiteFeatures.php:139
 msgid "Connect with website visitors using a proven kit of tools for growth using this offering from Awesome Motive."
-msgstr "Verbinden Sie sich mit Website-Besuchern mit einem bewährten Bausatz an Wachstumstools mit diesem Angebot von Awesome Motive."
+msgstr ""
 
 #: includes/SiteFeatures.php:149
 #: includes/SiteFeatures.php:191
 msgid "Enhanced Product Search"
-msgstr "Erweiterte Produktsuche"
+msgstr ""
 
 #: includes/SiteFeatures.php:150
 #: includes/SiteFeatures.php:160
@@ -244,246 +309,174 @@ msgstr "Erweiterte Produktsuche"
 #: includes/SiteFeatures.php:212
 #: includes/SiteFeatures.php:222
 msgid "Powered by YITH"
-msgstr "Unterstützt von YITH"
+msgstr ""
 
 #: includes/SiteFeatures.php:151
 #: includes/SiteFeatures.php:193
 msgid "Give your visitors great search experiences with this exclusive offering from our colleagues at YITH."
-msgstr "Geben Sie Ihren Besuchern großartige Sucherlebnisse mit diesem exklusiven Angebot unserer Kollegen von YITH."
+msgstr ""
 
 #: includes/SiteFeatures.php:159
 #: includes/SiteFeatures.php:201
 msgid "Enhanced Product Filters"
-msgstr "Verbesserte Produktfilter"
+msgstr ""
 
 #: includes/SiteFeatures.php:161
 #: includes/SiteFeatures.php:203
 msgid "Give your visitors powerful tools to discover your great products with this exclusive offering from our colleagues at YITH."
-msgstr "Mit diesem exklusiven Angebot unserer Kollegen von YITH können Sie Ihren Besuchern mächtige Werkzeuge geben, um Ihre tollen Produkte zu entdecken."
+msgstr ""
 
 #: includes/SiteFeatures.php:169
 #: includes/SiteFeatures.php:211
 msgid "Bookings & Appointments"
-msgstr "Buchungen & Termine"
+msgstr ""
 
 #: includes/SiteFeatures.php:171
 #: includes/SiteFeatures.php:213
 msgid "Have visitors book meetings and services with you, accepting payment and more using this exclusive offering from our colleagues at YITH."
-msgstr "Lassen Sie die Besucher bei Ihnen Meetings und Dienstleistungen buchen, Zahlungen akzeptieren und mehr mit diesem exklusiven Angebot von unseren Kollegen bei YITH."
+msgstr ""
 
 #: includes/SiteFeatures.php:179
 #: includes/SiteFeatures.php:221
 msgid "Product Wishlists"
-msgstr "Produkt-Wunschlisten"
+msgstr ""
 
 #: includes/SiteFeatures.php:181
 #: includes/SiteFeatures.php:223
 msgid "Let discerning shoppers curate their selections with a system of favorites using this exclusive offering from our colleagues at YITH."
-msgstr "Lassen Sie anspruchsvolle Käufer ihre Auswahl mit einem System von Favoriten kurieren, das dieses exklusive Angebot unserer Kollegen bei YITH nutzt."
+msgstr ""
 
 #: includes/SiteGen.php:17
 msgid "1. Do you have a business name or website title?"
-msgstr "1. Haben Sie einen Firmennamen oder einen Titel der Website?"
+msgstr ""
 
 #: includes/SiteGen.php:18
 msgid "My business name is"
-msgstr "Mein Geschäftsname ist"
+msgstr ""
 
 #: includes/SiteGen.php:21
 msgid "2. What type of website are you making?"
-msgstr "Welche Art von Website erstellen Sie?"
+msgstr ""
 
 #: includes/SiteGen.php:22
 msgid "e.g. Graphic design portfolio"
-msgstr "z.B. Grafikdesign-Portfolio"
+msgstr ""
 
 #: includes/SiteGen.php:23
 msgid "I am making a website type of"
-msgstr "Ich mache eine Website-Art von"
+msgstr ""
 
 #: includes/SiteGen.php:26
 msgid "3. Is there anything unique about your business or brand?"
-msgstr "3. Gibt es irgendetwas Unikates an Ihrem Unternehmen oder Ihrer Marke?"
+msgstr ""
 
 #: includes/SiteGen.php:27
 msgid "e.g. Unique product, amazing customer service, customizations, etc."
-msgstr "z.B. einzigartiges Produkt, erstaunlicher Kundenservice, Anpassungen, etc."
+msgstr ""
 
 #: includes/SiteGen.php:28
 msgid "Unique about my business is"
-msgstr "Einzigartig über mein Geschäft ist"
+msgstr ""
 
 #: includes/Themes/Colors.php:31
 msgid "Calm"
-msgstr "Ruhe"
+msgstr ""
 
 #: includes/Themes/Colors.php:43
 msgid "Cool"
-msgstr "Kühl"
+msgstr ""
 
 #: includes/Themes/Colors.php:55
 msgid "Warm"
-msgstr "Warm"
+msgstr ""
 
 #: includes/Themes/Colors.php:67
 msgid "Radiant"
-msgstr "Radiant"
+msgstr ""
 
 #: includes/Themes/Colors.php:79
 msgid "Bold"
-msgstr "Bold"
+msgstr ""
 
 #: includes/Themes/Colors.php:91
 msgid "Retro"
-msgstr "Retro"
+msgstr ""
 
 #: includes/Themes/Colors.php:103
 msgid "Professional"
-msgstr "Profi"
+msgstr ""
 
 #: includes/Themes/Colors.php:115
 msgid "Crisp"
-msgstr "Knapp"
+msgstr ""
 
 #: includes/Themes/Colors.php:127
 msgid "Polished"
-msgstr "Poliert"
+msgstr ""
 
 #: includes/Themes/Colors.php:139
 msgid "Nightowl"
-msgstr "Nachtzug"
+msgstr ""
 
 #: includes/Themes/Colors.php:151
 msgid "Subtle"
-msgstr "Subtil"
-
-#: includes/Themes/Fonts.php:21
-msgid "Modern & approachable"
-msgstr "Modern & zugänglich"
-
-#: includes/Themes/Fonts.php:38
-msgid "Strong & sleek"
-msgstr "Stark & glatt"
-
-#: includes/Themes/Fonts.php:55
-msgid "Stately & elevated"
-msgstr "Stat & Erweitert"
-
-#: includes/Themes/Fonts.php:72
-msgid "Typewriter & crisp midcentury"
-msgstr "Typewriter & knackiger Mitte des Jahrhunderts"
-
-#: includes/Themes/Fonts.php:89
-msgid "Refined traditional newsletter"
-msgstr "Traditioneller Newsletter"
-
-#: includes/Themes/Fonts.php:106
-msgid "Bold stamp & slab"
-msgstr "Fett Stempel & Platte"
-
-#: includes/Services/GlobalStylesService.php:44
-msgid "Selected theme settings were not found."
-msgstr "Ausgewählte Theme-Einstellungen wurden nicht gefunden."
-
-#: includes/Services/GlobalStylesService.php:54
-msgid "Styles does not exist under the selected theme settings."
-msgstr "Stile existieren nicht unter den ausgewählten Theme-Einstellungen."
-
-#: includes/Services/GlobalStylesService.php:67
-msgid "Settings does not exist under the selected theme settings."
-msgstr "Einstellungen existieren nicht unter den ausgewählten Theme-Einstellungen."
-
-#: includes/Services/GlobalStylesService.php:112
-msgid "There is an error with your styles or settings."
-msgstr "Es gibt einen Fehler mit Ihren Stilen oder Einstellungen."
-
-#: includes/Services/TemplatePartsService.php:76
-msgid "Selected header template part not stored."
-msgstr "Ausgewählter Kopfzeilenvorlagenteil wurde nicht gespeichert."
-
-#: includes/Services/TemplatePartsService.php:86
-msgid "Selected header template part not found."
-msgstr "Ausgewählter Kopfzeilenvorlagenteil wurde nicht gefunden."
-
-#: includes/Services/FlowService.php:187
-msgid "There was an error saving the data"
-msgstr "Beim Speichern der Daten ist ein Fehler aufgetreten."
-
-#: includes/Services/FlowService.php:252
-msgid "Parameter not provided: %s"
-msgstr "Parameter nicht angegeben: %s"
-
-#: includes/Services/FlowService.php:268
-msgid "Wrong parameter type provided for %1$s: got %2$s, expected %3$s."
-msgstr "Falscher Parametertyp für %1$s: %2$s erhalten, %3$s erwartet."
-
-#: includes/Services/FlowService.php:289
-msgid "Wrong parameter type provided for %s: Indexed Array. Expected: Associative Array."
-msgstr "Falscher Parametertyp für %s: Indiziertes Array. Erwartet: Assoziatives Array."
-
-#: includes/Services/FlowService.php:330
-msgid "Flow not enabled."
-msgstr "Flow ist nicht aktiviert."
-
-#: includes/Services/SiteGenService.php:255
-msgid "Parent theme is missing to generate the child theme."
-msgstr "Eltern-Theme fehlt, um das Child-Theme zu generieren."
-
-#: includes/Services/SiteGenService.php:288
-msgid "Could not generate theme.json"
-msgstr "theme.json konnte nicht generiert werden."
-
-#: includes/Services/ThemeGeneratorService.php:60
-msgid "Error creating child directory."
-msgstr "Fehler beim Erstellen des Unterverzeichnisses."
-
-#: includes/Services/ThemeGeneratorService.php:68
-msgid "Error writing theme.json."
-msgstr "Fehler beim Schreiben von theme.json."
-
-#: includes/Services/ThemeGeneratorService.php:77
-msgid "Error writing template part."
-msgstr "Fehler beim Schreiben des Template-Teils."
-
-#: includes/Services/ThemeGeneratorService.php:86
-msgid "Error writing stylesheet."
-msgstr "Fehler beim Schreiben des Stylesheets."
-
-#: includes/Services/ThemeGeneratorService.php:95
-msgid "Error generating screenshot"
-msgstr "Fehler beim Erstellen des Screenshots."
+msgstr ""
 
 #: includes/Themes/Colors.php:255
 msgid "Theme Colors not found"
-msgstr "Theme-Farben nicht gefunden."
+msgstr ""
 
 #: includes/Themes/Colors.php:256
 msgid "No WordPress Colors are available for this theme."
-msgstr "Für dieses Theme sind keine WordPress-Farben verfügbar."
+msgstr ""
+
+#: includes/Themes/Fonts.php:21
+msgid "Modern & approachable"
+msgstr ""
+
+#: includes/Themes/Fonts.php:38
+msgid "Strong & sleek"
+msgstr ""
+
+#: includes/Themes/Fonts.php:55
+msgid "Stately & elevated"
+msgstr ""
+
+#: includes/Themes/Fonts.php:72
+msgid "Typewriter & crisp midcentury"
+msgstr ""
+
+#: includes/Themes/Fonts.php:89
+msgid "Refined traditional newsletter"
+msgstr ""
+
+#: includes/Themes/Fonts.php:106
+msgid "Bold stamp & slab"
+msgstr ""
 
 #: includes/Themes/Fonts.php:123
 msgid "Fast & simple"
-msgstr "Schnell & einfach"
+msgstr ""
 
 #: includes/Themes/Fonts.php:140
 msgid "Timeless & traditional"
-msgstr "Zeitlos & traditionell"
+msgstr ""
 
 #: includes/Themes/Fonts.php:157
 msgid "Sleek & sophisticated"
-msgstr "Elegant & raffiniert"
+msgstr ""
 
 #: includes/Themes/Fonts.php:174
 msgid "Clear & crisp"
-msgstr "Klar & prägnant"
+msgstr ""
 
 #: includes/Themes/Fonts.php:191
 msgid "Retro & classy"
-msgstr "Retro & stilvoll"
+msgstr ""
 
 #: includes/Themes/Fonts.php:208
 msgid "Defined & solid"
-msgstr "Markant & stabil"
+msgstr ""
 
 #: wordpress/wp-includes/blocks/widget-group/block.json
 msgctxt "block title"
