@@ -41,7 +41,6 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'newfold-labs/wp-plugin-hostgator'
-      node-version: 20
     secrets: inherit
 
   crazydomains:
@@ -52,5 +51,4 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'newfold-labs/wp-plugin-crazy-domains'
-      node-version: 20
     secrets: inherit
