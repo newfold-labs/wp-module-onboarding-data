@@ -63,6 +63,7 @@ final class Options {
 		'can_restart'                   => 'can_restart',
 		'state_input'                   => 'state_input',
 		'state_sitegen'                 => 'state_sitegen',
+		'state_blueprints'              => 'state_blueprints',
 		'sitegen_previews'              => 'sitegen_previews',
 		'site_info'                     => 'site_info',
 		'start_time'                    => 'start_time',
