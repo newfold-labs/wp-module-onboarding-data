@@ -58,6 +58,8 @@ final class Events {
 		'migration_initiated'         => true,
 		'mfe_migration_initiated'     => true,
 		'exp_fork_diy_mar25'          => true,
+		'site_type_set'               => true,
+		'blueprint_published'         => true,
 	);
 
 	/**
