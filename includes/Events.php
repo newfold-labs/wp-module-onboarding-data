@@ -60,6 +60,13 @@ final class Events {
 		'exp_fork_diy_mar25'          => true,
 		'site_type_set'               => true,
 		'blueprint_published'         => true,
+		'logogen_generate'            => true,
+		'logogen_generate_failed'     => true,
+		'logogen_generate_more_6'     => true,
+		'logogen_generate_more_9'     => true,
+		'logogen_logo_selected'       => true,
+		'logogen_survey'              => true,
+		'logogen_error_triggered'     => true,
 	);
 
 	/**
