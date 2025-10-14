@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1759347713">
-  <project timestamp="1759347713">
+<coverage generated="1760449990">
+  <project timestamp="1760449990">
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Brands.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Brands" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="573" coveredstatements="0" elements="576" coveredelements="0"/>
@@ -731,11 +731,11 @@
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Events" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
       </class>
-      <line num="70" type="method" name="get_valid_actions" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="71" type="stmt" count="0"/>
-      <line num="79" type="method" name="get_category" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="80" type="stmt" count="0"/>
-      <metrics loc="83" ncloc="58" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      <line num="71" type="method" name="get_valid_actions" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="80" type="method" name="get_category" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <metrics loc="84" ncloc="59" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Flows/Flows.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows" namespace="global">
@@ -3651,6 +3651,6 @@
       <line num="311" type="stmt" count="0"/>
       <metrics loc="314" ncloc="291" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="270" coveredstatements="0" elements="274" coveredelements="0"/>
     </file>
-    <metrics files="28" loc="6803" ncloc="5243" classes="27" methods="191" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3297" coveredstatements="0" elements="3488" coveredelements="0"/>
+    <metrics files="28" loc="6804" ncloc="5244" classes="27" methods="191" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3297" coveredstatements="0" elements="3488" coveredelements="0"/>
   </project>
 </coverage>
