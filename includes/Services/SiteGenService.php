@@ -835,6 +835,55 @@ class SiteGenService {
 	}
 
 	/**
+	 * Create a temporary menu navigation based on sitemap
+	 *
+	 * @param $sitemap
+	 *
+	 * @return void
+	 */
+	public static function create_navigation( $sitemap ) {
+		$navigation_links_grammar = '';
+		foreach ( $sitemap as $index => $page ) {
+			$navigation_links_grammar .= self::get_nav_link_grammar( $page['title'] );
+		}
+		// Get the site navigation.
+		$site_navigation = new \WP_Query(
+			array(
+				'name'      => 'navigation',
+				'post_type' => 'wp_navigation',
+			)
+		);
+
+		// Get the site navigation.
+		$site_navigation = new \WP_Query(
+			array(
+				'name'      => 'navigation',
+				'post_type' => 'wp_navigation',
+			)
+		);
+		// Add sitemap pages to the navigation menu.
+		if ( ! empty( $site_navigation->posts ) ) {
+			wp_update_post(
+				array(
+					'ID'           => $site_navigation->posts[0]->ID,
+					'post_content' => $navigation_links_grammar,
+					'post_status'  => 'publish',
+				)
+			);
+		} else {
+			wp_insert_post(
+				array(
+					'post_title'   => 'Navigation',
+					'post_content' => $navigation_links_grammar,
+					'post_type'    => 'wp_navigation',
+					'post_status'  => 'publish',
+				)
+			);
+		}
+	}
+
+
+	/**
 	 * Generate and publish the sitemap pages.
 	 *
 	 * @param string  $site_description The description of the site (prompt).
@@ -846,6 +895,7 @@ class SiteGenService {
 	 * @return array|boolean
 	 */
 	public static function publish_sitemap_pages( $site_description, $site_type, $content_style, $target_audience, $sitemap, $locale, $update_nav_menu = false ) {
+
 		$other_pages = SiteGen::get_pages(
 			$site_description,
 			$site_type,
@@ -872,15 +922,31 @@ class SiteGenService {
 				}
 			}
 			$page_content = $other_pages[ $page['slug'] ];
-			$post_id      = SitePagesService::publish_page(
-				$page['title'],
-				$page_content,
-				true,
-				array(
-					'nf_dc_page' => $page['slug'],
-				),
-				$slug
-			);
+			if( is_array( $page_content ) ) {
+				foreach ( $page_content as $sitekit_slug => $content ) {
+					$post_id      = SitePagesService::publish_page(
+						$page['title'],
+						$content,
+						false,
+						array(
+							'nf_dc_page' => $page['slug'],
+							'ndf_sitekit' => $sitekit_slug
+						),
+						$slug
+					);
+				}
+			}else{
+				$post_id      = SitePagesService::publish_page(
+					$page['title'],
+					$page_content,
+					false,
+					array(
+						'nf_dc_page' => $page['slug'],
+					),
+					$slug
+				);
+			}
+
 			if ( $update_nav_menu && ! is_wp_error( $post_id ) ) {
 				$navigation_links_grammar .= self::get_nav_link_grammar_from_post_data( $post_id, $page['title'], get_permalink( $post_id ) );
 			}
@@ -1044,6 +1110,16 @@ class SiteGenService {
 	 */
 	public static function get_nav_link_grammar_from_post_data( $id, $name, $url ) {
 		return "<!-- wp:navigation-link {\"label\":\"$name\",\"type\":\"page\",\"id\":$id,\"url\":\"$url\",\"kind\":\"post-type\"} /-->";
+	}
+
+	/**
+	 * Returns the wp:navigation-link grammar for a given post.
+	 *
+	 * @param string  $name The name of the post to display on the menu.
+	 * @return string|false
+	 */
+	public static function get_nav_link_grammar( $name ) {
+		return "<!-- wp:navigation-link {\"label\":\"$name\",\"url\":\"#\",\"kind\":\"custom\"} /-->";
 	}
 
 	/**
