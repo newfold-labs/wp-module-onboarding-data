@@ -209,7 +209,7 @@ final class Brands {
 					'canRestartOnboarding' => false,
 				),
 			),
-			'webcom'         => array(
+			'web'         => array(
 				'brand'                       => 'webcom',
 				'name'                        => 'Web.com',
 				'url'                         => apply_filters( 'nfd_build_url', 'https://web.com' ),
@@ -269,7 +269,7 @@ final class Brands {
 				'config'                      => array(
 					'enabled_flows'        => array(
 						'ecommerce' => false,
-						'wp-setup'  => false,
+						'wp-setup'  => true,
 						'sitegen'   => $has_ai_sitegen,
 					),
 					'wonder_blocks'        => true,
