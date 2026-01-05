@@ -211,26 +211,26 @@ final class Brands {
 			),
 			'web'         => array(
 				'brand'                       => 'webcom',
-				'name'                        => 'Web.com',
-				'url'                         => apply_filters( 'nfd_build_url', 'https://web.com' ),
-				'knowledgeBaseUrl'            => apply_filters( 'nfd_build_url', 'https://www.web.com/knowledge' ),
-				'helpUrl'                     => apply_filters( 'nfd_build_url', 'https://www.web.com/knowledge' ),
-				'blogUrl'                     => apply_filters( 'nfd_build_url', 'https://www.web.com/blog' ),
-				'facebookUrl'                 => apply_filters( 'nfd_build_url', 'https://www.facebook.com/Web.com/' ),
-				'twitterName'                 => '@webdotcom',
-				'twitterUrl'                  => apply_filters( 'nfd_build_url', 'http://twitter.com/webdotcom' ),
-				'youtubeUrl'                  => apply_filters( 'nfd_build_url', 'https://www.youtube.com/c/webdotcom' ),
-				'linkedinUrl'                 => apply_filters( 'nfd_build_url', 'https://www.linkedin.com/company/website-pros/' ),
-				'accountUrl'                  => apply_filters( 'nfd_build_url', 'https://www.web.com/my-account' ),
-				'domainsUrl'                  => apply_filters( 'nfd_build_url', 'https://www.web.com/domains' ),
-				'emailUrl'                    => apply_filters( 'nfd_build_url', 'https://www.web.com/email-service' ),
+				'name'                        => 'Network Solutions',
+				'url'                         => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/' ),
+				'knowledgeBaseUrl'            => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/help' ),
+				'helpUrl'                     => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/help' ),
+				'blogUrl'                     => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/blog/' ),
+				'facebookUrl'                 => apply_filters( 'nfd_build_url', 'https://www.facebook.com/NetworkSolutions/' ),
+				'twitterName'                 => '@netsolcares',
+				'twitterUrl'                  => apply_filters( 'nfd_build_url', 'https://x.com/netsolcares' ),
+				'youtubeUrl'                  => apply_filters( 'nfd_build_url', 'https://www.youtube.com/@networksolutions' ),
+				'linkedinUrl'                 => apply_filters( 'nfd_build_url', 'https://www.linkedin.com/company/network-solutions/' ),
+				'accountUrl'                  => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/my-account' ),
+				'domainsUrl'                  => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/domains' ),
+				'emailUrl'                    => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/email' ),
 				'phoneNumbers'                => array(
-					'sales'   => '866-923-8821',
-					'support' => '866-923-8821',
-					'intl'    => '+1-904-680-6617',
+					'sales'   => '855-834-8495',
+					'support' => '855-834-8495',
+					'intl'    => '+1-570-708-8400',
 				),
 				'hireExpertsInfo'             => array(
-					'defaultLink'   => apply_filters( 'nfd_build_url', 'https://www.web.com/websites/pro-website-services' ),
+					'defaultLink'   => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/digital-marketing-services' ),
 					'utmParameters' => array(
 						'utm_source'   => '',
 						'utm_medium'   => '',
@@ -238,7 +238,7 @@ final class Brands {
 					),
 				),
 				'expertsInfo'                 => array(
-					'defaultLink' => apply_filters( 'nfd_build_url', 'https://www.web.com/websites/pro-website-services' ),
+					'defaultLink' => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/digital-marketing-services' ),
 					'queryParams' => array(
 						'utm_source' => '',
 						'utm_medium' => '',
@@ -247,7 +247,7 @@ final class Brands {
 				'fullServiceCreativeTeamInfo' => array(
 					'defaultLink' => apply_filters(
 						'nfd_build_url',
-						'https://www.web.com/websites/pro-website-services',
+						'https://www.networksolutions.com/digital-marketing-services',
 						array(
 							'utm_source' => 'wp-onboarding',
 						)
