@@ -224,6 +224,10 @@ final class Brands {
 				'accountUrl'                  => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/my-account' ),
 				'domainsUrl'                  => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/domains' ),
 				'emailUrl'                    => apply_filters( 'nfd_build_url', 'https://www.networksolutions.com/email' ),
+				'pluginDashboardPage'         => \admin_url( 'admin.php?page=web' ),
+				'dashboardRedirectParams'     => array(
+					'referrer' => 'nfd-onboarding',
+				),
 				'phoneNumbers'                => array(
 					'sales'   => '855-834-8495',
 					'support' => '855-834-8495',
