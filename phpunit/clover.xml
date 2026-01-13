@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1766005313">
-  <project timestamp="1766005313">
+<coverage generated="1768327712">
+  <project timestamp="1768327712">
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Brands.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Brands" namespace="global">
         <metrics complexity="6" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="573" coveredstatements="0" elements="576" coveredelements="0"/>
@@ -731,11 +731,11 @@
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Events" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
       </class>
-      <line num="71" type="method" name="get_valid_actions" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="72" type="stmt" count="0"/>
-      <line num="80" type="method" name="get_category" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="81" type="stmt" count="0"/>
-      <metrics loc="84" ncloc="59" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+      <line num="78" type="method" name="get_valid_actions" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="79" type="stmt" count="0"/>
+      <line num="87" type="method" name="get_category" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="88" type="stmt" count="0"/>
+      <metrics loc="91" ncloc="66" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Flows/Flows.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Flows\Flows" namespace="global">
@@ -907,19 +907,18 @@
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Options" namespace="global">
         <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
       </class>
-      <line num="96" type="method" name="get_option_name" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="97" type="stmt" count="0"/>
+      <line num="97" type="method" name="get_option_name" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="98" type="stmt" count="0"/>
       <line num="99" type="stmt" count="0"/>
       <line num="100" type="stmt" count="0"/>
       <line num="101" type="stmt" count="0"/>
       <line num="102" type="stmt" count="0"/>
-      <line num="110" type="method" name="get_all_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="111" type="stmt" count="0"/>
-      <line num="119" type="method" name="get_initialization_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="120" type="stmt" count="0"/>
-      <line num="128" type="method" name="get_wc_settings_options" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="129" type="stmt" count="0"/>
+      <line num="103" type="stmt" count="0"/>
+      <line num="111" type="method" name="get_all_options" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="112" type="stmt" count="0"/>
+      <line num="120" type="method" name="get_initialization_options" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="121" type="stmt" count="0"/>
+      <line num="129" type="method" name="get_wc_settings_options" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="130" type="stmt" count="0"/>
       <line num="131" type="stmt" count="0"/>
       <line num="132" type="stmt" count="0"/>
@@ -971,7 +970,8 @@
       <line num="178" type="stmt" count="0"/>
       <line num="179" type="stmt" count="0"/>
       <line num="180" type="stmt" count="0"/>
-      <metrics loc="183" ncloc="143" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
+      <line num="181" type="stmt" count="0"/>
+      <metrics loc="184" ncloc="144" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="0" elements="64" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/wp-module-onboarding-data/wp-module-onboarding-data/includes/Patterns.php">
       <class name="NewfoldLabs\WP\Module\Onboarding\Data\Patterns" namespace="global">
@@ -3651,6 +3651,6 @@
       <line num="311" type="stmt" count="0"/>
       <metrics loc="314" ncloc="291" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="270" coveredstatements="0" elements="274" coveredelements="0"/>
     </file>
-    <metrics files="28" loc="6804" ncloc="5244" classes="27" methods="191" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3297" coveredstatements="0" elements="3488" coveredelements="0"/>
+    <metrics files="28" loc="6812" ncloc="5252" classes="27" methods="191" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3297" coveredstatements="0" elements="3488" coveredelements="0"/>
   </project>
 </coverage>
