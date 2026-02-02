@@ -113,6 +113,20 @@ final class Plugins {
 					'priority' => 300,
 				),
 			),
+			'webcom'         => array(
+				'default' => array(
+					array(
+						'slug'     => 'nfd_slug_yith_shippo_shippings_for_woocommerce',
+						'activate' => true,
+						'priority' => 60,
+					),
+					array(
+						'slug'     => 'nfd_slug_yith_paypal_payments_for_woocommerce',
+						'activate' => true,
+						'priority' => 80,
+					),
+				),
+			),
 			'bluehost'       => array(
 				'default' => array(
 					array(
