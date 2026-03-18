@@ -1,3 +1,10 @@
+---
+name: wp-module-onboarding-data
+title: Documentation index
+description: Table of contents and quick links.
+updated: 2025-03-18
+---
+
 # wp-module-onboarding-data – Documentation index
 
 Documentation for wp-module-onboarding-data, for **humans** and **AI agents**. Start here.
