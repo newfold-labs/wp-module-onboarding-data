@@ -123,10 +123,6 @@ msgstr ""
 msgid "There is an error with your styles or settings."
 msgstr ""
 
-#: includes/Services/PreviewsService.php:179
-msgid "Unable to generate screenshot."
-msgstr ""
-
 #: includes/Services/SiteGenService.php:114
 msgid "Not a valid identifier"
 msgstr ""
