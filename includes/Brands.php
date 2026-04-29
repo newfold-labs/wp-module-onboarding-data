@@ -590,6 +590,79 @@ final class Brands {
 					'canRestartOnboarding' => false,
 				),
 			),
+			'vodien'         => array(
+				'brand'                       => 'vodien',
+				'name'                        => 'Vodien',
+				'url'                         => apply_filters( 'nfd_build_url', 'https://www.vodien.com/' ),
+				'knowledgeBaseUrl'            => apply_filters( 'nfd_build_url', 'https://www.vodien.com/help' ),
+				'helpUrl'                     => apply_filters( 'nfd_build_url', 'https://www.vodien.com/help' ),
+				'blogUrl'                     => apply_filters( 'nfd_build_url', 'https://www.vodien.com/blog/' ),
+				'facebookUrl'                 => apply_filters( 'nfd_build_url', 'https://www.facebook.com/vodien.sg/' ),
+				'twitterName'                 => '@vodien',
+				'twitterUrl'                  => apply_filters( 'nfd_build_url', 'https://x.com/vodien' ),
+				'youtubeUrl'                  => apply_filters( 'nfd_build_url', 'https://www.youtube.com/@vodien' ),
+				'linkedinUrl'                 => apply_filters( 'nfd_build_url', 'https://www.linkedin.com/company/vodien/' ),
+				'accountUrl'                  => apply_filters( 'nfd_build_url', 'https://www.vodien.com/login' ),
+				'domainsUrl'                  => apply_filters( 'nfd_build_url', 'https://www.vodien.com/domains' ),
+				'emailUrl'                    => apply_filters( 'nfd_build_url', 'https://www.vodien.com/email' ),
+				'pluginDashboardPage'         => \admin_url( 'admin.php?page=vodien' ),
+				'dashboardRedirectParams'     => array(
+					'referrer' => 'nfd-onboarding',
+				),
+				'phoneNumbers'                => array(
+					'sales'   => '855-834-8495',
+					'support' => '855-834-8495',
+					'intl'    => '+1-570-708-8400',
+				),
+				'hireExpertsInfo'             => array(
+					'defaultLink'   => apply_filters( 'nfd_build_url', 'https://www.vodien.com/online-marketing/' ),
+					'utmParameters' => array(
+						'utm_source'   => '',
+						'utm_medium'   => '',
+						'utm_campaign' => '',
+					),
+				),
+				'expertsInfo'                 => array(
+					'defaultLink' => apply_filters( 'nfd_build_url', 'https://www.vodien.com/online-marketing/' ),
+					'queryParams' => array(
+						'utm_source' => '',
+						'utm_medium' => '',
+					),
+				),
+				'fullServiceCreativeTeamInfo' => array(
+					'defaultLink' => apply_filters(
+						'nfd_build_url',
+						'https://www.vodien.com/online-marketing/',
+						array(
+							'utm_source' => 'wp-onboarding',
+						)
+					),
+					'fragment'    => '',
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'techSupportInfo'             => array(
+					'defaultLink' => '',
+					'queryParams' => array(
+						'utm_source' => '',
+						'utm_medium' => '',
+					),
+				),
+				'migrationInfo'               => array(),
+				'config'                      => array(
+					'enabled_flows'        => array(
+						'ecommerce' => false,
+						'wp-setup'  => true,
+						'sitegen'   => $has_ai_sitegen,
+					),
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
+					'canRestartOnboarding' => false,
+				),
+			),
 		);
 	}
 
