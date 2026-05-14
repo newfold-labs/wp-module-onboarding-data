@@ -22,6 +22,7 @@ jobs:
     permissions:
       contents: write      # Required for called reusable workflow to commit translation updates.
       pull-requests: write # Required for called reusable workflow to create or update pull requests.
+    timeout-minutes: 30
     uses: newfold-labs/workflows/.github/workflows/reusable-translations.yml@main
     with:
       text_domain: 'wp-module-onboarding-data'
