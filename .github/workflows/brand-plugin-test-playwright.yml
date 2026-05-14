@@ -19,6 +19,7 @@ jobs:
     name: Setup
     runs-on: ubuntu-latest
     permissions: {}
+    timeout-minutes: 30
     outputs:
       branch: ${{ steps.extract_branch.outputs.branch }}
     steps:
@@ -46,6 +47,7 @@ jobs:
     needs: setup
     permissions:
       contents: read # Required for called reusable workflow to clone this private repository.
+    timeout-minutes: 30
     uses: newfold-labs/workflows/.github/workflows/module-plugin-test-playwright.yml@main
     with:
       module-repo: ${{ github.repository }}
