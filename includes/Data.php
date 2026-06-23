@@ -33,7 +33,18 @@ final class Data {
 			'currentUserDetails'  => self::wp_current_user_details(),
 			'isFreshInstallation' => self::is_fresh_installation(),
 			'sentryInitDsnURL'    => 'https://cd5bd4c30b914e0d1d0f49413e600afa@o4506197201715200.ingest.us.sentry.io/4507383861805056',
+			'hasOriginPrompt'     => self::has_origin_prompt(),
 		);
+	}
+
+	/**
+	 * Whether an origin prompt exists (pre-filled user prompt for alternate onboarding flow).
+	 *
+	 * @return bool True if the nfd_origin_prompt option exists and is non-empty.
+	 */
+	public static function has_origin_prompt() {
+		$prompt = \get_option( 'nfd_origin_prompt', '' );
+		return ! empty( $prompt ) && is_string( $prompt );
 	}
 
 	/**
