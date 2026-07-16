@@ -40,7 +40,7 @@ final class Plugins {
 			),
 			array(
 				'slug'     => 'wpforms-lite',
-				'activate' => true,
+				'activate' => false,
 				'priority' => 270,
 			),
 			array(
