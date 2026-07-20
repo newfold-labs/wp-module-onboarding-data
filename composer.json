@@ -40,7 +40,7 @@
         "newfold-labs/wp-module-survey": "^1.0.1"
     },
     "require-dev": {
-        "newfold-labs/wp-php-standards": "^1.2.4",
+        "newfold-labs/wp-php-standards": "^1.2.6",
         "wp-cli/i18n-command": "^2.6.2",
         "johnpbloch/wordpress": "@stable",
         "lucatume/wp-browser": "*",
