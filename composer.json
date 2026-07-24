@@ -35,7 +35,7 @@
         "wp-forge/wp-upgrade-handler": "^1.0",
         "mustache/mustache": "^2.14.2",
         "newfold-labs/wp-module-data": "^2.9.4",
-        "newfold-labs/wp-module-performance": "^3.0.0",
+        "newfold-labs/wp-module-performance": "^3.8.2",
         "newfold-labs/wp-module-install-checker": "^1.1.1",
         "newfold-labs/wp-module-survey": "^1.0.1"
     },
