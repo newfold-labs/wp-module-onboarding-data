@@ -590,6 +590,98 @@ final class Brands {
 					'canRestartOnboarding' => false,
 				),
 			),
+			'bigrock-in'     => array(
+				'brand'                       => 'bigrock-in',
+				'name'                        => 'BigRock',
+				'url'                         => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/' ),
+				'knowledgeBaseUrl'            => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/help' ),
+				'helpUrl'                     => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/help' ),
+				'blogUrl'                     => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/blog/' ),
+				'facebookUrl'                 => apply_filters( 'nfd_build_url', 'https://www.facebook.com/BigRockIsSocial' ),
+				'twitterName'                 => '@BigRock',
+				'twitterUrl'                  => apply_filters( 'nfd_build_url', 'https://twitter.com/BigRock' ),
+				'youtubeUrl'                  => apply_filters( 'nfd_build_url', 'https://www.youtube.com/user/BigRockTV' ),
+				'linkedinUrl'                 => apply_filters( 'nfd_build_url', 'https://www.linkedin.com/company/bigrock' ),
+				'accountUrl'                  => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/login/' ),
+				'domainsUrl'                  => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/login/' ),
+				'emailUrl'                    => apply_filters( 'nfd_build_url', 'https://www.bigrock.in/login/' ),
+				'pluginDashboardPage'         => \admin_url( 'admin.php?page=bigrock_in' ),
+				'dashboardRedirectParams'     => array(
+					'referrer' => 'nfd-onboarding',
+				),
+				'phoneNumbers'                => array(
+					'sales'   => '1-800-266-7625',
+					'support' => '+91-22-6720-9001',
+				),
+				'hireExpertsInfo'             => array(
+					'defaultLink'     => apply_filters(
+						'nfd_build_url',
+						'https://www.bigrock.in/support/contact-us',
+						array(
+							'utm_source'   => 'wp-onboarding',
+							'utm_campaign' => 'wp-setup',
+						)
+					),
+					'fragment'        => '',
+					'queryParameters' => array(
+						'utm_source'   => 'wp-onboarding',
+						'utm_medium'   => 'brand-plugin',
+						'utm_campaign' => 'wp-setup',
+					),
+				),
+				'expertsInfo'                 => array(
+					'defaultLink' => apply_filters(
+						'nfd_build_url',
+						'https://www.bigrock.in/support/contact-us',
+						array(
+							'utm_source' => 'wp-onboarding',
+						)
+					),
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'fullServiceCreativeTeamInfo' => array(
+					'defaultLink' => apply_filters(
+						'nfd_build_url',
+						'https://www.bigrock.in/support/contact-us',
+						array(
+							'utm_source' => 'wp-onboarding',
+						)
+					),
+					'fragment'    => '',
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'techSupportInfo'             => array(
+					'defaultLink' => apply_filters(
+						'nfd_build_url',
+						'https://myorders.bigrock.in/support',
+						array(
+							'utm_source' => 'wp-onboarding',
+						)
+					),
+					'queryParams' => array(
+						'utm_source' => 'wp-onboarding',
+						'utm_medium' => 'brand-plugin',
+					),
+				),
+				'migrationInfo'               => array(),
+				'config'                      => array(
+					'enabled_flows'        => array(
+						'ecommerce' => true,
+						'wp-setup'  => true,
+						'sitegen'   => $has_ai_sitegen,
+					),
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
+					'canRestartOnboarding' => false,
+				),
+			),
 		);
 	}
 
