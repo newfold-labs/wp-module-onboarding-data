@@ -1,9 +1,13 @@
 name: 'Lint Checker: PHP'
 on:
   push:
+    branches:
+      - main-networksolutions
     paths:
       - '**.php'
   pull_request:
+    branches:
+      - main-networksolutions
     types: [opened, edited, reopened, ready_for_review]
     paths:
       - '**.php'
