@@ -77,6 +77,32 @@ jobs:
       module-repo: ${{ github.repository }}
       module-branch: ${{ needs.setup.outputs.branch }}
       plugin-repo: 'newfold-labs/wp-plugin-vodien'
-      plugin-branch: 'develop'
+      plugin-branch: 'dev/hostingdev/4647'
       artifact-name: 'wp-plugin-vodien-develop'
+    secrets: inherit
+
+  bigrock:
+    name: Bigrock Build and Test Playwright
+    needs: setup
+    permissions:
+      contents: read
+    uses: newfold-labs/workflows/.github/workflows/module-plugin-test-playwright.yml@main
+    with:
+      module-repo: ${{ github.repository }}
+      module-branch: ${{ needs.setup.outputs.branch }}
+      plugin-repo: 'newfold-labs/wp-plugin-bigrock'
+    secrets: inherit
+
+  bigrock-dev:
+    name: Bigrock Dev Build and Test Playwright
+    needs: setup
+    permissions:
+      contents: read
+    uses: newfold-labs/workflows/.github/workflows/module-plugin-test-playwright.yml@main
+    with:
+      module-repo: ${{ github.repository }}
+      module-branch: ${{ needs.setup.outputs.branch }}
+      plugin-repo: 'newfold-labs/wp-plugin-bigrock'
+      plugin-branch: 'dev/HOSTINGDEV-5254-ai-onboarding'
+      artifact-name: 'wp-plugin-bigrock-develop'
     secrets: inherit
