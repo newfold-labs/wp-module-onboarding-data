@@ -6,5 +6,6 @@
   },
   "devDependencies": {
     "@wordpress/env": "^11.14.0"
-  }
+  },
+  "version": "1.2.27"
 }
