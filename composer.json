@@ -37,7 +37,7 @@
         "newfold-labs/wp-module-data": "^2.9.8",
         "newfold-labs/wp-module-performance": "^3.9.1",
         "newfold-labs/wp-module-install-checker": "^1.1.1",
-        "newfold-labs/wp-module-survey": "^1.1.0"
+        "newfold-labs/wp-module-survey": "^1.1.1"
     },
     "require-dev": {
         "newfold-labs/wp-php-standards": "^2.0.0",
