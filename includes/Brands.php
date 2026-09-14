@@ -755,6 +755,26 @@ final class Brands {
 					'canRestartOnboarding' => false,
 				),
 			),
+			'webhostbox'         => array(
+				'brand'                       => 'webhostbox',
+				'name'                        => 'WebHostBox',
+				'pluginDashboardPage'         => \admin_url( 'admin.php?page=webhostbox' ),
+				'dashboardRedirectParams'     => array(
+					'referrer' => 'nfd-onboarding',
+				),
+				'migrationInfo'               => array(),
+				'config'                      => array(
+					'enabled_flows'        => array(
+						'ecommerce' => false,
+						'wp-setup'  => true,
+						'sitegen'   => $has_ai_sitegen,
+					),
+					'wonder_blocks'        => true,
+					'prioritization'       => false,
+					'canMigrateSite'       => $can_migrate_site,
+					'canRestartOnboarding' => false,
+				),
+			),
 		);
 	}
 
