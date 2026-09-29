@@ -119,8 +119,17 @@ class SiteGenService {
 		}
 
 		// If the site info is a string, convert it to an array.
-		if ( gettype( $site_info ) === 'string' ) {
+		if ( is_string( $site_info ) ) {
 			$site_info = array( 'site_description' => $site_info );
+		}
+
+		// Reject invalid site_info (e.g. false when prompt not yet in Redux) to avoid fatal in AI module.
+		if ( empty( $site_info ) || ! is_array( $site_info ) || ! isset( $site_info['site_description'] ) ) {
+			return new \WP_Error(
+				'nfd_onboarding_error',
+				__( 'Invalid or missing site description for site meta generation.', 'wp-module-onboarding-data' ),
+				array( 'status' => 400 )
+			);
 		}
 
 		$identifier = self::get_identifier_name( $identifier );
