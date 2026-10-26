@@ -5,7 +5,7 @@
     "npm": ">=10.9.0"
   },
   "devDependencies": {
-    "@wordpress/env": "^11.17.0"
+    "@wordpress/env": "^12.0.0"
   },
   "version": "1.2.27"
 }
